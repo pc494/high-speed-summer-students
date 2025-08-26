@@ -1,0 +1,24 @@
+ <!DOCTYPE html>
+<html>
+<body>
+
+<h1>What we've been working on</h1>
+<p>Week 3</p>
+
+<iframe
+  id="alpha"
+  title="Alpha"
+  width="700" height="500" scrolling="no" frameborder="0"
+  src="tlplib/animations/Extrusion1">
+</iframe>
+
+
+<iframe
+  id="Beta"
+  title="Beta"
+  width="700" height="500" scrolling="no" frameborder="0"
+  src="tlplib/animations/LCA-1-Copy">
+</iframe>
+
+</body>
+</html> 
