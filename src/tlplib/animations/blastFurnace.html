@@ -228,21 +228,29 @@
 
 						<defs>
 							<linearGradient id="mixture_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-							<stop offset="0%" stop-color="grey" stop-opacity="0"/>
-							<stop offset="50%" stop-color="rosybrown"/>
-							<stop offset="90%" stop-color="firebrick"/>
+								<stop offset="0%" stop-color="grey" stop-opacity="0"/>
+								<stop offset="40%" stop-color="rosybrown"/>
+								<stop offset="100%" stop-color="firebrick" stop-opacity="0.9"/>
 							</linearGradient>
+
+							<pattern id="ore_fill" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+								<path style="fill:lightgrey; stroke:grey" d="M10,0 l4,4 l2,-1 l0,4 l4,2 l-2,4 l-6,3 l-3,-2 l-2,1 l-6,-4 l1,-2 l-1,-4 l5,-1 Z"></path>
+							</pattern>
 						</defs>
 
 						<g id="movers">
 							
-							
+							<rect id="ores" style="fill:url(#ore_fill)" x="0" width="640" y="120" height="140"></rect>
 							<rect id="mixture" style="fill:url(#mixture_gradient)" x="0" width="640" y="120" height="140"></rect>
+							
 							<circle class="air" style="fill:lightsteelblue; fill-opacity:0.3;" cx="250" cy="260" r="100"></circle>
 							<circle class="air" style="fill:lightsteelblue; fill-opacity:0.3;" cx="390" cy="260" r="100"></circle>
+							
 							<rect id="slag" style="fill:darkorange" x=0 width="640" y="255" height="35"></rect>
 							<rect id="iron" style="fill:gold" x="0" width="640" y="290" height="100"></rect>
 
+							<path id="ore" style="fill:lightgrey; stroke:grey" d="M0,0 l4,4 l2,-1 l0,4 l4,2 l-2,4 l-6,3 l-3,-2 l-2,1 l-6,-4 l1,-2 l-1,-4 l5,-1 Z"></path>
+						
 							<path id="tuyere" style="fill:lightsteelblue" d="M275,240 l-30,0 a10 10 0 1 0 0 10 l35,0 M365,240 l30,0 a10 10 0 1 1 0 10 l-35,0"></path>
 							<g id="slag_plug">
 								<rect style="fill:white; stroke:none" x="0" width="275" y="275" height="10"></rect>
@@ -252,11 +260,14 @@
 								<rect style="fill:white; stroke:none" x="365" width="275" y="310" height="10"></rect>
 								<rect style="fill:dimgrey; stroke:none" x="349" width="16" y="310" height="10"></rect>
 							</g>
-							
-							<path id="ore" style="fill:lightgrey; stroke:grey" d="M0,0 l4,4 l2,-1 l0,4 l4,2 l-2,4 l-6,3 l-3,-2 l-2,1 l-6,-4 l1,-2 l-1,-4 l5,-1 Z"></path>
+
+							<g id="paths" style="stroke:red; fill:none">
+								<path id="hopper_left" d="M310,60 q10,20 -10,40 t-15,30"></path>
+								<path id="hopper_right" d="M330,60 q-10,20 10,40 t15,30"></path>
+							</g>
 							
 						</g>
-						
+
 						<g id="furnace">
 
 							<path id="furnace_guts" style="fill:lavender;border:red"
@@ -321,6 +332,9 @@
 						var curr = 1
 
 						var t = gsap.timeline(paused=true, {defaults: {duration:1, ease:"none"}})
+
+						t.addLabel("t0", 0)
+
 
 						function restart(){
 							gotoPage(1)
