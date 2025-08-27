@@ -827,7 +827,7 @@
 
 					<div id="feed_buttons3">
 						
-						<input type="button" value="Start the extruder" onclick="spin()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" onclick="spin()" value="Start the extruder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" onclick="flood3()" value="Flood Feeding"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" onclick="starve3()" value="Starve Feeding">
 						
@@ -915,19 +915,46 @@
 				<script>
 					
 					function flood3() {
-						gsap.to("#starve3", {visibility:"hidden"});
+						gsap.to("#starve_shapes3", {visibility:"hidden"});
 						gsap.to("#starve_txt3", {visibility:"hidden"});
-						gsap.to("#flood3", {visibility:"visible"});
+						gsap.to("#flood_shapes3", {visibility:"visible"});
 						gsap.to("#flood_txt3", {visibility:"visible"});
 					}
 					
 					function starve3() {
-						gsap.to("#flood3", {visibility:"hidden"});
+						gsap.to("#flood_shapes3", {visibility:"hidden"});
 						gsap.to("#flood_txt3", {visibility:"hidden"});
-						gsap.to("#starve3", {visibility:"visible"});
+						gsap.to("#starve_shapes3", {visibility:"visible"});
 						gsap.to("#starve_txt3", {visibility:"visible"});
 					}
+					
+					var cnt = 0;
+					var tl = gsap.timeline({repeat:-1})
+					tl.to("#screw3", {x:150, duration:1, ease:"none"})
+					.to("#quads3", {x:110, duration:1, ease:"none"}, "<")
+					.to("#screw3", {x:0, duration:0, ease:"none"})
+					.to("#quads3", {x:-40, duration:0, ease:"none"})
+					tl.pause()
 
+					function spin() {
+						if (cnt == 0){
+							tl.play();
+
+							// for (let i = 0; i < 50; i++) {
+								
+								
+							//     console.log(i);
+							// }
+						}
+						if (cnt == 1) {
+							tl.pause()
+							// gsap.kill("#screw");
+							
+							cnt = -1;
+						}
+						cnt += 1;console.log(cnt)
+					}
+   
 				</script>
 				<!-- end payj - p3 -->
 
