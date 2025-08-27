@@ -700,12 +700,12 @@
 							visibility:visible;
 						}
 
-						#powderflood3 {
+						#flood_shapes3 {
 							visibility:hidden;
 							fill:#f9c;
 						}
 
-						#powderstarve3 {
+						#starve_shapes3 {
 							visibility:hidden;
 							fill:#0c6;
 						}
@@ -741,8 +741,61 @@
 					<div>
 						
 						<svg width="640" height="640" style="position:absolute;left:0px;top:-210px">
+							<g id="quads3" fill="#ccc" stroke-width="1" stroke="#000" transform="scale(2)">
+								<path d="M35,180 q15.734,-60 31.468,0"></path>
+								<path d="M75.516,200 q15.734,60 31.468,0"></path>
+								
+								<path d="M110,180 q15.734,-60 31.468,0"></path>
+								<path d="M150.516,200 q15.734,60 31.468,0"></path>
 							
-							<g stroke-width="1" fill="none" stroke="#000" transform="scale(2)">
+								<path d="M-40,180 q15.734,-60 31.468,0"></path>
+								<path d="M0.516,200 q15.734,60 31.468,0"></path>
+							</g>
+							<g id="screw_axis3" stroke-width="1" fill="#eee" stroke="#000" transform="scale(2)">
+								<path d="M185,200 l-150,0 l0,-20 l150,0"></path>
+							</g>
+							<g id="screw3">
+								<g id="curly_bits3" fill="#ccc" stroke-width="0.5" stroke="#000" transform="scale(2)">
+									<path d="M34.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-11"></path>
+									<path d="M107.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,11"></path>
+								
+									<path d="M109.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-11"></path>
+									<path d="M182.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,11"></path>
+								
+									<path d="M-40.3,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-11"></path>
+									<path d="M32.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,11"></path>
+								</g>
+							
+								<g id="sine_curve_things3" fill="#666" stroke-width="1" stroke="#000" transform="scale(2)">
+									<path d="M50.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+									<path d="M125.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+									<path d="M-24.266,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+								</g>
+								<g id="starve_shapes3" fill="#0c6" transform="scale(2)">
+									<path d="M91.25,230 l7.5,-15 s0.4,-0.8 2,0 l30,15"></path>
+									<path d="M166.25,230 l7.5,-15 s0.4,-0.8 2,0 l30,15"></path>
+									<path d="M16.25,230 l7.5,-15 s0.4,-0.8 2,0 l30,15"></path>
+									<path d="M-58.75,230 l7.5,-15 s0.4,-0.8 2,0 l30,15"></path>
+								</g>
+								<g id="flood_shapes3" fill="#f9c" transform="scale(2)">
+									<path d="M53.750,150 s6.813,0 18.75,40 s14,40 18.75,40 l71.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-71.984,0"></path>
+									<path d="M128.750,150 s6.813,0 18.75,40 s14,40 18.75,40 l71.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-71.984,0"></path>
+									<path d="M-21.25,150 s6.813,0 18.75,40 s14,40 18.75,40 l71.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-71.984,0"></path>
+									<path d="M-96.25,150 s6.813,0 18.75,40 s14,40 18.75,40 l71.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-71.984,0"></path>
+								</g>
+							</g>
+							<g id="blocks3" transform ="scale(2)" stroke-width="0" fill="#fff">
+								<path d="M20,232 l0,-84 l-150,0 l0,84 l150,0"></path>
+								<path d="M185,232 l0,-84 l150,0 l0,84 l-150,0"></path>
+							</g>
+							<g id="machinery3" stroke-width="1" fill="#eee" stroke="#000" transform="scale(2)">
+								<path id="3segment1" d="M20,130 l56,0 l0,20 l-56,0 l0,-20"></path>
+								<path id="3segment2" d="M185,130 l-91,0 l0,20 l91,0"></path>
+								<path id="3segment3" d="M185,230 l-165,0 l0,20 l165,0"></path>
+								<path id="3rotator" d="M20,230 l0,-80 l15,0 l0,80 l-15,0"></path>
+							</g>
+
+							<!-- <g stroke-width="1" fill="none" stroke="#000" transform="scale(2)">
 								<path id="3segment1" d="M20,130 l56,0 l0,20 l-56,0 l0,-20"></path>
 								<path id="3segment2" d="M185,130 l-91,0 l0,20 l91,0"></path>
 								<path id="3segment3" d="M185,230 l-165,0 l0,20 l165,0"></path>
@@ -764,7 +817,7 @@
 							
 							<g id="starve3">
 
-							</g>
+							</g> -->
 
 						</svg>
 
