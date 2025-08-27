@@ -145,15 +145,15 @@
 
 			/* page id */
 			/* CAHNGE THIS!!! */
-			#p2 {
+			#p1 {
 				display:block;				
 			}
-			#p1, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
 				display:none;				
 			}
 
 			/*  Other */
-			p {
+			p,text {
 				font-family: sans-serif;
 			}
 
@@ -219,7 +219,7 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p2"> 
 
-					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+					<p class="dbutton" id="restart" onclick="gotoPage(1)" style="position:absolute"></p>
 
 					
 					<svg id="blast_furnace" width="640" height="350">
@@ -304,20 +304,32 @@
 									M350,85 l-5,-5 l-15,0 l0,-10 l20,0 l5,5 l-5,10"></path> 
 	
 						</g>
-
-						<g id="guidegrid" style="opacity:0.3">
-							<line x1="0" y1="175" x2="640" y2="175" stroke="black"></line>
-							<line x1="160" y1="0" x2="160" y2="350" stroke="black"></line>
-							<line x1="320" y1="0" x2="320" y2="350" stroke="black"></line>
-							<line x1="480" y1="0" x2="480" y2="350" stroke="black"></line>
-						</g>
 						
-						<circle id="guidepoint" cx="350" cy="320" r="3" style="fill:red;stroke:black"></circle>
+						
+						<text class="hopper label" x="460" y="125">Hopper</text>
+						<line class="hopper line" x1="340" y1="95" x2="450" y2="120"></line>
+						<circle class="hopper laser" cx="340" cy="95" r="3"></circle>
+						
+						<text class="body label" x="75" y="215">Reduction of ores</text>
+						<line class="body line" x1="300" y1="200" x2="210" y2="210"></line>
+						<circle class="body laser" cx="300" cy="200" r="3"></circle>
 
+						<text class="tuyere label" x="480" y="275">Tuyere</text>
+						<line class="tuyere line" x1="405" y1="245" x2="470" y2="270"></line>
+						<circle class="tuyere laser" cx="405" cy="245" r="3"></circle>
+						
+						<text class="exhaust_pipes label" x="105" y="110">Exhaust</text>
+						<line class="exhaust_pipes line" x1="275" y1="70" x2="175" y2="100"></line>
+						<circle class="laser" id="exhaust_pipes" cx="275" cy="70" r="3"></circle>
+						
+						<text class="taps label" x="85" y="305">Product</text>
+						<line class="taps line" x1="300" y1="310" x2="150" y2="300"></line>
+						<circle class="laser" id="taps" cx="300" cy="310" r="3"></circle>
+						
 						
 					</svg>
 					
-					<p id="caption"> Click on highlighted parts to start </p>
+					<p id="caption"> Click on red pointers to start </p>
 					
 					<div class="nav"> 
 						<p class="dbutton" id="back" onclick="back()"></p>
@@ -328,6 +340,20 @@
 						.dbutton {
 							background-color: pink;
 						}
+
+						.laser {
+							fill:red; 
+							stroke:black
+						}
+
+						.laser:hover, .laser:focus-visible {
+							stroke:red;
+							stroke-width: 4px;
+						}
+
+						.line {
+							stroke:black;
+						}
 					</style>
 
 					<script>
@@ -336,8 +362,8 @@
 						ores_moving_down.to("#ores", 4, {y:60})
 					
 						var adding_ores_from_hoppers = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						adding_ores_from_hoppers.to("#ore", 1, {motionPath:{path:"#hopper_left"}, transformOrigin: "50% 50%", opacity:0}).set("#ore", {delay:3, opacity:1})
-						adding_ores_from_hoppers.to("#ore", 1, {motionPath:{path:"#hopper_right"}, transformOrigin: "50% 50%", opacity:0}).set("#ore", {delay:3, opacity:1})
+						adding_ores_from_hoppers.to("#ore", 2, {motionPath:{path:"#hopper_left"}, transformOrigin: "50% 50%", opacity:0}).set("#ore", {delay:2, opacity:1})
+						adding_ores_from_hoppers.to("#ore", 2, {motionPath:{path:"#hopper_right"}, transformOrigin: "50% 50%", opacity:0}).set("#ore", {delay:2, opacity:1})
 
 						var oxygen_blast = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
 						oxygen_blast.to(".air", 1, {attr:{r:100}, opacity:0}).set(".air", {delay:3,attr:{r:20}, opacity:1})
@@ -346,8 +372,8 @@
 						exhaust.to("#mixture", 1, {y:-210, x:-640, scale:3}).to("#mixture", {duration:3, x:0, y:0, scale:1})
 
 						var taps = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						taps.to("#slag", 1, {y:28, scaleY:0.2}).to("#slag_plug", 1, {x:-80}, "<").set("#slag_plug",{x:0})
-						taps.to("#iron", 1, {y:18, scaleY:0.4}).to("#slag", 1, {y:46}, "<").to("#iron_plug", 1, {x:80}, "<").set("#iron_plug",{x:0})
+						taps.to("#slag", 1, {y:21, scaleY:0.4}).to("#slag_plug", 1, {x:-80}, "<").set("#slag_plug",{x:0})
+						taps.to("#iron", 1, {y:18, scaleY:0.4}).to("#slag", 1, {y:39}, "<").to("#iron_plug", 1, {x:80}, "<").set("#iron_plug",{x:0})
 						taps.to("#slag", 8, {y:0, scaleY:1}).to("#iron", 8, {y:0, scaleY:1}, "<")
 
 						ores_moving_down.play()
