@@ -5,7 +5,7 @@ Make sure you have all of your work committed on a local branch:
 ```
 git status
 git add .
-git commit -m "my great new work
+git commit -m "my great new work"
 ```
 
 Once that's done, you need to send that information to Github via:
