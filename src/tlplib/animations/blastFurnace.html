@@ -7,7 +7,7 @@
 		<!-- Greensock library  -->
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
@@ -229,22 +229,23 @@
 						<defs>
 							<linearGradient id="mixture_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
 								<stop offset="0%" stop-color="grey" stop-opacity="0"/>
-								<stop offset="40%" stop-color="rosybrown"/>
-								<stop offset="100%" stop-color="firebrick" stop-opacity="0.9"/>
+								<stop offset="40%" stop-color="rosybrown" stop-opacity="0.8"/>
+								<stop offset="100%" stop-color="firebrick" stop-opacity="1"/>
 							</linearGradient>
 
-							<pattern id="ore_fill" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-								<path style="fill:lightgrey; stroke:grey" d="M10,0 l4,4 l2,-1 l0,4 l4,2 l-2,4 l-6,3 l-3,-2 l-2,1 l-6,-4 l1,-2 l-1,-4 l5,-1 Z"></path>
+							<pattern id="ore_fill" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+								<path style="fill:lightgrey; stroke:grey" d="M10,0 l4,4 l2,-1 l0,4 l4,2 l-2,4 l-6,3 l-3,-2 l-2,1 l-6,-4 l1,-2 l-1,-4 l5,-1 Z" transform="scale(0.6,0.6)"></path>
 							</pattern>
 						</defs>
 
 						<g id="movers">
 							
 							<rect id="ores" style="fill:url(#ore_fill)" x="0" width="640" y="120" height="140"></rect>
-							<rect id="mixture" style="fill:url(#mixture_gradient)" x="0" width="640" y="120" height="140"></rect>
+							<path id="ores_outline" style="fill:white" d="M270,130 q10,-10 30,10 q20,20 40,0 q20,-20 30,-10 l270,0 l0,-150 l-640,0 l0,150 Z"></path>
+							<rect id="mixture" style="fill:url(#mixture_gradient)" x="0" width="640" y="140" height="200"></rect>
 							
-							<circle class="air" style="fill:lightsteelblue; fill-opacity:0.3;" cx="250" cy="260" r="100"></circle>
-							<circle class="air" style="fill:lightsteelblue; fill-opacity:0.3;" cx="390" cy="260" r="100"></circle>
+							<circle class="air" style="fill:lightsteelblue; fill-opacity:0.3;" cx="250" cy="260" r="20"></circle>
+							<circle class="air" style="fill:lightsteelblue; fill-opacity:0.3;" cx="390" cy="260" r="20"></circle>
 							
 							<rect id="slag" style="fill:darkorange" x=0 width="640" y="255" height="35"></rect>
 							<rect id="iron" style="fill:gold" x="0" width="640" y="290" height="100"></rect>
@@ -261,9 +262,9 @@
 								<rect style="fill:dimgrey; stroke:none" x="349" width="16" y="310" height="10"></rect>
 							</g>
 
-							<g id="paths" style="stroke:red; fill:none">
-								<path id="hopper_left" d="M310,60 q10,20 -10,40 t-15,30"></path>
-								<path id="hopper_right" d="M330,60 q-10,20 10,40 t15,30"></path>
+							<g id="ore_paths" style="stroke:none; fill:none">
+								<path id="hopper_left" d="M310,60 q10,20 -10,40 t-20,30"></path>
+								<path id="hopper_right" d="M330,60 q-10,20 10,40 t20,30"></path>
 							</g>
 							
 						</g>
@@ -312,7 +313,7 @@
 							<line x1="320" y1="0" x2="320" y2="350" stroke="black"></line>
 							<line x1="480" y1="0" x2="480" y2="350" stroke="black"></line>
 						</g>
-	
+						
 						<circle id="guidepoint" cx="350" cy="320" r="3" style="fill:red;stroke:black"></circle>
 
 						
