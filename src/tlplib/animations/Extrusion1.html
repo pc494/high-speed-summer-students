@@ -929,16 +929,16 @@
 					}
 					
 					var cnt3 = 0;
-					var tl = gsap.timeline({repeat:-1})
-					tl.to("#screw3", {x:150, duration:1, ease:"none"})
+					var tl3 = gsap.timeline({repeat:-1})
+					tl3.to("#screw3", {x:150, duration:1, ease:"none"})
 					.to("#quads3", {x:110, duration:1, ease:"none"}, "<")
 					.to("#screw3", {x:0, duration:0, ease:"none"})
 					.to("#quads3", {x:-40, duration:0, ease:"none"})
-					tl.pause()
+					tl3.pause()
 
 					function spin3() {
 						if (cnt3 == 0){
-							tl.play();
+							tl3.play();
 
 							// for (let i = 0; i < 50; i++) {
 								
@@ -947,7 +947,7 @@
 							// }
 						}
 						if (cnt3 == 1) {
-							tl.pause()
+							tl3.pause()
 							// gsap.kill("#screw");
 							
 							cnt3 = -1;
@@ -1148,32 +1148,32 @@
 							gsap.to("#starve_shapes4", {visibility:"visible"});
 						}
 						
-						var cnt = 0;
-						var tl = gsap.timeline({repeat:-1})
-						tl.to("#screw4", {x:300, duration:1, ease:"none"})
-						.to("#quads4", {x:260, duration:1, ease:"none"}, "<")
-						.to("#screw4", {x:150, duration:0, ease:"none"})
-						.to("#quads4", {x:190, duration:0, ease:"none"})
-						tl.pause()
+						// var cnt4 = 0;
+						// var tl4 = gsap.timeline({repeat:-1})
+						// tl4.to("#screw4", {x:150, duration:1, ease:"none"})
+						// .to("#quads4", {x:335, duration:1, ease:"none"}, "<")
+						// .to("#screw4", {x:0, duration:0, ease:"none"})
+						// .to("#quads4", {x:185, duration:0, ease:"none"})
+						// tl4.pause()
 	
-						function spin4() {
-							if (cnt == 0){
-								tl.play();
+						// function spin4() {
+						// 	if (cnt4 == 0){
+						// 		tl4.play();
 	
-								// for (let i = 0; i < 50; i++) {
+						// 		// for (let i = 0; i < 50; i++) {
 									
 									
-								//     console.log(i);
-								// }
-							}
-							if (cnt == 1) {
-								tl.pause()
-								// gsap.kill("#screw");
+						// 		//     console.log(i);
+						// 		// }
+						// 	}
+						// 	if (cnt4 == 1) {
+						// 		tl4.pause()
+						// 		// gsap.kill("#screw");
 								
-								cnt = -1;
-							}
-							cnt += 1;console.log(cnt)
-						}
+						// 		cnt4 = -1;
+						// 	}
+						// 	cnt4 += 1;console.log(cnt)
+						// }
 	   
 					</script>
 				</div>
