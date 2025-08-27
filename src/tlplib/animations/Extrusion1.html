@@ -684,7 +684,7 @@
 							text-align:center;
 							position:absolute;
 							top:20px;
-							left:62px;
+							left:35px;
 						}
 						
 						#section1_txt3 {
@@ -702,11 +702,13 @@
 
 						#flood_shapes3 {
 							visibility:hidden;
+            				fill-opacity: 0.9;
 							fill:#f9c;
 						}
 
 						#starve_shapes3 {
 							visibility:hidden;
+          				  	fill-opacity: 0.9;
 							fill:#0c6;
 						}
 
@@ -825,9 +827,10 @@
 
 					<div id="feed_buttons3">
 						
+						<input type="button" value="Start the extruder" onclick="spin()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" onclick="flood3()" value="Flood Feeding"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" onclick="starve3()" value="Starve Feeding">
-					
+						
 					</div>
 
 					<div id="flood_txt3">
