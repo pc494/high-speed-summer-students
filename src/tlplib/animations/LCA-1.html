@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+
+		<title>LCA-1</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script> 
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>  -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>  -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>  -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
+
+		<script> gsap.registerPlugin(MotionPathPlugin) </script>
+		<script> gsap.registerPlugin(RoughEase) </script>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() {
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}
+			}
+
+			// sets the dimensions of kanvas and positions the bottom logos
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";
+			}
+
+		</script>
+
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas {
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute;
+				width:100%;
+				z-index: 100;
+				/*background-color:#cc0000;  */
+			}
+
+			#para {
+				position: absolute;
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue;
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 99;
+				background-color: white;
+			}
+
+			/* DOiTPoMS buttons */
+			.dbutton {
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+				z-index:300
+			}
+
+			.dbutton:hover {
+				background-position: center;
+			}
+			
+			#backbutton, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#nextbutton, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start {
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+
+			#anim1, #anim2, #anim3, #anim4, #anim5, #anim6, #anim7, #anim8, #anim9 {
+				position:absolute;
+				top:0px;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			/* page id */
+			#p1 {
+				display:block;
+			}
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;
+			}
+
+			/* others  */
+			p {
+				font-family: sans-serif;
+			}
+
+			.panel {
+				position: absolute;
+				top: 365px;
+				width: 100%
+			}
+
+			#caption{
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				width: 500px;
+				height: 45px;
+			}
+
+			.navbar{
+				width: 100%;
+				text-align: center;
+				z-index: 300;
+			}
+
+			.navbar .dbutton {
+				margin-inline: 10px
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="kanvas">
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para">
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
+				</div>
+				<!-- end para -->
+				<div id="cc" >
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 />
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; />
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<div class="payj" id="p1">
+
+
+					<p id="titlecard"> Life Cycle Analysis (LCA) </p>
+
+					<style>
+						#titlecard{
+							position:absolute;
+							width:200px;
+							left:220px;
+							top:200px;
+							vertical-align: middle;
+							text-align: center;
+						}
+					</style>
+
+					<div class="panel" style="top: 280px;">
+						<div class="navbar">
+							<p class="dbutton" id="start" onclick="gotoPage(2)"></p>
+						</div>
+					</div>
+
+				</div>
+				<!-- end payj - p1 -->
+
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2">
+					
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute; top:0; left:0; margin:5px; z-index:300"></p>
+
+					<style>
+
+						svg text{
+							font-family: sans-serif;
+							stroke: none;
+							text-anchor: middle;
+						}
+
+						#sysA_input text, #sysA_output text {
+							text-anchor: start;
+						}
+
+						.stepbox{
+							fill-opacity: 0.1;
+							stroke-opacity: 0.6;
+						}
+
+						.pointer{
+							fill:none;
+							stroke-width: 2.5;
+						}
+
+						#sysA-bound, #sysB-bound, #sysC-bound{
+							fill: none;
+							stroke-dasharray:10,10;
+							stroke-width: 4;
+						}
+
+						.sysA, .sysC, .sysB{
+							opacity: 0
+						}
+
+					</style>
+
+					<svg id="svg" width="640" height="360" style="position:absolute">
+
+						<defs>
+							<marker id="arrowA" markerWidth="10" markerHeight="10" refX="3" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+								<path d="M0,0 L0,4 L4,2 z" fill="orangered"/>
+							</marker>
+							<marker id="arrowB" markerWidth="10" markerHeight="10" refX="3" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+								<path d="M0,0 L0,4 L4,2 z" fill="dodgerblue"/>
+							</marker>
+							<marker id="arrowC" markerWidth="10" markerHeight="10" refX="3" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+								<path d="M0,0 L0,4 L4,2 z" fill="mediumseagreen"/>
+							</marker>
+						</defs>
+
+						<g id="sysB_group" style="stroke:dodgerblue; fill:dodgerblue">
+
+							<!-- transform="scale(0.8,0.8) translate(80,10)" -->
+							<!-- transform="scale(1.8,1.8) translate(-222,15)" -->
+							<rect class="filler" x="0" y="0" width="640" height="350" style="fill:none; stroke:none"></rect>
+							<rect class="sysB" id="sysB-bound" x="50" y="50" rx="10" ry="10" width="540" height="300"></rect>
+
+							<line class="sysB pointer" id="l0-1" x1="175" y1="200" x2="175" y2="200" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l1-2" x1="270" y1="175" x2="270" y2="175" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l2-3" x1="460" y1="80" x2="460" y2="80" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l3-4" x1="530" y1="225" x2="530" y2="225" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l4-1" x1="340" y1="320" x2="340" y2="320" marker-end="url(#arrowB)"></line>
+
+							<g class="sysB" id="resources">
+								<rect class="stepbox" x="65" y="185" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="115" y="205"> Resources </text>
+							</g>
+
+							<g class="sysB" id="production">
+								<rect class="stepbox" x="225" y="185" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="275" y="205"> Production </text>
+							</g>
+
+							<g class="sysB" id="manufacture">
+								<rect class="stepbox" x="350" y="65" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="400" y="85"> Manufacture </text>
+							</g>
+
+							<g class="sysB" id="use">
+								<rect class="stepbox" x="475" y="185" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="525" y="205"> Use </text>
+							</g>
+
+							<g class="sysB" id="waste">
+								<rect class="stepbox" x="350" y="305" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="400" y="325"> Disposal </text>
+							</g>
+
+						</g>
+
+						
+						
+						<g id="sysA_group" style="stroke:orangered; fill:orangered">
+
+							<rect class="sysA" class="filler" x="0" y="0" width="640" height="350" style="fill:none; stroke:none"></rect>
+							<rect class="sysA" id="sysA-bound" x="50" y="50" rx="10" ry="10" width="540" height="300"></rect>
+
+							<rect class="stepbox sysA" class="stepbox" id="sysA_stepbox" x="350" y="65" rx="5" ry="5" width="100" height="30"></rect>
+							<text class="sysA" id="sysA_production" x="400" y="85"> Production </text>
+							<text class="sysA" id="sysA_waste" x="400" y="85"> Disposal </text>
+							<text class="sysA" id="sysA_use" x="400" y="85"> Use </text>
+							<text class="sysA" id="sysA_manufacture" x="400" y="85"> Manufacture </text>
+							
+							<g class="sysA" id="sysA_input">
+								<line class="pointer" x1="380" y1="7" x2="380" y2="55" marker-end="url(#arrowA)"></line>
+								<text x="400" y="36"> Resources </text>
+							</g>
+
+							<g class="sysA" id="sysA_output">
+								<line class="pointer" x1="380" y1="100" x2="380" y2="145" marker-end="url(#arrowA)"></line>
+								<text x="400" y="125"> Emissions </text>
+							</g>
+
+						</g>
+						
+
+						<g id="sysC_group" style="stroke:mediumseagreen; fill:mediumseagreen">
+
+							<rect class="sysC" id="sysC-bound" x="50" y="20" rx="10" ry="10" width="540" height="330" stroke="mediumseagreen"></rect>
+
+							<g class="sysC" id="sysC_content">
+
+								<text x="160" y="90" text-anchor="middle"> Plant constructure </text>
+								<text x="190" y="300" text-anchor="middle"> Equipment manufacture </text>
+								<text x="480" y="60"> Supporting infrastructure </text>
+
+								<line class="sysC pointer" x1="160" y1="100" x2="220" y2="140" marker-end="url(#arrowC)"></line>
+								<line class="sysC pointer" x1="190" y1="280" x2="240" y2="240" marker-end="url(#arrowC)"></line>
+								<line class="sysC pointer" x1="480" y1="70" x2="460" y2="110" marker-end="url(#arrowC)"></line>
+
+							</g>
+
+						</g>
+
+					</svg>
+
+					<style>
+						
+					</style>
+
+					<div class="panel">
+						
+							
+						<p id="caption"> Caption </p>
+							
+						
+
+						<div class="navbar">
+							<p class="dbutton" id="backbutton" onclick="back()"></p>
+							<p class="dbutton" id="nextbutton" onclick="next()"></p>
+						</div>
+					</div>
+
+					<script>
+
+						var cap = document.getElementById("caption")
+						var prv = 0
+						var nxt = 1
+						var curr = 1
+
+						var t = gsap.timeline(paused=true, {defaults: {duration:1, ease:"none"}})
+
+						t.addLabel("t0", 0)
+						.to("#caption", {innerHTML:"A typical product life cycle can be divided into four phases"})
+						.to("#sysB_group", {translateX:-80})
+
+						.addLabel("t1", ">")
+						.to("#caption", {innerHTML: "<strong>Production of materials</strong>, for example processing of plastics from crude oil"})
+						.to("#production", {opacity:1})
+
+						.addLabel("t2", ">")
+						.to("#caption", {innerHTML: "<strong>Manufacture of product</strong> from the produced materials"})
+						.to("#manufacture", {opacity:1})
+						.to("#l1-2", {duration:0.5, opacity:1, attr:{x2:340, y2:80}}, ">-0.5")
+
+						.addLabel("t3", ">")
+						.to("#caption", {innerHTML: "<strong>Consumer uses the product</strong> until the end of its life"})
+						.to("#use", {opacity:1})
+						.to("#l2-3", {duration:0.5, opacity:1, attr:{x2:530, y2:175}}, ">-0.5")
+
+						.addLabel("t4", ">")
+						.to("#caption", {innerHTML: "At which point it is <strong>disposed</strong>"})
+						.to("#waste", {opacity:1})
+						.to("#l3-4", {duration:0.5, opacity:1, attr:{x2:460, y2:320}}, ">-0.5")
+
+						.addLabel("t5", ">")
+						.to("#caption", {innerHTML: "If the waste is recycled, it re-enters the production phase along with new resources"})
+						.to("#resources", {opacity:1})
+						.to("#l0-1", {duration:0.5, opacity:1, attr:{x2:215, y2:200}}, ">-0.5")
+						.to("#l4-1", {duration:0.5, opacity:1, attr:{x2:270, y2:225}}, ">-0.5")
+						.to("#sysB_group", {translateX:0}, ">-0.5")
+
+						.addLabel("t6", ">")
+						.to("#caption", {innerHTML: "Each step of the process has associated resource consumptions and emissions"})
+						.to("#sysB_group", {duration:1.5, opacity:0.15, scale:2, translateX:-580, translateY:45})
+						.to("#sysA_group", {duration:1.5, scale:2, translateY:45, translateX:-580}, "<")
+						.to("#sysA-bound", {duration:0, scale:0.5 , translateY:-50, translateX:265})
+						.to("#sysA_stepbox, #sysA_manufacture, #sysA_input, #sysA_output", {duration:1.5, opacity:1}, "<-0.5")
+						
+						.addLabel("t7", ">")
+						.to("#caption", {innerHTML: "Note that the resources inlcude not only the material spent, but also any energy, water, or transport"})
+						.to("#sysA_input text" , {textContent: "Energy, water, ..."}, ">+0.5")
+						.to("#sysA_output text", {textContent: "Greenhouse gases, ... "}, "<")
+						.to("#sysA_manufacture", {delay:0.5, opacity:0})
+						.to("#sysA_use", {opacity:1}, "<")
+						.to("#sysB_group", {translateX:-830, translateY:-195}, "<")
+						.to("#sysA_use", {delay:0.5, opacity:0})
+						.to("#sysA_waste", {opacity:1}, "<")
+						.to("#sysB_group", {translateX:-580, translateY:-435}, "<")
+						.to("#sysA_waste", {delay:0.5, opacity:0})
+						.to("#sysA_production", {opacity:1}, "<")
+						.to("#sysB_group", {translateX:-330, translateY:-195}, "<")
+
+						.addLabel("t8", ">")
+						.to("#caption", {innerHTML: "If the <strong>scope</strong> of the analysis is focused on one stage of the cycle only, it is know as a <strong>gate-to-gate</strong> study"})
+						.to("#sysA_input text" , {innerHTML: "Resources"}, "<")
+						.to("#sysA_output text", {innerHTML: "Emissions"}, "<")
+						.to("#sysA-bound", {opacity:1})					
+						
+						.addLabel("t9", ">")
+						.to("#caption", {innerHTML: "When the scope is too small, it is easy to overlook the impact of one step on another"})
+						.to("#sysB_group", {opacity:1, scale:1, translateX:0, translateY:0})
+						.to("#manufacture", {opacity:0}, "<")
+						.to("#l2-3", {opacity:0, attr:{x2:460, y2:80}}, "<")
+						.to("#sysA_group", {scale:1, translateY:0, translateX:0}, "<")
+						.to("#sysA_production, #sysA_input text, #sysA_output text", {opacity:0}, "<")
+						.to("#sysA_manufacture", {opacity:1}, "<")
+						.to("#sysA_input .pointer", {attr:{x1:400, x2:400, y1:30}}, "<")
+						.to("#sysA_output .pointer", {attr:{x1:400, x2:400, y2:125}}, "<")
+						.to("#sysA-bound", {scale:1, x:270, y:-30, attr:{width:160, height:120}}, "<")
+						.to("#l2-3", {delay:0.1, opacity:1, duration:2, attr:{x2:530, y2:175}, strokeDasharray:5, ease:"rough({clamp:true})"})
+						
+						.addLabel("t10", ">")
+						.to("#caption", {innerHTML: "Widening the scope too far, however, results in too many global factors to accurately keep track of"})
+						.to(".sysA", {opacity:0})
+						.to("#manufacture", {opacity:1}, "<")
+						.to("#l2-3", {strokeDasharray:140}, ">-0.5")
+						.to("#sysB_group", {scale:0.8, translateX:64, translateY:35})
+						.to(".sysC", {opacity:1}, "<")
+						.fromTo("#sysC_group", {scale:1.4, translateX:-128, translateY:-70}, {scale:1, translateX:0, translateY:0}, ">-0.5")
+						
+						.addLabel("t11", ">")
+						.to("#caption", {innerHTML: "Therefore the scope needs to be wide enough to be representative, but also narrow enough to still be tractable"})
+						.to("#sysC_group", {scale:1.4, translateX:-128, translateY:-70, opacity:0})
+						.to("#sysB_group", {scale:1, translateX:0, translateY:0},"<")
+						.to("#sysB-bound", {delay:1, opacity:1}, ">-0.5")
+						
+						move(0,1)
+
+						function restart(){
+							gotoPage(1)
+							prv = 0
+							nxt = 1
+							curr = move(prv, nxt)
+						}
+
+						function next(){
+							prv = curr
+							nxt = Number(curr)+1
+							curr = move(prv, nxt)
+						}
+
+						function back(){
+							prv = curr
+							nxt = Number(curr)-1
+							curr = move(prv,nxt)
+						}
+
+						function move(prv, nxt){
+
+							t.tweenFromTo("t"+prv, "t"+nxt)
+							curr = nxt
+							console.log(prv, curr, nxt)
+
+							if(curr == 1){
+								document.getElementById("backbutton").style.visibility = "hidden"
+							}
+							else if(curr == 12){
+								document.getElementById("nextbutton").style.visibility = "hidden"
+							}
+							else {
+								document.getElementById("backbutton").style.visibility = "visible"
+								document.getElementById("nextbutton").style.visibility = "visible"
+							}
+
+							return(curr)
+						
+						}
+
+
+					</script>
+
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>
+
+
