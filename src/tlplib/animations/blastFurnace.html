@@ -161,8 +161,8 @@
 				position: absolute;
 				top: 365px;
 				height: 45px;
-				left: 70px;
-				width: 500px;
+				left: 20px;
+				width: 600px;
 				margin: auto auto;
 				text-align: center;
 				vertical-align: middle;
@@ -340,7 +340,7 @@
 					<p id="caption"> Click on red pointers to start </p>
 					
 					<div class="nav"> 
-						<p class="dbutton" id="back" onclick="back()"></p>
+						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
 					</div>
 
 					<style>
@@ -398,22 +398,29 @@
 						.add(exhaust, 0)
 						.add(adding_ores_from_hoppers, 0)
 						.add(taps, 0)
-						
-						// hopper
-						t1 = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						t1.to(".pointer", 0.2, {opacity:0})
-						t1.to("#movers, #furnace", {scale:2, x:-320})
 
+						var active_tl = t
+						
 						function back(){
-							t.play()
 							gsap.to("#movers, #furnace", {scale:1, x:0, y:0})
 							gsap.to(".pointer", 0.2, {delay:1, opacity:1}, ">")
+							gsap.to("#back", {visibility:"hidden"})
+							gsap.set("#caption", {innerHTML:"Click on red pointers to start"})
 						}
 
 						function hopper(){
-							t.pause()
 							gsap.to(".pointer", 0.2, {opacity:0})
-							gsap.to("#movers, #furnace", {delay:0.2, scale:2, x:-320})
+							gsap.to("#movers, #furnace", 0.5, {scale:2, x:-320}, ">")
+							gsap.set("#back", {visibility:"visible"}, ">")
+							gsap.set("#caption", {innerHTML:"Roasted ore, <button onclick='coke()'>coke</button>, and <button onclick='limestone()'>limestone</button> are added from the hoppers"}, ">")
+						}
+
+						function coke(){
+							gsap.set("#caption", {innerHTML:"Roasted ore, <strong>coke</strong>, and <button onclick='limestone()'>limestone</button> are added from the hoppers <br> Coke provides carbon needed for ore reduction"})
+						}
+
+						function limestone(){
+							gsap.set("#caption", {innerHTML:"Roasted ore, <button onclick='coke()'>coke</button>, and <strong>limestone</strong> are added from the hoppers <br> Limestone contains mixed oxides, which helps impurities partition to the slag phase"})
 						}
 
 						
