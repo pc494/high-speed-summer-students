@@ -326,13 +326,13 @@
 						<g class="exhaust_pipes pointer">
 							<text class="exhaust_pipes label" x="105" y="110">Exhaust</text>
 							<line class="exhaust_pipes line" x1="275" y1="70" x2="175" y2="100"></line>
-							<circle class="laser" id="exhaust_pipes" cx="275" cy="70" r="4"></circle>
+							<circle class="exhaust_pipes laser" cx="275" cy="70" r="4"></circle>
 						</g>
 
-						<g class="taps pointer">
-							<text class="taps label" x="85" y="305">Product</text>
-							<line class="taps line" x1="300" y1="310" x2="150" y2="300"></line>
-							<circle class="laser" id="taps" cx="300" cy="310" r="4"></circle>
+						<g class="product pointer">
+							<text class="product label" x="85" y="305">Product</text>
+							<line class="product line" x1="300" y1="310" x2="150" y2="300"></line>
+							<circle class="product laser" cx="300" cy="310" r="4"></circle>
 						</g>
 						
 					</svg>
@@ -341,7 +341,6 @@
 					
 					<div class="nav"> 
 						<p class="dbutton" id="back" onclick="back()"></p>
-						<p class="dbutton" id="next" onclick="next()"></p >
 					</div>
 
 					<style>
@@ -374,35 +373,54 @@
 					</style>
 
 					<script>
-
-						var ores_moving_down = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						ores_moving_down.to("#ores", 1, {y:15})
-					
-						var adding_ores_from_hoppers = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
+						var ores_moving_down = gsap.timeline({defaults:{ease:"none"}})
+						ores_moving_down.to("#ores", 4, {y:60}).to("#ores", 0, {y:0})
+						.to("#ores", 4, {y:60}).to("#ores", 0, {y:0})
+						
+						var adding_ores_from_hoppers = gsap.timeline({defaults:{ease:"none"}})
 						adding_ores_from_hoppers.to("#ore", 2, {motionPath:{path:"#hopper_left"}, transformOrigin: "50% 50%", opacity:0}).set("#ore", {delay:2, opacity:1})
 						adding_ores_from_hoppers.to("#ore", 2, {motionPath:{path:"#hopper_right"}, transformOrigin: "50% 50%", opacity:0}).set("#ore", {delay:2, opacity:1})
 
-						var oxygen_blast = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
+						var oxygen_blast = gsap.timeline({defaults:{ease:"none"}})
 						oxygen_blast.to(".air", 1, {attr:{r:100}, opacity:0}).set(".air", {delay:3,attr:{r:20}, opacity:1})
 						
-						var exhaust = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						exhaust.to("#mixture", 1, {y:-210, x:-140, scale:3}).to("#mixture", {duration:3, x:0, y:0, scale:1, ease:"circ.out"})
-
-						var taps = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
+						var exhaust = gsap.timeline({defaults:{ease:"none"}})
+						exhaust.to("#mixture", 1, {y:-210, x:-140, scale:3}).to("#mixture", 3, {x:0, y:0, scale:1, ease:"circ.out"})
+						
+						var taps = gsap.timeline({defaults:{ease:"none"}})
 						taps.to("#slag", 1, {y:21, scaleY:0.4}).to("#slag_plug", 1, {x:-80}, "<").set("#slag_plug",{x:0})
 						taps.to("#iron", 1, {y:18, scaleY:0.4}).to("#slag", 1, {y:39}, "<").to("#iron_plug", 1, {x:80}, "<").set("#iron_plug",{x:0})
-						taps.to("#slag", 8, {y:0, scaleY:1}).to("#iron", 8, {y:0, scaleY:1}, "<")
+						taps.to("#slag", 6, {y:0, scaleY:1}).to("#iron", 6, {y:0, scaleY:1}, "<")
 
-						ores_moving_down.play()
-						adding_ores_from_hoppers.play()
-						oxygen_blast.play()
-						exhaust.play()
-						taps.play()
+						var t = gsap.timeline({repeat:-1})
+						t.add(ores_moving_down, 0)
+						.add(oxygen_blast, 0)
+						.add(exhaust, 0)
+						.add(adding_ores_from_hoppers, 0)
+						.add(taps, 0)
+						
+						// ores_moving_down.play()
+						// adding_ores_from_hoppers.play()
+						// oxygen_blast.play()
+						// exhaust.play()
+						// taps.play()
 
 						// hopper
 						t1 = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
 						t1.to(".pointer", 0.2, {opacity:0})
 						t1.to("#movers, #furnace", {scale:2, x:-320})
+
+						function back(){
+							t.play()
+							gsap.to("#movers, #furnace", {scale:1, x:0, y:0})
+							gsap.to(".pointer", 0.2, {delay:1, opacity:1}, ">")
+						}
+
+						function hopper(){
+							t.pause()
+							gsap.to(".pointer", 0.2, {opacity:0})
+							gsap.to("#movers, #furnace", {delay:0.2, scale:2, x:-320})
+						}
 
 						
 					</script>
