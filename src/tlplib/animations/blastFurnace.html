@@ -222,7 +222,7 @@
 					<p class="dbutton" id="restart" onclick="gotoPage(1)" style="position:absolute"></p>
 
 					
-					<svg id="blast_furnace" width="640" height="350">
+					<svg width="640" height="350">
 
 						<defs>
 							<linearGradient id="mixture_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -238,10 +238,10 @@
 
 						<g id="movers">
 							
-							<rect id="ores" style="fill:url(#ore_fill)" x="0" width="640" y="0" height="400"></rect>
-							<path id="ores_outline" style="fill:white" d="M270,130 q10,-10 30,10 q20,20 40,0 q20,-20 30,-10 l270,0 l0,-150 l-640,0 l0,150 Z"></path>
+							<rect id="ores" style="fill:url(#ore_fill)" x="0" width="640" y="0" height="300"></rect>
+							<path id="ores_outline" style="fill:white" d="M270,130 q10,-10 30,10 q20,20 40,0 q20,-20 30,-10 l270,0 l0,-130 l-640,0 l0,130 Z"></path>
 							<path id="ore" style="fill:lightgrey; stroke:grey" d="M0,0 l4,4 l2,-1 l0,4 l4,2 l-2,4 l-6,3 l-3,-2 l-2,1 l-6,-4 l1,-2 l-1,-4 l5,-1 Z" transform="scale(0.6,0.6)"></path>
-							<path id="mixture" style="fill:url(#mixture_gradient)" d="M270,130 q10,-10 30,10 q20,20 40,0 q20,-20 30,-10 l270,0 l0,200 l-640,0 l0,-200 Z"></path>
+							<path id="mixture" style="fill:url(#mixture_gradient)" d="M270,130 q10,-10 30,10 q20,20 40,0 q20,-20 30,-10 l20,0 l0,200 l-140,0 l0,-200 Z"></path>
 							
 							<circle class="air" style="fill:lightsteelblue;" cx="250" cy="260" r="20"></circle>
 							<circle class="air" style="fill:lightsteelblue;" cx="390" cy="260" r="20"></circle>
@@ -270,7 +270,7 @@
 						<g id="furnace">
 
 							<path id="furnace_guts" style="fill:white;border:red"
-								d="M320,-10 l330,0 l00,370 l-660,0 l0,-370 l320,-10 
+								d="M320,0 l320,0 l00,350 l-640,0 l0,-350 l320,0 
 									M310,70 l0,10 l-15,0 l-5,5 l-5,-10 l0,-60 
 									l-15,0 l0,75 l5,10 l-5,120 l5,20 l-30,0 
 									a10 10 0 1 0 0 10
@@ -308,7 +308,7 @@
 						<g class="hopper pointer">
 							<text class="hopper label" x="460" y="125">Hopper</text>
 							<line class="hopper line" x1="340" y1="95" x2="450" y2="120"></line>
-							<circle class="hopper laser" cx="340" cy="95" r="4"></circle>
+							<circle class="hopper laser" cx="340" cy="95" r="4" onclick="hopper()"></circle>
 						</g>
 
 						<g class="body pointer">
@@ -370,13 +370,13 @@
 						.pointer:hover .line, .pointer:hover .label, .pointer:focus-visible .line, .pointer:focus-visible .label {
 							visibility:visible;
 						}
-						
+
 					</style>
 
 					<script>
 
 						var ores_moving_down = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						ores_moving_down.to("#ores", 4, {y:60})
+						ores_moving_down.to("#ores", 1, {y:15})
 					
 						var adding_ores_from_hoppers = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
 						adding_ores_from_hoppers.to("#ore", 2, {motionPath:{path:"#hopper_left"}, transformOrigin: "50% 50%", opacity:0}).set("#ore", {delay:2, opacity:1})
@@ -386,7 +386,7 @@
 						oxygen_blast.to(".air", 1, {attr:{r:100}, opacity:0}).set(".air", {delay:3,attr:{r:20}, opacity:1})
 						
 						var exhaust = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						exhaust.to("#mixture", 1, {y:-210, x:-640, scale:3}).to("#mixture", {duration:3, x:0, y:0, scale:1, ease:"circ.out"})
+						exhaust.to("#mixture", 1, {y:-210, x:-140, scale:3}).to("#mixture", {duration:3, x:0, y:0, scale:1, ease:"circ.out"})
 
 						var taps = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
 						taps.to("#slag", 1, {y:21, scaleY:0.4}).to("#slag_plug", 1, {x:-80}, "<").set("#slag_plug",{x:0})
@@ -398,9 +398,11 @@
 						oxygen_blast.play()
 						exhaust.play()
 						taps.play()
-						
-						
-						
+
+						// hopper
+						t1 = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
+						t1.to(".pointer", 0.2, {opacity:0})
+						t1.to("#movers, #furnace", {scale:2, x:-320})
 
 						
 					</script>
