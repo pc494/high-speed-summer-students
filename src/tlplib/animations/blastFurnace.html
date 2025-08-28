@@ -305,27 +305,35 @@
 	
 						</g>
 						
-						
-						<text class="hopper label" x="460" y="125">Hopper</text>
-						<line class="hopper line" x1="340" y1="95" x2="450" y2="120"></line>
-						<circle class="hopper laser" cx="340" cy="95" r="3"></circle>
-						
-						<text class="body label" x="75" y="215">Reduction of ores</text>
-						<line class="body line" x1="300" y1="200" x2="210" y2="210"></line>
-						<circle class="body laser" cx="300" cy="200" r="3"></circle>
+						<g class="hopper pointer">
+							<text class="hopper label" x="460" y="125">Hopper</text>
+							<line class="hopper line" x1="340" y1="95" x2="450" y2="120"></line>
+							<circle class="hopper laser" cx="340" cy="95" r="4"></circle>
+						</g>
 
-						<text class="tuyere label" x="480" y="275">Tuyere</text>
-						<line class="tuyere line" x1="405" y1="245" x2="470" y2="270"></line>
-						<circle class="tuyere laser" cx="405" cy="245" r="3"></circle>
-						
-						<text class="exhaust_pipes label" x="105" y="110">Exhaust</text>
-						<line class="exhaust_pipes line" x1="275" y1="70" x2="175" y2="100"></line>
-						<circle class="laser" id="exhaust_pipes" cx="275" cy="70" r="3"></circle>
-						
-						<text class="taps label" x="85" y="305">Product</text>
-						<line class="taps line" x1="300" y1="310" x2="150" y2="300"></line>
-						<circle class="laser" id="taps" cx="300" cy="310" r="3"></circle>
-						
+						<g class="body pointer">
+							<text class="body label" x="75" y="215">Reduction of ores</text>
+							<line class="body line" x1="300" y1="200" x2="210" y2="210"></line>
+							<circle class="body laser" cx="300" cy="200" r="4"></circle>
+						</g>
+
+						<g class="tuyere pointer">
+							<text class="tuyere label" x="480" y="275">Tuyere</text>
+							<line class="tuyere line" x1="405" y1="245" x2="470" y2="270"></line>
+							<circle class="tuyere laser" cx="405" cy="245" r="4"></circle>
+						</g>
+
+						<g class="exhaust_pipes pointer">
+							<text class="exhaust_pipes label" x="105" y="110">Exhaust</text>
+							<line class="exhaust_pipes line" x1="275" y1="70" x2="175" y2="100"></line>
+							<circle class="laser" id="exhaust_pipes" cx="275" cy="70" r="4"></circle>
+						</g>
+
+						<g class="taps pointer">
+							<text class="taps label" x="85" y="305">Product</text>
+							<line class="taps line" x1="300" y1="310" x2="150" y2="300"></line>
+							<circle class="laser" id="taps" cx="300" cy="310" r="4"></circle>
+						</g>
 						
 					</svg>
 					
@@ -354,6 +362,15 @@
 						.line {
 							stroke:black;
 						}
+
+						.line, .label {
+							visibility: hidden;
+						}
+
+						.pointer:hover .line, .pointer:hover .label, .pointer:focus-visible .line, .pointer:focus-visible .label {
+							visibility:visible;
+						}
+						
 					</style>
 
 					<script>
@@ -369,7 +386,7 @@
 						oxygen_blast.to(".air", 1, {attr:{r:100}, opacity:0}).set(".air", {delay:3,attr:{r:20}, opacity:1})
 						
 						var exhaust = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
-						exhaust.to("#mixture", 1, {y:-210, x:-640, scale:3}).to("#mixture", {duration:3, x:0, y:0, scale:1})
+						exhaust.to("#mixture", 1, {y:-210, x:-640, scale:3}).to("#mixture", {duration:3, x:0, y:0, scale:1, ease:"circ.out"})
 
 						var taps = gsap.timeline({paused:true, repeat:-1, defaults: {ease:"none"}})
 						taps.to("#slag", 1, {y:21, scaleY:0.4}).to("#slag_plug", 1, {x:-80}, "<").set("#slag_plug",{x:0})
