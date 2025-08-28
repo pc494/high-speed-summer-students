@@ -269,8 +269,8 @@
 
 						<g id="furnace">
 
-							<path id="furnace_guts" style="fill:white;border:red"
-								d="M320,0 l320,0 l00,350 l-640,0 l0,-350 l320,0 
+							<path id="furnace_guts" style="fill:white"
+								d="M320,0 l320,0 l00,400 l-640,0 l0,-400 l320,0 
 									M310,70 l0,10 l-15,0 l-5,5 l-5,-10 l0,-60 
 									l-15,0 l0,75 l5,10 l-5,120 l5,20 l-30,0 
 									a10 10 0 1 0 0 10
@@ -373,7 +373,7 @@
 								<g class="oxygen pointer">
 									<text class="label" x="430" y="240">1300&#x00B0;C</text>
 									<text class="label" x="430" y="255">C + O&#x2082; &#x27F6; CO&#x2082;</text>
-									<text class="label" x="430" y="270">Limestone reacts with oxygen</text>
+									<text class="label" x="430" y="270">Coke reacts with oxygen</text>
 									<line class="line" x1="320" y1="235" x2="420" y2="235"></line>
 									<circle class="laser" cx="320" cy="235" r="4" style="fill:darkviolet"></circle>
 								</g>
@@ -390,13 +390,13 @@
 						<g class="exhaust_pipes pointer">
 							<text class="exhaust_pipes label" x="105" y="110">Exhaust</text>
 							<line class="exhaust_pipes line" x1="275" y1="70" x2="175" y2="100"></line>
-							<circle class="exhaust_pipes laser" cx="275" cy="70" r="4" onclick="alert('work in progress')"></circle>
+							<circle class="exhaust_pipes laser" cx="275" cy="70" r="4" onclick="exhaust_pipes()"></circle>
 						</g>
 
 						<g class="product pointer">
 							<text class="product label" x="85" y="305">Product</text>
 							<line class="product line" x1="300" y1="310" x2="150" y2="300"></line>
-							<circle class="product laser" cx="300" cy="310" r="4" onclick="alert('work in progress')"></circle>
+							<circle class="product laser" cx="300" cy="310" r="4" onclick="products()"></circle>
 						</g>
 						
 					</svg>
@@ -533,7 +533,7 @@
 							gsap.to(".pointer", 0.2, {opacity:0})
 							gsap.to("#movers, #furnace", 0.5, {delay:0.2, scale:1.5, x:-280, y:-100})
 							gsap.set("#back", {visibility:"visible"}, ">")
-							gsap.set("#caption", {innerHTML:"Ores are gradually reduced and impurities removed as they move down the furnace <br> <em>Hover over pointer to see reactions</em>"}, ">")
+							gsap.set("#caption", {innerHTML:"Ores are gradually reduced and impurities removed, visa redction by rising CO <br> <em>Hover over pointer to see reactions</em>"}, ">")
 							
 							gsap.to("#reaction_pointer", 0.5, {scale:1.5, x:-120, y:-25})
 							gsap.to("#reduction_pointer .pointer", {delay:0.7, visibility:"visible", opacity:1})
@@ -549,6 +549,22 @@
 							gsap.to("#reaction_pointer", 0.5, {scale:1.5, x:-120, y:-25})
 							gsap.to("#oxygen_pointer .pointer", {delay:0.7, visibility:"visible", opacity:1})
 							gsap.to("#reduction_pointer .pointer", {delay:0.7, visibility:"visible", opacity:0.2})
+						}
+
+						function exhaust_pipes(){
+							gsap.to(".pointer", 0.2, {opacity:0})
+							gsap.to("#movers, #furnace", 0.5, {delay:0.2, scale:1.5, x:-160, y:70})
+							gsap.set("#back", {visibility:"visible"})
+							gsap.set("#caption", {innerHTML:"Exhuast gases rise to the top; these include CO, CO<sub>2</sub>, N<sub>2</sub>, etc., with considerable environmental impacts"})
+						}
+
+						
+						function products(){
+							alert('work in progress')
+							gsap.to(".pointer", 0.2, {opacity:0})
+							gsap.to("#movers, #furnace", 0.5, {delay:0.2, scale:1.5, x:-160, y:-200})
+							gsap.set("#back", {visibility:"visible"})
+							gsap.set("#caption", {innerHTML:"High temperature at the bottom means that <button>slag</button> and iron are both molten. The slag floats on top as it is less dense."})
 						}
 
 
