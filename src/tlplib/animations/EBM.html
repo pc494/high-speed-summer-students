@@ -230,11 +230,25 @@
 						}
 						#extruder {
 							position:absolute;
-							width:640px;
-							height:320px;
-							transform:scale(0.5)
+							transform:scale(0.5);
 						}
-
+						#dispenser {
+							position:absolute;
+							transform:scale(0.5);
+							fill:darkgreen;
+						}
+						#piston_shaft {
+							transform:scale(0.5);
+							fill:burlywood;
+							stroke:#000;
+							stroke-width:1px;
+						}
+						#piston_plate {
+							transform:scale(0.5);
+							fill:slategrey;
+							stroke:#000;
+							stroke-width:1px;
+						}
 					</style>
 					<svg id="EBM_animation">
 						<g id="extruder">
@@ -333,9 +347,21 @@
 							</g>
 						</g>
 						<g id="parisons">
+							<!-- parison 1 - will be behind dispenser and and pre_dispensate and slowly drop down when gate opens -->
+							<path id="parison1" d=""></path>
+							<path id="parison2" d=""></path>
+						</g>
+						<g id="pre_dispensate">
 
 						</g>
+						<g id="piston">
+							<path id="piston_shaft" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
+							<path id="piston_plate" d="M547.5,155 l60,0 l0,10 l-60,0 l0,-10"></path>
+						</g>
 						<g id="dispenser">
+							<path d="M537.5,185 l0,-65 l80,0 l0,180 l-25,25 l-5,0 l0,-5 l20,-20 l0,-170 l-60,0 l0,55 l-10,0 M537.5,195 l0,105 l25,25 l5,0 l0,-5 l-20,-20 l0,-105 l-10,0"></path>
+						</g>
+						<g id="gate">
 
 						</g>
 						<g id="hot_knife">
