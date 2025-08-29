@@ -1,0 +1,390 @@
+<html>
+    <head>
+		
+		<meta charset="utf-8" />
+		
+		<title>Blow Moulding</title>
+		
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>	-->
+
+    	
+		<script>
+
+			// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+
+		</script>
+		
+		<style>
+
+			#container {
+				position:relative;
+			}
+			
+			#kanvas { 
+				position:relative;
+			}
+			
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				background-color: #fff;
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				cursor: pointer;
+				height: 25px;
+				margin: 0px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			
+			#start {
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			/* page divs */
+			.leftText {
+				position:absolute;
+				left:0px;
+				top:0px;
+				padding: 7px;
+				width:280px;
+				text-align:justify;
+				font-size: 15px;
+				font-family: Arial, Helvetica, sans-serif;
+				background-color:#a6ba45; 
+			}
+
+			#anim1, #anim2, #anim3, #anim4, #anim5, #anim6, #anim7, #anim8, #anim9 {
+				position:absolute;
+				left:200px;
+				top:0px;
+				width:300px;
+				font-family: Arial, Helvetica, sans-serif;
+				background-color:#dededf;  
+				/*visibility: hidden;*/
+			}
+			
+			.nav {
+				position:absolute;
+				left:20px;
+				top:320px;
+				width:300px;
+			}
+
+			/* page id */
+			#p1 {
+				display:block;				
+			}
+
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+		
+		</style>
+
+	</head>
+	
+	<body>
+		
+		<div id="container"> 
+			
+			<div id="kanvas"> 
+				
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> Re-use of this resource is governed by a Creative Commons 
+					Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
+				</div>
+				<!-- end para -->
+				
+				<div id="cc" > <img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+				
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				
+				</div>
+				<!-- end cc -->
+				
+				<script>
+				
+					setAnimDimensions(640,480);
+				
+				</script>
+				
+				<!-- divs for storyline -->
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+					
+					<div class="leftText"> 
+						
+						<div class="nav"> 
+					
+							<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					
+						</div>
+					
+					</div>
+					<!-- end leftText - p2 -->
+					
+					<div id="anim1">
+					</div>
+					<!-- end anim1 -->
+				
+				</div>
+				<!-- end payj - p1 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p2" > 
+				
+					<div class="leftText"> 
+					
+						<h3>2</h3>
+					
+						<div class="nav"> 
+						
+							<p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
+							<p class="dbutton" id="next2" onClick="gotoPage(3)"></p >
+							<p class="dbutton" id="continue" onClick="gotoPage(1)"></p >
+							<p class="dbutton" id="pause" onClick="gotoPage(3)"></p >
+					
+						</div>
+				
+					</div>
+					<!-- end leftText - p2 -->
+				
+					<div id="anim2">
+					</div>
+					<!-- end anim2 -->
+				
+				</div>
+				<!-- end payj - p2 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p3" > 
+					
+					<div class="leftText"> 
+					
+						<h3>3</h3>
+					
+						<div class="nav"> 
+					
+							<p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
+							<p class="dbutton" id="next3" onClick="gotoPage(4)"></p >
+						
+						</div>
+				
+					</div>
+					<!-- end leftText - p3 -->
+				
+					<div id="anim3">
+					</div>
+					<!-- end anim 3 -->
+				
+				</div>
+				<!-- end payj - p3 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p4" > 
+				
+					<div class="leftText"> 
+					
+						<h3>4</h3>
+					
+						<div class="nav"> 
+						
+							<p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
+							<p class="dbutton" id="next4" onClick="gotoPage(5)"></p >
+						
+						</div>
+				
+					</div>
+					<!-- end leftText - p4 -->
+				
+					<div id="anim4">
+					</div>
+					<!-- end anim 4 -->
+				
+				</div>
+				<!-- end payj - p4 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p5" > 
+				
+					<div class="leftText"> 
+				
+						<h3>5</h3>
+				
+						<div class="nav"> 
+				
+							<p class="dbutton" id="back5" onClick="gotoPage(4)"></p >
+							<p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
+					
+						</div>
+				
+					</div>
+					<!-- end leftText - p5 -->
+					
+                    <div id="anim5">
+					</div>
+					<!-- end anim 5 -->
+				
+				</div>
+				<!-- end payj - p5 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p6" > 
+					
+					<div class="leftText"> 
+					
+						<h3>6</h3>
+					
+						<div class="nav"> 
+					
+							<p class="dbutton" id="back6" onClick="gotoPage(5)"></p >
+							<p class="dbutton" id="next6" onClick="gotoPage(7)"></p >
+					
+						</div>
+				
+					</div>
+					<!-- end leftText - p6 -->
+				
+					<div id="anim6">
+					</div>
+					<!-- end anim 6 -->
+
+				</div>
+				<!-- end payj - p6 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p7" > 
+				
+					<div class="leftText"> 
+				
+						<h3>7</h3>
+				
+						<div class="nav"> 
+				
+							<p class="dbutton" id="back7" onClick="gotoPage(6)"></p >
+							<p class="dbutton" id="restart" onClick="gotoPage(1)"></p >
+					
+						</div>
+				
+					</div>
+					<!-- end leftText - p7 -->
+				
+					<div id="anim7">
+					</div>
+					<!-- end anim 7 -->
+
+				</div>
+				<!-- end payj - p7 -->
+
+			</div>
+			<!-- kanvas -->
+
+		</div>
+		<!-- container -->
+
+	</body>
+</html>
