@@ -215,17 +215,109 @@
 				<!-- divs for storyline -->
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
-					
-					<div class="leftText"> 
-						
+					<style>
+						#EBM_animation {
+							position:absolute;
+							left:30px;
+							top:0px;
+							width:640px;
+							height:320px;
+						}
+						#extruder {
+							position:absolute;
+							width:640px;
+							height:320px;
+							transform:scale(0.5)
+						}
+					</style>
+					<svg id="EBM_animation">
+						<g id="extruder">
+							<g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
+								<path d="M35,180 q15.734,-60 31.468,0"></path>
+								<path d="M75.516,200 q15.734,60 31.468,0"></path>
+								
+								<path d="M110,180 q15.734,-60 31.468,0"></path>
+								<path d="M150.516,200 q15.734,60 31.468,0"></path>
+							
+								<path d="M-40,180 q15.734,-60 31.468,0"></path>
+								<path d="M0.516,200 q15.734,60 31.468,0"></path>
+
+
+
+								<path d="M185,180 q15.734,-60 31.468,0"></path>
+								<path d="M225.516,200 q15.734,60 31.468,0"></path>
+								
+								<path d="M260,180 q15.734,-60 31.468,0"></path>
+								<path d="M300.516,200 q15.734,60 31.468,0"></path>
+
+
+
+								<path d="M335,180 q15.734,-60 31.468,0"></path>
+								<path d="M375.516,200 q15.734,60 31.468,0"></path>
+								
+								<path d="M410,180 q15.734,-60 31.468,0"></path>
+								<path d="M450.516,200 q15.734,60 31.468,0"></path>
+							</g>
+							<g id="screw_axis" stroke-width="1" fill="#eee" stroke="#000">
+								<path d="M35,180 l150,0 l150,-20 l150,0 l15,30 l-15,30 l-150,0 l-150,-20 l-150,0 l0,-20"></path>
+							</g>
+							<g id="screw">
+								<g id="curly_bits" fill="#ccc" stroke-width="0.5" stroke="#000">
+									<path d="M34.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-12"></path>
+									<path d="M107.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,12"></path>
+								
+									<path d="M109.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-12"></path>
+									<path d="M182.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,12"></path>
+								
+									<!-- 4 curly bits from diagonal -->
+									<path d="M184.7,180 l12.034,-1.434 s15,-2 21.850,10 s-1.4455,-5 -5,-20"></path>
+									<path d="M255.921,209.456 l-12.034,-1.434 s-13.5,-1.8 -19.850,-16 s1.4455,5 6,25"></path>
+
+									<path d="M263.090,169.548 l10.034,-1.5 s15,-2 19.850,15 s-1.4455,-5 -5,-20"></path>
+									<path d="M327.014,218.975 l-7.034,-0.92 s-15,-2 -20.850,-23 s1.4455,5 5.5,23.5"></path>
+									
+									<!-- 4 curly bits from wider screw -->
+									<path d="M341.8,160 l7.5,0 s10,0 19.950,30 s-1.4455,-5 -10,-34"></path>
+									<path d="M400.284,220 l-7.5,0 s-10,0 -19.950,-30 s1.4455,5 10,34"></path>
+
+									<path d="M416.8,160 l7.5,0 s10,0 19.950,30 s-1.4455,-5 -10,-34"></path>
+									<path d="M475.284,220 l-7.5,0 s-10,0 -19.950,-30 s1.4455,5 10,34"></path>
+								</g>
+							
+								<g id="sine_curve_things" fill="#666" stroke-width="1" stroke="#000">
+									<path d="M50.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+									<path d="M125.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+								
+									<!-- 2 new sine curves for diagonal bit -->
+									<path d="M200.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+									<path d="M275.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+
+									<!-- 2 new sine curves for wider bit -->
+									<path d="M350.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+									<path d="M425.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+								</g>
+							</g>
+							<g id="blocks" stroke-width="0" fill="#fff">
+								<path d="M20,232 l0,-84 l-150,0 l0,84 l150,0"></path>
+							</g>
+							<g id="machinery" stroke-width="1" fill="#eee" stroke="#000">
+								<path id="segment1" d="M30,30 l6,0 l40,80 l0,40 l-56,0 l0,-20 l50,0 l0,-20 l-40,-80"></path>
+								<path id="segment2" d="M94,150 l0,-40 l40,-80 l6,0 l-40,80 l0,20 l390,0 l0,20 l-396,0"></path>
+								<path id="segment3" d="M20,230 l470,0 l0,20 l-470,0 l0,-20"></path>
+								<path id="segment4" d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"></path>
+								<path id="segment5" d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"></path>
+								<path id="rotator" d="M20,230 l0,-80 l15,0 l0,80 l-15,0"></path>
+							</g>
+						</g>
+
+
+					</svg>
+
 						<div class="nav"> 
 					
 							<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
 					
 						</div>
-					
-					</div>
-					<!-- end leftText - p2 -->
 					
 					<div id="anim1">
 					</div>
