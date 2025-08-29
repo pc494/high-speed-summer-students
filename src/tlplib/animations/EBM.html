@@ -249,6 +249,12 @@
 							stroke:#000;
 							stroke-width:1px;
 						}
+						#parisons {
+							stroke:#000;
+							stroke-width:0.2;
+							fill:#ee4;
+							transform:scale(0.5);
+						}
 					</style>
 					<svg id="EBM_animation">
 						<g id="extruder">
@@ -348,8 +354,13 @@
 						</g>
 						<g id="parisons">
 							<!-- parison 1 - will be behind dispenser and and pre_dispensate and slowly drop down when gate opens -->
-							<path id="parison1" d=""></path>
-							<path id="parison2" d=""></path>
+							<g id="parison1">
+							<path d="M567.5,250 l5,0 l0,50 l-5,0 l0,-50 M587.5,250 l-5,0 l0,50 l5,0 l0,-50"></path>
+							<!-- <path d="M582.5,250 l-2,0 l50,0 l2,0 l0,-50"></path> -->
+							</g>
+							<g id="parison2">
+
+							</g>
 						</g>
 						<g id="pre_dispensate">
 
@@ -373,6 +384,7 @@
 					</svg>
 					<script>
 						//Dispenser dispenses parison in a hollow cylinder
+						// gsap.to("#parison1", {duration:4, attr:{d:"M40,160 l 10,20 -40,-40 70,-20 10,-20 10,20 70,20 -40,40 10,-20"} } );
 
 						//split die comes and clamps parison
 
