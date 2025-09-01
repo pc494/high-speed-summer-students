@@ -97,6 +97,7 @@
 			/* DOiTPoMS buttons */
 			.dbutton {
 				cursor: pointer;
+				background-color: #603;
 				height: 25px;
 				margin: 0px;
 				background-position: bottom;
@@ -255,6 +256,22 @@
 							fill:#ee4;
 							transform:scale(0.5);
 						}
+						#gate {
+							stroke:#000;
+							stroke-width:5px;
+							transform:scale(0.5);
+						}
+						#split_die {
+							stroke:#000;
+							stroke-width:1px;
+							fill:forestgreen;
+							transform:scale(0.5);
+						}
+						#nozzle {
+							stroke:#000;
+							stroke-width:1px;
+							transform:scale(0.5);
+						}
 					</style>
 					<svg id="EBM_animation">
 						<g id="extruder">
@@ -339,6 +356,7 @@
 									<path d="M429.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
 								</g>
 								<g>
+									<!-- hopper stuff -->
 									<path d="M76,150 l18,0 l0,-40 l30,-60 l-39,-23 l-39,23 l30,60 l0,40"></path>
 								</g>
 							</g>
@@ -346,8 +364,10 @@
 								<path d="M20,232 l0,-84 l-150,0 l0,84 l150,0"></path>
 							</g>
 							<g id="machinery" stroke-width="1" fill="#eee" stroke="#000">
-								<path id="segment1" d="M30,30 l6,0 l40,80 l0,40 l-56,0 l0,-20 l50,0 l0,-20 l-40,-80"></path>
-								<path id="segment2" d="M94,150 l0,-40 l40,-80 l6,0 l-40,80 l0,20 l390,0 l0,20 l-396,0"></path>
+								<path id="segment1" d="M30,30 l6,0 l40,80 l0,40 l-56,0 l0,-20 l50,0 l0,-20 
+													   l-40,-80"></path>
+								<path id="segment2" d="M94,150 l0,-40 l40,-80 l6,0 l-40,80 l0,20 l390,0 l0,20 
+													   l-396,0"></path>
 								<path id="segment3" d="M20,230 l470,0 l0,20 l-470,0 l0,-20"></path>
 								<path id="segment4" d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"></path>
 								<path id="segment5" d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"></path>
@@ -356,29 +376,44 @@
 						</g>
 						<g id="parisons">
 							<!-- parison 1 - will be behind dispenser and and pre_dispensate and slowly drop down when gate opens -->
-							<path id="parison1" d="M567.5,250 l5,0 l0,50 l-5,0 l0,-50 M587.5,250 l-5,0 l0,50 l5,0 l0,-50"></path>
+							<path id="parison" d="M567.5,250 l5,0 l0,50 l-5,0 l0,-50 M587.5,250 l-5,0 l0,50 
+												   l5,0 l0,-50"></path>
 						</g>
 						<g id="pre_dispensate">
-							<path d="M517.5,185 l30,0 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 l-20,-20 l0,-105 l-27,0"></path>
+							<path d="M517.5,185 l30,0 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 
+									 l-20,-20 l0,-105 l-27,0"></path>
 						</g>
 						<g id="piston">
 							<path id="piston_shaft" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
 							<path id="piston_plate" d="M547.5,155 l60,0 l0,10 l-60,0 l0,-10"></path>
 						</g>
 						<g id="dispenser">
-							<path d="M537.5,185 l0,-65 l80,0 l0,180 l-25,25 l-5,0 l0,-5 l20,-20 l0,-170 l-60,0 l0,55 l-10,0 M537.5,195 l0,105 l25,25 l5,0 l0,-5 l-20,-20 l0,-105 l-10,0"></path>
+							<path d="M537.5,185 l0,-65 l80,0 l0,180 l-25,25 l-5,0 l0,-5 l20,-20 l0,-170 l-60,0 l0,55 l-10,0 
+									 M537.5,195 l0,105 l25,25 l5,0 l0,-5 l-20,-20 l0,-105 l-10,0"></path>
 						</g>
 						<g id="gate">
-
+							1800-341=1459 - 2x60 - 195 - 12x60 - 4 = 420 = 7:00
+							 <path d="M557.5,325 l40,0"></path>
 						</g>
 						<g id="hot_knife">
 
 						</g>
+						<g id="nozzle">
+							<path fill="#aaa" d="M918,200 l-205.5,0 c -15,0 -20,5 -20,20 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25 c0,-11.25 3.75,-15 15,-15 l205.5,0"></path>
+							<path fill="#aaa" d="M918,215 l-205.5,0 c -3.75,0 -5,3.75 -5,5 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25 c0,-7.5 2.5,-10 10,-10 l205.5,0"></path>
+							<path fill="#444" d="M918,185 l-198,0 c -26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l198,0"></path>
+						</g>
 						<g id="split_die">
-
+							<path id="left_die" d="M670,350 l0,100 l30,0 l0,-20 s-2,0 -6,2 l-4,3  s-10,5 -10,0 l0,-20 s0,-1 2,-2 l0,-21 s-2,-1 -2,-2 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-5.333 l-25,0"></path>
+							<path id="right_die" d="M730,350 l0,100 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-20 s0,-1 -2,-2 l0,-21 s2,-1 2,-2 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
 						</g>
 					</svg>
 					<script>
+						//FOR PAGE 2
+
+
+
+
 						//Dispenser dispenses parison in a hollow cylinder
 						// gsap.to("#parison1", {duration:4, attr:{d:"M40,160 l 10,20 -40,-40 70,-20 10,-20 10,20 70,20 -40,40 10,-20"} } );
 
@@ -416,21 +451,142 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p2" > 
 				
-					<div class="leftText"> 
-					
-						<h3>2</h3>
-					
-						<div class="nav"> 
+					<style>
+						#EBM_animation2 {
+							position:absolute;
+							left:-500px;
+							top:-100px;
+							width:1280px;
+							height:640px;
+						}
+						#dispenser2 {
+							position:absolute;
+							fill:darkgreen;
+						}
+						#piston_shaft2 {
+							fill:burlywood;
+							stroke:#000;
+							stroke-width:1px;
+						}
+						#piston_plate2 {
+							fill:slategrey;
+							stroke:#000;
+							stroke-width:1px;
+						}
+						#parisons2, #pre_dispensate2 {
+							stroke:#000;
+							stroke-width:0.5;
+							fill:#ee4;
+						}
+						#gate2 {
+							stroke:#000;
+							stroke-width:5px;
+						}
+						#split_die2 {
+							stroke:#000;
+							stroke-width:1px;
+							fill:forestgreen;
+						}
+						#nozzle2 {
+							stroke:#000;
+							stroke-width:1px;
+						}
+					</style>
+					<svg id="EBM_animation2">
+						<g id="parisons2">
+							<!-- parison 1 - will be behind dispenser and and pre_dispensate and slowly drop down when gate opens -->
+							<path id="parison1" 		d="M567.5,250 l5,0 l0,50 l-5,0 l0,-50 
+												   		   M587.5,250 l-5,0 l0,50 l5,0 l0,-50"></path>
+							<path id="parison_test2" 	d="M690,340 l0,5 s0,3 5,5 l0,18.333 s-5,3.333 -5,11.667 l0,35 s0,5 10,15 l0,20 s-7.5,5 -10,15 l2.5,0 s0,-7.5 7.5,-12.5 l0,-25 s-7.5,-7.5 -7.5,-12.5 l0,-35 s0,-7.5 5,-11.667 l0,-15.833 l-5,-5 l0,-7.5 l-2.5,0"></path>
+						</g>
+						<g id="pre_dispensate2">
+							<path d="M547.5,185 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 
+									 l-20,-20 l0,-115"></path>
+						</g>
+						<g id="piston2">
+							<path id="piston_shaft2" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
+							<path id="piston_plate2" d="M547.5,155 l60,0 l0,10 l-60,0 l0,-10"></path>
+						</g>
+						<g id="dispenser2">
+							<path d="M537.5,185 l0,-65 l80,0 l0,180 l-25,25 l-5,0 l0,-5 l20,-20 l0,-170 l-60,0 l0,170 l20,20 l0,5 l-5,0 l-25,-25 l0,-105"></path>
+						</g>
+						<g id="gate2">
+							1800-341=1459 - 2x60 - 195 - 12x60 - 4 = 420 = 7:00
+							 <path d="M557.5,325 l40,0"></path>
+						</g>
+						<g id="hot_knife2">
+
+						</g>
+						<g id="nozzle2">
+							<path fill="#aaa" d="M918,200 l-205.5,0 c -15,0 -20,5 -20,20 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25 c0,-11.25 3.75,-15 15,-15 l205.5,0"></path>
+							<path fill="#aaa" d="M918,215 l-205.5,0 c -3.75,0 -5,3.75 -5,5 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25 c0,-7.5 2.5,-10 10,-10 l205.5,0"></path>
+							<path fill="#444" d="M918,185 l-198,0 c -26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l198,0"></path>
+						</g>
+						<g id="split_die2">
+							<path id="left_die" d="M670,350 l0,100 l30,0 l0,-20 s-2,0 -6,2 l-4,3  s-10,5 -10,0 l0,-20 s0,-1 2,-2 l0,-21 s-2,-1 -2,-2 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-5.333 l-25,0"></path>
+							<path id="right_die" d="M730,350 l0,100 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-20 s0,-1 -2,-2 l0,-21 s2,-1 2,-2 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
+						</g>
+					</svg>
+					<script>
+						//FOR PAGE 2
+						// var cnt3 = 0;
+						// var tl3 = gsap.timeline({repeat:-1})
+						// tl3.to("#screw3", {x:150, duration:1, ease:"none"})
+						// .to("#quads3", {x:110, duration:1, ease:"none"}, "<")
+						// .to("#screw3", {x:0, duration:0, ease:"none"})
+						// .to("#quads3", {x:-40, duration:0, ease:"none"})
+						// tl3.pause()
+
+						// function spin3() {
+						// 	if (cnt3 == 0){
+						// 		tl3.play();
+
+						// 		// for (let i = 0; i < 50; i++) {
+									
+									
+						// 		//     console.log(i);
+						// 		// }
+						// 	}
+						// 	if (cnt3 == 1) {
+						// 		tl3.pause()
+						// 		// gsap.kill("#screw");
+								
+						// 		cnt3 = -1;
+						// 	}
+						// 	cnt3 += 1;console.log(cnt3)
+						// }
+
+
 						
-							<p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
-							<p class="dbutton" id="next2" onClick="gotoPage(3)"></p >
-							<p class="dbutton" id="continue" onClick="gotoPage(1)"></p >
-							<p class="dbutton" id="pause" onClick="gotoPage(3)"></p >
+						//Dispenser dispenses parison in a hollow cylinder
+						// gsap.to("#parison1", {duration:4, attr:{d:"M40,160 l 10,20 -40,-40 70,-20 10,-20 10,20 70,20 -40,40 10,-20"} } );
+
+						//split die comes and clamps parison
+
+						//Hot knife severs the parison
+
+						//die & parison move to pressurised air nozzle
+
+						//nozzle enters top of split die and pushes into top of parison
+						//simultaneously new parison being formed
+
+						//air injected into parison => bottle
+
+						//air nozzle retracts
+						
+						//bottle ejected by die splitting
+
+						//bottle goes off screen
+						//simultaneously split die comes and clamps new parison
+					</script>
 					
-						</div>
+					<div class="nav"> 
+					
+						<p class="dbutton" id="continue" onClick="gotoPage(1)"></p >
 				
 					</div>
-					<!-- end leftText - p2 -->
+				
+
 				
 					<div id="anim2">
 					</div>
