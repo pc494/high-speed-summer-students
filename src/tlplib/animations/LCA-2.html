@@ -79,7 +79,7 @@
 			#para {
 				position: absolute;  
 				padding:0px;
-				font-family:Arial;
+				font-family: sans-serif;
 				font-weight: bold;
 				font-size: 11px;
 				color:blue; 
@@ -279,7 +279,18 @@
 							}
 						</style>
 
-						<div id="options" style="position:absolute; height:270px; width:180px; top:90px; background:ghostwhite"> </div>
+						<div id="options" style="position:absolute; height:270px; width:180px; top:90px; background:ghostwhite"> 
+							<div class="pop" id="material_pop">
+								<p> Each car door uses 15&nbsp;kg of low alloy steel </p>
+								<p> Select amount of recycled material to use</p>
+								<div class="opt">
+									<input type="radio" id="material0" name="material"> <label for="material0"> 0% recycled (virgin) material </label> <br>
+									<input type="radio" id="material25" name="material"> <label for="material25"> 25% recycled material </label> <br>
+									<input type="radio" id="material40" name="material"> <label for="material40"> 40% recycled material (typical for steel)</label> <br>
+									<input type="radio" id="material75" name="material"> <label for="material75"> 75% recycled material </label> <br>								
+								</div>
+							</div>
+						</div>
 
 						<svg id="plot" height="270" width="400" style="position:absolute; top:90px; left:220px; background:seashell">
 							
@@ -345,6 +356,9 @@
 						<p class="dbutton" id="back" onclick="back()"></p>
 						<p class="dbutton" id="next" onclick="next()"></p>
 					</div>
+
+					<script>
+					</script>
 					
 				</div>
 				<!-- end payj - p2 -->
