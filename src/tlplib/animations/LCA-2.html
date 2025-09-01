@@ -222,7 +222,7 @@
 
 					<p class="dbutton" id="reset" onclick="reset()" style="position:absolute; top:0; left:0; z-index:100"></p>
 
-					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:40px; background-color: cornsilk;">
+					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:40px; background-color: snow;">
 
 						<div id="title" style="height:40px;">
 							<p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span id="product_spec" style="text-decoration: underline;">product specification</span> </p>
@@ -279,9 +279,9 @@
 							}
 						</style>
 
-						<div id="options" style="position:absolute; height:270px; width:180px; top:90px; background:lightblue"> </div>
+						<div id="options" style="position:absolute; height:270px; width:180px; top:90px; background:ghostwhite"> </div>
 
-						<svg id="plot" height="270" width="420" style="position:absolute; top:90px; left:200px; background:peachpuff">
+						<svg id="plot" height="270" width="400" style="position:absolute; top:90px; left:220px; background:seashell">
 							
 							<defs>
 								<pattern id="E_hatch" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -294,21 +294,26 @@
 							<text id="total_E" x="80" y="30">E: 0 MJ</text>
 							<text id="total_CO2" x="210" y="30">CO&#x2082; eq.: 0 kg</text>
 							
-							<rect class="bar material E" x="55" y="200" height="0" width="20"></rect>
-							<rect class="bar material CO2" x="75" y="200" height="0" width="20"></rect>
-							<rect class="bar manufacture E" x="105" y="200" height="0" width="20"></rect>
-							<rect class="bar manufacture CO2" x="125" y="200" height="0" width="20"></rect>
-							<rect class="bar transport E" x="155" y="200" height="0" width="20"></rect>
-							<rect class="bar transport CO2" x="175" y="200" height="0" width="20"></rect>
-							<rect class="bar use E" x="205" y="200" height="0" width="20"></rect>
-							<rect class="bar use CO2" x="225" y="200" height="0" width="20"></rect>
-							<rect class="bar disposal E" x="255" y="200" height="0" width="20"></rect>
-							<rect class="bar disposal CO2" x="275" y="200" height="0" width="20"></rect>
-							<rect class="bar eol E" style="fill:url(#E_hatch)" x="305" y="200" height="0" width="20"></rect>
-							<rect class="bar eol CO2" style="fill:url(#CO2_hatch)" x="325" y="200" height="0" width="20"></rect>
+							<rect class="bar material E" x="5" y="200" height="0" width="20"></rect>
+							<rect class="bar material CO2" x="25" y="200" height="0" width="20"></rect>
+							<rect class="bar manufacture E" x="75" y="200" height="0" width="20"></rect>
+							<rect class="bar manufacture CO2" x="95" y="200" height="0" width="20"></rect>
+							<rect class="bar transport E" x="145" y="200" height="0" width="20"></rect>
+							<rect class="bar transport CO2" x="165" y="200" height="0" width="20"></rect>
+							<rect class="bar use E" x="215" y="200" height="0" width="20"></rect>
+							<rect class="bar use CO2" x="235" y="200" height="0" width="20"></rect>
+							<rect class="bar disposal E" x="285" y="200" height="0" width="20"></rect>
+							<rect class="bar disposal CO2" x="305" y="200" height="0" width="20"></rect>
+							<rect class="bar eol E" style="fill:url(#E_hatch)" x="355" y="200" height="0" width="20"></rect>
+							<rect class="bar eol CO2" style="fill:url(#CO2_hatch)" x="375" y="200" height="0" width="20"></rect>
 						
-							<line id="xaxis" style="stroke:black" x1="40" y1="200" x2="360" y2="200"></line>
-						
+							<line id="xaxis" style="stroke:black" x1="0" y1="200" x2="400" y2="200"></line>
+							<text class="axlabel" x="25" y="220">Material</text>
+							<text class="axlabel" x="95" y="220">Manufacture</text>
+							<text class="axlabel" x="165" y="220">Transport</text>
+							<text class="axlabel" x="235" y="220">Use</text>
+							<text class="axlabel" x="305" y="220">Disposal</text>
+							<text class="axlabel" x="375" y="220">EOL</text>
 						</svg>
 
 						<style>
@@ -327,6 +332,11 @@
 								fill: indigo;
 								stroke: indigo;
 								stroke-width: 1px;
+							}
+							
+							#plot .axlabel {
+								text-anchor: middle;
+								font-size: small;
 							}
 						</style>
 					</div>
