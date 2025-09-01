@@ -222,9 +222,73 @@
 
 					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
 
+					<style>
+
+						svg text{
+							font-family: sans-serif;
+							stroke: none;
+							text-anchor: middle;
+						}
+
+						.stepbox{
+							fill-opacity: 0.1;
+							stroke-opacity: 0.6;
+						}
+
+						.pointer{
+							fill:none;
+							stroke-width: 2.5;
+						}
+
+
+					</style>
 					
 					<svg width="640" height="350">
 
+						<defs>
+							<marker id="arrowB" markerWidth="10" markerHeight="10" refX="3" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+								<path d="M0,0 L0,4 L4,2 z" fill="dodgerblue"/>
+							</marker>
+						</defs>
+
+						<g id="sysB_group" style="stroke:dodgerblue; fill:dodgerblue">
+
+							<!-- transform="scale(0.8,0.8) translate(80,10)" -->
+							<!-- transform="scale(1.8,1.8) translate(-222,15)" -->
+							<rect class="filler" x="0" y="0" width="640" height="350" style="fill:none; stroke:none"></rect>
+
+							<line class="sysB pointer" id="l0-1" x1="175" y1="200" x2="215" y2="200" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l1-2" x1="270" y1="175" x2="340" y2="80" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l2-3" x1="460" y1="80" x2="530" y2="175" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l3-4" x1="530" y1="225" x2="460" y2="320" marker-end="url(#arrowB)"></line>
+							<line class="sysB pointer" id="l4-1" x1="340" y1="320" x2="270" y2="225" marker-end="url(#arrowB)"></line>
+
+							<g class="sysB" id="resources">
+								<rect class="stepbox" x="65" y="185" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="115" y="205"> Resources </text>
+							</g>
+
+							<g class="sysB" id="production">
+								<rect class="stepbox" x="225" y="185" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="275" y="205"> Production </text>
+							</g>
+
+							<g class="sysB" id="manufacture">
+								<rect class="stepbox" x="350" y="65" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="400" y="85"> Manufacture </text>
+							</g>
+
+							<g class="sysB" id="use">
+								<rect class="stepbox" x="475" y="185" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="525" y="205"> Use </text>
+							</g>
+
+							<g class="sysB" id="waste">
+								<rect class="stepbox" x="350" y="305" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="400" y="325"> Disposal </text>
+							</g>
+
+						</g>
 					</svg>
 					
                     <div class="nav"> 
