@@ -197,7 +197,7 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
 
-					<p id="titlecard"> LCA example </p>
+					<p id="titlecard"> Eco audit example </p>
 
 					<style>
 						#titlecard{
@@ -280,22 +280,51 @@
 						</style>
 
 						<div id="options" style="position:absolute; height:270px; width:180px; top:90px; background:ghostwhite"> 
+							
 							<div class="pop" id="material_pop">
 								<p> Each car door uses 15&nbsp;kg of low alloy steel </p>
 								<p> Typically, ~40% recycled content is used</p>
 								<div class="opt">
-									<input type="radio" id="material0" name="material"> <label for="material0"> 0% recycled (virgin) </label> <br>
-									<input type="radio" id="material25" name="material"> <label for="material25"> 25% recycled  </label> <br>
-									<input type="radio" id="material40" name="material"> <label for="material40"> 40% recycled </label> <br>
-									<input type="radio" id="material75" name="material"> <label for="material75"> 75% recycled </label> <br>								
+									<input type="radio" id="material_0" name="material"> <label for="material_0"> 0% recycled (virgin) </label> <br>
+									<input type="radio" id="material_25" name="material"> <label for="material_25"> 25% recycled  </label> <br>
+									<input type="radio" id="material_40" name="material"> <label for="material_40"> 40% recycled </label> <br>
+									<input type="radio" id="material_75" name="material"> <label for="material_75"> 75% recycled </label> <br>								
 								</div>
 							</div>
+
+							<div id="transport_1_pop">
+								<p> Raw material is then transported to the manufacturer </p>
+								<p> Select mode of transport and distance </p>
+								<div class="opt">
+									<input type="radio" id="transport1_truck" name="transport1"> <label for="transport1_truck"> Large truck </label> <br>
+									<input type="radio" id="transport1_train" name="transport1"> <label for="transport1_train"> Diesel train </label> <br>
+									<input type="radio" id="transport1_ship" name="transport1"> <label for="transport1_train"> Bulk carrier ship </label> <br>
+								</div>
+								<div class="opt">
+									<input type="radio" id="transport1_dist500" name="dist1"> <label for="transport1_dist500"> 500&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist2000" name="dist1"> <label for="transport1_dist2000"> 2000&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist10000" name="dist1"> <label for="transport1_dist10000"> 10000&nbsp;km </label> <br>
+								</div>
+							</div>
+
 						</div>
 
 						<style>
 							label {
 								font-family: sans-serif;
 								font-size: small;
+							}
+
+							.pop {
+								display: none;
+							}
+
+							#options p {
+								margin-block: 10px
+							}
+
+							#options .opt {
+								margin-block: 10px
 							}
 						</style>
 
