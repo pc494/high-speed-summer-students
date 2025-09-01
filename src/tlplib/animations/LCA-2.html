@@ -220,16 +220,74 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p2"> 
 
-					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+					<p class="dbutton" id="restart" onclick="gotoPage(1)" style="position:absolute; top:0; left:0; z-index:100"></p>
 
-					
-					<svg width="640" height="350">
+					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:40px; border: 1px solid red">
 
+						<div id="title" style="height:40px;">
+							<p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span id="product_spec" style="text-decoration: underline;">product specification</span> </p>
+						</div>
 						
-					</svg>
-					
+						<svg id="lifeline" width="600" height="30" style="stroke:dodgerblue; fill:dodgerblue;">
+							<defs>
+								<marker id="arrowB" markerWidth="10" markerHeight="10" refX="3" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+									<path d="M0,0 L0,4 L4,2 z" fill="dodgerblue"/>
+								</marker>							
+							</defs>
+
+							<g class="step" id="Production">
+								<rect class="stepbox" x="0" y="0" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="50" y="20"> Production </text>
+							</g>
+
+							<line class="step" id="transport_1" x1="110" y1="15" x2="180" y2="15" marker-end="url(#arrowB)"></line>
+							
+							<g class="sysB" id="manufacture">
+								<rect class="stepbox" x="190" y="0" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="240" y="20"> Manufacture </text>
+							</g>
+
+							<line class="step" id="transport_2" x1="300" y1="15" x2="370" y2="15" marker-end="url(#arrowB)"></line>
+							
+							<g class="step" id="use">
+								<rect class="stepbox" x="380" y="0" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="430" y="20"> Use </text>
+							</g>
+
+							<g class="step" id="disposal">
+								<rect class="stepbox" x="500" y="0" rx="5" ry="5" width="100" height="30"></rect>
+								<text class="stepbox_text" x="550" y="20"> Disposal </text>
+							</g>
+
+						</svg>
+
+						<style>
+							svg text {
+								font-family: sans-serif;
+								stroke: none;
+								text-anchor: middle;
+							}
+	
+							#lifeline .stepbox{
+								fill-opacity: 0.1;
+								stroke-opacity: 0.6;
+							}
+	
+							#lifeline line {
+								fill: none;
+								stroke-width: 2;
+							}
+						</style>
+
+						<div id="options" style="position:absolute; height:270px; width:180px; top:90px; background:lightblue"> </div>
+
+						<svg id="plot" height="270" width="420" style="position:absolute; top:90px; left:200px; background:peachpuff">
+
+						</svg>
+					</div>
+
                     <div class="nav"> 
-						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
+						<p class="dbutton" id="reset" onclick="reset()" ></p>
 					</div>
 					
 				</div>
