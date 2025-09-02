@@ -18,6 +18,9 @@
 		
 		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
 
+		<link rel="stylesheet" href="titlecard.css"/>
+		<link rel="stylesheet" href="blastFurnace.css"/>
+
 		<script>
 		// hide and show CC licence words
 			function showTxt() {   
@@ -93,6 +96,7 @@
 			
 			/* DOiTPoMS buttons */
 			.dbutton {
+				background-color: pink;
 				cursor: pointer;
 				height: 25px;
 				margin: 5px;
@@ -197,18 +201,6 @@
 				<div class="payj" id="p1"> 
 
 					<p id="titlecard"> Blast Furnace </p>
-
-					<style>
-						#titlecard{
-							position:absolute;
-							width:200px;
-							left:220px;
-							top:200px;
-							vertical-align: middle;
-							text-align: center;
-						}
-					</style>
-
 					<div class="nav" style="top:280px"> 
 						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
 					</div>
@@ -400,48 +392,6 @@
 						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
 					</div>
 
-					<style>
-						.dbutton {
-							background-color: pink;
-						}
-
-						.laser {
-							fill:red; 
-							stroke:black
-						}
-
-						.laser:hover, .laser:focus-visible {
-							stroke:red;
-							stroke-width: 3px;
-						}
-
-						.laser:active {
-							stroke-width: 1px;
-						}
-
-						.line {
-							stroke:black;
-						}
-
-						#reaction_pointer text {
-							font-size: 0.7em;
-						}
-
-						#reaction_pointer .pointer {
-							visibility: hidden;
-						}
-
-						#reaction_pointer .line, #reaction_pointer .label {
-							visibility: hidden;
-						}
-
-						#reaction_pointer .pointer:hover .laser, #reaction_pointer .pointer:focus-visible .laser {
-							stroke: none;
-						}
-
-						
-					</style>
-
 					<script>
 						var ores_moving_down = gsap.timeline({defaults:{ease:"none"}})
 						ores_moving_down.to("#ores", 4, {y:60}).to("#ores", 0, {y:0})
@@ -493,11 +443,11 @@
 						}
 
 						function coke(){
-							gsap.set("#caption", {innerHTML:"Roasted ore, <strong>coke</strong>, and <button onclick='limestone()'>limestone</button> are added from the hoppers <br> Coke provides carbon needed for ore reduction"})
+							gsap.set("#caption", {innerHTML:"Roasted ore, <strong>coke</strong>, and <button onclick='limestone()'>limestone</button> are added from the hoppers <br> Coke provides carbon, which reacts with oxygen to form CO, the main reduction agent. "})
 						}
 
 						function limestone(){
-							gsap.set("#caption", {innerHTML:"Roasted ore, <button onclick='coke()'>coke</button>, and <strong>limestone</strong> are added from the hoppers <br> Limestone contains mixed oxides, which helps impurities partition to the slag phase"})
+							gsap.set("#caption", {innerHTML:"Roasted ore, <button onclick='coke()'>coke</button>, and <strong>limestone</strong> are added from the hoppers <br> Limestone is primarily CaCO<sub>3</sub>, which reacts with impurities (vairous oxides) to form the slag phase."})
 						}
 
 						function reduction(){
@@ -529,7 +479,6 @@
 
 						
 						function products(){
-							alert('work in progress')
 							gsap.to(".pointer", 0.2, {opacity:0})
 							gsap.to("#movers, #furnace", 0.5, {delay:0.2, scale:1.5, x:-160, y:-200})
 							gsap.set("#back", {visibility:"visible"})

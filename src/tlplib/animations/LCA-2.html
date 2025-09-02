@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>LCA-2</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		
+		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
+
+
+		<link rel="stylesheet" href="titlecard.css"/>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+		
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family: sans-serif;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+                background-color: pink;
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
+
+			/* page id */
+			/* CAHNGE THIS!!! */
+			#p1 {
+				display:block;				
+			}
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+
+			/*  Other */
+			p,text {
+				font-family: sans-serif;
+			}
+
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+
+        <p id="titlecard"> Eco audit example </p>
+
+
+        <div class="nav" style="top:280px"> 
+          <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+        </div>
+
+				</div>
+				<!-- end payj - p1 -->
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
+
+        <p class="dbutton" id="reset" onclick="reset()" style="position:absolute; top:0; left:0; z-index:100"></p>
+
+        <div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:40px; background-color: snow;">
+
+          <div id="title" style="height:40px;">
+            <p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span id="product_spec" style="text-decoration: underline;">product specification</span> </p>
+          </div>
+
+          <svg id="lifeline" width="600" height="30" style="stroke:dodgerblue; fill:dodgerblue;">
+            <defs>
+              <marker id="arrowB" markerWidth="10" markerHeight="10" refX="3" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
+                <path d="M0,0 L0,4 L4,2 z" fill="dodgerblue"/>
+              </marker>							
+            </defs>
+
+            <g class="step" id="material_btn">
+              <rect class="stepbox" x="0" y="0" rx="5" ry="5" width="100" height="30"></rect>
+              <text class="stepbox_text" x="50" y="20"> Material </text>
+            </g>
+
+            <line class="step" id="transport_1_btn" x1="110" y1="15" x2="180" y2="15" marker-end="url(#arrowB)"></line>
+
+            <g class="sysB" id="manufacture_btn">
+              <rect class="stepbox" x="190" y="0" rx="5" ry="5" width="100" height="30"></rect>
+              <text class="stepbox_text" x="240" y="20"> Manufacture </text>
+            </g>
+
+            <line class="step" id="transport_2_btn" x1="300" y1="15" x2="370" y2="15" marker-end="url(#arrowB)"></line>
+
+            <g class="step" id="use_btn">
+              <rect class="stepbox" x="380" y="0" rx="5" ry="5" width="100" height="30"></rect>
+              <text class="stepbox_text" x="430" y="20"> Use </text>
+            </g>
+
+            <g class="step" id="disposal_btn">
+              <rect class="stepbox" x="500" y="0" rx="5" ry="5" width="100" height="30"></rect>
+              <text class="stepbox_text" x="550" y="20"> Disposal </text>
+            </g>
+
+          </svg>
+
+          <style>
+            #lifeline text {
+              font-family: sans-serif;
+              stroke: none;
+              text-anchor: middle;
+            }
+
+            #lifeline .stepbox{
+              fill-opacity: 0.1;
+              stroke-opacity: 0.6;
+            }
+
+            #lifeline line {
+              fill: none;
+              stroke-width: 2;
+            }
+          </style>
+
+          <div id="options" style="position:absolute; height:270px; width:180px; top:90px; background:ghostwhite"> 
+
+            <div class="pop" id="material_pop">
+              <p> Each car door uses 15&nbsp;kg of low alloy steel </p>
+              <p> Typically, ~40% recycled content is used</p>
+              <div class="opt">
+                <input type="radio" id="material_0" name="material"> <label for="material_0"> 0% recycled (virgin) </label> <br>
+                <input type="radio" id="material_25" name="material"> <label for="material_25"> 25% recycled  </label> <br>
+                <input type="radio" id="material_40" name="material"> <label for="material_40"> 40% recycled </label> <br>
+                <input type="radio" id="material_75" name="material"> <label for="material_75"> 75% recycled </label> <br>								
+              </div>
+            </div>
+
+            <div class="pop" id="transport_1_pop">
+              <p> Raw material is then transported to the manufacturer </p>
+              <p> Select mode of transport and distance </p>
+              <div class="opt">
+                <input type="radio" id="transport1_truck" name="transport1"> <label for="transport1_truck"> Large truck </label> <br>
+                <input type="radio" id="transport1_train" name="transport1"> <label for="transport1_train"> Diesel train </label> <br>
+                <input type="radio" id="transport1_ship" name="transport1"> <label for="transport1_train"> Bulk carrier ship </label> <br>
+              </div>
+              <div class="opt">
+                <input type="radio" id="transport1_dist500" name="dist1"> <label for="transport1_dist500"> 500&nbsp;km </label> <br>
+                <input type="radio" id="transport1_dist2000" name="dist1"> <label for="transport1_dist2000"> 2000&nbsp;km </label> <br>
+                <input type="radio" id="transport1_dist10000" name="dist1"> <label for="transport1_dist10000"> 10000&nbsp;km </label> <br>
+              </div>
+            </div>
+
+            <div class="pop" id="manufacture_pop">
+              <p> Steel car doors are typically made by roll forming </p>
+            </div>
+
+            <div class="pop" id="transport_2_pop">
+              <p> The product is transported to the user via distributors </p>
+              <p> Select mode of transport and distance </p>
+              <div class="opt">
+                <input type="radio" id="transport2_truck" name="transport2"> <label for="transport2_truck"> Large truck </label> <br>
+                <input type="radio" id="transport2_train" name="transport2"> <label for="transport2_train"> Diesel train </label> <br>
+                <input type="radio" id="transport2_ship" name="transport2"> <label for="transport2_train"> Container ship </label> <br>
+              </div>
+              <div class="opt">
+                <input type="radio" id="transport2_dist500" name="dist2"> <label for="transport2_dist500"> 500&nbsp;km </label> <br>
+                <input type="radio" id="transport2_dist2000" name="dist2"> <label for="transport2_dist2000"> 2000&nbsp;km </label> <br>
+                <input type="radio" id="transport2_dist10000" name="dist2"> <label for="transport2_dist10000"> 10000&nbsp;km </label> <br>
+              </div>
+            </div>
+
+          </div>
+
+          <style>
+            label {
+              font-family: sans-serif;
+              font-size: small;
+            }
+
+            .pop {
+              display: none;
+            }
+
+            #options p {
+              margin-block: 10px
+            }
+
+            #options .opt {
+              margin-block: 10px
+            }
+          </style>
+
+          <svg id="plot" height="270" width="400" style="position:absolute; top:90px; left:220px; background:seashell">
+
+            <defs>
+              <pattern id="E_hatch" width="10" height="10" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:blueviolet"></line>
+              </pattern>
+              <pattern id="CO2_hatch" width="10" height="10" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:indigo"></line>
+              </pattern>
+            </defs>
+            <text id="total_E" x="80" y="30">E: 0 MJ</text>
+            <text id="total_CO2" x="210" y="30">CO&#x2082; eq.: 0 kg</text>
+
+            <rect class="bar material E" x="5" y="200" height="0" width="20"></rect>
+            <rect class="bar material CO2" x="25" y="200" height="0" width="20"></rect>
+            <rect class="bar manufacture E" x="75" y="200" height="0" width="20"></rect>
+            <rect class="bar manufacture CO2" x="95" y="200" height="0" width="20"></rect>
+            <rect class="bar transport E" x="145" y="200" height="0" width="20"></rect>
+            <rect class="bar transport CO2" x="165" y="200" height="0" width="20"></rect>
+            <rect class="bar use E" x="215" y="200" height="0" width="20"></rect>
+            <rect class="bar use CO2" x="235" y="200" height="0" width="20"></rect>
+            <rect class="bar disposal E" x="285" y="200" height="0" width="20"></rect>
+            <rect class="bar disposal CO2" x="305" y="200" height="0" width="20"></rect>
+            <rect class="bar eol E" style="fill:url(#E_hatch)" x="355" y="200" height="0" width="20"></rect>
+            <rect class="bar eol CO2" style="fill:url(#CO2_hatch)" x="375" y="200" height="0" width="20"></rect>
+
+            <line id="xaxis" style="stroke:black" x1="0" y1="200" x2="400" y2="200"></line>
+            <text class="axlabel" x="25" y="220">Material</text>
+            <text class="axlabel" x="95" y="220">Manufacture</text>
+            <text class="axlabel" x="165" y="220">Transport</text>
+            <text class="axlabel" x="235" y="220">Use</text>
+            <text class="axlabel" x="305" y="220">Disposal</text>
+            <text class="axlabel" x="375" y="220">EOL</text>
+          </svg>
+
+          <style>
+            #plot text {
+              font-family: sans-serif;
+              stroke: none;
+            }
+
+            #plot .E {
+              fill: blueviolet;
+              stroke: blueviolet;
+              stroke-width: 1px;
+            }
+
+            #plot .CO2 {
+              fill: indigo;
+              stroke: indigo;
+              stroke-width: 1px;
+            }
+
+            #plot .axlabel {
+              text-anchor: middle;
+              font-size: small;
+            }
+          </style>
+        </div>
+
+        <div class="nav"> 
+          <p class="dbutton" id="back" onclick="back()"></p>
+          <p class="dbutton" id="next" onclick="next()"></p>
+        </div>
+
+        <script>
+        </script>
+					
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>
