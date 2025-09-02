@@ -390,7 +390,8 @@
 						</g>
 						<g id="dispenser">
 							<path d="M537.5,185 l0,-65 l80,0 l0,180 l-25,25 l-5,0 l0,-5 l20,-20 l0,-170 l-60,0 l0,55 l-10,0 
-									 M537.5,195 l0,105 l25,25 l5,0 l0,-5 l-20,-20 l0,-105 l-10,0"></path>
+									 M537.5,195 l0,105 l25,25 l5,0 l0,-5 l-20,-20 l0,-105 l-10,0
+									 M570,320 l0,5 l15,0 l0,-5 l-15,0"></path>
 						</g>
 						<g id="gate">
 							 <path d="M557.5,325 l40,0"></path>
@@ -511,7 +512,7 @@
 							<path id="piston_plate2" d="M547.5,155 l60,0 l0,10 l-60,0 l0,-10"></path>
 						</g>
 						<g id="dispenser2">
-							<path d="M537.5,185 l0,-65 l80,0 l0,180 l-25,25 l-5,0 l0,-5 l20,-20 l0,-170 l-60,0 l0,170 l20,20 l0,5 l-5,0 l-25,-25 l0,-105"></path>
+							<path d="M570,320 l0,5 l15,0 l0,-5 l-15,0 M537.5,185 l0,-65 l80,0 l0,180 l-25,25 l-5,0 l0,-5 l20,-20 l0,-170 l-60,0 l0,170 l20,20 l0,5 l-5,0 l-25,-25 l0,-105"></path>
 						</g>
 						<g id="gate2">
 							 <path d="M557.5,325 l40,0"></path>
@@ -561,19 +562,20 @@
 
 
 						var cnt = 0;
-						var tl = gsap.timeline({repeat:1})
+						var tl = gsap.timeline({repeat:0})
 						//Dispenser dispenses parison in a hollow cylinder
-						tl.to("#parison1", {duration:3, attr:{d:"M567.5,325 l0,125 l2.5,0 l0,-125 l-2.5,0"}, ease:"none"})
-						tl.to("#parison2", {duration:3, attr:{d:"M587.5,325 l0,125 l-2.5,0 l0,-125 l2.5,0"}, ease:"none"}, 0)
+						tl.to("#gate2", {duration:0.5, x:-40}, 0)
+						tl.to("#parison1", {duration:2.5, attr:{d:"M567.5,325 l0,125 l2.5,0 l0,-125 l-2.5,0"}, ease:"none"}, 0.5)
+						.to("#parison2", {duration:2.5, attr:{d:"M587.5,325 l0,125 l-2.5,0 l0,-125 l2.5,0"}, ease:"none"}, 0.5)
 						//split die comes and clamps parison
-						.to("#left_die2, #right_die2", {duration:0.5, y:150, ease:"none"}, 0)
-						.to("#left_die2", {duration:1, x:-142.5, ease:"none"}, 0.5)
-						.to("#right_die2", {duration:1, x:-102.5, ease:"none"}, 0.5)
+						.to("#left_die2, #right_die2", {duration:0.4, y:100, ease:"none"}, 0)
+						.to("#left_die2", {duration:0.57, x:-142.5, ease:"none"}, 0.5)
+						.to("#right_die2", {duration:0.57, x:-102.5, ease:"none"}, 0.5)
 						.to("#left_die2, #right_die2", {duration:0.5, y:-15, ease:"none"}, 1.5)
-						.to("#left_die2", {duration:0.5, x:-122.5, ease:"none"})
-						.to("#right_die2", {duration:0.5, x:-122.5, ease:"none"})
-						.to("#parison1", {duration:3, attr:{d:"M740,340 l0,5 s0,3 5,5 l0,18.333 s-5,3.333 -5,11.667 l0,35 s0,5 10,15 l0,20 s-7.5,5 -10,15 l2.5,0 s0,-7.5 7.5,-12.5 l0,-25 s-7.5,-7.5 -7.5,-12.5 l0,-35 s0,-7.5 5,-11.667 l0,-15.833 l-5,-5 l0,-7.5 l-2.5,0"}})
-						.to("#parison2", {duration:3, attr:{d:"M760,340 l0,5 s0,3 -5,5 l0,18.333 s5,3.333 5,11.667 l0,35 s0,5 -10,15 l0,20 s7.5,5 10,15 l-2.5,0 s0,-7.5 -7.5,-12.5 l0,-25 s7.5,-7.5 7.5,-12.5 l0,-35 s0,-7.5 -5,-11.667 l0,-15.833 l5,-5 l0,-7.5 l2.5,0"}})
+						.to("#left_die2", {duration:0.3, x:-122.5, ease:"none"}, 3)
+						.to("#right_die2", {duration:0.3, x:-122.5, ease:"none"}, 3)
+						.to("#parison1", {duration:0, attr:{d:"M567.5,325 l0,5 s0,3 5,5 l0,18.333 s-5,3.333 -5,11.667 l0,35 s0,5 10,15 l0,20 s-7.5,5 -10,15 l2.5,0 s0,-7.5 7.5,-12.5 l0,-25 s-7.5,-7.5 -7.5,-12.5 l0,-35 s0,-7.5 5,-11.667 l0,-15.833 l-5,-5 l0,-7.5 l-2.5,0"}})
+						.to("#parison2", {duration:0, attr:{d:"M587.5,325 l0,5 s0,3 -5,5 l0,18.333 s5,3.333 5,11.667 l0,35 s0,5 -10,15 l0,20 s7.5,5 10,15 l-2.5,0 s0,-7.5 -7.5,-12.5 l0,-25 s7.5,-7.5 7.5,-12.5 l0,-35 s0,-7.5 -5,-11.667 l0,-15.833 l5,-5 l0,-7.5 l2.5,0"}})
 
 						//Hot knife severs the parison
 
