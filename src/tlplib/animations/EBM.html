@@ -621,7 +621,15 @@
 						// .to("#parison2", {duration:0, ease:"none", attr:{d:"M587.5,325 l0,5 s0,3 -5,5 l0,4.333 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,1 l2,2 l0,4 l1,0 l-3,0 l0,1 l10,6.667 s5,3.333 5,14 l0,1 s0,1 -2,2 l0,21 s2,1 2,2 l0,20 s0,5 -10,0 l-4,-3 s-4,-2 -6,-2 l0,20 s7.5,5 10,15 l-2.5,0 s0,-7.5 -7.5,-12.5 l0,-25 s2,0 6.5,2.5 l6,4.5  s6,3 6,0 l0,-18.5 s0,-1 -2,-2 l0,-22.5 s2,-1 2,-2 s0,-10.667 -5,-13.5 l-10.5,-6.167 l0,-8 l0,-9.833 4.5,-4.5 l0,-7.5 l2.5,0"}}, 5.5)
 						
 						//bottle ejected by die splitting
+						.to("#left_die2", {duration:0.7, x:-20, ease:"none"}, 5.8)
+						.to("#left_die2", {duration:0.7, y:15, ease:"none"}, 5.8)
+						.to("#right_die2", {duration:0.7, x:20, ease:"none"}, 5.8)
+						.to("#right_die2", {duration:0.7, y:15, ease:"none"}, 5.8)
+						.to("#left_die2", {duration:0.16, x:-28, ease:"none"}, 6.5)
+						.to("#right_die2", {duration:0.16, x:28, ease:"none"}, 6.5)
+						.to("#parison1, #parison2", {duration:0.84, ease:"none", x:225}, 6.66)
 
+						//bottle gets trimmed
 						//bottle goes off screen
 						//simultaneously split die comes and clamps new parison
 						tl.pause()
