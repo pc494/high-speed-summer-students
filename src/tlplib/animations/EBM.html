@@ -491,10 +491,13 @@
 							stroke:#000;
 							stroke-width:5px;
 						}
-						#hot_knife2 {
+						#hot_knives2 {
 							stroke:#f00;
 							stroke-width:1px;
 							fill:#ea0d01;
+						}
+						#waste_knifes2 {
+							visibility:visible;
 						}
 						#split_die2 {
 							stroke:#000;
@@ -539,8 +542,14 @@
 						<g id="gate2">
 							 <path d="M557.5,325 l40,0"></path>
 						</g>
-						<g id="hot_knife2">
-							<path d="M600,325 l25,0 l0,5 l-25,-5"></path>
+						<g id="hot_knives2">
+							<path id="hot_knife2" d="M600,325 l25,0 l0,5 l-25,-5"></path>
+							<g id="waste_knives">
+								<path id="waste_knife_topleft" d="M772.5,352 l-25,0 l0,-5 l25,5"></path>
+								<path id="waste_knife_topright" d="M832.5,353 l25,0 l0,-5 l-25,5"></path>
+								<path id="waste_knife_bottomleft" d="M782.5,445 l-20,15 l3,4 l17,-19"></path>
+								<path id="waste_knife_bottomright" d="M822.5,445 l20,15 l-3,4 l-17,-19"></path>
+							</g>
 						</g>
 						<g id="nozzle2">
 							<!-- moved up by 15 -->
@@ -637,6 +646,7 @@
 						.to("#parison1, #parison2", {duration:0.792, ease:"none", x:225}, 6.708)
 
 						//bottle gets trimmed
+
 						//bottle goes off screen
 						//simultaneously split die comes and clamps new parison
 						tl.pause()
