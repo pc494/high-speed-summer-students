@@ -213,41 +213,41 @@
 
 					<p class="dbutton" id="reset" onclick="reset()" style="position:absolute; top:0; left:0; z-index:100"></p>
 
-					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:40px; background-color: snow;">
+					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:40px;">
 
 						<div id="title" style="height:40px;">
-							<p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span id="product_spec" style="text-decoration:underline">product specification</span> </p>
+							<p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span class="clickable" id="product_spec" style="text-decoration:underline" onclick="popup('#product_spec_pop')">product specification</span> </p>
 						</div>
 						
-						<svg id="lifeline" width="600" height="30" style="stroke:dodgerblue; fill:dodgerblue;">
+						<svg id="lifeline" width="600" height="30" style="fill:dodgerblue;stroke:dodgerblue">
 							<defs>
 								<marker id="arrowB" markerWidth="10" markerHeight="10" refX="3" refY="2" orient="auto-start-reverse" markerUnits="strokeWidth">
 									<path d="M0,0 L0,4 L4,2 z" fill="dodgerblue"/>
 								</marker>							
 							</defs>
 
-							<g class="step" id="material_btn">
+							<g class="clickable" id="material_btn" onclick="popup('#material_pop')">
 								<rect class="stepbox" x="0" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text class="stepbox_text" x="50" y="20"> Material </text>
+								<text x="50" y="20"> Material </text>
 							</g>
 
-							<line class="step" id="transport_1_btn" x1="110" y1="15" x2="180" y2="15" marker-end="url(#arrowB)"></line>
+							<line class="step clickable" id="transport_1_btn" onclick="popup('#transport_1_pop')" x1="110" y1="15" x2="180" y2="15" marker-end="url(#arrowB)"></line>
 							
-							<g class="sysB" id="manufacture_btn">
+							<g class="clickable" id="manufacture_btn" onclick="popup('#manufacture_pop')">
 								<rect class="stepbox" x="190" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text class="stepbox_text" x="240" y="20"> Manufacture </text>
+								<text x="240" y="20"> Manufacture </text>
 							</g>
 
-							<line class="step" id="transport_2_btn" x1="300" y1="15" x2="370" y2="15" marker-end="url(#arrowB)"></line>
+							<line class="step clickable" id="transport_2_btn" onclick="popup('#transport_2_pop')" x1="300" y1="15" x2="370" y2="15" marker-end="url(#arrowB)"></line>
 							
-							<g class="step" id="use_btn">
+							<g class="clickable" id="use_btn" onclick="popup('#use_pop')">
 								<rect class="stepbox" x="380" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text class="stepbox_text" x="430" y="20"> Use </text>
+								<text x="430" y="20"> Use </text>
 							</g>
 
-							<g class="step" id="disposal_btn">
+							<g class="clickable" id="disposal_btn"  onclick="popup('#disposal_pop')">
 								<rect class="stepbox" x="500" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text class="stepbox_text" x="550" y="20"> Disposal </text>
+								<text x="550" y="20"> Disposal </text>
 							</g>
 
 						</svg>
@@ -261,8 +261,7 @@
 	
 							#lifeline .stepbox{
 								fill-opacity: 0.1;
-								stroke-width: 2px;
-								stroke-opacity: 0.6;
+								stroke:none;
 							}
 	
 							#lifeline line {
@@ -271,9 +270,9 @@
 							}
 						</style>
 
-						<div id="options" style="position:absolute; height:270px; width:190px; top:90px; background:ghostwhite"> 
+						<div id="options" style="position:absolute; height:270px; width:190px; top:90px;"> 
 							
-							<div class="pop" id="product_spec_pop">
+							<div class="pop" id="product_spec_pop" style="display: block;">
 								<p> The car doors are designed for small electric cars; each car carries 4 doors </p>
 								<p> The cars are marketed for use in daily commute, and is estimated to last for 10 years </p>
 							</div>
@@ -442,7 +441,18 @@
 						<p class="dbutton" id="next" onclick="next()"></p>
 					</div>
 
+					<style> 
+						.clickable:hover, .clickable:focus-visible {
+							cursor: pointer;
+							opacity: 0.7 ;
+						}
+					</style>
+
 					<script>
+						function popup(content) {
+							document.querySelectorAll(".pop").forEach(el => el.style.display = "none")
+							document.querySelector(content).style.display = "block"
+						}
 					</script>
 					
 				</div>
