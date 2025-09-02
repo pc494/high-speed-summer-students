@@ -459,6 +459,12 @@
 							document.querySelectorAll(".pop").forEach(el => el.style.display = "none")
 							document.querySelector(content).style.display = "block"
 						}
+
+						document.querySelectorAll("#options .opt").forEach((el) => {
+							el.addEventListener("change", function(event){
+								console.log("clicked")
+							})
+						})
 					</script>
 					
 				</div>
