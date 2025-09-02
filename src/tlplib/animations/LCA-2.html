@@ -217,7 +217,7 @@
 
 						<div id="title" style="height:50px;">
 							<p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span class="clickable" id="product_spec" style="text-decoration:underline" onclick="popup('#product_spec_pop')">product specification</span> </p>
-							<p style="margin:0px; font-size:0.9em; font-style: italic;"> Click on the life cycle to view options </p>
+							<p style="margin:0px; font-size:0.9em; font-style: italic;"> Click on each step to view options </p>
 						</div>
 						
 						<svg id="lifeline" width="600" height="30" style="fill:dodgerblue;stroke:dodgerblue">
@@ -232,18 +232,24 @@
 								<text x="50" y="20"> Material </text>
 							</g>
 
-							<line class="step clickable" id="transport_1_btn" onclick="popup('#transport_1_pop')" x1="110" y1="15" x2="180" y2="15" marker-end="url(#arrowB)"></line>
-							
-							<g class="clickable" id="manufacture_btn" onclick="popup('#manufacture_pop')">
-								<rect class="stepbox" x="190" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="240" y="20"> Manufacture </text>
+							<g class="clickable" id="transport_1_btn" onclick="popup('#transport_1_pop')" >
+								<rect class="stepbox" x="110" y="0" rx="5" ry="5" width="75" height="30"></rect>
+								<line x1="120" y1="15" x2="170" y2="15" marker-end="url(#arrowB)"></line>
 							</g>
 
-							<line class="step clickable" id="transport_2_btn" onclick="popup('#transport_2_pop')" x1="300" y1="15" x2="370" y2="15" marker-end="url(#arrowB)"></line>
-							
+							<g class="clickable" id="manufacture_btn" onclick="popup('#manufacture_pop')">
+								<rect class="stepbox" x="195" y="0" rx="5" ry="5" width="100" height="30"></rect>
+								<text x="245" y="20"> Manufacture </text>
+							</g>
+
+							<g class="clickable" id="transport_2_btn" onclick="popup('#transport_2_pop')" >
+								<rect class="stepbox" x="305" y="0" rx="5" ry="5" width="75" height="30"></rect>
+								<line x1="315" y1="15" x2="365" y2="15" marker-end="url(#arrowB)"></line>
+							</g>
+
 							<g class="clickable" id="use_btn" onclick="popup('#use_pop')">
-								<rect class="stepbox" x="380" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="430" y="20"> Use </text>
+								<rect class="stepbox" x="390" y="0" rx="5" ry="5" width="100" height="30"></rect>
+								<text x="440" y="20"> Use </text>
 							</g>
 
 							<g class="clickable" id="disposal_btn"  onclick="popup('#disposal_pop')">
