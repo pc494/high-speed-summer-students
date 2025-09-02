@@ -461,10 +461,11 @@
 					<style>
 						#EBM_animation2 {
 							position:absolute;
-							left:-500px;
-							top:-100px;
+							left:-475px;
+							top:-60px;
 							width:1280px;
 							height:640px;
+							transform:scale(1.2);
 						}
 						#dispenser2 {
 							position:absolute;
@@ -582,17 +583,19 @@
 						.to("#parison1", {duration:2.8, attr:{d:"M567.5,325 l0,125 l2.5,0 l0,-125 l-2.5,0"}, ease:"none"}, 0.2)
 						.to("#parison2", {duration:2.8, attr:{d:"M587.5,325 l0,125 l-2.5,0 l0,-125 l2.5,0"}, ease:"none"}, 0.2)
 						//split die comes and clamps parison
-						.to("#left_die2, #right_die2", {duration:0.4, y:50, ease:"none"}, 0)
+						.to("#left_die2, #right_die2", {duration:0.4, y:15, ease:"none"}, 0)
 						.to("#left_die2", {duration:0.57, x:-142.5, ease:"none"}, 0.4)
 						.to("#right_die2", {duration:0.57, x:-102.5, ease:"none"}, 0.4)
 						.to("#left_die2, #right_die2", {duration:0.5, y:-15, ease:"none"}, 0.97)
 						.to("#left_die2", {duration:0.3, x:-122.5, ease:"none"}, 3)
 						.to("#right_die2", {duration:0.3, x:-122.5, ease:"none"}, 3)
+
+						//Hot knife severs the parison
 						.to("#hot_knife2", {duration:0.25, x:-35, ease:"none"}, 3.2)
 						// .to("#parison1", {duration:0, attr:{d:"M567.5,325 l0,5 s0,3 5,5 l0,18.333 s-5,3.333 -5,11.667 l0,35 s0,5 10,15 l0,20 s-7.5,5 -10,15 l2.5,0 s0,-7.5 7.5,-12.5 l0,-25 s-7.5,-7.5 -7.5,-12.5 l0,-35 s0,-7.5 5,-11.667 l0,-15.833 l-5,-5 l0,-7.5 l-2.5,0"}}, 3.3)
 						// .to("#parison2", {duration:0, attr:{d:"M587.5,325 l0,5 s0,3 -5,5 l0,18.333 s5,3.333 5,11.667 l0,35 s0,5 -10,15 l0,20 s7.5,5 10,15 l-2.5,0 s0,-7.5 -7.5,-12.5 l0,-25 s7.5,-7.5 7.5,-12.5 l0,-35 s0,-7.5 -5,-11.667 l0,-15.833 l5,-5 l0,-7.5 l2.5,0"}}, 3.3)
-						.to("#parison1", {duration: 0.15, morphSVG: "#parison_test1"}, 3.15)
-						.to("#parison2", {duration: 0.15, morphSVG: "#parison_test2"}, 3.15)
+						.to("#parison1", {duration: 0.1, morphSVG: "#parison_test1"}, 3.2)
+						.to("#parison2", {duration: 0.1, morphSVG: "#parison_test2"}, 3.2)
 						.to("#parison1, #parison2", {duration:0.5, y:10}, 3.5)
 						.to("#left_die2, #right_die2", {duration:0.5, y:-5}, 3.5)
 						.to("#hot_knife2", {duration:0.5, x:0, ease:"none"}, 4)
@@ -602,12 +605,11 @@
 						.to("#parison1, #parison2", {duration:0.57, ease:"none", x:122.5}, 4)
 						.to("#parison1, #parison2", {duration:0.57, ease:"none", y:15}, 4)
 						.to("#nozzle2", {duration:0.43, ease:"none", y:15}, 4.57)
-						.to("#parison1", {duration: 0.3, morphSVG: "#parison_test3"}, 5.5)
-						.to("#parison2", {duration: 0.3, morphSVG: "#parison_test4"}, 5.5)
+						.to("#parison1", {duration: 0.3, morphSVG: "#parison_test3"}, 5.2)
+						.to("#parison2", {duration: 0.3, morphSVG: "#parison_test4"}, 5.2)
+						.to("#nozzle2", {duration:0.43, ease:"none", y:0}, 5.57)
 						// .to("#parison1", {duration:0, ease:"none", attr:{d:"M567.5,325 l0,5 s0,3 5,5 l0,5.333 q-5,1 0,2 q-5,1 0,2 q-5,1 0,2 l-2,2 l0,4 l-1,0 l3,0 l0,1 l-10,6.667 s-5,3.333 -5,14 l0,1 s0,1 2,2 l0,21 s-2,1 -2,2 l0,20 s0,5 10,0 l4,-3 s4,-2 6,-2 l0,20 s-7.5,5 -10,15 l2.5,0 s0,-7.5 7.5,-12.5 l0,-25 s-2,0 -6.5,2.5 l-6,4.5  s-6,3 -6,0 l0,-18.5 s0,-1 2,-2 l0,-22.5 s-2,-1 -2,-2 s0,-10.667 5,-13.5 l10.5,-6.167 l0,-8 l0,-9.833 l-4.5,-4.5 l0,-7.5 l-2.5,0"}}, 5.5)
 						// .to("#parison2", {duration:0, ease:"none", attr:{d:"M587.5,325 l0,5 s0,3 -5,5 l0,4.333 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,1 l2,2 l0,4 l1,0 l-3,0 l0,1 l10,6.667 s5,3.333 5,14 l0,1 s0,1 -2,2 l0,21 s2,1 2,2 l0,20 s0,5 -10,0 l-4,-3 s-4,-2 -6,-2 l0,20 s7.5,5 10,15 l-2.5,0 s0,-7.5 -7.5,-12.5 l0,-25 s2,0 6.5,2.5 l6,4.5  s6,3 6,0 l0,-18.5 s0,-1 -2,-2 l0,-22.5 s2,-1 2,-2 s0,-10.667 -5,-13.5 l-10.5,-6.167 l0,-8 l0,-9.833 4.5,-4.5 l0,-7.5 l2.5,0"}}, 5.5)
-
-						//Hot knife severs the parison
 
 						//die & parison move to pressurised air nozzle
 
