@@ -18,6 +18,8 @@
 		
 		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
 
+		<link rel="stylesheet" href="blastFurnace.css"/>
+
 		<script>
 		// hide and show CC licence words
 			function showTxt() {   
@@ -93,6 +95,7 @@
 			
 			/* DOiTPoMS buttons */
 			.dbutton {
+				background-color: pink;
 				cursor: pointer;
 				height: 25px;
 				margin: 5px;
@@ -399,48 +402,6 @@
 					<div class="nav"> 
 						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
 					</div>
-
-					<style>
-						.dbutton {
-							background-color: pink;
-						}
-
-						.laser {
-							fill:red; 
-							stroke:black
-						}
-
-						.laser:hover, .laser:focus-visible {
-							stroke:red;
-							stroke-width: 3px;
-						}
-
-						.laser:active {
-							stroke-width: 1px;
-						}
-
-						.line {
-							stroke:black;
-						}
-
-						#reaction_pointer text {
-							font-size: 0.7em;
-						}
-
-						#reaction_pointer .pointer {
-							visibility: hidden;
-						}
-
-						#reaction_pointer .line, #reaction_pointer .label {
-							visibility: hidden;
-						}
-
-						#reaction_pointer .pointer:hover .laser, #reaction_pointer .pointer:focus-visible .laser {
-							stroke: none;
-						}
-
-						
-					</style>
 
 					<script>
 						var ores_moving_down = gsap.timeline({defaults:{ease:"none"}})
