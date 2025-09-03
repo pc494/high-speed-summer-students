@@ -216,7 +216,7 @@
 					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:30px;">
 
 						<div id="title" style="height:50px;">
-							<p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span class="clickable" id="product_spec" style="text-decoration:underline" onclick="popup('#product_spec_pop')">product specification</span> </p>
+							<p style="margin:0px;"> <strong style="font-size: x-large;">4 steel car doors</strong>  <span class="clickable" id="product_spec" style="text-decoration:underline" onclick="popup('#product_spec_pop')">product specification</span> </p>
 							<p style="margin:0px; font-size:0.9em; font-style: italic;"> Click on each step to view options </p>
 						</div>
 						
@@ -472,8 +472,8 @@
 						})
 
 						function setbars(bars, h0, h1) {
-							var sf_E = 100
-							var sf_CO2 = 10
+							var sf_E = 20
+							var sf_CO2 = 1
 							h0 = h0/sf_E
 							h1 = h1/sf_CO2
 							console.log(h0, h1)
@@ -511,7 +511,11 @@
 							var transport_E = transport1_E + transport2_E
 							var transport_CO2 = transport1_CO2 + transport2_CO2
 							setbars(transport_bars, transport_E, transport_CO2)
-							
+
+							var use_dist = Number(document.querySelector("input[name='use_daysPerYear']:checked").value)*Number(document.querySelector("input[name='use_distPerDay']:checked").value)
+							var use_E = 0.144 * use_dist
+							var use_CO2 = 0.00914 * use_dist
+							setbars(use_bars, use_E, use_CO2)
 						}
 					</script>
 					
