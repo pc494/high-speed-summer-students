@@ -412,7 +412,7 @@
 								font-size: 0.9rem;
 							}
 
-							#options p {
+							p {
 								margin-block: 10px 0px;
 							}
 
@@ -433,11 +433,11 @@
 								bottom:10px
 							}
 
-							#options .pop .total .subtotal_E, #options .pop .total .subtotal_E_eol {
+							#options .pop .total .subtotal_E, #options .pop .total .subtotal_E_eol, #total_E {
 								color: blueviolet
 							}
 
-							#options .pop .total .subtotal_CO2, #options .pop .total .subtotal_CO2_eol {
+							#options .pop .total .subtotal_CO2, #options .pop .total .subtotal_CO2_eol, #total_CO2 {
 								color: indigo
 							}
 
@@ -447,7 +447,15 @@
 
 						</style>
 
-						<svg id="plot" height="320" width="400" style="position:absolute; top:90px; left:220px; background:seashell">
+						<div style="position:absolute; top:90px; left:220px; font-size: 0.9rem;">
+							<p> 
+								Lifetime total (excluding EOL potential) -- <br>
+								E: <span id="total_E"></span> MJ <br>
+								CO&#x2082; eq.: <span id="total_CO2"></span> kg
+							</p>
+						</div>
+
+						<svg id="plot" height="320" width="400" style="position:absolute; top:90px; left:220px;">
 							
 							<defs>
 								<pattern id="E_hatch" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -457,7 +465,6 @@
 									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:indigo"></line>
 								</pattern>
 							</defs>
-							<text id="total" x="10" y="30"></text>
 							
 							<g id="bar">
 								<rect class="material E" x="5" y="200" height="0" width="20"></rect>
@@ -610,7 +617,8 @@
 
 							summed_E = material_E + manufacture_E + transport_E + use_E + disposal_E
 							summed_CO2 = material_CO2 + manufacture_CO2 + transport_CO2 + use_CO2 + disposal_CO2
-							document.getElementById("total").innerHTML = "Total: "+Number(summed_E).toFixed(1)+" MJ; "+Number(summed_CO2).toFixed(1)+"kg CO&#x2082; eq."
+							document.getElementById("total_E").innerHTML = Number(summed_E).toFixed(1)
+							document.getElementById("total_CO2").innerHTML = Number(summed_CO2).toFixed(1)
 						}
 					</script>
 					
