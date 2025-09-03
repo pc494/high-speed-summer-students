@@ -463,9 +463,9 @@
 						#EBM_animation2 {
 							position:absolute;
 							left:-475px;
-							top:-60px;
+							top:-70px;
 							width:1014px;
-							height:640px;
+							height:500px;
 							transform:scale(1.2);
 						}
 						#dispenser2 {
@@ -592,6 +592,9 @@
 						// }
 						gsap.to("#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, delay:0, autoAlpha:0})
 						gsap.to("#parison1, #parison2", {duration:0, autoAlpha:0.6})
+						gsap.to("#left_die2, #right_die2", {duration:0, y:15, ease:"none"})
+						gsap.to("#left_die2", {duration:0, x:-28, ease:"none"})
+						gsap.to("#right_die2", {duration:0, x:28, ease:"none"})
 
 						var cnt = 0;
 						var tl = gsap.timeline({repeat:0})
@@ -654,7 +657,9 @@
 						.to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 7.5)
 						.to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 7.5)
 						.to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 7.5)
-						.to("#parison1, #parison2", {duration:0, autoAlpha:0}, 8)
+						.to("#parison1, #parison2", {duration:0, x:0, y:0, autoAlpha:0.6}, 8)
+						.to("#parison1", {duration: 0, attr:{d:"M567.5,250 l0,50 l2.5,0 l0,-50 l-2.5,0"}}, 8)
+						.to("#parison2", {duration: 0, attr:{d:"M587.5,250 l0,50 l-2.5,0 l0,-50 l2.5,0"}}, 8)
 						.to("#parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, autoAlpha:1}, 8)
 						.to("#waste_knife_topleft", {duration:0.5, x:0, ease:"none"}, 8.2)
 						.to("#waste_knife_topright", {duration:0.5, x:0, ease:"none"}, 8.2)
@@ -674,7 +679,7 @@
 					
 					<div class="nav"> 
 					
-						<p class="dbutton" id="continue" onClick="tl.play()"></p >
+						<p class="dbutton" id="continue" onClick="tl.restart()"></p >
 				
 					</div>
 				
