@@ -260,7 +260,7 @@
 								<p> Mode of transport </p>
 								<div class="opt">
 									<input type="radio" id="transport1_truck" name="transport1" value="101 6.36" checked="true"> <label for="transport1_truck"> Large truck </label> <br>
-									<input type="radio" id="transport1_train" name="transport1" value="40.2 2.94"> <label for="transport1_train"> Diesel train </label> <br>
+									<input type="radio" id="transport1_aircraft" name="transport1" value="720 51"> <label for="transport1_aircraft"> Long-haul aircraft </label> <br>
 									<input type="radio" id="transport1_ship" name="transport1" value="5.4 0.42"> <label for="transport1_ship"> Bulk carrier ship </label> <br>
 								</div>
 								<p> Distance travelled </p>
@@ -294,7 +294,7 @@
 								<p> Mode of transport </p>
 								<div class="opt">
 									<input type="radio" id="transport2_truck" name="transport2" value="101 6.36"> <label for="transport2_truck"> Large truck </label> <br>
-									<input type="radio" id="transport2_train" name="transport2" value="40.2 2.94"> <label for="transport2_train"> Diesel train </label> <br>
+									<input type="radio" id="transport2_aircraft" name="transport2" value="720 51"> <label for="transport2_aircraft"> Long-haul aircraft </label> <br>
 									<input type="radio" id="transport2_ship" name="transport2" value="7.8 0.6"> <label for="transport2_ship"> Container ship </label> <br>
 								</div>
 								<p> Distance travelled </p>
@@ -564,9 +564,9 @@
 							var transport_E = transport1_E + transport2_E
 							var transport_CO2 = transport1_CO2 + transport2_CO2
 							setbars(transport_bars, transport_E, transport_CO2)
-							document.querySelector("#options #transport1_pop .total .subtotal_E").textContent = Number(transport1_E).toFixed(3)
+							document.querySelector("#options #transport1_pop .total .subtotal_E").textContent = Number(transport1_E).toFixed(2)
 							document.querySelector("#options #transport1_pop .total .subtotal_CO2").textContent = Number(transport1_CO2).toFixed(3)
-							document.querySelector("#options #transport2_pop .total .subtotal_E").textContent = Number(transport2_E).toFixed(3)
+							document.querySelector("#options #transport2_pop .total .subtotal_E").textContent = Number(transport2_E).toFixed(2)
 							document.querySelector("#options #transport2_pop .total .subtotal_CO2").textContent = Number(transport2_CO2).toFixed(3)
 
 							var use_dist = Number(document.querySelector("input[name='use_daysPerYear']:checked").value)*Number(document.querySelector("input[name='use_distPerDay']:checked").value)
