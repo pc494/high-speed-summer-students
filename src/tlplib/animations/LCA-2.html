@@ -305,9 +305,9 @@
 								</div>
 								<p> Distance travelled </p>
 								<div class="opt">
-									<input type="radio" id="transport1_dist500" name="dist1" value="500" checked="true"> <label for="transport1_dist500"> 500&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist100" name="dist1" value="100" checked="true"> <label for="transport1_dist500"> 100&nbsp;km </label> <br>
 									<input type="radio" id="transport1_dist2000" name="dist1" value="2000"> <label for="transport1_dist2000"> 2000&nbsp;km </label> <br>
-									<input type="radio" id="transport1_dist10000" name="dist1" value="10000"> <label for="transport1_dist10000"> 10000&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist30000" name="dist1" value="30000"> <label for="transport1_dist10000"> 30000&nbsp;km </label> <br>
 								</div>
 							</div>
 
@@ -325,9 +325,9 @@
 								</div>
 								<p> Distance travelled </p>
 								<div class="opt">
-									<input type="radio" id="transport2_dist500" name="dist2" value="500" checked="true"> <label for="transport2_dist500"> 500&nbsp;km </label> <br>
+									<input type="radio" id="transport2_dist500" name="dist2" value="100" checked="true"> <label for="transport2_dist500"> 100&nbsp;km </label> <br>
 									<input type="radio" id="transport2_dist2000" name="dist2" value="2000"> <label for="transport2_dist2000"> 2000&nbsp;km </label> <br>
-									<input type="radio" id="transport2_dist10000" name="dist2" value="10000"> <label for="transport2_dist10000"> 10000&nbsp;km </label> <br>
+									<input type="radio" id="transport2_dist30000" name="dist2" value="30000"> <label for="transport2_dist20000"> 30000&nbsp;km </label> <br>
 								</div>
 							</div>
 
@@ -350,7 +350,7 @@
 							<div class="pop" id="disposal_pop">
 								<p> At the end of the first life, the car doors may be disposed of entirely, or the material or the product itself may enter another life cycle.  </p>
 								<p> Option for disposal </p>
-								<div class="opt" onchange="test()">
+								<div class="opt">
 									<input type="radio" id="disposal_landfill" name="disposal_opts" value="12 0.84" checked="true"> <label for="disposal_landfill"> Landfill </label> <br>
 									<input type="radio" id="disposal_recycle" name="disposal_opts" value="42 2.94"> <label for="disposal_recycle"> Recycle </label> <br>
 									<input type="radio" id="disposal_reuse" name="disposal_opts" value="12 0.84"> <label for="disposal_reuse"> Reuse </label> <br>
@@ -458,13 +458,12 @@
 
 					<script>
 
-						var bl = 200
-
 						function popup(content) {
 							document.querySelectorAll(".pop").forEach(el => el.style.display = "none")
 							document.querySelector(content).style.display = "block"
 						}
 
+						calcbars()
 						document.querySelectorAll("#options .opt").forEach((el) => {
 							el.addEventListener("change", function(event){
 								console.log("clicked")
@@ -495,12 +494,23 @@
 							var frac_recycled = Number(document.querySelector("input[name='material']:checked").value)
 							var material_E = 1910 - frac_recycled*1400
 							var material_CO2 = 140 - frac_recycled*100.4
-							console.log(material_E, material_CO2)
 							setbars(material_bars, material_E, material_CO2)
 
 							var manufacture_E = 552
 							var manufacture_CO2 = 39.1
 							setbars(manufacture_bars, manufacture_E, manufacture_CO2)
+
+							var transport1_type = document.querySelector("input[name='transport1']:checked").value.split(" ")
+							var transport1_dist = Number(document.querySelector("input[name='dist1']:checked").value)/1000
+							var transport1_E = Number(transport1_type[0])*transport1_dist/1000
+							var transport1_CO2 = Number(transport1_type[1])*transport1_dist/1000
+							var transport2_type = document.querySelector("input[name='transport2']:checked").value.split(" ")
+							var transport2_dist = Number(document.querySelector("input[name='dist2']:checked").value)/1000
+							var transport2_E = Number(transport2_type[0])*transport2_dist/1000
+							var transport2_CO2 = Number(transport2_type[1])*transport2_dist/1000
+							var transport_E = transport1_E + transport2_E
+							var transport_CO2 = transport1_CO2 + transport2_CO2
+							setbars(transport_bars, transport_E, transport_CO2)
 							
 						}
 					</script>
