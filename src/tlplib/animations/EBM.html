@@ -508,7 +508,7 @@
 							stroke:#000;
 							stroke-width:1px;
 						}
-						#parison_test1, #parison_test2, #parison_test3, #parison_test4 {
+						#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4 {
 							visibility:hidden;
 						}
 					</style>
@@ -646,8 +646,21 @@
 						.to("#parison1, #parison2", {duration:0.792, ease:"none", x:225}, 6.708)
 
 						//bottle gets trimmed
-
+						.to("#waste_knife_topleft", {duration:0.5, x:25}, 7.5)
+						.to("#waste_knife_topright", {duration:0.5, x:-25}, 7.5)
+						.to("#waste_knife_bottomleft", {duration:0.5, x:20}, 7.5)
+						.to("#waste_knife_bottomright", {duration:0.5, x:-20}, 7.5)
+						.to("#waste_knife_bottomleft", {duration:0.5, y:-15}, 7.5)
+						.to("#waste_knife_bottomright", {duration:0.5, y:-15}, 7.5)
+						.to("#parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, attr:{visibility:"visible"}}, 8)
+						.to("#parison1, #parison2", {duration:0, attr:{visibility:"hidden"}}, 8)
+						.to("#waste_knife_bottomleft", {duration:0.5, x:-20}, 8.2)
+						.to("#waste_knife_bottomright", {duration:0.5, x:20}, 8.2)
+						.to("#waste_knife_bottomleft", {duration:0.5, y:15}, 8.2)
+						.to("#waste_knife_bottomright", {duration:0.5, y:15}, 8.2)
+						
 						//bottle goes off screen
+						
 						//simultaneously split die comes and clamps new parison
 						tl.pause()
 					</script>
