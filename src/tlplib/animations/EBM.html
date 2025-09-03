@@ -591,6 +591,7 @@
 						// 	cnt3 += 1;console.log(cnt3)
 						// }
 						gsap.to("#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, delay:0, autoAlpha:0})
+						gsap.to("#parison1, #parison2", {duration:0, autoAlpha:0.6})
 
 						var cnt = 0;
 						var tl = gsap.timeline({repeat:0})
@@ -630,6 +631,7 @@
 						//air injected into parison => bottle
 						.to("#parison1", {duration: 0.3, morphSVG: "#parison_test3"}, 5.2)
 						.to("#parison2", {duration: 0.3, morphSVG: "#parison_test4"}, 5.2)
+						.to("#parison1, #parison2", {duration:0.5, autoAlpha:1}, 5.3)
 
 						//air nozzle retracts
 						.to("#nozzle2", {duration:0.43, ease:"none", y:0}, 5.57)
