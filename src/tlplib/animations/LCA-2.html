@@ -397,8 +397,7 @@
 									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:indigo"></line>
 								</pattern>
 							</defs>
-							<text id="total_E" x="80" y="30">E: 0 MJ</text>
-							<text id="total_CO2" x="210" y="30">CO&#x2082; eq.: 0 kg</text>
+							<text id="total" x="10" y="30"></text>
 							
 							<g id="bar">
 								<rect class="material E" x="5" y="200" height="0" width="20"></rect>
@@ -476,7 +475,6 @@
 							var sf_CO2 = 1.5
 							h0 = h0/sf_E
 							h1 = h1/sf_CO2
-							console.log(h0, h1)
 							bars[0].setAttribute("height", Math.abs(h0)+"px")							
 							bars[1].setAttribute("height", Math.abs(h1)+"px")							
 							if (h0 > 0) {
@@ -520,8 +518,8 @@
 							setbars(use_bars, use_E, use_CO2)
 
 							var disposal_opt = document.querySelector("input[name='disposal_opts']:checked").value.split(" ")
-							var disposal_E = disposal_opt[0]
-							var disposal_CO2 = disposal_opt[1]
+							var disposal_E = Number(disposal_opt[0])
+							var disposal_CO2 = Number(disposal_opt[1])
 							setbars(disposal_bars, disposal_E, disposal_CO2)
 
 							var eol_E = 0 
@@ -535,6 +533,11 @@
 								eol_CO2 = -1 * material_CO2
 							}
 							setbars(eol_bars, eol_E, eol_CO2)
+
+							summed_E = material_E + manufacture_E + transport_E + use_E + disposal_E
+							summed_CO2 = material_CO2 + manufacture_CO2 + transport_CO2 + use_CO2 + disposal_CO2
+							console.log(summed_E, (summed_CO2))
+							document.getElementById("total").innerHTML = "Total: "+Number(summed_E).toFixed(1)+" MJ; "+Number(summed_CO2).toFixed(1)+"kg CO&#x2082; eq."
 						}
 					</script>
 					
