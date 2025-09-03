@@ -216,66 +216,19 @@
 					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:30px;">
 
 						<div id="title" style="height:50px;">
-							<p style="margin:0px;"> <strong style="font-size: x-large;">4 steel car doors</strong>  <span class="clickable" id="product_spec" style="text-decoration:underline" onclick="popup('#product_spec_pop')">product specification</span> </p>
+							<p style="margin:0px"> <strong style="font-size: x-large;">4 steel car doors</strong></p>  
 							<p style="margin:0px; font-size:0.9em; font-style: italic;"> Click on each step to view options </p>
 						</div>
-						
-						<svg id="lifeline" width="600" height="30" style="fill:dodgerblue;stroke:dodgerblue">
-							<defs>
-								<marker id="arrowB" markerWidth="10" markerHeight="10" refX="1" refY="1" orient="auto-start-reverse" markerUnits="strokeWidth">
-									<path d="M0,0 L0,2 L2,1 z" fill="dodgerblue" stroke="none"/>
-								</marker>						
-							</defs>
 
-							<g class="clickable" id="material_btn" onclick="popup('#material_pop')">
-								<rect class="stepbox" x="0" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="50" y="20"> Material </text>
-							</g>
-
-							<g class="clickable" id="transport1_btn" onclick="popup('#transport1_pop')" >
-								<rect class="stepbox" x="110" y="0" rx="5" ry="5" width="75" height="30"></rect>
-								<line x1="120" y1="15" x2="170" y2="15" marker-end="url(#arrowB)"></line>
-							</g>
-
-							<g class="clickable" id="manufacture_btn" onclick="popup('#manufacture_pop')">
-								<rect class="stepbox" x="195" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="245" y="20"> Manufacture </text>
-							</g>
-
-							<g class="clickable" id="transport2_btn" onclick="popup('#transport2_pop')" >
-								<rect class="stepbox" x="305" y="0" rx="5" ry="5" width="75" height="30"></rect>
-								<line x1="315" y1="15" x2="365" y2="15" marker-end="url(#arrowB)"></line>
-							</g>
-
-							<g class="clickable" id="use_btn" onclick="popup('#use_pop')">
-								<rect class="stepbox" x="390" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="440" y="20"> Use </text>
-							</g>
-
-							<g class="clickable" id="disposal_btn"  onclick="popup('#disposal_pop')">
-								<rect class="stepbox" x="500" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="550" y="20"> Disposal </text>
-							</g>
-
-						</svg>
-
-						<style>
-							#lifeline text {
-								font-family: sans-serif;
-								stroke: none;
-								text-anchor: middle;
-							}
-	
-							#lifeline .stepbox{
-								fill-opacity: 0.1;
-								stroke:none;
-							}
-	
-							#lifeline line {
-								fill: none;
-								stroke-width: 6;
-							}
-						</style>
+						<div id="lifeline" style="position:absolute; width:600px; height:30px;">
+							<button onclick="popup('#material_pop')">Material</button>
+							<button onclick="popup('#transport1_pop')">&#x2192;</button>
+							<button onclick="popup('#manufacture_pop')">Manufactrue</button>
+							<button onclick="popup('#transport2_pop')">&#x2192;</button>
+							<button onclick="popup('#use_pop')">Use</button>
+							<button onclick="popup('#disposal_pop')">Disposal</button>
+							<button onclick="popup('#product_spec_pop')" style="position:absolute; right:0"><em>Product specification</em></button>
+						</div>
 
 						<div id="options" style="position:absolute; height:310px; width:190px; top:90px;"> 
 							
@@ -340,13 +293,13 @@
 								<p> The product is transported to the user via distributors </p>
 								<p> Mode of transport </p>
 								<div class="opt">
-									<input type="radio" id="transport2_truck" name="transport2" value="101 6.36" checked="true"> <label for="transport2_truck"> Large truck </label> <br>
+									<input type="radio" id="transport2_truck" name="transport2" value="101 6.36"> <label for="transport2_truck"> Large truck </label> <br>
 									<input type="radio" id="transport2_train" name="transport2" value="40.2 2.94"> <label for="transport2_train"> Diesel train </label> <br>
 									<input type="radio" id="transport2_ship" name="transport2" value="7.8 0.6"> <label for="transport2_ship"> Container ship </label> <br>
 								</div>
 								<p> Distance travelled </p>
 								<div class="opt">
-									<input type="radio" id="transport2_dist100" name="dist2" value="100" checked="true"> <label for="transport2_dist100"> 100&nbsp;km </label> <br>
+									<input type="radio" id="transport2_dist100" name="dist2" value="100"> <label for="transport2_dist100"> 100&nbsp;km </label> <br>
 									<input type="radio" id="transport2_dist2000" name="dist2" value="2000"> <label for="transport2_dist2000"> 2000&nbsp;km </label> <br>
 									<input type="radio" id="transport2_dist30000" name="dist2" value="30000"> <label for="transport2_dist30000"> 30000&nbsp;km </label> <br>
 								</div>
@@ -363,13 +316,13 @@
 								<p> The car door travels with the car during use </p>
 								<p> Average distance travelled per day of use </p>
 								<div class="opt">
-									<input type="radio" id="use_disPerDay10" name="use_distPerDay" value="10" checked="true"> <label for="use_disPerDay10"> 10&nbsp;km </label> <br>
+									<input type="radio" id="use_disPerDay10" name="use_distPerDay" value="10"> <label for="use_disPerDay10"> 10&nbsp;km </label> <br>
 									<input type="radio" id="use_disPerDay50" name="use_distPerDay" value="50"> <label for="use_disPerDay50"> 50&nbsp;km </label> <br>
 									<input type="radio" id="use_disPerDay100" name="use_distPerDay" value="100"> <label for="use_disPerDay100"> 100&nbsp;km </label> <br>
 								</div>
 								<p> Number of days per year </p>
 								<div class="opt">
-									<input type="radio" id="use_daysPerYear50" name="use_daysPerYear" value="50" checked="true"> <label for="use_daysPerYear50"> 50&nbsp;days </label> <br>
+									<input type="radio" id="use_daysPerYear50" name="use_daysPerYear" value="50"> <label for="use_daysPerYear50"> 50&nbsp;days </label> <br>
 									<input type="radio" id="use_daysPerYear150" name="use_daysPerYear" value="150"> <label for="use_daysPerYear150"> 150&nbsp;days </label> <br>
 									<input type="radio" id="use_daysPerYear250" name="use_daysPerYear" value="250"> <label for="use_daysPerYear250"> 250&nbsp;days </label> <br>
 								</div>
@@ -386,7 +339,7 @@
 								<p> At the end of the first life, the car doors may be disposed of entirely, or the material or the product itself may enter another life cycle.  </p>
 								<p> Option for disposal </p>
 								<div class="opt">
-									<input type="radio" id="disposal_landfill" name="disposal_opts" value="12 0.84 landfill" checked="true"> <label for="disposal_landfill"> Landfill </label> <br>
+									<input type="radio" id="disposal_landfill" name="disposal_opts" value="12 0.84 landfill"> <label for="disposal_landfill"> Landfill </label> <br>
 									<input type="radio" id="disposal_recycle" name="disposal_opts" value="42 2.94 recycle"> <label for="disposal_recycle"> Recycle </label> <br>
 									<input type="radio" id="disposal_reuse" name="disposal_opts" value="12 0.84 reuse"> <label for="disposal_reuse"> Reuse </label> <br>
 								</div>
@@ -462,7 +415,7 @@
 									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:blueviolet"></line>
 								</pattern>
 								<pattern id="CO2_hatch" width="10" height="10" patternUnits="userSpaceOnUse">
-									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:indigo"></line>
+									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:teal"></line>
 								</pattern>
 							</defs>
 							
@@ -512,13 +465,41 @@
 								text-anchor: middle;
 								font-size: small;
 							}
+
+							#plot #xaxis {
+								stroke: black;
+								stroke-width: 0.5px;
+								stroke-opacity: 0.6;
+							}
 						</style>
 					</div>
 
 					<style> 
-						.clickable:hover, .clickable:focus-visible {
+						#lifeline {
+							text-align: justify;
+						}
+
+						button {
+							display: inline-block;
+							vertical-align: top;
+							font-size: 0.9rem;
+							border: none;
+							background-color: lavender;
+							color: blueviolet;
+							box-shadow: grey 0 2px;
+							border-radius: 5px;
+							padding:5px 10px
+						}
+
+						button:hover, button:focus-visible {
 							cursor: pointer;
-							opacity: 0.4 ;
+							background-color: azure;
+							color: teal
+						}
+
+						button:active {
+							transform: translateY(2px);
+							box-shadow: none;
 						}
 					</style>
 
@@ -529,7 +510,7 @@
 							document.querySelector(content).style.display = "block"
 						}
 
-						calcbars()
+						reset()
 						document.querySelectorAll("#options .opt").forEach((el) => {
 							el.addEventListener("change", function(event){
 								console.log("clicked")
@@ -619,6 +600,15 @@
 							summed_CO2 = material_CO2 + manufacture_CO2 + transport_CO2 + use_CO2 + disposal_CO2
 							document.getElementById("total_E").innerHTML = Number(summed_E).toFixed(1)
 							document.getElementById("total_CO2").innerHTML = Number(summed_CO2).toFixed(1)
+						}
+
+						function reset() {
+							var names = ["material", "transport1", "dist1", "transport2", "dist2", "use_distPerDay", "use_daysPerYear", "disposal_opts"]
+							names.forEach(name => {
+								console.log("input[name='"+name+"']")
+							 	document.querySelectorAll("input[name='"+name+"']")[0].checked=true
+							})
+							calcbars()
 						}
 					</script>
 					
