@@ -301,13 +301,13 @@
 								<div class="opt">
 									<input type="radio" id="transport1_truck" name="transport1" value="101 6.36" checked="true"> <label for="transport1_truck"> Large truck </label> <br>
 									<input type="radio" id="transport1_train" name="transport1" value="40.2 2.94"> <label for="transport1_train"> Diesel train </label> <br>
-									<input type="radio" id="transport1_ship" name="transport1" value="5.4 0.42"> <label for="transport1_train"> Bulk carrier ship </label> <br>
+									<input type="radio" id="transport1_ship" name="transport1" value="5.4 0.42"> <label for="transport1_ship"> Bulk carrier ship </label> <br>
 								</div>
 								<p> Distance travelled </p>
 								<div class="opt">
-									<input type="radio" id="transport1_dist100" name="dist1" value="100" checked="true"> <label for="transport1_dist500"> 100&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist100" name="dist1" value="100" checked="true"> <label for="transport1_dist100"> 100&nbsp;km </label> <br>
 									<input type="radio" id="transport1_dist2000" name="dist1" value="2000"> <label for="transport1_dist2000"> 2000&nbsp;km </label> <br>
-									<input type="radio" id="transport1_dist30000" name="dist1" value="30000"> <label for="transport1_dist10000"> 30000&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist30000" name="dist1" value="30000"> <label for="transport1_dist30000"> 30000&nbsp;km </label> <br>
 								</div>
 							</div>
 
@@ -325,9 +325,9 @@
 								</div>
 								<p> Distance travelled </p>
 								<div class="opt">
-									<input type="radio" id="transport2_dist500" name="dist2" value="100" checked="true"> <label for="transport2_dist500"> 100&nbsp;km </label> <br>
+									<input type="radio" id="transport2_dist100" name="dist2" value="100" checked="true"> <label for="transport2_dist100"> 100&nbsp;km </label> <br>
 									<input type="radio" id="transport2_dist2000" name="dist2" value="2000"> <label for="transport2_dist2000"> 2000&nbsp;km </label> <br>
-									<input type="radio" id="transport2_dist30000" name="dist2" value="30000"> <label for="transport2_dist20000"> 30000&nbsp;km </label> <br>
+									<input type="radio" id="transport2_dist30000" name="dist2" value="30000"> <label for="transport2_dist30000"> 30000&nbsp;km </label> <br>
 								</div>
 							</div>
 
@@ -335,15 +335,15 @@
 								<p> The car door travels with the car during use </p>
 								<p> Average distance travelled per day of use </p>
 								<div class="opt">
-									<input type="radio" id="use_disPerDay10" name="use_distPerDay" value="10" checked="true"> <label for="use_disPerDay5"> 10&nbsp;km </label> <br>
-									<input type="radio" id="use_disPerDay50" name="use_distPerDay" value="50"> <label for="use_disPerDay100"> 50&nbsp;km </label> <br>
-									<input type="radio" id="use_disPerDay100" name="use_distPerDay" value="100"> <label for="use_disPerDay500"> 100&nbsp;km </label> <br>
+									<input type="radio" id="use_disPerDay10" name="use_distPerDay" value="10" checked="true"> <label for="use_disPerDay10"> 10&nbsp;km </label> <br>
+									<input type="radio" id="use_disPerDay50" name="use_distPerDay" value="50"> <label for="use_disPerDay50"> 50&nbsp;km </label> <br>
+									<input type="radio" id="use_disPerDay100" name="use_distPerDay" value="100"> <label for="use_disPerDay100"> 100&nbsp;km </label> <br>
 								</div>
 								<p> Number of days per year </p>
 								<div class="opt">
 									<input type="radio" id="use_daysPerYear50" name="use_daysPerYear" value="50" checked="true"> <label for="use_daysPerYear50"> 50&nbsp;days </label> <br>
 									<input type="radio" id="use_daysPerYear150" name="use_daysPerYear" value="150"> <label for="use_daysPerYear150"> 150&nbsp;days </label> <br>
-									<input type="radio" id="use_daysPerYear250" name="use_daysPerYear" value="150"> <label for="use_daysPerYear250"> 250&nbsp;days </label> <br>
+									<input type="radio" id="use_daysPerYear250" name="use_daysPerYear" value="250"> <label for="use_daysPerYear250"> 250&nbsp;days </label> <br>
 								</div>
 							</div>
 
@@ -420,7 +420,7 @@
 							<text class="axlabel" x="165" y="220">Transport</text>
 							<text class="axlabel" x="235" y="220">Use</text>
 							<text class="axlabel" x="305" y="220">Disposal</text>
-							<text class="axlabel" x="375" y="220">EOL</text>
+							<text class="axlabel" x="375" y="190">EOL</text>
 						</svg>
 
 						<style>
@@ -471,7 +471,7 @@
 						})
 
 						function setbars(bars, h0, h1) {
-							var sf_E = 18
+							var sf_E = 25
 							var sf_CO2 = 1.5
 							h0 = h0/sf_E
 							h1 = h1/sf_CO2
