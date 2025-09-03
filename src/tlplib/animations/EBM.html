@@ -509,7 +509,7 @@
 							stroke-width:1px;
 						}
 						#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4 {
-							visibility:hidden;
+							visibility:"visible";
 						}
 					</style>
 					<svg id="EBM_animation2">
@@ -546,7 +546,7 @@
 							<path id="hot_knife2" d="M600,325 l25,0 l0,5 l-25,-5"></path>
 							<g id="waste_knives">
 								<path id="waste_knife_topleft" d="M772.5,352 l-25,0 l0,-5 l25,5"></path>
-								<path id="waste_knife_topright" d="M832.5,353 l25,0 l0,-5 l-25,5"></path>
+								<path id="waste_knife_topright" d="M832.5,352 l25,0 l0,-5 l-25,5"></path>
 								<path id="waste_knife_bottomleft" d="M782.5,445 l-20,15 l3,4 l17,-19"></path>
 								<path id="waste_knife_bottomright" d="M822.5,445 l20,15 l-3,4 l-17,-19"></path>
 							</g>
@@ -590,7 +590,7 @@
 						// 	}
 						// 	cnt3 += 1;console.log(cnt3)
 						// }
-
+						gsap.to("#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, delay:0, autoAlpha:0})
 
 						var cnt = 0;
 						var tl = gsap.timeline({repeat:0})
@@ -646,16 +646,16 @@
 						.to("#parison1, #parison2", {duration:0.792, ease:"none", x:225}, 6.708)
 
 						//bottle gets trimmed
-						.to("#waste_knife_topleft", {duration:0.5, x:25, ease:"none"}, 7.5)
-						.to("#waste_knife_topright", {duration:0.5, x:-25, ease:"none"}, 7.5)
+						.to("#waste_knife_topleft", {duration:0.5, x:30, ease:"none"}, 7.5)
+						.to("#waste_knife_topright", {duration:0.5, x:-30, ease:"none"}, 7.5)
 						.to("#waste_knife_bottomleft", {duration:0.5, x:20, ease:"none"}, 7.5)
 						.to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 7.5)
 						.to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 7.5)
 						.to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 7.5)
-						.to("#parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, attr:{visibility:"visible"}}, 8)
-						.to("#parison1, #parison2", {duration:0, attr:{visibility:"hidden"}}, 8)
-						.to("#waste_knife_topleft", {duration:0.5, x:0, ease:"none"}, 7.5)
-						.to("#waste_knife_topright", {duration:0.5, x:0, ease:"none"}, 7.5)
+						.to("#parison1, #parison2", {duration:0, autoAlpha:0}, 8)
+						.to("#parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, autoAlpha:1}, 8)
+						.to("#waste_knife_topleft", {duration:0.5, x:0, ease:"none"}, 8.2)
+						.to("#waste_knife_topright", {duration:0.5, x:0, ease:"none"}, 8.2)
 						.to("#waste_knife_bottomleft", {duration:0.5, x:0, ease:"none"}, 8.2)
 						.to("#waste_knife_bottomright", {duration:0.5, x:0, ease:"none"}, 8.2)
 						.to("#waste_knife_bottomleft", {duration:0.5, y:0, ease:"none"}, 8.2)
