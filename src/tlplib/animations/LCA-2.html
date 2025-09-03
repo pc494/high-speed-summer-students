@@ -606,7 +606,6 @@
 						function reset() {
 							var names = ["material", "transport1", "dist1", "transport2", "dist2", "use_distPerDay", "use_daysPerYear", "disposal_opts"]
 							names.forEach(name => {
-								console.log("input[name='"+name+"']")
 							 	document.querySelectorAll("input[name='"+name+"']")[0].checked=true
 							})
 							calcbars()
