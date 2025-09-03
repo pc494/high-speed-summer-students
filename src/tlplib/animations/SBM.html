@@ -218,8 +218,77 @@
 				<!-- divs for storyline -->
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
-					
-                    <svg>
+					<style>
+						#SBM_animation {
+							position:absolute;
+							left:120px;
+							top:100px;
+							width:640px;
+							height:320px;
+							transform:scale(1.4);
+						}
+						#bulk_extrudate {
+							stroke:none;
+							fill:#ee4;
+							fill-opacity:0.75;
+						}
+						#extruder {
+							position:absolute;
+							transform:scale(0.5);
+						}
+						#dispenser {
+							position:absolute;
+							transform:scale(0.5);
+							fill:darkgreen;
+						}
+						#piston_shaft {
+							transform:scale(0.5);
+							fill:burlywood;
+							stroke:#000;
+							stroke-width:1px;
+						}
+						#piston_plate {
+							transform:scale(0.5);
+							fill:slategrey;
+							stroke:#000;
+							stroke-width:1px;
+						}
+						#parisons, #pre_dispensate {
+							stroke:#000;
+							stroke-width:0.5;
+							fill:#ee4;
+							transform:scale(0.5);
+						}
+						#gate {
+							stroke:#000;
+							stroke-width:5px;
+							transform:scale(0.5);
+						}
+						#hot_knife {
+							stroke:#f00;
+							stroke-width:1px;
+							fill:#ea0d01;
+							transform:scale(0.5);
+						}
+						#split_die {
+							stroke:#000;
+							stroke-width:1px;
+							fill:forestgreen;
+							transform:scale(0.5);
+						}
+						#nozzle {
+							stroke:#000;
+							stroke-width:1px;
+							transform:scale(0.5);
+						}
+						#title {
+							text-align:center;
+							font-family:"Myriad-Roman";
+							font-size:18px;
+							text-decoration:underline;
+						}
+					</style>
+                    <svg id="SBM_animation">
                         <g id="extruder">
 							<g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
 								<path d="M35,180 q15.734,-60 31.468,0"></path>
