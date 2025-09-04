@@ -217,7 +217,7 @@
 					<svg width="640" height="350">		
 						<defs></defs>
 
-						
+
 
 						<g id="furnace">
 
@@ -245,14 +245,22 @@
 							<path id="reducing_gas_inlet"
 								d="M275,160 l5,5 l0,30 l-5,5 l0,-40
 									M365,160 l-5,5 l0,30 l5,5 l0,-40"></path>
+							
+							<path id="reducing_gas_pipes"
+								d="M200,170 l75,0 M200,180 l75,0 M200,190 l75,0
+									M365,170 l75,0 M365,180 l75,0 M365,190 l75,0"></path>
 
 							<path id="cooling_gas_inlet"
-								d="M280,245 l5,0 l15,15 l0,5 l-20,-20
-									M360,245 l-5,0 l-15,15 l0,5 l20,-20"></path>
+								d="M280,245 l8,0 l15,15 l0,8 l-26,-26
+									M360,245 l-8,0 l-15,15 l0,8 l26,-26"></path>
+							
+							<path id="cooling_gas_pipes"
+								d="M285,250 l-30,30 l-30,0 M295,260 l-35,35 l-30,0
+									M355,250 l30,30 l30,0 M345,260 l35,35 l30,0"></path>
 
 						</g>
 
-						<g id="guidelines" style="stroke:grey; stroke-opacity:0.3">
+						<g id="guidelines">
 							<line x1="0" y1="175" x2="640" y2="175" style="stroke-opacity:0.7"></line>
 							<line x1="0" y1="100" x2="640" y2="100"></line>
 							<line x1="0" y1="200" x2="640" y2="200"></line>
@@ -272,7 +280,7 @@
 
 					<style>
 						#furnace #furnace_guts {
-							fill:beige;
+							fill:rgb(248,248,248);
 							stroke: none 
 						}
 
@@ -293,20 +301,38 @@
 						}
 
 						#furnace #reducing_gas_inlet {
-							fill: hotpink;
-							stroke: hotpink;
-							fill-opacity: 0.3;
+							fill: lightpink;
+							stroke: none;
+						}
+
+						#furnace #reducing_gas_pipes {
+							fill:none;
+							stroke: lightpink;
+							stroke-width: 5px;
+							opacity: 0.6;
 						}
 
 						#furnace #cooling_gas_inlet {
-							fill: dodgerblue;
-							stroke: dodgerblue;
-							fill-opacity: 0.3;
+							fill: lightskyblue;
+							stroke: none;
+						}
+
+						#furnace #cooling_gas_pipes {
+							fill:none;
+							stroke: lightskyblue;
+							stroke-width: 5px;
+							opacity: 0.6;
 						}
 
 						path {
 							fill:none;
 							stroke:red;
+						}
+
+						#guidelines {
+							stroke:grey; 
+							stroke-opacity:0.3;
+							visibility: hidden;
 						}
 					</style>
 					
