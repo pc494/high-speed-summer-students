@@ -516,14 +516,100 @@
 							<path id="right_die2" d="M730,350 l0,100 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-20 s0,-1 -2,-2 l0,-21 s2,-1 2,-2 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
 						</g>
                     </svg>									
-                    <div class="nav"> 
-                    
-                        <p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
-                        <p class="dbutton" id="next2" onClick="gotoPage(3)"></p >
-                        <p class="dbutton" id="continue" onClick="gotoPage(1)"></p >
-                        <p class="dbutton" id="pause" onClick="gotoPage(3)"></p >
-                
-                    </div>				
+                    <script>>
+                        // gsap.to("#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, delay:0, autoAlpha:0})
+						// gsap.to("#parison1, #parison2", {duration:0, autoAlpha:0.6})
+						// gsap.to("#left_die2, #right_die2", {duration:0, y:15, ease:"none"})
+						// gsap.to("#left_die2", {duration:0, x:-28, ease:"none"})
+						// gsap.to("#right_die2", {duration:0, x:28, ease:"none"})
+
+
+						// var tl = gsap.timeline({repeat:0})
+						// //Dispenser dispenses parison into injection mould
+						// tl.to("#gate2", {duration:0.5, x:-40}, 0)
+						// .to("#parison1", {duration:2.8, attr:{d:"M567.5,325 l0,125 l2.5,0 l0,-125 l-2.5,0"}, ease:"none"}, 0.2)
+						// .to("#parison2", {duration:2.8, attr:{d:"M587.5,325 l0,125 l-2.5,0 l0,-125 l2.5,0"}, ease:"none"}, 0.2)
+						// //split die comes and clamps parison
+						// .to("#left_die2, #right_die2", {duration:0.4, y:15, ease:"none"}, 0)
+						// .to("#left_die2", {duration:0.57, x:-142.5, ease:"none"}, 0.4)
+						// .to("#right_die2", {duration:0.57, x:-102.5, ease:"none"}, 0.4)
+						// .to("#left_die2, #right_die2", {duration:0.5, y:-15, ease:"none"}, 0.97)
+						// .to("#left_die2", {duration:0.3, x:-122.5, ease:"none"}, 3)
+						// .to("#right_die2", {duration:0.3, x:-122.5, ease:"none"}, 3)
+
+						// //Hot knife severs the parison
+						// .to("#hot_knife2", {duration:0.25, x:-35, ease:"none"}, 3.2)
+						// // .to("#parison1", {duration:0, attr:{d:"M567.5,325 l0,5 s0,3 5,5 l0,18.333 s-5,3.333 -5,11.667 l0,35 s0,5 10,15 l0,20 s-7.5,5 -10,15 l2.5,0 s0,-7.5 7.5,-12.5 l0,-25 s-7.5,-7.5 -7.5,-12.5 l0,-35 s0,-7.5 5,-11.667 l0,-15.833 l-5,-5 l0,-7.5 l-2.5,0"}}, 3.3)
+						// // .to("#parison2", {duration:0, attr:{d:"M587.5,325 l0,5 s0,3 -5,5 l0,18.333 s5,3.333 5,11.667 l0,35 s0,5 -10,15 l0,20 s7.5,5 10,15 l-2.5,0 s0,-7.5 -7.5,-12.5 l0,-25 s7.5,-7.5 7.5,-12.5 l0,-35 s0,-7.5 -5,-11.667 l0,-15.833 l5,-5 l0,-7.5 l2.5,0"}}, 3.3)
+						// .to("#parison1", {duration: 0.1, morphSVG: "#parison_test1"}, 3.2)
+						// .to("#parison2", {duration: 0.1, morphSVG: "#parison_test2"}, 3.2)
+						// .to("#parison1, #parison2", {duration:0.5, y:10}, 3.5)
+						// .to("#left_die2, #right_die2", {duration:0.5, y:-5}, 3.5)
+						// .to("#hot_knife2", {duration:0.5, x:0, ease:"none"}, 4)
+						// .to("#gate2", {duration:0.5, x:0, ease:"none"}, 4)
+
+						// //die & parison move to pressurised air nozzle
+						// .to("#left_die2, #right_die2", {duration:0.57, ease:"none", x:0}, 4)
+						// .to("#left_die2, #right_die2", {duration:0.57, ease:"none", y:0}, 4)
+						// .to("#parison1, #parison2", {duration:0.57, ease:"none", x:122.5}, 4)
+						// .to("#parison1, #parison2", {duration:0.57, ease:"none", y:15}, 4)
+
+						// //nozzle enters top of split die and pushes into top of parison
+						// //simultaneously new parison being formed
+						// .to("#nozzle2", {duration:0.43, ease:"none", y:15}, 4.57)
+
+						// //air injected into parison => bottle
+						// .to("#parison1", {duration: 0.3, morphSVG: "#parison_test3"}, 5.2)
+						// .to("#parison2", {duration: 0.3, morphSVG: "#parison_test4"}, 5.2)
+						// .to("#parison1, #parison2", {duration:0.5, autoAlpha:1}, 5.3)
+
+						// //air nozzle retracts
+						// .to("#nozzle2", {duration:0.43, ease:"none", y:0}, 5.57)
+						// // .to("#parison1", {duration:0, ease:"none", attr:{d:"M567.5,325 l0,5 s0,3 5,5 l0,5.333 q-5,1 0,2 q-5,1 0,2 q-5,1 0,2 l-2,2 l0,4 l-1,0 l3,0 l0,1 l-10,6.667 s-5,3.333 -5,14 l0,1 s0,1 2,2 l0,21 s-2,1 -2,2 l0,20 s0,5 10,0 l4,-3 s4,-2 6,-2 l0,20 s-7.5,5 -10,15 l2.5,0 s0,-7.5 7.5,-12.5 l0,-25 s-2,0 -6.5,2.5 l-6,4.5  s-6,3 -6,0 l0,-18.5 s0,-1 2,-2 l0,-22.5 s-2,-1 -2,-2 s0,-10.667 5,-13.5 l10.5,-6.167 l0,-8 l0,-9.833 l-4.5,-4.5 l0,-7.5 l-2.5,0"}}, 5.5)
+						// // .to("#parison2", {duration:0, ease:"none", attr:{d:"M587.5,325 l0,5 s0,3 -5,5 l0,4.333 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,1 l2,2 l0,4 l1,0 l-3,0 l0,1 l10,6.667 s5,3.333 5,14 l0,1 s0,1 -2,2 l0,21 s2,1 2,2 l0,20 s0,5 -10,0 l-4,-3 s-4,-2 -6,-2 l0,20 s7.5,5 10,15 l-2.5,0 s0,-7.5 -7.5,-12.5 l0,-25 s2,0 6.5,2.5 l6,4.5  s6,3 6,0 l0,-18.5 s0,-1 -2,-2 l0,-22.5 s2,-1 2,-2 s0,-10.667 -5,-13.5 l-10.5,-6.167 l0,-8 l0,-9.833 4.5,-4.5 l0,-7.5 l2.5,0"}}, 5.5)
+						
+						// //bottle ejected by die splitting
+						// .to("#left_die2", {duration:0.7, x:-20, ease:"none"}, 5.8)
+						// .to("#left_die2", {duration:0.7, y:15, ease:"none"}, 5.8)
+						// .to("#right_die2", {duration:0.7, x:20, ease:"none"}, 5.8)
+						// .to("#right_die2", {duration:0.7, y:15, ease:"none"}, 5.8)
+						// .to("#left_die2", {duration:0.208, x:-28, ease:"none"}, 6.5)
+						// .to("#right_die2", {duration:0.208, x:28, ease:"none"}, 6.5)
+						// .to("#parison1, #parison2", {duration:0.792, ease:"none", x:225}, 6.708)
+
+						// //bottle gets trimmed
+						// .to("#waste_knife_topleft", {duration:0.5, x:30, ease:"none"}, 7.5)
+						// .to("#waste_knife_topright", {duration:0.5, x:-30, ease:"none"}, 7.5)
+						// .to("#waste_knife_bottomleft", {duration:0.5, x:20, ease:"none"}, 7.5)
+						// .to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 7.5)
+						// .to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 7.5)
+						// .to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 7.5)
+						// .to("#parison1, #parison2", {duration:0, x:0, y:0, autoAlpha:0.6}, 8)
+						// .to("#parison1", {duration: 0, attr:{d:"M567.5,250 l0,50 l2.5,0 l0,-50 l-2.5,0"}}, 8)
+						// .to("#parison2", {duration: 0, attr:{d:"M587.5,250 l0,50 l-2.5,0 l0,-50 l2.5,0"}}, 8)
+						// .to("#parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, autoAlpha:1}, 8)
+						// .to("#waste_knife_topleft", {duration:0.5, x:0, ease:"none"}, 8.2)
+						// .to("#waste_knife_topright", {duration:0.5, x:0, ease:"none"}, 8.2)
+						// .to("#waste_knife_bottomleft", {duration:0.5, x:0, ease:"none"}, 8.2)
+						// .to("#waste_knife_bottomright", {duration:0.5, x:0, ease:"none"}, 8.2)
+						// .to("#waste_knife_bottomleft", {duration:0.5, y:0, ease:"none"}, 8.2)
+						// .to("#waste_knife_bottomright", {duration:0.5, y:0, ease:"none"}, 8.2)
+						// .to("#parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:1.8, y:200, ease:"power1.in"}, 8.2)
+						// .to("#parison_waste1", {duration:1.8, x:-40, rotation:-90, ease:"none"}, 8.2)
+						// .to("#parison_waste2", {duration:1.8, x:40, rotation:90, ease:"none"}, 8.2)
+						
+						// //bottle goes off screen
+						// .to("#parison_test5, #parison_test6", {duration:2, x:300, ease:"none"}, 8.5)
+						// //simultaneously split die comes and clamps new parison
+						// tl.pause()
+					</script>
+					
+					<div class="nav"> 
+						<p class="dbutton" id="start" onClick="tl.play()"></p >
+						<p class="dbutton" id="pause" onClick="tl.pause()"></p >
+						<p class="dbutton" id="restart" onClick="tl.restart()"></p >
+				
+					</div>				
 				
 					<div id="anim2">
 					</div>
