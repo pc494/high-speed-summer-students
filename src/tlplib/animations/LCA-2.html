@@ -213,71 +213,24 @@
 
 					<p class="dbutton" id="reset" onclick="reset()" style="position:absolute; top:0; left:0; z-index:100"></p>
 
-					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:360px; top:30px;">
+					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:400px; top:30px; ">
 
 						<div id="title" style="height:50px;">
-							<p style="margin:0px;"> <strong style="font-size: x-large;">Steel car doors</strong>  <span class="clickable" id="product_spec" style="text-decoration:underline" onclick="popup('#product_spec_pop')">product specification</span> </p>
+							<p style="margin:0px"> <strong style="font-size: x-large;">4 steel car doors</strong></p>  
 							<p style="margin:0px; font-size:0.9em; font-style: italic;"> Click on each step to view options </p>
 						</div>
-						
-						<svg id="lifeline" width="600" height="30" style="fill:dodgerblue;stroke:dodgerblue">
-							<defs>
-								<marker id="arrowB" markerWidth="10" markerHeight="10" refX="1" refY="1" orient="auto-start-reverse" markerUnits="strokeWidth">
-									<path d="M0,0 L0,2 L2,1 z" fill="dodgerblue" stroke="none"/>
-								</marker>						
-							</defs>
 
-							<g class="clickable" id="material_btn" onclick="popup('#material_pop')">
-								<rect class="stepbox" x="0" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="50" y="20"> Material </text>
-							</g>
+						<div id="lifeline" style="position:absolute; width:600px; height:30px;">
+							<button onclick="popup('#material_pop')">Material</button>
+							<button onclick="popup('#transport1_pop')">&#x2192;</button>
+							<button onclick="popup('#manufacture_pop')">Manufactrue</button>
+							<button onclick="popup('#transport2_pop')">&#x2192;</button>
+							<button onclick="popup('#use_pop')">Use</button>
+							<button onclick="popup('#disposal_pop')">Disposal</button>
+							<button onclick="popup('#product_spec_pop')" style="position:absolute; right:0"><em>Product specification</em></button>
+						</div>
 
-							<g class="clickable" id="transport_1_btn" onclick="popup('#transport_1_pop')" >
-								<rect class="stepbox" x="110" y="0" rx="5" ry="5" width="75" height="30"></rect>
-								<line x1="120" y1="15" x2="170" y2="15" marker-end="url(#arrowB)"></line>
-							</g>
-
-							<g class="clickable" id="manufacture_btn" onclick="popup('#manufacture_pop')">
-								<rect class="stepbox" x="195" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="245" y="20"> Manufacture </text>
-							</g>
-
-							<g class="clickable" id="transport_2_btn" onclick="popup('#transport_2_pop')" >
-								<rect class="stepbox" x="305" y="0" rx="5" ry="5" width="75" height="30"></rect>
-								<line x1="315" y1="15" x2="365" y2="15" marker-end="url(#arrowB)"></line>
-							</g>
-
-							<g class="clickable" id="use_btn" onclick="popup('#use_pop')">
-								<rect class="stepbox" x="390" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="440" y="20"> Use </text>
-							</g>
-
-							<g class="clickable" id="disposal_btn"  onclick="popup('#disposal_pop')">
-								<rect class="stepbox" x="500" y="0" rx="5" ry="5" width="100" height="30"></rect>
-								<text x="550" y="20"> Disposal </text>
-							</g>
-
-						</svg>
-
-						<style>
-							#lifeline text {
-								font-family: sans-serif;
-								stroke: none;
-								text-anchor: middle;
-							}
-	
-							#lifeline .stepbox{
-								fill-opacity: 0.1;
-								stroke:none;
-							}
-	
-							#lifeline line {
-								fill: none;
-								stroke-width: 6;
-							}
-						</style>
-
-						<div id="options" style="position:absolute; height:310px; width:190px; top:90px;"> 
+						<div id="options" style="position:absolute; height:310px; width:190px; top:90px; "> 
 							
 							<div class="pop" id="product_spec_pop" style="display: block;">
 								<p> The car doors are designed for small electric cars; each car carries 4 doors </p>
@@ -288,46 +241,74 @@
 								<p> Each car door uses 15&nbsp;kg of low alloy steel </p>
 								<p> Typically, ~40% recycled content is used</p>
 								<div class="opt">
-									<input type="radio" id="material_0" name="material"> <label for="material_0" value="0"> 0% recycled (virgin) </label> <br>
-									<input type="radio" id="material_25" name="material"> <label for="material_25" value="0.25"> 25% recycled  </label> <br>
-									<input type="radio" id="material_40" name="material"> <label for="material_40" value="0.40"> 40% recycled </label> <br>
-									<input type="radio" id="material_75" name="material"> <label for="material_75" value="0.75"> 75% recycled </label> <br>								
+									<input type="radio" id="material_0" name="material" value="0" checked="true"> <label for="material_0"> 0% recycled (virgin) </label> <br>
+									<input type="radio" id="material_25" name="material" value="0.25"> <label for="material_25"> 25% recycled  </label> <br>
+									<input type="radio" id="material_40" name="material" value="0.40"> <label for="material_40"> 40% recycled </label> <br>
+									<input type="radio" id="material_75" name="material" value="0.75"> <label for="material_75"> 75% recycled </label> <br>								
+								</div>								
+								<div class="total">
+									<p>
+										From this step -- <br>
+										E: <span class="subtotal_E"></span> MJ<br>
+										CO&#x2082; equivalent: <span class="subtotal_CO2"></span> kg <br>
+									</p>
 								</div>
 							</div>
 
-							<div class="pop" id="transport_1_pop">
+							<div class="pop" id="transport1_pop">
 								<p> Raw material is then transported to the manufacturer </p>
 								<p> Mode of transport </p>
 								<div class="opt">
-									<input type="radio" id="transport1_truck" name="transport1"> <label for="transport1_truck" value="101 6.36"> Large truck </label> <br>
-									<input type="radio" id="transport1_train" name="transport1"> <label for="transport1_train" value="40.2 2.94"> Diesel train </label> <br>
-									<input type="radio" id="transport1_ship" name="transport1"> <label for="transport1_train" value="5.4 0.42"> Bulk carrier ship </label> <br>
+									<input type="radio" id="transport1_truck" name="transport1" value="101 6.36" checked="true"> <label for="transport1_truck"> Large truck </label> <br>
+									<input type="radio" id="transport1_aircraft" name="transport1" value="720 51"> <label for="transport1_aircraft"> Long-haul aircraft </label> <br>
+									<input type="radio" id="transport1_ship" name="transport1" value="5.4 0.42"> <label for="transport1_ship"> Bulk carrier ship </label> <br>
 								</div>
 								<p> Distance travelled </p>
 								<div class="opt">
-									<input type="radio" id="transport1_dist500" name="dist1"> <label for="transport1_dist500" value="500"> 500&nbsp;km </label> <br>
-									<input type="radio" id="transport1_dist2000" name="dist1"> <label for="transport1_dist2000" value="2000"> 2000&nbsp;km </label> <br>
-									<input type="radio" id="transport1_dist10000" name="dist1"> <label for="transport1_dist10000" value="10000"> 10000&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist100" name="dist1" value="100" checked="true"> <label for="transport1_dist100"> 100&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist2000" name="dist1" value="2000"> <label for="transport1_dist2000"> 2000&nbsp;km </label> <br>
+									<input type="radio" id="transport1_dist30000" name="dist1" value="30000"> <label for="transport1_dist30000"> 30000&nbsp;km </label> <br>
+								</div>
+								<div class="total">
+									<p>
+										From this step -- <br>
+										E: <span class="subtotal_E">x</span> MJ <br>
+										CO&#x2082; equivalent: <span class="subtotal_CO2">x</span> kg <br>
+									</p>
 								</div>
 							</div>
 
 							<div class="pop" id="manufacture_pop">
 								<p> Steel car doors are typically made by roll forming </p>
+								<div class="total">
+									<p>
+										From this step -- <br>
+										E: <span class="subtotal_E"></span> MJ <br>
+										CO&#x2082; equivalent: <span class="subtotal_CO2"></span> kg <br>
+									</p>
+								</div>
 							</div>
 
-							<div class="pop" id="transport_2_pop">
+							<div class="pop" id="transport2_pop">
 								<p> The product is transported to the user via distributors </p>
 								<p> Mode of transport </p>
 								<div class="opt">
 									<input type="radio" id="transport2_truck" name="transport2" value="101 6.36"> <label for="transport2_truck"> Large truck </label> <br>
-									<input type="radio" id="transport2_train" name="transport2" value="40.2 2.94"> <label for="transport2_train"> Diesel train </label> <br>
+									<input type="radio" id="transport2_aircraft" name="transport2" value="720 51"> <label for="transport2_aircraft"> Long-haul aircraft </label> <br>
 									<input type="radio" id="transport2_ship" name="transport2" value="7.8 0.6"> <label for="transport2_ship"> Container ship </label> <br>
 								</div>
 								<p> Distance travelled </p>
 								<div class="opt">
-									<input type="radio" id="transport2_dist500" name="dist2" value="500"> <label for="transport2_dist500"> 500&nbsp;km </label> <br>
+									<input type="radio" id="transport2_dist100" name="dist2" value="100"> <label for="transport2_dist100"> 100&nbsp;km </label> <br>
 									<input type="radio" id="transport2_dist2000" name="dist2" value="2000"> <label for="transport2_dist2000"> 2000&nbsp;km </label> <br>
-									<input type="radio" id="transport2_dist10000" name="dist2" value="10000"> <label for="transport2_dist10000"> 10000&nbsp;km </label> <br>
+									<input type="radio" id="transport2_dist30000" name="dist2" value="30000"> <label for="transport2_dist30000"> 30000&nbsp;km </label> <br>
+								</div>
+								<div class="total">
+									<p>
+										From this step -- <br>
+										E: <span class="subtotal_E"></span> MJ <br>
+										CO&#x2082; equivalent: <span class="subtotal_CO2"></span> kg <br>
+									</p>
 								</div>
 							</div>
 
@@ -335,25 +316,44 @@
 								<p> The car door travels with the car during use </p>
 								<p> Average distance travelled per day of use </p>
 								<div class="opt">
-									<input type="radio" id="use_disPerDay10" name="use_distPerDay" value="10"> <label for="use_disPerDay5"> 10&nbsp;km </label> <br>
-									<input type="radio" id="use_disPerDay50" name="use_distPerDay" value="50"> <label for="use_disPerDay100"> 50&nbsp;km </label> <br>
-									<input type="radio" id="use_disPerDay100" name="use_distPerDay" value="100"> <label for="use_disPerDay500"> 100&nbsp;km </label> <br>
+									<input type="radio" id="use_disPerDay10" name="use_distPerDay" value="10"> <label for="use_disPerDay10"> 10&nbsp;km </label> <br>
+									<input type="radio" id="use_disPerDay50" name="use_distPerDay" value="50"> <label for="use_disPerDay50"> 50&nbsp;km </label> <br>
+									<input type="radio" id="use_disPerDay100" name="use_distPerDay" value="100"> <label for="use_disPerDay100"> 100&nbsp;km </label> <br>
 								</div>
 								<p> Number of days per year </p>
 								<div class="opt">
-									<input type="radio" id="use_daysPerYear100" name="use_daysPerYear50" value="50"> <label for="use_daysPerYear50"> 50&nbsp;days </label> <br>
-									<input type="radio" id="use_daysPerYear100" name="use_daysPerYear150" value="150"> <label for="use_daysPerYear150"> 150&nbsp;days </label> <br>
-									<input type="radio" id="use_daysPerYear100" name="use_daysPerYear250" value="150"> <label for="use_daysPerYear250"> 250&nbsp;days </label> <br>
+									<input type="radio" id="use_daysPerYear50" name="use_daysPerYear" value="50"> <label for="use_daysPerYear50"> 50&nbsp;days </label> <br>
+									<input type="radio" id="use_daysPerYear150" name="use_daysPerYear" value="150"> <label for="use_daysPerYear150"> 150&nbsp;days </label> <br>
+									<input type="radio" id="use_daysPerYear250" name="use_daysPerYear" value="250"> <label for="use_daysPerYear250"> 250&nbsp;days </label> <br>
+								</div>
+								<div class="total">
+									<p>
+										From this step -- <br>
+										E: <span class="subtotal_E"></span> MJ <br>
+										CO&#x2082; equivalent: <span class="subtotal_CO2"></span> kg <br>
+									</p>
 								</div>
 							</div>
 
 							<div class="pop" id="disposal_pop">
 								<p> At the end of the first life, the car doors may be disposed of entirely, or the material or the product itself may enter another life cycle.  </p>
 								<p> Option for disposal </p>
-								<div class="opt" onchange="test()">
-									<input type="radio" id="disposal_landfill" name="disposal_opts" value="12 0.84"> <label for="disposal_landfill"> Landfill </label> <br>
-									<input type="radio" id="disposal_recycle" name="disposal_opts" value="42 2.94"> <label for="disposal_recycle"> Recycle </label> <br>
-									<input type="radio" id="disposal_reuse" name="disposal_opts" value="12 0.84"> <label for="disposal_reuse"> Reuse </label> <br>
+								<div class="opt">
+									<input type="radio" id="disposal_landfill" name="disposal_opts" value="12 0.84 landfill"> <label for="disposal_landfill"> Landfill </label> <br>
+									<input type="radio" id="disposal_recycle" name="disposal_opts" value="42 2.94 recycle"> <label for="disposal_recycle"> Recycle </label> <br>
+									<input type="radio" id="disposal_reuse" name="disposal_opts" value="12 0.84 reuse"> <label for="disposal_reuse"> Reuse </label> <br>
+								</div>
+								<div class="total">
+									<p>
+										From this step -- <br>
+										E: <span class="subtotal_E"></span> MJ <br>
+										CO&#x2082; equivalent: <span class="subtotal_CO2"></span> kg <br>
+									</p>
+									<p>
+										End-of-life (EOL) potential -- <br>
+										E: <span class="subtotal_E_eol"></span> MJ <br>
+										CO&#x2082; equivalent: <span class="subtotal_CO2_eol"></span> kg <br>
+									</p>
 								</div>
 							</div>
 
@@ -365,7 +365,7 @@
 								font-size: 0.9rem;
 							}
 
-							#options p {
+							p {
 								margin-block: 10px 0px;
 							}
 
@@ -381,45 +381,58 @@
 								font-family: sans-serif;
 							}
 
+							#options .pop .total {
+								position:absolute;
+								bottom:10px
+							}
+
+							#options .pop .total .subtotal_E, #options .pop .total .subtotal_E_eol, #total_E {
+								color: blueviolet
+							}
+
+							#options .pop .total .subtotal_CO2, #options .pop .total .subtotal_CO2_eol, #total_CO2 {
+								color: lightseagreen
+							}
+
 							.pop{
 								display: none
 							}
 
 						</style>
 
-						<svg id="plot" height="300" width="400" style="position:absolute; top:90px; left:220px; background:seashell">
+						<svg id="plot" height="310" width="400" style="position:absolute; top:90px; left:220px;">
 							
 							<defs>
 								<pattern id="E_hatch" width="10" height="10" patternUnits="userSpaceOnUse">
 									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:blueviolet"></line>
 								</pattern>
 								<pattern id="CO2_hatch" width="10" height="10" patternUnits="userSpaceOnUse">
-									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:indigo"></line>
+									<line x1="0" y1="0" x2="10" y2="10" style="stroke-width:1; stroke:teal"></line>
 								</pattern>
 							</defs>
-							<text id="total_E" x="80" y="30">E: 0 MJ</text>
-							<text id="total_CO2" x="210" y="30">CO&#x2082; eq.: 0 kg</text>
 							
-							<rect class="bar material E" x="5" y="200" height="0" width="20"></rect>
-							<rect class="bar material CO2" x="25" y="200" height="0" width="20"></rect>
-							<rect class="bar manufacture E" x="75" y="200" height="0" width="20"></rect>
-							<rect class="bar manufacture CO2" x="95" y="200" height="0" width="20"></rect>
-							<rect class="bar transport E" x="145" y="200" height="0" width="20"></rect>
-							<rect class="bar transport CO2" x="165" y="200" height="0" width="20"></rect>
-							<rect class="bar use E" x="215" y="200" height="0" width="20"></rect>
-							<rect class="bar use CO2" x="235" y="200" height="0" width="20"></rect>
-							<rect class="bar disposal E" x="285" y="200" height="0" width="20"></rect>
-							<rect class="bar disposal CO2" x="305" y="200" height="0" width="20"></rect>
-							<rect class="bar eol E" style="fill:url(#E_hatch)" x="355" y="200" height="0" width="20"></rect>
-							<rect class="bar eol CO2" style="fill:url(#CO2_hatch)" x="375" y="200" height="0" width="20"></rect>
-						
+							<g id="bar">
+								<rect class="material E" x="5" y="200" height="0" width="20"></rect>
+								<rect class="material CO2" x="25" y="200" height="0" width="20"></rect>
+								<rect class="manufacture E" x="75" y="200" height="0" width="20"></rect>
+								<rect class="manufacture CO2" x="95" y="200" height="0" width="20"></rect>
+								<rect class="transport E" x="145" y="200" height="0" width="20"></rect>
+								<rect class="transport CO2" x="165" y="200" height="0" width="20"></rect>
+								<rect class="use E" x="215" y="200" height="0" width="20"></rect>
+								<rect class="use CO2" x="235" y="200" height="0" width="20"></rect>
+								<rect class="disposal E" x="285" y="200" height="0" width="20"></rect>
+								<rect class="disposal CO2" x="305" y="200" height="0" width="20"></rect>
+								<rect class="eol E" style="fill:url(#E_hatch)" x="355" y="200" height="0" width="20"></rect>
+								<rect class="eol CO2" style="fill:url(#CO2_hatch)" x="375" y="200" height="0" width="20"></rect>
+							</g>
+
 							<line id="xaxis" style="stroke:black" x1="0" y1="200" x2="400" y2="200"></line>
 							<text class="axlabel" x="25" y="220">Material</text>
 							<text class="axlabel" x="95" y="220">Manufacture</text>
 							<text class="axlabel" x="165" y="220">Transport</text>
 							<text class="axlabel" x="235" y="220">Use</text>
 							<text class="axlabel" x="305" y="220">Disposal</text>
-							<text class="axlabel" x="375" y="220">EOL</text>
+							<text class="axlabel" x="375" y="190">EOL</text>
 						</svg>
 
 						<style>
@@ -428,15 +441,15 @@
 								stroke: none;
 							}
 	
-							#plot .E {
+							#plot #bar .E {
 								fill: blueviolet;
 								stroke: blueviolet;
 								stroke-width: 1px;
 							}
 
-							#plot .CO2 {
-								fill: indigo;
-								stroke: indigo;
+							#plot #bar .CO2 {
+								fill: lightseagreen;
+								stroke: lightseagreen;
 								stroke-width: 1px;
 							}
 							
@@ -444,27 +457,159 @@
 								text-anchor: middle;
 								font-size: small;
 							}
+
+							#plot #xaxis {
+								stroke: black;
+								stroke-width: 0.5px;
+								stroke-opacity: 0.6;
+							}
 						</style>
+
+						<div style="position:absolute; top:90px; left:230px; font-size: 0.9rem; font-weight: bold;">
+							<p>
+								Lifetime total (excluding EOL potential) -- <br>
+								E: <span id="total_E"></span> MJ &#9;
+								CO&#x2082; eq.: <span id="total_CO2"></span> kg 
+							</p>
+						</div>
+
 					</div>
 
 					<style> 
-						.clickable:hover, .clickable:focus-visible {
+						#lifeline {
+							text-align: justify;
+						}
+
+						button {
+							display: inline-block;
+							vertical-align: top;
+							font-size: 0.9rem;
+							border: none;
+							background-color: lavender;
+							color: blueviolet;
+							box-shadow: grey 0 2px;
+							border-radius: 5px;
+							padding:5px 10px
+						}
+
+						button:hover, button:focus-visible {
 							cursor: pointer;
-							opacity: 0.4 ;
+							background-color: azure;
+							color: teal
+						}
+
+						button:active {
+							transform: translateY(2px);
+							box-shadow: none;
 						}
 					</style>
 
 					<script>
+
 						function popup(content) {
 							document.querySelectorAll(".pop").forEach(el => el.style.display = "none")
 							document.querySelector(content).style.display = "block"
 						}
 
+						reset()
 						document.querySelectorAll("#options .opt").forEach((el) => {
 							el.addEventListener("change", function(event){
 								console.log("clicked")
+								calcbars()
 							})
 						})
+
+						function setbars(bars, h0, h1) {
+							var sf_E = 25
+							var sf_CO2 = 1.5
+							h0 = h0/sf_E
+							h1 = h1/sf_CO2
+							bars[0].setAttribute("height", Math.abs(h0)+"px")							
+							bars[1].setAttribute("height", Math.abs(h1)+"px")							
+							if (h0 > 0) {
+								bars[0].setAttribute("y", String(200-Number(h0))+"px")
+								bars[1].setAttribute("y", String(200-Number(h1))+"px")
+							}
+						}
+
+						function calcbars() {
+							var material_bars = document.querySelectorAll("#plot #bar .material")
+							var manufacture_bars = document.querySelectorAll("#plot #bar .manufacture") 
+							var transport_bars = document.querySelectorAll("#plot #bar .transport") 
+							var use_bars = document.querySelectorAll("#plot #bar .use") 
+							var disposal_bars = document.querySelectorAll("#plot #bar .disposal") 
+							var eol_bars = document.querySelectorAll("#plot #bar .eol") 
+
+							var frac_recycled = Number(document.querySelector("input[name='material']:checked").value)
+							var material_E = 1910 - frac_recycled*1400
+							var material_CO2 = 140 - frac_recycled*100.4
+							setbars(material_bars, material_E, material_CO2)
+							document.querySelector("#options #material_pop .total .subtotal_E").textContent = Number(material_E).toFixed(1)
+							document.querySelector("#options #material_pop .total .subtotal_CO2").textContent = Number(material_CO2).toFixed(1)
+
+							var manufacture_E = 552
+							var manufacture_CO2 = 39.1
+							setbars(manufacture_bars, manufacture_E, manufacture_CO2)
+							document.querySelector("#options #manufacture_pop .total .subtotal_E").textContent = Number(manufacture_E).toFixed(1)
+							document.querySelector("#options #manufacture_pop .total .subtotal_CO2").textContent = Number(manufacture_CO2).toFixed(1)
+
+							var transport1_type = document.querySelector("input[name='transport1']:checked").value.split(" ")
+							var transport1_dist = Number(document.querySelector("input[name='dist1']:checked").value)/1000
+							var transport1_E = Number(transport1_type[0])*transport1_dist/1000
+							var transport1_CO2 = Number(transport1_type[1])*transport1_dist/1000
+							var transport2_type = document.querySelector("input[name='transport2']:checked").value.split(" ")
+							var transport2_dist = Number(document.querySelector("input[name='dist2']:checked").value)/1000
+							var transport2_E = Number(transport2_type[0])*transport2_dist/1000
+							var transport2_CO2 = Number(transport2_type[1])*transport2_dist/1000
+							var transport_E = transport1_E + transport2_E
+							var transport_CO2 = transport1_CO2 + transport2_CO2
+							setbars(transport_bars, transport_E, transport_CO2)
+							document.querySelector("#options #transport1_pop .total .subtotal_E").textContent = Number(transport1_E).toFixed(2)
+							document.querySelector("#options #transport1_pop .total .subtotal_CO2").textContent = Number(transport1_CO2).toFixed(3)
+							document.querySelector("#options #transport2_pop .total .subtotal_E").textContent = Number(transport2_E).toFixed(2)
+							document.querySelector("#options #transport2_pop .total .subtotal_CO2").textContent = Number(transport2_CO2).toFixed(3)
+
+							var use_dist = Number(document.querySelector("input[name='use_daysPerYear']:checked").value)*Number(document.querySelector("input[name='use_distPerDay']:checked").value)
+							var use_E = 0.144 * use_dist
+							var use_CO2 = 0.00914 * use_dist
+							setbars(use_bars, use_E, use_CO2)
+							document.querySelector("#options #use_pop .total .subtotal_E").textContent = Number(use_E).toFixed(1)
+							document.querySelector("#options #use_pop .total .subtotal_CO2").textContent = Number(use_CO2).toFixed(1)
+
+							var disposal_opt = document.querySelector("input[name='disposal_opts']:checked").value.split(" ")
+							var disposal_E = Number(disposal_opt[0])
+							var disposal_CO2 = Number(disposal_opt[1])
+							setbars(disposal_bars, disposal_E, disposal_CO2)
+							document.querySelector("#options #disposal_pop .total .subtotal_E").textContent = Number(disposal_E).toFixed(1)
+							document.querySelector("#options #disposal_pop .total .subtotal_CO2").textContent = Number(disposal_CO2).toFixed(1)
+
+							var eol_E = 0 
+							var eol_CO2 = 0
+							if (disposal_opt[2] == "recycle") {
+								eol_E = -843
+								eol_CO2 = -60.1
+							}
+							else if (disposal_opt[2] == "reuse") {
+								eol_E = -1 * material_E
+								eol_CO2 = -1 * material_CO2
+							}
+							setbars(eol_bars, eol_E, eol_CO2)
+							document.querySelector("#options #disposal_pop .total .subtotal_E_eol").textContent = Number(Math.abs(eol_E)).toFixed(1)
+							document.querySelector("#options #disposal_pop .total .subtotal_CO2_eol").textContent = Number(Math.abs(eol_CO2)).toFixed(1)
+
+							summed_E = material_E + manufacture_E + transport_E + use_E + disposal_E
+							summed_CO2 = material_CO2 + manufacture_CO2 + transport_CO2 + use_CO2 + disposal_CO2
+							document.getElementById("total_E").innerHTML = Number(summed_E).toFixed(1)
+							document.getElementById("total_CO2").innerHTML = Number(summed_CO2).toFixed(1)
+						}
+
+						function reset() {
+							var names = ["material", "transport1", "dist1", "transport2", "dist2", "use_distPerDay", "use_daysPerYear", "disposal_opts"]
+							names.forEach(name => {
+							 	document.querySelectorAll("input[name='"+name+"']")[0].checked=true
+							})
+							calcbars()
+						}
 					</script>
 					
 				</div>
