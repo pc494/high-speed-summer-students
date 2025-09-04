@@ -221,10 +221,11 @@
 					<style>
 						#EBM_animation {
 							position:absolute;
-							left:30px;
-							top:0px;
+							left:120px;
+							top:100px;
 							width:640px;
 							height:320px;
+							transform:scale(1.4);
 						}
 						#bulk_extrudate {
 							stroke:none;
@@ -280,6 +281,12 @@
 							stroke-width:1px;
 							transform:scale(0.5);
 						}
+						#title {
+							text-align:center;
+							font-family:"Myriad-Roman";
+							font-size:18px;
+							text-decoration:underline;
+						}
 					</style>
 					<svg id="EBM_animation">
 						<g id="extruder">
@@ -290,8 +297,7 @@
 								<path d="M110,180 q15.734,-60 31.468,0"></path>
 								<path d="M150.516,200 q15.734,60 31.468,0"></path>
 							
-								<path d="M-40,180 q15.734,-60 31.468,0"></path>
-								<path d="M0.516,200 q15.734,60 31.468,0"></path>
+
 
 
 
@@ -353,7 +359,7 @@
 								<g>
 									<path d="M54.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
 									<path d="M129.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
-									<path d="M-20.75,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
+									<!-- <path d="M-20.75,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path> -->
 								</g>
 								<g>
 									<path d="M204.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
@@ -367,9 +373,6 @@
 									<!-- hopper stuff -->
 									<path d="M76,150 l18,0 l0,-40 l30,-60 l-39,-23 l-39,23 l30,60 l0,40"></path>
 								</g>
-							</g>
-							<g id="blocks" stroke-width="0" fill="#fff">
-								<path d="M20,232 l0,-84 l-150,0 l0,84 l150,0"></path>
 							</g>
 							<g id="machinery" stroke-width="1" fill="#eee" stroke="#000">
 								<path id="segment1" d="M30,30 l6,0 l40,80 l0,40 l-56,0 l0,-20 l50,0 l0,-20 
@@ -416,6 +419,9 @@
 							<path id="right_die" d="M730,350 l0,100 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-20 s0,-1 -2,-2 l0,-21 s2,-1 2,-2 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
 						</g>
 					</svg>
+					<div id="title">
+						<p>Extrusion Blow Moulding</p>
+					</div>
 					<script>
 						//FOR PAGE 2
 
@@ -463,9 +469,9 @@
 						#EBM_animation2 {
 							position:absolute;
 							left:-475px;
-							top:-60px;
-							width:1280px;
-							height:640px;
+							top:-70px;
+							width:1014px;
+							height:500px;
 							transform:scale(1.2);
 						}
 						#dispenser2 {
@@ -508,8 +514,8 @@
 							stroke:#000;
 							stroke-width:1px;
 						}
-						#parison_test1, #parison_test2, #parison_test3, #parison_test4 {
-							visibility:hidden;
+						#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4 {
+							visibility:"visible";
 						}
 					</style>
 					<svg id="EBM_animation2">
@@ -546,7 +552,7 @@
 							<path id="hot_knife2" d="M600,325 l25,0 l0,5 l-25,-5"></path>
 							<g id="waste_knives">
 								<path id="waste_knife_topleft" d="M772.5,352 l-25,0 l0,-5 l25,5"></path>
-								<path id="waste_knife_topright" d="M832.5,353 l25,0 l0,-5 l-25,5"></path>
+								<path id="waste_knife_topright" d="M832.5,352 l25,0 l0,-5 l-25,5"></path>
 								<path id="waste_knife_bottomleft" d="M782.5,445 l-20,15 l3,4 l17,-19"></path>
 								<path id="waste_knife_bottomright" d="M822.5,445 l20,15 l-3,4 l-17,-19"></path>
 							</g>
@@ -590,7 +596,11 @@
 						// 	}
 						// 	cnt3 += 1;console.log(cnt3)
 						// }
-
+						gsap.to("#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, delay:0, autoAlpha:0})
+						gsap.to("#parison1, #parison2", {duration:0, autoAlpha:0.6})
+						gsap.to("#left_die2, #right_die2", {duration:0, y:15, ease:"none"})
+						gsap.to("#left_die2", {duration:0, x:-28, ease:"none"})
+						gsap.to("#right_die2", {duration:0, x:28, ease:"none"})
 
 						var cnt = 0;
 						var tl = gsap.timeline({repeat:0})
@@ -630,6 +640,7 @@
 						//air injected into parison => bottle
 						.to("#parison1", {duration: 0.3, morphSVG: "#parison_test3"}, 5.2)
 						.to("#parison2", {duration: 0.3, morphSVG: "#parison_test4"}, 5.2)
+						.to("#parison1, #parison2", {duration:0.5, autoAlpha:1}, 5.3)
 
 						//air nozzle retracts
 						.to("#nozzle2", {duration:0.43, ease:"none", y:0}, 5.57)
@@ -646,15 +657,36 @@
 						.to("#parison1, #parison2", {duration:0.792, ease:"none", x:225}, 6.708)
 
 						//bottle gets trimmed
-
+						.to("#waste_knife_topleft", {duration:0.5, x:30, ease:"none"}, 7.5)
+						.to("#waste_knife_topright", {duration:0.5, x:-30, ease:"none"}, 7.5)
+						.to("#waste_knife_bottomleft", {duration:0.5, x:20, ease:"none"}, 7.5)
+						.to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 7.5)
+						.to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 7.5)
+						.to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 7.5)
+						.to("#parison1, #parison2", {duration:0, x:0, y:0, autoAlpha:0.6}, 8)
+						.to("#parison1", {duration: 0, attr:{d:"M567.5,250 l0,50 l2.5,0 l0,-50 l-2.5,0"}}, 8)
+						.to("#parison2", {duration: 0, attr:{d:"M587.5,250 l0,50 l-2.5,0 l0,-50 l2.5,0"}}, 8)
+						.to("#parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, autoAlpha:1}, 8)
+						.to("#waste_knife_topleft", {duration:0.5, x:0, ease:"none"}, 8.2)
+						.to("#waste_knife_topright", {duration:0.5, x:0, ease:"none"}, 8.2)
+						.to("#waste_knife_bottomleft", {duration:0.5, x:0, ease:"none"}, 8.2)
+						.to("#waste_knife_bottomright", {duration:0.5, x:0, ease:"none"}, 8.2)
+						.to("#waste_knife_bottomleft", {duration:0.5, y:0, ease:"none"}, 8.2)
+						.to("#waste_knife_bottomright", {duration:0.5, y:0, ease:"none"}, 8.2)
+						.to("#parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:1.8, y:200, ease:"power1.in"}, 8.2)
+						.to("#parison_waste1", {duration:1.8, x:-40, rotation:-90, ease:"none"}, 8.2)
+						.to("#parison_waste2", {duration:1.8, x:40, rotation:90, ease:"none"}, 8.2)
+						
 						//bottle goes off screen
+						.to("#parison_test5, #parison_test6", {duration:2, x:300, ease:"none"}, 8.5)
 						//simultaneously split die comes and clamps new parison
 						tl.pause()
 					</script>
 					
 					<div class="nav"> 
-					
-						<p class="dbutton" id="continue" onClick="tl.play()"></p >
+						<p class="dbutton" id="start" onClick="tl.play()"></p >
+						<p class="dbutton" id="pause" onClick="tl.pause()"></p >
+						<p class="dbutton" id="restart" onClick="tl.restart()"></p >
 				
 					</div>
 				
@@ -666,126 +698,6 @@
 				
 				</div>
 				<!-- end payj - p2 -->
-				
-				<!--  new page starts here    -->
-				<div class="payj" id="p3" > 
-					
-					<div class="leftText"> 
-					
-						<h3>3</h3>
-					
-						<div class="nav"> 
-					
-							<p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
-							<p class="dbutton" id="next3" onClick="gotoPage(4)"></p >
-						
-						</div>
-				
-					</div>
-					<!-- end leftText - p3 -->
-				
-					<div id="anim3">
-					</div>
-					<!-- end anim 3 -->
-				
-				</div>
-				<!-- end payj - p3 -->
-				
-				<!--  new page starts here    -->
-				<div class="payj" id="p4" > 
-				
-					<div class="leftText"> 
-					
-						<h3>4</h3>
-					
-						<div class="nav"> 
-						
-							<p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
-							<p class="dbutton" id="next4" onClick="gotoPage(5)"></p >
-						
-						</div>
-				
-					</div>
-					<!-- end leftText - p4 -->
-				
-					<div id="anim4">
-					</div>
-					<!-- end anim 4 -->
-				
-				</div>
-				<!-- end payj - p4 -->
-				
-				<!--  new page starts here    -->
-				<div class="payj" id="p5" > 
-				
-					<div class="leftText"> 
-				
-						<h3>5</h3>
-				
-						<div class="nav"> 
-				
-							<p class="dbutton" id="back5" onClick="gotoPage(4)"></p >
-							<p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
-					
-						</div>
-				
-					</div>
-					<!-- end leftText - p5 -->
-					
-                    <div id="anim5">
-					</div>
-					<!-- end anim 5 -->
-				
-				</div>
-				<!-- end payj - p5 -->
-				
-				<!--  new page starts here    -->
-				<div class="payj" id="p6" > 
-					
-					<div class="leftText"> 
-					
-						<h3>6</h3>
-					
-						<div class="nav"> 
-					
-							<p class="dbutton" id="back6" onClick="gotoPage(5)"></p >
-							<p class="dbutton" id="next6" onClick="gotoPage(7)"></p >
-					
-						</div>
-				
-					</div>
-					<!-- end leftText - p6 -->
-				
-					<div id="anim6">
-					</div>
-					<!-- end anim 6 -->
-
-				</div>
-				<!-- end payj - p6 -->
-				
-				<!--  new page starts here    -->
-				<div class="payj" id="p7" > 
-				
-					<div class="leftText"> 
-				
-						<h3>7</h3>
-				
-						<div class="nav"> 
-				
-							<p class="dbutton" id="back7" onClick="gotoPage(6)"></p >
-							<p class="dbutton" id="restart" onClick="gotoPage(1)"></p >
-					
-						</div>
-				
-					</div>
-					<!-- end leftText - p7 -->
-				
-					<div id="anim7">
-					</div>
-					<!-- end anim 7 -->
-
-				</div>
-				<!-- end payj - p7 -->
 
 			</div>
 			<!-- kanvas -->
