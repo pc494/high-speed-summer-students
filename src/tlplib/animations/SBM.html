@@ -512,7 +512,7 @@
                             <path id="box2"     d="M747.5,180 l100,0 0,25 -40,40 0,50 a5,5 90 0 1 -5,5 l-10,0 a5,5 90 0 1 -5,-5 l0,-50 -40,-40 0,-25"></path>
                         </g>
                         <g id="parisons2">
-                            <path id="both"     d="M575,393.833 l-2.5,0 l0,-2.333 q-5,-1 0,-2 -5,-1 0,-2 -5,-1 0,-2 l0,-1 -2,-2 0,-4 -1,0 3,0 0,-25 a5,5 75.256 0 1 3.75,-4.75 l0,-15 -8.75,-8.75 20,0 -8.75,8.75 0,15 a5,5 75.256 0 1 3.75,4.75 l0,25 l3,0 l-1,0 l0,4 l-2,2 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,3.333 -2.5,0"></path>
+                            <path id="both2"     d="M575,393.833 l-2.5,0 l0,-2.333 q-5,-1 0,-2 -5,-1 0,-2 -5,-1 0,-2 l0,-1 -2,-2 0,-4 -1,0 3,0 0,-25 a5,5 75.256 0 1 3.75,-4.75 l0,-15 -8.75,-8.75 20,0 -8.75,8.75 0,15 a5,5 75.256 0 1 3.75,4.75 l0,25 l3,0 l-1,0 l0,4 l-2,2 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,3.333 -2.5,0"></path>
                             <path id="stem2"    d="M682.5,413.833 l8.75,-8.75 0,-15 2.5,0 0,15 8.75,8.75"></path>
                             <path id="parison2" d="M690,345 l-2.5,0 0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,25 a5,5 180 0 0 10,0 l0,-25 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333 -2.5,0"></path>
                             <path id="axial2"   d="M690,345 l-2.5,0 0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0"></path>
@@ -558,13 +558,13 @@
 						// gsap.to("#left_die2, #right_die2", {duration:0, y:15, ease:"none"})
 						// gsap.to("#left_die2", {duration:0, x:-28, ease:"none"})
 						// gsap.to("#right_die2", {duration:0, x:28, ease:"none"})
-                        gsap.to("#both, #ghost", {duration:0, y:-75})
+                        gsap.to("#both2, #ghost", {duration:0, y:-75})
                         gsap.to("#parison2, #stem2", {duration:0, autoAlpha:0})
 
                         var tl = gsap.timeline({repeat:0})
-                        tl.to("#both, #ghost", {duration:1, y:0, ease:"none"})
+                        tl.to("#both2, #ghost", {duration:1, y:0, ease:"none"})
                         .to("#ghost", {duration:0, autoAlpha:0}, 1)
-                        .to("#injection_mould2, #both", {duration:0.3, y:20}, 1.5)
+                        .to("#injection_mould2, #both2", {duration:0.3, y:20}, 1.5)
                         .to("#left2", {duration:0.3, x:-30}, 1.8)
                         .to("#bottom2", {duration:0.3, y:50}, 1.8)
                         .to("#right2", {duration:0.3, x:30}, 1.8)
@@ -572,17 +572,17 @@
                         .to("#right2", {duration:0.6, x:55, ease:"back"}, 2.1)
                         .to("#right2", {duration:0.6, y:90, ease:"sine.out"}, 2.1)
                         .to("#right2", {duration:0.6, rotation:90, ease:"sine.out"}, 2.1)
-                        .to("#both", {duration:0.5, x:67.5, ease:"none"}, 2.5)
-                        .to("#both", {duration:0.5, x:135, ease:"none"}, 3)
-                        .to("#both", {duration:0.4, rotation:-180, ease:"none"}, 2.8)
-                        .to("#both", {duration:0.4, y:89, ease:"sine.inOut"}, 2.8)
+                        .to("#both2", {duration:0.5, x:67.5, ease:"none"}, 2.5)
+                        .to("#both2", {duration:0.5, x:135, ease:"none"}, 3)
+                        .to("#both2", {duration:0.4, rotation:-180, ease:"none"}, 2.8)
+                        .to("#both2", {duration:0.4, y:89, ease:"sine.inOut"}, 2.8)
                         .to("#waste_knives2", {duration:0.5, y:-40}, 3.25)
                         .to("#waste_knife_bottomleft", {duration:0.5, x:20, ease:"none"}, 3.5)
 						.to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 3.5)
 						.to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 3.5)
 						.to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 3.5)
                         .to("#stem2, #parison2", {duration:0, autoAlpha:1}, 4)
-                        .to("#both", {duration:0, autoAlpha:0}, 4)
+                        .to("#both2", {duration:0, autoAlpha:0}, 4)
                         .to("#stem2", {duration:1.8, y:112.5, rotation:90, ease:"power1.in"}, 4)
                         .to("#waste_knife_bottomleft", {duration:0.5, x:0, ease:"none"}, 4.25)
 						.to("#waste_knife_bottomright", {duration:0.5, x:0, ease:"none"}, 4.25)
