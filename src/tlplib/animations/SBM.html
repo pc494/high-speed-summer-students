@@ -588,7 +588,9 @@
 						.to("#waste_knife_bottomleft", {duration:0.5, y:0, ease:"none"}, 4.25)
 						.to("#waste_knife_bottomright", {duration:0.5, y:0, ease:"none"}, 4.25)
                         .to("#waste_knives2", {duration:0.5, y:0}, 4.5)
-                        .to("split_die2", {duration:0.75, x:-})
+                        .to("#split_die2", {duration:0.75, y:-5, ease:"sine.inOut"}, 4.75)
+                        .to("#left_die2", {duration:0.75, x:-105, ease:"back"}, 4.75)
+                        .to("#right_die2", {duration:0.75, x:-105, ease:"slow"}, 4.75)
                         
                         tl.pause()
 						// var tl = gsap.timeline({repeat:0})
