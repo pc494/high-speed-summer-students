@@ -449,23 +449,24 @@
 								var wloc = document.getElementById("DRI").getBoundingClientRect()
 								var x = ploc.x - wloc.x + 0.5*ploc.width
 								var y = ploc.y - wloc.y + 0.5*ploc.height
-								console.log(x,y)
-								console.log(name)
 								var zoomtl = gsap.timeline()
-								zoomtl.set("#caption", {innerHTML:captions[String(name)]})
+								zoomtl.to("#caption", {innerHTML:" "})
+								zoomtl.to("#pointers", 0.2, {opacity:0}, 0)
 								zoomtl.to("#furnace", 1, {scale:2.5, x:320-2.5*x, y:175-2.5*y})
-								zoomtl.to("#pointers", 1, {opacity:0}, "<")
+								zoomtl.set("#caption", {innerHTML:captions[String(name)]})
+								zoomtl.set("#pointers", {visibility: "hidden"})
 								zoomtl.set("#back", {visibility: "visible"})
-								console.log(captions[String(name)])
 							})
 						})
 
 						function back() {
-							var backtl = gsap.timeline()
-							backtl.set("#caption", {innerHTML:"<em>Click on red pointers to start</em>"})
-							backtl.to("#furnace", 1, {scale:1, x:0, y:0})
-							backtl.to("#pointers", 1, {opacity:1}, "<")
+							var backtl = gsap.timeline()							
 							backtl.set("#back", {visibility: "hidden"})
+							backtl.set("#pointers", {visibility: "visible"})
+							backtl.set("#caption", {innerHTML:" "})
+							backtl.to("#furnace", 1, {scale:1, x:0, y:0})
+							backtl.to("#pointers", 0.2, {opacity:1})
+							backtl.set("#caption", {innerHTML:"<em>Click on red pointers to start</em>"})
 						}
 					
 						function reset(){
