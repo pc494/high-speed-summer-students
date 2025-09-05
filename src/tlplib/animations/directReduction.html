@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Direct Reduction</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		
+		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
+
+		<link rel="stylesheet" href="titlecard.css"/>
+		<link rel="stylesheet" href="blastFurnace.css"/>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+		
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				background-color: pink;
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
+
+			/* page id */
+			/* CAHNGE THIS!!! */
+			#p1 {
+				display:block;				
+			}
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+
+			/*  Other */
+			p,text {
+				font-family: sans-serif;
+			}
+
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+
+					<p id="titlecard"> Direct Reduction </p>
+					<div class="nav" style="top:280px"> 
+						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					</div>
+					
+				</div>
+				<!-- end payj - p1 -->
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
+
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+
+					
+					<svg width="640" height="350">		
+						<defs>
+							<pattern id="ore_fill"  x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+								<!-- <path style="fill:grey; stroke:grey; stroke-width:7px;" d="M15,15 l8,4 l0,3 l3,4 l-1,4 l-10,0 l-6,-2 l-2,-5 l-2,-3 l2,-4 Z"></path> -->
+								<rect style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.6;" x="3" y="3" width="6" height="6" rx="1"></rect>
+							</pattern>
+							<pattern id="sponge_iron_fill"  x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+								<!-- <path style="fill:grey; stroke:grey; stroke-width:7px; stroke-dasharray:5,2" d="M0,0 l8,4 l0,3 l3,4 l-1,4 l-10,0 l-6,-2 l-2,-5 l-2,-3 l2,-4 Z"></path> -->
+								<rect style="fill:none; stroke:#aaa; stroke-width:6px; stroke-opacity:0.6; stroke-dasharray: 4,1;" x="3" y="3" width="6" height="6" rx="1"></rect>
+							</pattern>
+							<linearGradient id="furnace_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+								<stop offset="0%" stop-color="grey" stop-opacity="0"/>
+								<stop offset="60%" stop-color="pink" stop-opacity="0.6"/>
+								<stop offset="100%" stop-color="lightskyblue" stop-opacity="0"/>
+							</linearGradient>
+						</defs>
+
+						<g id="furnace">
+
+							<g id="ores">	
+								<rect x="0" y="70" width="640" height="215" fill="url(#furnace_gradient)"></rect>
+								<rect x="0" y="120" width="640" height="75" fill="url(#ore_fill)"></rect>
+								<rect x="0" y="195" width="640" height="75" fill="url(#sponge_iron_fill)"></rect>
+								<!-- <rect id="ore" x="320" y="175" width="6" height="6" rx="1"></rect> -->
+							</g>
+
+							<path id="furnace_guts"
+								d="M300,0 L300,70 l-20,0 l-10,20 l-20,0 L250,0 L300,0
+									M240,0 L240,100 L265,100 l-10,150 l40,35 l15,0 L310,350 L0,350 L0,0 L240,0
+									M340,0 L340,70 l20,0 l10,20 l20,0 L390,0 L340,0
+									M400,0 L400,100 L375,100 l10,150 l-40,35 l-15,0 L330,350 L640,350 L640,0 L400,0"></path>
+
+							<path id="furnace_walls"
+								d="M300,70 l-20,0 l-10,20 l10,0 l5,-10 l15,0 l0,-10
+									M265,100 l-10,150 l40,35 l15,0 l0,-10 l-35,-35 l0,-140 l-10,0
+									M340,70 l20,0 l10,20 l-10,0 l-5,-10 l-15,0 l0,-10
+									M375,100 l10,150 l-40,35 l-15,0 l0,-10 l35,-35 l0,-140 l10,0"></path>
+
+							<path id="exhaust_pipes"
+								d="M240,50 L240,100 L275,100 
+									M250,50 L250,90 L280,89
+									M400,50 L400,100 L365,100
+									M390, 50 L390,90 L360,89"></path>
+							
+							<path id="hopper"
+								d="M320,60 l0,25 l-10,10 m10,-10 l10,10"></path>
+<!-- 
+							<path id="reducing_gas_inlet"
+								d="M275,160 l5,5 l0,30 l-5,5 l0,-40
+									M365,160 l-5,5 l0,30 l5,5 l0,-40"></path> -->
+							
+							<path id="reducing_gas_pipes"
+								d="M200,170 l75,0 M200,180 l75,0 M200,190 l75,0 
+									M365,170 l75,0 M365,180 l75,0 M365,190 l75,0"></path>
+<!-- 
+							<path id="cooling_gas_inlet"
+								d="M280,245 l8,0 l15,15 l0,8 l-26,-26
+									M360,245 l-8,0 l-15,15 l0,8 l26,-26"></path> -->
+							
+							<path id="cooling_gas_pipes"
+								d="M285,250 l-30,30 l-30,0 M295,260 l-35,35 l-30,0
+									M355,250 l30,30 l30,0 M345,260 l35,35 l30,0"></path>
+
+						</g>
+
+						<g id="motionpaths" style="visibility:hidden">
+							<path id="adding_ores_left" d="M305,40 C310,90 280,90 285,135"></path>
+							<path id="adding_ores_left" d="M325,40 C320,90 350,90 345,135"></path>
+							<path id="iron_exiting" d="M315,255 l0,80"></path>
+						</g>
+
+						<g id="gas_paths">
+							<path class="reduction_gas" id="reduction_gas_left1" d="M280,170 c20,0 30,-20 30,-30"></path>
+							<path class="reduction_gas" id="reduction_gas_left2" d="M280, 180 q25,-10 40,5"></path>
+							<path class="reduction_gas" id="reduction_gas_left3" d="M280,190 c20,0 30,30 30,40"></path>
+							<path class="reduction_gas" id="reduction_gas_right1" d="M360,170 c-20,0 -30,-20 -30,-30"></path>
+							<path class="reduction_gas" id="reduction_gas_right2" d="M360, 180 q-25,-10 -40,15"></path>
+							<path class="reduction_gas" id="reduction_gas_right3" d="M360,190 c-20,0 -30,30 -30,40"></path>
+							<path class="cooling_gas" id="cooling_gas_left1" d="M290,245 q10,-5 5,-30"></path>
+							<path class="cooling_gas" id="cooling_gas_left2" d="M300,255 c10,-10 15,-20 15,-30"></path>
+							<path class="cooling_gas" id="cooling_gas_right1" d="M350,245 q-10,-5 -5,-30"></path>
+							<path class="cooling_gas" id="cooling_gas_right2" d="M340,255 c-10,-10 -15,-20 -15,-30"></path>
+							<path class="exhaust" id="exhaust_left" d="M245,80 c5,-40 -10,-40 0,-60"></path>
+							<path class="exhaust" id="exhaust_right" d="M395,80 c-5,-40 10,-40 0,-60"></path>
+						</g>
+
+						<g id="guidelines">
+							<line x1="0" y1="175" x2="640" y2="175" style="stroke-opacity:0.7"></line>
+							<line x1="0" y1="100" x2="640" y2="100"></line>
+							<line x1="0" y1="200" x2="640" y2="200"></line>
+							<line x1="0" y1="300" x2="640" y2="300"></line>
+							<line x1="0" y1="350" x2="640" y2="350" style="stroke-opacity:0.7"></line>
+							<line x1="160" y1="0" x2="160" y2="350" style="stroke-opacity:0.7"></line>
+							<line x1="320" y1="0" x2="320" y2="350" style="stroke-opacity:0.7"></line>
+							<line x1="480" y1="0" x2="480" y2="350" style="stroke-opacity:0.7"></line>
+							<line x1="100" y1="0" x2="100" y2="350"></line>
+							<line x1="200" y1="0" x2="200" y2="350"></line>
+							<line x1="300" y1="0" x2="300" y2="350"></line>
+							<line x1="400" y1="0" x2="400" y2="350"></line>
+							<line x1="500" y1="0" x2="500" y2="350"></line>
+							<line x1="600" y1="0" x2="600" y2="350"></line>
+						</g>
+					</svg>
+
+					<style>
+						#gas_paths .reduction_gas {
+							stroke: lightpink
+						}
+
+						#gas_paths .cooling_gas {
+							stroke: lightskyblue
+						}
+
+						#gas_paths .exhaust {
+							stroke:grey 
+						}
+						#furnace #furnace_guts {
+							fill:white;
+							stroke: none 
+						}
+
+						#furnace #furnace_walls {
+							fill: dimgrey;
+							stroke:none 
+						}
+
+						#furnace #exhaust_pipes {
+							stroke:dimgrey;
+							stroke-width: 2px;
+						}
+
+						#furnace #hopper {
+							fill: none;
+							stroke: dimgray;
+							stroke-width: 2px
+						}
+
+						#furnace #reducing_gas_inlet {
+							fill: lightpink;
+							stroke: none;
+						}
+
+						#furnace #reducing_gas_pipes {
+							fill:none;
+							stroke: lightpink;
+							stroke-width: 5px;
+						}
+
+						#furnace #cooling_gas_inlet {
+							fill: lightskyblue;
+							stroke: none;
+						}
+
+						#furnace #cooling_gas_pipes {
+							fill:none;
+							stroke: lightskyblue;
+							stroke-width: 5px;
+						}
+
+						path {
+							fill:none;
+							stroke:red;
+						}
+
+						#guidelines {
+							stroke:grey; 
+							stroke-opacity:0.3;
+						}
+					</style>
+					
+					<p id="caption"> <em>Click on red pointers to start</em> </p>
+					
+					<div class="nav"> 
+						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
+					</div>
+
+					<script>
+						var t = gsap.timeline({repeat:-1})
+						document.querySelectorAll("#gas_paths path").forEach(path => {
+							path.setAttribute("stroke-width", "3px")
+							path.setAttribute("opacity", 0)
+							var phantomPath = {length:0, totalPathLength: path.getTotalLength()}
+							function updateDasharray(){
+								path.style.strokeDasharray = [phantomPath.length, phantomPath.totalPathLength].join(" ")
+							}
+							var delay = 2*Math.random()
+							t.to(phantomPath, 3, {length:phantomPath.totalPathLength, onUpdate:updateDasharray}, delay)
+							t.set(path, {opacity:1}, delay).to(path, 3, {opacity:0}, delay)
+						})
+					</script>
+					
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>
