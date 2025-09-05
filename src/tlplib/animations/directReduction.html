@@ -260,18 +260,10 @@
 							
 							<path id="hopper"
 								d="M320,60 l0,25 l-10,10 m10,-10 l10,10"></path>
-<!-- 
-							<path id="reducing_gas_inlet"
-								d="M275,160 l5,5 l0,30 l-5,5 l0,-40
-									M365,160 l-5,5 l0,30 l5,5 l0,-40"></path> -->
 							
 							<path id="reducing_gas_pipes"
 								d="M200,170 l75,0 M200,180 l75,0 M200,190 l75,0 
 									M365,170 l75,0 M365,180 l75,0 M365,190 l75,0"></path>
-<!-- 
-							<path id="cooling_gas_inlet"
-								d="M280,245 l8,0 l15,15 l0,8 l-26,-26
-									M360,245 l-8,0 l-15,15 l0,8 l26,-26"></path> -->
 							
 							<path id="cooling_gas_pipes"
 								d="M285,250 l-30,30 l-30,0 M295,260 l-35,35 l-30,0
@@ -286,18 +278,18 @@
 						</g>
 
 						<g id="gas_paths">
-							<path class="reduction_gas" id="reduction_gas_left1" d="M280,170 c20,0 30,-20 30,-30"></path>
-							<path class="reduction_gas" id="reduction_gas_left2" d="M280, 180 q25,-10 40,5"></path>
-							<path class="reduction_gas" id="reduction_gas_left3" d="M280,190 c20,0 30,30 30,40"></path>
-							<path class="reduction_gas" id="reduction_gas_right1" d="M360,170 c-20,0 -30,-20 -30,-30"></path>
-							<path class="reduction_gas" id="reduction_gas_right2" d="M360, 180 q-25,-10 -40,15"></path>
-							<path class="reduction_gas" id="reduction_gas_right3" d="M360,190 c-20,0 -30,30 -30,40"></path>
-							<path class="cooling_gas" id="cooling_gas_left1" d="M290,245 q10,-5 5,-30"></path>
-							<path class="cooling_gas" id="cooling_gas_left2" d="M300,255 c10,-10 15,-20 15,-30"></path>
-							<path class="cooling_gas" id="cooling_gas_right1" d="M350,245 q-10,-5 -5,-30"></path>
-							<path class="cooling_gas" id="cooling_gas_right2" d="M340,255 c-10,-10 -15,-20 -15,-30"></path>
-							<path class="exhaust" id="exhaust_left" d="M245,80 c5,-40 -10,-40 0,-60"></path>
-							<path class="exhaust" id="exhaust_right" d="M395,80 c-5,-40 10,-40 0,-60"></path>
+							<path class="reduction_gas" id="reduction_gas_l1" d="M280,170 c20,0 30,-20 30,-30"></path>
+							<path class="reduction_gas" id="reduction_gas_l2" d="M280, 180 q25,-10 40,5"></path>
+							<path class="reduction_gas" id="reduction_gas_l3" d="M280,190 c20,0 30,30 30,40"></path>
+							<path class="reduction_gas" id="reduction_gas_r1" d="M360,170 c-20,0 -30,-20 -30,-30"></path>
+							<path class="reduction_gas" id="reduction_gas_r2" d="M360, 180 q-25,-10 -40,15"></path>
+							<path class="reduction_gas" id="reduction_gas_r3" d="M360,190 c-20,0 -30,30 -30,40"></path>
+							<path class="cooling_gas" id="cooling_gas_l1" d="M290,245 q10,-5 5,-30"></path>
+							<path class="cooling_gas" id="cooling_gas_l2" d="M300,255 c10,-10 15,-20 15,-30"></path>
+							<path class="cooling_gas" id="cooling_gas_r1" d="M350,245 q-10,-5 -5,-30"></path>
+							<path class="cooling_gas" id="cooling_gas_r2" d="M340,255 c-10,-10 -15,-20 -15,-30"></path>
+							<path class="exhaust" id="exhaust_l1" d="M245,80 c5,-40 -10,-40 0,-60"></path>
+							<path class="exhaust" id="exhaust_r1" d="M395,80 c-5,-40 10,-40 0,-60"></path>
 						</g>
 
 						<g id="guidelines">
@@ -319,16 +311,20 @@
 					</svg>
 
 					<style>
+
+						#gas_paths {
+							stroke-linecap: round;
+						}
 						#gas_paths .reduction_gas {
-							stroke: lightpink
+							stroke: hotpink
 						}
 
 						#gas_paths .cooling_gas {
-							stroke: lightskyblue
+							stroke: deepskyblue
 						}
 
 						#gas_paths .exhaust {
-							stroke:grey 
+							stroke:silver
 						}
 						#furnace #furnace_guts {
 							fill:white;
@@ -391,7 +387,8 @@
 					</div>
 
 					<script>
-						var t = gsap.timeline({repeat:-1})
+						
+						var tls = {}
 						document.querySelectorAll("#gas_paths path").forEach(path => {
 							path.setAttribute("stroke-width", "3px")
 							path.setAttribute("opacity", 0)
@@ -399,10 +396,20 @@
 							function updateDasharray(){
 								path.style.strokeDasharray = [phantomPath.length, phantomPath.totalPathLength].join(" ")
 							}
-							var delay = 2*Math.random()
-							t.to(phantomPath, 3, {length:phantomPath.totalPathLength, onUpdate:updateDasharray}, delay)
-							t.set(path, {opacity:1}, delay).to(path, 3, {opacity:0}, delay)
+							var d = Number(path.id.slice(-1))
+							gsap.timeline({repeat:-1, repeatDelay:0, delay:d}).to(phantomPath, 2.5, {length:phantomPath.totalPathLength, onUpdate:updateDasharray}).set(path, {opacity:1}, "<").to(path, 2.5, {opacity:0}, "<")
 						})
+						// 	var name = path.id.slice(0,-1)
+						// 	if (d==1){
+						// 		tls[name] = gsap.timeline({repeat:-1, paused:true})
+						// 		console.log(name)
+						// 	}
+						// 	tls[name].to(phantomPath, 1, {length:phantomPath.totalPathLength, onUpdate:updateDasharray},d-1).set(path, {opacity:1}, "<").to(path, 1, {opacity:0}, "<")
+						// })
+						// Object.values(tls).forEach(tl => {
+						// 	tl.play()
+						// 	console.log(tl)
+						// })
 					</script>
 					
 				</div>
