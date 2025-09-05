@@ -428,7 +428,7 @@
 							gsap.to("#movers, #furnace", {scale:1, x:0, y:0})
 							gsap.to(".pointer", 0.2, {delay:1, opacity:1}, ">")
 							gsap.to("#back", {visibility:"hidden"})
-							gsap.set("#caption", {innerHTML:"Click on red pointers to start"})
+							gsap.set("#caption", {innerHTML:"<em> Click on red pointers to start </em>"})
 							gsap.to("#reaction_pointer", 0.5, {scale:1, x:0})
 							gsap.to("#reaction_pointer .pointer", {visibility:"hidden", opacity:0})
 
@@ -454,7 +454,7 @@
 							gsap.to(".pointer", 0.2, {opacity:0})
 							gsap.to("#movers, #furnace", 0.5, {delay:0.2, scale:1.5, x:-280, y:-100})
 							gsap.set("#back", {visibility:"visible"}, ">")
-							gsap.set("#caption", {innerHTML:"Ores are gradually reduced and impurities removed, via reduction by the rising gases <br> <em>Hover over pointer to see reactions</em>"}, ">")
+							gsap.set("#caption", {innerHTML:"Ores are gradually reduced and impurities removed, via reduction by the rising gases <br> <em>Click on pointers to see reactions</em>"}, ">")
 							
 							gsap.to("#reaction_pointer", 0.5, {scale:1.5, x:-120, y:-25})
 							gsap.to("#reaction_pointer .pointer", {delay:0.7, visibility:"visible", opacity:1})
