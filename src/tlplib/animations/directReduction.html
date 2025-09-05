@@ -387,8 +387,7 @@
 					</div>
 
 					<script>
-						
-						var tls = {}
+
 						document.querySelectorAll("#gas_paths path").forEach(path => {
 							path.setAttribute("stroke-width", "3px")
 							path.setAttribute("opacity", 0)
@@ -399,17 +398,8 @@
 							var d = Number(path.id.slice(-1))
 							gsap.timeline({repeat:-1, repeatDelay:0, delay:d}).to(phantomPath, 2.5, {length:phantomPath.totalPathLength, onUpdate:updateDasharray}).set(path, {opacity:1}, "<").to(path, 2.5, {opacity:0}, "<")
 						})
-						// 	var name = path.id.slice(0,-1)
-						// 	if (d==1){
-						// 		tls[name] = gsap.timeline({repeat:-1, paused:true})
-						// 		console.log(name)
-						// 	}
-						// 	tls[name].to(phantomPath, 1, {length:phantomPath.totalPathLength, onUpdate:updateDasharray},d-1).set(path, {opacity:1}, "<").to(path, 1, {opacity:0}, "<")
-						// })
-						// Object.values(tls).forEach(tl => {
-						// 	tl.play()
-						// 	console.log(tl)
-						// })
+
+						
 					</script>
 					
 				</div>
