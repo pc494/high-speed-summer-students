@@ -217,12 +217,10 @@
 					<svg width="640" height="350">		
 						<defs>
 							<pattern id="ore_fill"  x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
-								<!-- <path style="fill:grey; stroke:grey; stroke-width:7px;" d="M15,15 l8,4 l0,3 l3,4 l-1,4 l-10,0 l-6,-2 l-2,-5 l-2,-3 l2,-4 Z"></path> -->
-								<rect style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.6;" x="3" y="3" width="6" height="6" rx="1"></rect>
+								<rect style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.9;" x="3" y="3" width="6" height="6" rx="1"></rect>
 							</pattern>
 							<pattern id="sponge_iron_fill"  x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
-								<!-- <path style="fill:grey; stroke:grey; stroke-width:7px; stroke-dasharray:5,2" d="M0,0 l8,4 l0,3 l3,4 l-1,4 l-10,0 l-6,-2 l-2,-5 l-2,-3 l2,-4 Z"></path> -->
-								<rect style="fill:none; stroke:#aaa; stroke-width:6px; stroke-opacity:0.6; stroke-dasharray: 4,1;" x="3" y="3" width="6" height="6" rx="1"></rect>
+								<rect style="fill:none; stroke:#aaa; stroke-width:6px; stroke-opacity:0.9; stroke-dasharray: 4,1;" x="3" y="3" width="6" height="6" rx="1"></rect>
 							</pattern>
 							<linearGradient id="furnace_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
 								<stop offset="0%" stop-color="grey" stop-opacity="0"/>
@@ -233,11 +231,12 @@
 
 						<g id="furnace">
 
-							<g id="ores">	
+							<g>
 								<rect x="0" y="70" width="640" height="215" fill="url(#furnace_gradient)"></rect>
-								<rect x="0" y="120" width="640" height="75" fill="url(#ore_fill)"></rect>
-								<rect x="0" y="195" width="640" height="75" fill="url(#sponge_iron_fill)"></rect>
-								<!-- <rect id="ore" x="320" y="175" width="6" height="6" rx="1"></rect> -->
+								<rect id="ores" x="0" y="120" width="640" height="75" fill="url(#ore_fill)"></rect>
+								<rect id="sponge_irons" x="0" y="195" width="640" height="75" fill="url(#sponge_iron_fill)"></rect>
+								<rect id="ore" x="0" y="0" width="6" height="6" rx="1" style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.6;"></rect>
+								<rect id="sponge_iron" x="0" y="0" width="6" height="6" rx="1" style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.6; stroke-dasharray:4,1"></rect>
 							</g>
 
 							<path id="furnace_guts"
@@ -271,9 +270,9 @@
 
 						</g>
 
-						<g id="motionpaths" style="visibility:hidden">
+						<g id="motionpaths" style="display:none">
 							<path id="adding_ores_left" d="M305,40 C310,90 280,90 285,135"></path>
-							<path id="adding_ores_left" d="M325,40 C320,90 350,90 345,135"></path>
+							<path id="adding_ores_right" d="M325,40 C320,90 350,90 345,135"></path>
 							<path id="iron_exiting" d="M315,255 l0,80"></path>
 						</g>
 
@@ -311,6 +310,10 @@
 					</svg>
 
 					<style>
+
+						path {
+							fill:none
+						}
 
 						#gas_paths {
 							stroke-linecap: round;
@@ -369,11 +372,6 @@
 							stroke-width: 5px;
 						}
 
-						path {
-							fill:none;
-							stroke:red;
-						}
-
 						#guidelines {
 							stroke:grey; 
 							stroke-opacity:0.3;
@@ -396,10 +394,12 @@
 								path.style.strokeDasharray = [phantomPath.length, phantomPath.totalPathLength].join(" ")
 							}
 							var d = Number(path.id.slice(-1))
-							gsap.timeline({repeat:-1, repeatDelay:0, delay:d}).to(phantomPath, 2.5, {length:phantomPath.totalPathLength, onUpdate:updateDasharray}).set(path, {opacity:1}, "<").to(path, 2.5, {opacity:0}, "<")
+							gsap.timeline({repeat:-1, delay:d}).to(phantomPath, 2.5, {length:phantomPath.totalPathLength, onUpdate:updateDasharray}).set(path, {opacity:1}, "<").to(path, 2.5, {opacity:0}, "<")
 						})
 
-						
+						gsap.timeline({repeat:-1}).to("#ore", 2, {motionPath:{path:"#adding_ores_left", offsetX:3, offsetY:3}}, 0).to("#ore", 2, {motionPath:{path:"#adding_ores_right", offsetX:3, offsetY:3}})
+						gsap.timeline({repeat:-1}).to("#sponge_iron", 2, {motionPath:{path:"#iron_exiting", offsetX:3, offsetY:3}, opacity:0})
+						gsap.timeline({repeat:-1, defaults:{ease:"none"}}).to("#ore_fill, #sponge_iron_fill", 2, {y:15})
 					</script>
 					
 				</div>
