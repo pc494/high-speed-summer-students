@@ -503,6 +503,19 @@
 						#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4 {
 							visibility:"visible";
 						}
+						#bottle_capper2 {
+                            stroke:#000;
+                            stroke-width:0.5px;
+                        }
+                        #capper_arm2 {
+                            fill:#666;
+                        }
+                        #capper2 {
+                            fill:#999;
+                        }
+                        #caps2 {
+                            fill:#111;
+                        }
 					</style>
 					<svg id="EBM_animation2">
 						<g id="parisons2">
@@ -549,6 +562,14 @@
 							<path id="left_die2" d="M670,350 l0,100 l30,0 l0,-20 s-2,0 -6,2 l-4,3  s-10,5 -10,0 l0,-20 s0,-1 2,-2 l0,-21 s-2,-1 -2,-2 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-5.333 l-25,0"></path>
 							<path id="right_die2" d="M730,350 l0,100 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-20 s0,-1 -2,-2 l0,-21 s2,-1 2,-2 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
 						</g>
+						<g id="bottle_capper2">
+                            <g id="caps2">
+								<path id="capp2"         d="M794,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
+								<path id="capp3"         d="M794,300.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
+							</g>
+							<path id="capper2"      d="M792.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"></path>
+                            <path id="capper_arm2"  d="M855,220 l-32.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l32.5,0"></path>
+                        </g>
 					</svg>
 					<script>
 						gsap.to("#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, delay:0, autoAlpha:0})
@@ -631,9 +652,18 @@
 						.to("#parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:1.8, y:200, ease:"power1.in"}, 8.2)
 						.to("#parison_waste1", {duration:1.8, x:-40, rotation:-90, ease:"none"}, 8.2)
 						.to("#parison_waste2", {duration:1.8, x:40, rotation:90, ease:"none"}, 8.2)
+
+						//bottle gets capped
+						.to("#parison_test5, #parison_test6", {duration:0.3, y:-30, ease:"none"}, 8.5)
+						.to("#capper2, #capp2", {duration:1, y:17.5, ease:"none"}, 8.5)
+                        .to("#capper2", {duration:1, y:0, ease:"none"}, 9.5)
+						.to("#capp3", {duration:1, y:13, ease:"none"}, 10)
 						
 						//bottle goes off screen
-						.to("#parison_test5, #parison_test6", {duration:2, x:300, ease:"none"}, 8.5)
+						.to("#parison_test5, #parison_test6", {duration:0.5, y:0, ease:"none"}, 10)
+						.to("#capp2", {duration:0.5, y:47.5, ease:"none"}, 10)
+						.to("#capp2", {duration:2, x:300, ease:"none"}, 10.5)
+						.to("#parison_test5, #parison_test6", {duration:2, x:300, ease:"none"}, 10.5)
 						//simultaneously split die comes and clamps new parison
 						tl.pause()
 					</script>
