@@ -184,6 +184,61 @@
 				display:none;				
 			}
 		
+			#EBM_titlepage {
+				position:absolute;
+				left:-120px;
+				top:0px;
+				width:875px;
+				height:480px;
+				transform:scale(0.7);
+				border:#000 2px solid;
+			}
+			#bulk_extrudate {
+				stroke:none;
+				fill:#ee4;
+				fill-opacity:0.75;
+			}
+			#extruder {
+				position:absolute;
+			}
+			#dispenser {
+				position:absolute;
+				fill:darkgreen;
+				stroke:#000;
+				stroke-width:1px;
+			}
+			#parisons {
+				stroke:#000;
+				stroke-width:0.5;
+				fill:#ee4;
+			}
+			#pre_dispensate {
+				fill:#ee4;
+			}
+			#gate {
+				stroke:#000;
+				stroke-width:5px;
+			}
+			#hot_knife {
+				stroke:#f00;
+				stroke-width:1px;
+				fill:#ea0d01;
+			}
+			#split_die {
+				stroke:#000;
+				stroke-width:1px;
+				fill:forestgreen;
+			}
+			#nozzle {
+				stroke:#000;
+				stroke-width:1px;
+			}
+			#title {
+				text-align:center;
+				font-family:"Myriad-Roman";
+				font-size:18px;
+				text-decoration:underline;
+			}
 		</style>
 
 	</head>
@@ -218,64 +273,8 @@
 				<!-- divs for storyline -->
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
-					<style>
-						#EBM_animation {
-							position:absolute;
-							left:-120px;
-							top:0px;
-							width:875px;
-							height:480px;
-							transform:scale(0.7);
-							border:#000 2px solid;
-						}
-						#bulk_extrudate {
-							stroke:none;
-							fill:#ee4;
-							fill-opacity:0.75;
-						}
-						#extruder {
-							position:absolute;
-						}
-						#dispenser {
-							position:absolute;
-							fill:darkgreen;
-							stroke:#000;
-							stroke-width:1px;
-						}
-						#parisons {
-							stroke:#000;
-							stroke-width:0.5;
-							fill:#ee4;
-						}
-						#pre_dispensate {
-							fill:#ee4;
-						}
-						#gate {
-							stroke:#000;
-							stroke-width:5px;
-						}
-						#hot_knife {
-							stroke:#f00;
-							stroke-width:1px;
-							fill:#ea0d01;
-						}
-						#split_die {
-							stroke:#000;
-							stroke-width:1px;
-							fill:forestgreen;
-						}
-						#nozzle {
-							stroke:#000;
-							stroke-width:1px;
-						}
-						#title {
-							text-align:center;
-							font-family:"Myriad-Roman";
-							font-size:18px;
-							text-decoration:underline;
-						}
-					</style>
-					<svg id="EBM_animation">
+					
+					<svg id="EBM_titlepage">
 						<g id="extruder">
 							<g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
 								<path d="M35,180 q15.734,-60 31.468,0"></path>
