@@ -460,9 +460,12 @@
 							stroke:#000;
 							stroke-width:1px;
 						}
-                        #pre_dispensate2 {
+                        #pre_pre_dispensate2 {
 							stroke:#000;
-							stroke-width:0.5;
+							stroke-width:0;
+							fill:#ee4;
+						}
+                        #post_pre_dispensate2 {
 							fill:#ee4;
 						}
                         #ghost {
@@ -537,11 +540,12 @@
                         </g>
                         <path id="ghost"    d="M567.5,393.833 l0,-75 20,0 0,75"></path>
                         <g id="pre_dispensate2">
-							<path id="pre_pre_dispensate2"  d="M547.5,185 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 l-20,-20 l0,-115"></path>
-                            <path id="post_pre_dispensate2" d="M547.5,245 l60,0 0,55 -20,20 0,5 -20,0 0,-5 -20,-20 0,-55"></path>
+							<path id="post_pre_dispensate2" d="M547.5,245 l60,0 0,55 -20,20 0,5 -20,0 0,-5 -20,-20 0,-55"></path>
+                            <path id="pre_pre_dispensate2"  d="M547.5,185 l60,0 l0,115 l-20,20 l0,5 l-20,0 l0,-5 l-20,-20 l0,-115"></path>
 						</g>
 						<g id="piston2">
 							<path id="piston_shaft2" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
+                            <path id="piston_shaft3" d="M572.5,130 l0,105 l10,0 l0,-105 l-10,0"></path>
 							<path id="piston_plate2" d="M547.5,155 l60,0 l0,10 l-60,0 l0,-10"></path>
 						</g>
 						<g id="dispenser2">
@@ -582,12 +586,18 @@
 						// gsap.to("#left_die2", {duration:0, x:-28, ease:"none"})
 						// gsap.to("#right_die2", {duration:0, x:28, ease:"none"})
                         gsap.to("#both2, #ghost", {duration:0, y:-75})
-                        gsap.to("#parison2, #stem2, #axial2, #axial2_test, #bottle2, #post_pre_dispensate2", {duration:0, autoAlpha:0})
+                        gsap.to("#parison2, #stem2, #axial2, #axial2_test, #bottle2, #piston_shaft3", {duration:0, autoAlpha:0})
 
                         var tl = gsap.timeline({repeat:0})
-                        tl.to("#both2, #ghost", {duration:1, y:0, ease:"none"})
+                        tl.to("#piston_plate2", {duration:1, y:80, ease:"none"}, 0)
+                        .to("#piston_shaft2", {duration:1, morphSVG:"#piston_shaft3", ease:"none"}, 0)
+                        .to("#pre_pre_dispensate2", {duration:0.75, morphSVG:"#post_pre_dispensate2", ease:"none"}, 0.25)
+                        .to("#both2, #ghost", {duration:0.75, y:0, ease:"none"}, 0.25)
                         .to("#ghost", {duration:0, autoAlpha:0}, 1)
                         .to("#injection_mould2, #both2", {duration:0.3, y:20}, 1.5)
+                        .to("#piston_shaft2", {duration:1, morphSVG:"#piston_shaft2", ease:"none"}, 1.5)
+                        .to("#piston_plate2", {duration:1, y:0, ease:"none"}, 1.5)
+                        .to("#pre_pre_dispensate2", {duration:0.75, morphSVG:"#pre_pre_dispensate2", ease:"none"}, 2.25)
                         .to("#left2", {duration:0.3, x:-30}, 1.8)
                         .to("#bottom2", {duration:0.3, y:50}, 1.8)
                         .to("#right2", {duration:0.3, x:30}, 1.8)
