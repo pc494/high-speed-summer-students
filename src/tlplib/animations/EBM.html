@@ -239,6 +239,19 @@
 				font-size:18px;
 				text-decoration:underline;
 			}
+			#bottle_capper, #bottle_capper2 {
+				stroke:#000;
+				stroke-width:0.5px;
+			}
+			#capper_arm, #capper_arm2 {
+				fill:#666;
+			}
+			#capper, #capper2 {
+				fill:#999;
+			}
+			#cap, #caps {
+				fill:#111;
+			}
 		</style>
 
 	</head>
@@ -400,6 +413,11 @@
 							<path id="left_die" d="M670,350 l0,100 l30,0 l0,-20 s-2,0 -6,2 l-4,3  s-10,5 -10,0 l0,-20 s0,-1 2,-2 l0,-21 s-2,-1 -2,-2 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-5.333 l-25,0"></path>
 							<path id="right_die" d="M730,350 l0,100 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-20 s0,-1 -2,-2 l0,-21 s2,-1 2,-2 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
 						</g>
+						<g id="bottle_capper">
+							<path id="cap"         d="M794,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
+							<path id="capper"      d="M792.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"></path>
+                            <path id="capper_arm"  d="M855,220 l-32.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l32.5,0"></path>
+                        </g>
 					</svg>
 					<div id="title">
 						<p>Extrusion Blow Moulding</p>
@@ -448,7 +466,7 @@
 				<div class="payj" id="p2" > 
 				
 					<style>
-						#EBM_animation2 {
+						#EBM_animation {
 							position:absolute;
 							left:-475px;
 							top:-70px;
@@ -508,7 +526,7 @@
                             fill:#111;
                         }
 					</style>
-					<svg id="EBM_animation2">
+					<svg id="EBM_animation">
 						<g id="parisons2">
 							<!-- parison 1 - will be behind dispenser and and pre_dispensate and slowly drop down when gate opens -->
 							<path id="parison1" d="M567.5,250 l0,50 l2.5,0 l0,-50 l-2.5,0"></path>
@@ -554,7 +572,7 @@
 							<path id="right_die2" d="M730,350 l0,100 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-20 s0,-1 -2,-2 l0,-21 s2,-1 2,-2 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
 						</g>
 						<g id="bottle_capper2">
-                            <g id="caps2">
+                            <g id="caps">
 								<path id="capp2"         d="M794,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
 								<path id="capp3"         d="M794,300.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
 							</g>
