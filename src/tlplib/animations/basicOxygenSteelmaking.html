@@ -213,10 +213,75 @@
 					<p class="dbutton" id="restart" onclick="reset()" style="position:absolute"></p>
 					
 					<svg id="BOS" width="640" height="350">		
-						
+						<g id="furnace">
+							
+							<path id="air_slag_mixture"
+								d="M250,190 C300,160 340,220 390,190
+									L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
+
+							<path id="slag"
+								d="M250,240 C280,265 290,235 310,250 Q320,270 330,250 C350,235 360,265 390,240
+									L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
+
+							<path id="steel"
+								d="M250,250 C280,270 295,240 310,250 Q320,260 330,250 C345,240 360,270 390,250
+									L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
+							
+							<path id="furnace_walls"
+								d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l16,-8 l4,8 l0,95 l-25,50 l-15,0 a80,40 0 0 1 -80,0 l-15,0 l-25,-50 l0,-95 l35,-70 l15,0 
+									M350,100 l0,10 l25,50 l16,-8 l-26,-52 l-15,0"></path>
+
+							<path id="steel_plug"
+								d="M375,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
+
+						</g>
+
+						<g id="guidelines">
+							<line x1="160" x2="160" y1="0" y2="350"></line>
+							<line x1="320" x2="320" y1="0" y2="350"></line>
+							<line x1="480" x2="480" y1="0" y2="350"></line>
+							<line x1="0" x2="640" y1="175" y2="175"></line>
+							<line x1="0" x2="640" y1="350" y2="350"></line>
+						</g>
 					</svg>
 
-					<style></style>
+					<style>
+
+						#BOS #furnace #steel_plug {
+							fill: lightgrey;
+							stroke: none;
+						}
+
+						#BOS #furnace #steel {
+							fill: gold; 
+							stroke: none
+						}
+
+						#BOS #furnace #slag {
+							fill: orange;
+							stroke: none
+						}
+
+						#BOS #furnace #air_slag_mixture {
+							fill: burlywood;
+							stroke: none
+						}
+
+						#BOS #furnace #furnace_walls {
+							fill:dimgrey;
+							stroke: none;
+						}
+
+						#BOS path {
+							fill: none;
+							stroke: red;
+						}
+
+						#guidelines { 
+							stroke: grey;
+							opacity: 0.3;
+						}
+					</style>
 					
 					<p id="caption"> <em>Click on red pointers to start</em> </p>
 					
