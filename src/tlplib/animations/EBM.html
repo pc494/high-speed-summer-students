@@ -477,7 +477,7 @@
 							stroke-width:1px;
 							fill:#ea0d01;
 						}
-						#waste_knifes2 {
+						#waste_knives2 {
 							visibility:visible;
 						}
 						#split_die2 {
@@ -521,7 +521,7 @@
 						</g>
 						<g id="hot_knives2">
 							<path id="hot_knife2" d="M600,325 l25,0 l0,5 l-25,-5"></path>
-							<g id="waste_knives">
+							<g id="waste_knives2">
 								<path id="waste_knife_topleft" d="M772.5,352 l-25,0 l0,-5 l25,5"></path>
 								<path id="waste_knife_topright" d="M832.5,352 l25,0 l0,-5 l-25,5"></path>
 								<path id="waste_knife_bottomleft" d="M782.5,445 l-20,15 l3,4 l17,-19"></path>
@@ -540,33 +540,6 @@
 						</g>
 					</svg>
 					<script>
-						//FOR PAGE 2
-						// var cnt3 = 0;
-						// var tl3 = gsap.timeline({repeat:-1})
-						// tl3.to("#screw3", {x:150, duration:1, ease:"none"})
-						// .to("#quads3", {x:110, duration:1, ease:"none"}, "<")
-						// .to("#screw3", {x:0, duration:0, ease:"none"})
-						// .to("#quads3", {x:-40, duration:0, ease:"none"})
-						// tl3.pause()
-
-						// function spin3() {
-						// 	if (cnt3 == 0){
-						// 		tl3.play();
-
-						// 		// for (let i = 0; i < 50; i++) {
-									
-									
-						// 		//     console.log(i);
-						// 		// }
-						// 	}
-						// 	if (cnt3 == 1) {
-						// 		tl3.pause()
-						// 		// gsap.kill("#screw");
-								
-						// 		cnt3 = -1;
-						// 	}
-						// 	cnt3 += 1;console.log(cnt3)
-						// }
 						gsap.to("#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4", {duration:0, delay:0, autoAlpha:0})
 						gsap.to("#parison1, #parison2", {duration:0, autoAlpha:0.6})
 						gsap.to("#left_die2, #right_die2", {duration:0, y:15, ease:"none"})
