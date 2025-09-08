@@ -216,23 +216,24 @@
 					<div id="pagecontent" style="position:absolute; padding:5px 20px; width:600px; height:400px; top:30px; ">
 
 						<div id="title" style="height:50px;">
-							<p style="margin:0px"> <strong style="font-size: x-large;">4 steel car doors</strong></p>  
+							<p style="margin:0px"> <strong style="font-size: x-large;">4 steel car doors</strong></p> 
+							<button onclick="popup('#product_spec_pop')" style="position:absolute; right:10px; top:5px"><em>Product specification</em></button> 
 							<p style="margin:0px; font-size:0.9em; font-style: italic;"> Click on each step to view options </p>
 						</div>
 
 						<div id="lifeline" style="position:absolute; width:600px; height:30px;">
 							<button onclick="popup('#material_pop')">Material</button>
 							<button onclick="popup('#transport1_pop')">&#x2192;</button>
-							<button onclick="popup('#manufacture_pop')">Manufactrue</button>
+							<button onclick="popup('#manufacture_pop')">Manufacture</button>
 							<button onclick="popup('#transport2_pop')">&#x2192;</button>
 							<button onclick="popup('#use_pop')">Use</button>
 							<button onclick="popup('#disposal_pop')">Disposal</button>
-							<button onclick="popup('#product_spec_pop')" style="position:absolute; right:0"><em>Product specification</em></button>
+							
 						</div>
 
 						<div id="options" style="position:absolute; height:310px; width:190px; top:90px; "> 
 							
-							<div class="pop" id="product_spec_pop" style="display: block;">
+							<div class="pop" id="product_spec_pop">
 								<p> The car doors are designed for small electric cars; each car carries 4 doors </p>
 								<p> The cars are marketed for use in daily commute, and is estimated to last for 10 years </p>
 							</div>
@@ -475,10 +476,7 @@
 
 					</div>
 
-					<style> 
-						#lifeline {
-							text-align: justify;
-						}
+					<style>
 
 						button {
 							display: inline-block;
@@ -487,9 +485,9 @@
 							border: none;
 							background-color: lavender;
 							color: blueviolet;
-							box-shadow: grey 0 2px;
+							box-shadow: darkgrey 0 2px;
 							border-radius: 5px;
-							padding:5px 10px
+							padding-block:5px;
 						}
 
 						button:hover, button:focus-visible {
@@ -501,6 +499,10 @@
 						button:active {
 							transform: translateY(2px);
 							box-shadow: none;
+						}
+
+						#lifeline button {
+							inline-size: 96px;
 						}
 					</style>
 
@@ -609,6 +611,7 @@
 							 	document.querySelectorAll("input[name='"+name+"']")[0].checked=true
 							})
 							calcbars()
+							popup("#product_spec_pop")
 						}
 					</script>
 					
