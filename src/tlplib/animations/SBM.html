@@ -183,7 +183,120 @@
 			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
 				display:none;				
 			}
-		
+            
+
+
+
+
+            /*svg viewbox thingies */
+            #SBM_title_page {
+                position:absolute;
+                left:-209px;
+                top:-30px;
+                width:1055px;
+                height:500px;
+                transform:scale(0.6);
+                border:#000 2px solid;
+            }
+
+            #SBM_animation {
+                position:absolute;
+                left:-475px;
+                top:-80px;
+                width:1060px;
+                height:500px;
+            }
+            
+            /* elements in title page and animation page */
+            #bulk_extrudate, #bulk_extrudate2 {
+                stroke:none;
+                fill:#ee4;
+                fill-opacity:0.75;
+            }
+            #extruder {
+                position:absolute;
+            }
+            #ghost {
+                stroke:none;
+                fill:#ee4;
+                fill-opacity:1;
+            }
+            #dispenser, #dispenser2 {
+                position:absolute;
+                fill:darkgreen;
+            }
+            #piston_shaft, #piston_shaft2 {
+                fill:burlywood;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            #piston_plate, #piston_plate2 {
+                fill:slategrey;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            #pre_dispensate {
+                stroke:#000;
+                stroke-width:0.5;
+                fill:#ee4;
+            }
+            #pre_dispensate2 {
+                fill:#ee4
+            }
+            #hot_knives, #hot_knives2 {
+                stroke:#f00;
+                stroke-width:1px;
+                fill:#ea0d01;
+            }
+            #split_die, #split_die2 {
+                stroke:#000;
+                stroke-width:1px;
+                fill:forestgreen;
+            }
+            #box, #box2 {
+                stroke:#000;
+                stroke-width:1px;
+                fill:#ccc;
+            }
+            #rodd, #rodd2 {
+                stroke-width:0px;
+                fill:#222;
+            }
+            #nozzle, #nozzle2 {
+                stroke:#000;
+                stroke-width:1px;
+            }
+            #injection_mould, #injection_mould2 {
+                stroke:#000;
+                stroke-width:1px;
+                fill:forestgreen;
+            }
+            #bottle_capper, #bottle_capper2 {
+                stroke:#000;
+                stroke-width:0.5px;
+            }
+            #capper_arm, #capper_arm2 {
+                fill:#666;
+            }
+            #capper, #capper2 {
+                fill:#999;
+            }
+            #cap2 {
+                fill:#111;
+            }
+            #parisons2 {
+                stroke:#ee4;
+                stroke-width:2px;
+                /*border-radius:2px;*/
+                fill:#ee4;
+                fill-opacity:0.5;
+            }
+            #title {
+                text-align:center;
+                font-family:"Myriad-Roman";
+                font-size:18px;
+                text-decoration:underline;
+            }
 		</style>
 
 	</head>
@@ -218,73 +331,11 @@
 				<!-- divs for storyline -->
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
-					<style>
-						#SBM_title_page {
-							position:absolute;
-							left:120px;
-							top:100px;
-							width:640px;
-							height:320px;
-							transform:scale(1.4);
-						}
-						#bulk_extrudate {
-							stroke:none;
-							fill:#ee4;
-							fill-opacity:0.75;
-						}
-						#extruder {
-							position:absolute;
-							transform:scale(0.5);
-						}
-						#dispenser {
-							position:absolute;
-							transform:scale(0.5);
-							fill:darkgreen;
-						}
-						#piston_shaft {
-							transform:scale(0.5);
-							fill:burlywood;
-							stroke:#000;
-							stroke-width:1px;
-						}
-						#piston_plate {
-							transform:scale(0.5);
-							fill:slategrey;
-							stroke:#000;
-							stroke-width:1px;
-						}
-						#pre_dispensate {
-							stroke:#000;
-							stroke-width:0.5;
-							fill:#ee4;
-							transform:scale(0.5);
-						}
-						
-						#hot_knife {
-							stroke:#f00;
-							stroke-width:1px;
-							fill:#ea0d01;
-							transform:scale(0.5);
-						}
-						#split_die {
-							stroke:#000;
-							stroke-width:1px;
-							fill:forestgreen;
-							transform:scale(0.5);
-						}
-						#nozzle {
-							stroke:#000;
-							stroke-width:1px;
-							transform:scale(0.5);
-						}
-						#title {
-							text-align:center;
-							font-family:"Myriad-Roman";
-							font-size:18px;
-							text-decoration:underline;
-						}
-					</style>
                     <svg id="SBM_title_page">
+                        <g id="rod">
+                            <path id="rodd"    d="M796,206.25 l3,0 0,128.5 a1.5,1.5 180 0 1 -3,0 l0,-128.5"></path>
+                            <path id="box"     d="M747.5,201.25 l100,0 0,25 -40,40 0,50 a5,5 90 0 1 -5,5 l-10,0 a5,5 90 0 1 -5,-5 l0,-50 -40,-40 0,-25"></path>
+                        </g>
                         <g id="extruder">
 							<g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
 								<path d="M35,180 q15.734,-60 31.468,0"></path>
@@ -382,8 +433,7 @@
 							</g>
 						</g>
                         <g id="pre_dispensate">
-							<path d="M517.5,185 l30,0 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 
-									 l-20,-20 l0,-105 l-27,0"></path>
+							<path d="M517.5,185 l90,0 l0,115 l-20,20 l0,5 l-20,0 l0,-5 l-20,-20 l0,-105 l-27,0"></path>
 						</g>
 						<g id="piston">
 							<path id="piston_shaft" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
@@ -395,23 +445,36 @@
 						</g>
                         <g id="hot_knives">
 							<g id="waste_knives">
-								<path id="waste_knife_topleft" d="M772.5,352 l-25,0 l0,-5 l25,5"></path>
-								<path id="waste_knife_topright" d="M832.5,352 l25,0 l0,-5 l-25,5"></path>
-								<path id="waste_knife_bottomleft" d="M782.5,445 l-20,15 l3,4 l17,-19"></path>
-								<path id="waste_knife_bottomright" d="M822.5,445 l20,15 l-3,4 l-17,-19"></path>
+								<path id="waste_knife_bottomleft" d="M672.5,445 l-20,15 l3,4 l17,-19"></path>
+								<path id="waste_knife_bottomright" d="M712.5,445 l20,15 l-3,4 l-17,-19"></path>
 							</g>
 						</g>
 						<g id="nozzle">
 							<!-- moved up by 15 -->
-							<path fill="#aaa" d="M918,185 l-205.5,0 c -15,0 -20,5 -20,20 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25 c0,-11.25 3.75,-15 15,-15 l205.5,0"></path>
-							<path fill="#aaa" d="M918,200 l-205.5,0 c -3.75,0 -5,3.75 -5,5 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25 c0,-7.5 2.5,-10 10,-10 l205.5,0"></path>
-							<path fill="#444" d="M918,170 l-198,0 c -26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l198,0"></path>
+							<path fill="#aaa" d="M1060,185 l-100,0 c -15,0 -20,5 -20,20 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25 c0,-11.25 3.75,-15 15,-15 l100,0"></path>
+							<path fill="#aaa" d="M1060,200 l-100,0 c -3.75,0 -5,3.75 -5,5 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25 c0,-7.5 2.5,-10 10,-10 l100,0"></path>
+							<path fill="#444" d="M1060,170 l-92.5,0 c -26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l92.5,0"></path>
 						</g>
 						<g id="split_die">
-							<path id="left_die" d="M670,350 l0,130 l30,0 l0,-20 s-2,0 -6,2 l-4,3  s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-5.333 l-25,0"></path>
-							<path id="right_die" d="M730,350 l0,130 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
+							<path id="left_die" d="M767.5,350 l0,130 l30,0 l0,-20 s-2,0 -6,2 l-4,3  s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-5.333 l-25,0"></path>
+							<path id="right_die" d="M827.5,350 l0,130 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
 						</g>
+                        <g id="injection_mould">
+                            <path id="left"        d="M537.5,320 l20,0 5,5 5,0 8.75,8.75 0,15 c-1,1.331 -3.5,1.331 -3.75,4.75 l0,25 l-3,0 l1,0 l0,4 l2,2 0,1 q-5,1 0,2 q-5,1 0,2 q-5,1 0,2 l0,2.333 -35,16.167 0,-90"></path>
+                            <path id="right"       d="M617.5,320 l-20,0 -5,5 -5,0 -8.75,8.75 0,15 c1,1.331 3.5,1.331 3.75,4.75 l0,25 l3,0 l-1,0 l0,4 l-2,2 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,3.333 35,16.167 0,-90"></path>
+                            <path id="bottom"      d="M537.5,410 l35,-16.167 2.5,0 0,-40.333 c0,-1.25 1.25,-2.5 2.5,-2.5 1.25,0 2.5,1.25 2.5,2.5 l0,40.333 2.5,0 35,16.167 -80,0"></path>
+                        </g>
+                        <g id="bottle_capper">
+                            <g id="caps">
+                                <path id="cap"         d="M999,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
+                            </g>
+                            <path id="capper"      d="M997.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"></path>
+                            <path id="capper_arm"  d="M1060,220 l-32.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l32.5,0"></path>
+                        </g>
                     </svg>
+                    <div id="title">
+						<p>Stretch Blow Moulding</p>
+					</div>
                     <div class="nav"> 
                 
                         <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
@@ -426,90 +489,28 @@
 				<!-- end payj - p1 -->
 				
 				<!--  new page starts here    -->
-				<div class="payj" id="p2" > 
-					<style>
-						#SBM_animation {
-							position:absolute;
-							left:-475px;
-							top:-70px;
-							width:1014px;
-							height:500px;
-						}
-						#bulk_extrudate2 {
-							stroke:none;
-							fill:#ee4;
-							fill-opacity:0.75;
-						}
-						#extruder2 {
-							position:absolute;
-						}
-						#dispenser2 {
-							position:absolute;
-							fill:darkgreen;
-						}
-						#piston_shaft2 {
-							fill:burlywood;
-							stroke:#000;
-							stroke-width:1px;
-						}
-						#piston_plate2 {
-							fill:slategrey;
-							stroke:#000;
-							stroke-width:1px;
-						}
-                        #pre_dispensate2 {
-							stroke:#000;
-							stroke-width:0.5;
-							fill:#ee4;
-						}
-                        #ghost {
-                            stroke:none;
-                            fill:#ee4;
-                            fill-opacity:1;
-                        }
-						#parisons2 {
-							stroke:#ee4;
-							stroke-width:2px;
-                            /*border-radius:2px;*/
-							fill:#ee4;
-                            fill-opacity:0.5;
-						}
-						#hot_knives2 {
-							stroke:#f00;
-							stroke-width:1px;
-							fill:#ea0d01;
-							
-						}
-						#split_die2 {
-							stroke:#000;
-							stroke-width:1px;
-							fill:forestgreen;
-							
-						}
-                        #injection_mould2 {
-                            stroke:#000;
-                            stroke-width:1px;
-                            fill:forestgreen;
-                        }
-						#nozzle {
-							stroke:#000;
-							stroke-width:1px;
-							
-						}
-					</style>
+				<div class="payj" id="p2" >
                     <svg id="SBM_animation">
+                        <g id="rod2">
+                            <path id="rodd2"    d="M796,206.25 l3,0 0,128.5 a1.5,1.5 180 0 1 -3,0 l0,-128.5"></path>
+                            <path id="box2"     d="M747.5,201.25 l100,0 0,25 -40,40 0,50 a5,5 90 0 1 -5,5 l-10,0 a5,5 90 0 1 -5,-5 l0,-50 -40,-40 0,-25"></path>
+                        </g>
                         <g id="parisons2">
-                            <path id="both"     d="M575,393.833 l-2.5,0 l0,-2.333 q-5,-1 0,-2 -5,-1 0,-2 -5,-1 0,-2 l0,-1 -2,-2 0,-4 -1,0 3,0 0,-25 c0.25,-3.419 2.75,-3.419 3.75,-4.75 l0,-15 -8.75,-8.75 20,0 -8.75,8.75 0,15 c1,1.331 3.5,1.331 3.75,4.75 l0,25 l3,0 l-1,0 l0,4 l-2,2 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,3.333 -2.5,0"></path>
-                            <path id="parison"  d="M575,393.833 l-2.5,0 l0,-2.333 q-5,-1 0,-2 -5,-1 0,-2 -5,-1 0,-2 l0,-1 -2,-2 0,-4 -1,0 3,0 0,-25 c0,-2.5 2.5,-5 5,-5 2.5,0 5,2.5 5,5 l0,25 3,0 -1,0 0,4 -2,2 q5,1 0,2 5,1 0,2 5,1 0,2 l0,3.333 -2.5,0"></path>
-                            <path id="stem"     d="M567.5,325 l8.75,8.75 0,15 2.5,0 0,-15 8.75,-8.75"></path>
+                            <path id="both2"        d="M575,393.833 l-2.5,0 l0,-2.333 q-5,-1 0,-2 -5,-1 0,-2 -5,-1 0,-2 l0,-1 -2,-2 0,-4 -1,0 3,0 0,-25 a5,5 75.256 0 1 3.75,-4.75 l0,-15 -8.75,-8.75 20,0 -8.75,8.75 0,15 a5,5 75.256 0 1 3.75,4.75 l0,25 l3,0 l-1,0 l0,4 l-2,2 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,3.333 -2.5,0"></path>
+                            <path id="stem2"        d="M682.5,413.833 l8.75,-8.75 0,-15 2.5,0 0,15 8.75,8.75"></path>
+                            <path id="parison2"     d="M690,345 l-2.5,0 0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,25 a5,5 180 0 0 10,0 l0,-25 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333 -2.5,0"></path>
+                            <path id="axial2"       d="M690,345 l-2.5,0 0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 c0,44.833 3,44.833 3,89.667 a2,2 180 0 0 4,0 c0,-44.834 3,-44.834 3,-89.667 l3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333 -2.5,0"></path>
+                            <path id="axial2_test"  d="M690,345 l-2.5,0 0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1666 0,0.1666 0,0.1666 0,0.1666 0,0.1666 c0,44 3,44 3,88 l0,0.1666 0,0.1666 0,0.1666 0,0.1666 0,0.1666 a2,2 180 0 0 4,0 l0,-0.1666 0,-0.1666 0,-0.1666 0,-0.1666 0,-0.1666 c0,-44 3,-44 3,-88 l0,-0.1666 0,-0.1666 0,-0.1666 0,-0.1666 0,-0.1666 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333 -2.5,0"></path>
+                            <path id="bottle2"      d="M690,345 l-2.5,0 0,3.333 q-5,1 0,2 q-5,1 0,2 q-5,1 0,2 l-2,2 l0,4 l-1,0 l3,0 l0,1 l-10,6.667 s-5,3.333 -5,15 l0,10 s0,1 2,2 l0,31 s-2,1 -2,2 l0,30 s0,5 10,0 l4,-3 s4,-2 6,-2 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 -2.5,0"></path>
                         </g>
                         <path id="ghost"    d="M567.5,393.833 l0,-75 20,0 0,75"></path>
                         <g id="pre_dispensate2">
-							<path d="M547.5,185 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 
-									 l-20,-20 l0,-115"></path>
+							<path id="post_pre_dispensate2" d="M547.5,245 l60,0 0,55 -20,20 0,5 -20,0 0,-5 -20,-20 0,-55"></path>
+                            <path id="pre_pre_dispensate2"  d="M547.5,185 l60,0 l0,115 l-20,20 l0,5 l-20,0 l0,-5 l-20,-20 l0,-115"></path>
 						</g>
 						<g id="piston2">
 							<path id="piston_shaft2" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
+                            <path id="piston_shaft3" d="M572.5,130 l0,105 l10,0 l0,-105 l-10,0"></path>
 							<path id="piston_plate2" d="M547.5,155 l60,0 l0,10 l-60,0 l0,-10"></path>
 						</g>
 						<g id="dispenser2">
@@ -517,25 +518,32 @@
 						</g>
                         <g id="hot_knives2">
 							<g id="waste_knives2">
-								
 								<path id="waste_knife_bottomleft"   d="M672.5,445 l-20,15 l3,4 l17,-19"></path>
 								<path id="waste_knife_bottomright"  d="M712.5,445 l20,15 l-3,4 l-17,-19"></path>
 							</g>
 						</g>
 						<g id="nozzle2">
 							<!-- moved up by 15 -->
-							<path fill="#aaa"       d="M1014,185 l-205.5,0 c-15,0 -20,5 -20,20 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25 c0,-11.25 3.75,-15 15,-15 l205.5,0"></path>
-							<path fill="#aaa"       d="M1014,200 l-205.5,0 c-3.75,0 -5,3.75 -5,5 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25 c0,-7.5 2.5,-10 10,-10 l205.5,0"></path>
-							<path fill="#444"       d="M1014,170 l-198,0 c-26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l198,0"></path>
+							<path fill="#aaa"       d="M1060,185 l-100,0 c-15,0 -20,5 -20,20 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25 c0,-11.25 3.75,-15 15,-15 l205.5,0"></path>
+							<path fill="#aaa"       d="M1060,200 l-100,0 c-3.75,0 -5,3.75 -5,5 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25 c0,-7.5 2.5,-10 10,-10 l205.5,0"></path>
+							<path fill="#444"       d="M1060,170 l-92.5,0 c-26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l198,0"></path>
 						</g>
 						<g id="split_die2">
-							<path id="left_die2"    d="M766,350 l0,130 l30,0 l0,-20 s-2,0 -6,2 l-4,3 s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-5.333 l-25,0"></path>
-							<path id="right_die2"   d="M826,350 l0,130 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-4.333 l25,0"></path>
+							<path id="left_die2"    d="M767.5,350 l0,128 l30,0 l0,-20 s-2,0 -6,2 l-4,3 s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-3.333 l-25,0"></path>
+							<path id="right_die2"   d="M827.5,350 l0,128 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 l25,0"></path>
 						</g>
                         <g id="injection_mould2">
                             <path id="left2"        d="M537.5,320 l20,0 5,5 5,0 8.75,8.75 0,15 c-1,1.331 -3.5,1.331 -3.75,4.75 l0,25 l-3,0 l1,0 l0,4 l2,2 0,1 q-5,1 0,2 q-5,1 0,2 q-5,1 0,2 l0,2.333 -35,16.167 0,-90"></path>
                             <path id="right2"       d="M617.5,320 l-20,0 -5,5 -5,0 -8.75,8.75 0,15 c1,1.331 3.5,1.331 3.75,4.75 l0,25 l3,0 l-1,0 l0,4 l-2,2 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,3.333 35,16.167 0,-90"></path>
                             <path id="bottom2"      d="M537.5,410 l35,-16.167 2.5,0 0,-40.333 c0,-1.25 1.25,-2.5 2.5,-2.5 1.25,0 2.5,1.25 2.5,2.5 l0,40.333 2.5,0 35,16.167 -80,0"></path>
+                        </g>
+                        <g id="bottle_capper2">
+                            <g id="caps2">
+                                <path id="cap2"         d="M999,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
+                                <path id="capp2"        d="M999,300.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
+                            </g>
+                            <path id="capper2"      d="M997.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"></path>
+                            <path id="capper_arm2"  d="M1060,220 l-32.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l32.5,0"></path>
                         </g>
                     </svg>									
                     <script>
@@ -544,35 +552,86 @@
 						// gsap.to("#left_die2, #right_die2", {duration:0, y:15, ease:"none"})
 						// gsap.to("#left_die2", {duration:0, x:-28, ease:"none"})
 						// gsap.to("#right_die2", {duration:0, x:28, ease:"none"})
-                        gsap.to("#both, #ghost", {duration:0, y:-75})
-                        gsap.to("#parison, #stem", {duration:0, autoAlpha:0})
-
+                        gsap.to("#both2, #ghost", {duration:0, y:-75})
+                        gsap.to("#parison2, #stem2, #axial2, #axial2_test, #bottle2, #piston_shaft3", {duration:0, autoAlpha:0})
+                        var t = 0.2;
                         var tl = gsap.timeline({repeat:0})
-                        tl.to("#both, #ghost", {duration:1, y:0, ease:"none"})
+                        tl.to("#piston_plate2", {duration:1, y:80, ease:"none"}, 0)
+                        .to("#piston_shaft2", {duration:1, morphSVG:"#piston_shaft3", ease:"none"}, 0)
+                        .to("#pre_pre_dispensate2", {duration:0.75, morphSVG:"#post_pre_dispensate2", ease:"none"}, 0.25)
+                        .to("#both2, #ghost", {duration:0.75, y:0, ease:"none"}, 0.25)
                         .to("#ghost", {duration:0, autoAlpha:0}, 1)
-                        .to("#injection_mould2, #both", {duration:0.3, y:20}, 1.5)
+                        .to("#injection_mould2, #both2", {duration:0.3, y:20}, 1.5)
+                        .to("#piston_shaft2", {duration:1, morphSVG:"#piston_shaft2", ease:"none"}, 1.5)
+                        .to("#piston_plate2", {duration:1, y:0, ease:"none"}, 1.5)
+                        .to("#pre_pre_dispensate2", {duration:0.75, morphSVG:"#pre_pre_dispensate2", ease:"none"}, 1.5)
                         .to("#left2", {duration:0.3, x:-30}, 1.8)
                         .to("#bottom2", {duration:0.3, y:50}, 1.8)
                         .to("#right2", {duration:0.3, x:30}, 1.8)
                         .to("#bottom2", {duration:0.6, x:-10, y:20, rotation:45}, 2.1)
                         .to("#right2", {duration:0.6, x:55, ease:"back"}, 2.1)
-                        .to("#right2", {duration:0.6, y:90, ease:"sine.out"}, 2.1)
-                        .to("#right2", {duration:0.6, rotation:90, ease:"sine.out"}, 2.1)
-                        .to("#both", {duration:0.5, x:67.5, ease:"none"}, 2.5)
-                        .to("#both", {duration:0.5, x:135, ease:"none"}, 3)
-                        .to("#both", {duration:0.4, rotation:-180, ease:"none"}, 2.8)
-                        .to("#both", {duration:0.4, y:90, ease:"sine.inOut"}, 2.8)
-                        .to("#waste_knives2", {duration:0.5, y:-39}, 3.25)
+                        .to("#right2", {duration:0.6, y:90, rotation:90, ease:"sine.out"}, 2.1)
+                        .to("#both2", {duration:0.5, x:67.5, ease:"none"}, 2.5)
+                        .to("#both2", {duration:0.5, x:135, ease:"none"}, 3)
+                        .to("#both2", {duration:0.4, rotation:-180, ease:"none"}, 2.8)
+                        .to("#both2", {duration:0.4, y:89, ease:"sine.inOut"}, 2.8)
+                        .to("#waste_knives2", {duration:0.5, y:-40}, 3.25)
                         .to("#waste_knife_bottomleft", {duration:0.5, x:20, ease:"none"}, 3.5)
 						.to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 3.5)
 						.to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 3.5)
 						.to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 3.5)
+                        .to("#stem2, #parison2", {duration:0, autoAlpha:1}, 4)
+                        .to("#both2", {duration:0, autoAlpha:0}, 4)
+                        .to("#stem2", {duration:0.75, y:137.5, rotation:135, x:60, ease:"power1.in"}, 4)
                         .to("#waste_knife_bottomleft", {duration:0.5, x:0, ease:"none"}, 4.25)
 						.to("#waste_knife_bottomright", {duration:0.5, x:0, ease:"none"}, 4.25)
 						.to("#waste_knife_bottomleft", {duration:0.5, y:0, ease:"none"}, 4.25)
 						.to("#waste_knife_bottomright", {duration:0.5, y:0, ease:"none"}, 4.25)
-                        .to("#waste_knives2", {duration:0.5, y:0}, 4.5)
-                        
+                        .to("#waste_knives2", {duration:0.75, y:35}, 4.5)
+                        .to("#split_die2", {duration:0.75, y:-5, ease:"sine.inOut"}, 4.75)
+                        .to("#left_die2", {duration:0.75, x:-105, ease:"sine.inOut"}, 4.75)
+                        .to("#right_die2", {duration:0.75, x:-105, ease:"sine.inOut"}, 4.75)
+                        .to("#waste_knives2", {duration:0.5, y:0, ease:"sine.inOut"}, 5.65 + 2*t)
+                        .to("#split_die2", {duration:0.6, y:0, ease:"sine.inOut"}, 5.65 + t)
+                        .to("#left_die2, #right_die2", {duration:0.6, x:0, ease:"sine.inOut"}, 5.65 + t)
+                        .to("#parison2", {duration:0.6, x:105, y:5, ease:"sine.inOut"}, 5.65 + t)
+                        .to("#right2", {duration:0.6, rotation:0, y:0, ease:"sine.in"}, 5.65 + t)
+                        .to("#right2", {duration:0.6, x:30, ease:"back.in"}, 5.65 + t)
+                        .to("#bottom2", {duration:0.6, x:0, y:50, rotation:0, ease:"power1.in"}, 5.65 + t)
+                        .to("#bottom2, #right2, #left2", {duration:0.3, x:0, y:0, ease:"power1.in"}, 6.25 + t)
+                        .to("#injection_mould2", {duration:0.3, y:0, ease:"power1.in"}, 6.55 + t)
+                        .to("#left_die2, #right_die2", {duration:0.5, y:-25, ease:"none"}, 6.25 + t)
+                        .to("#parison2", {duration:0.5, y:-20, ease:"none"}, 6.25 + t)
+                        .to("#rodd2", {duration:1.5, y:95, ease:"sine.out"}, 6.755 + t)
+                        .to("#parison2", {duration:1.25, morphSVG: "#axial2"}, 7.1 + t)
+                        .to("#parison2", {duration:0, morphSVG: "#axial2_test"}, 8.35 + t)
+                        .to("#rodd2", {duration:1.5, y:0, ease:"sine.in"}, 9 + t)
+                        .to("#left_die2, #right_die2", {duration:0.5, y:0, ease:"sine.out"}, 10 + t)
+                        .to("#parison2", {duratopm:0.75, y:5, ease:"sine.out"}, 10 + t)
+                        .to("#split_die2", {duration:1, x:150, ease:"sine.inOut"}, 10.25 + t)
+                        .to("#parison2", {duration:1, x:255, ease:"sine.inOut"}, 10.25 + t)
+                        .to("#split_die2", {duration:0.75, y:-10, ease:"sine.in"}, 10.75 + t)
+                        .to("#parison2", {duration:0.75, y:-5, ease:"sine.in"}, 10.75 + t)
+                        .to("#nozzle2", {duration:0.5, y:5, ease:"none"}, 11.5 + t)
+                        .to("#parison2", {duration: 0.5, morphSVG: "#bottle2"}, 12.25 + t)
+                        .to("#nozzle2", {duration:0.5, y:0, ease:"none"}, 13 + t)
+                        .to("#split_die2", {duration:0.5, y:0, ease:"none"}, 13.5 + t)
+                        .to("#parison2", {duration:0.5, y:5, ease:"none"}, 13.5 + t)
+                        .to("#left_die2", {duration:0.75, x:-20, ease:"none"}, 14 + t)
+						.to("#left_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
+						.to("#right_die2", {duration:0.75, x:20, ease:"none"}, 14 + t)
+						.to("#right_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
+						.to("#left_die2", {duration:0.25, x:-28, ease:"none"}, 14.75 + t)
+						.to("#right_die2", {duration:0.25, x:28, ease:"none"}, 14.75 + t)
+                        .to("#split_die2, #left_die2, #right_die2", {duration:1, x:0, y:0, ease:"sine.inOut"}, 15 + t)
+                        .to("#parison2", {duration:0.75, x:315, ease:"power1.out"}, 15.25 + t)
+                        .to("#parison2", {duration:0.75, y:-20, ease:"power1.in"}, 15.5 + t)
+                        .to("#capper2, #cap2", {duration:1, y:20, ease:"none"}, 16 + t)
+                        .to("#capper2", {duration:1, y:0, ease:"none"}, 17.5 + t)
+                        .to("#capp2", {duration:0.5, y:13, ease:"none"}, 18.5 + t)
+                        .to("#cap2", {duration:1, x:75, ease:"sine.inOut"}, 18.5 + t)
+                        .to("#parison2", {duration:1, x:390, ease:"sine.inOut"}, 18.5 + t)
+						
                         tl.pause()
 						// var tl = gsap.timeline({repeat:0})
 						// //Dispenser dispenses parison into injection mould
