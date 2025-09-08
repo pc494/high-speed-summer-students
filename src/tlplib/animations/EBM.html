@@ -193,6 +193,14 @@
 				transform:scale(0.7);
 				border:#000 2px solid;
 			}
+			#EBM_animation {
+				position:absolute;
+				left:-475px;
+				top:-70px;
+				width:1014px;
+				height:500px;
+				transform:scale(1.2);
+			}
 			#bulk_extrudate {
 				stroke:none;
 				fill:#ee4;
@@ -201,43 +209,40 @@
 			#extruder {
 				position:absolute;
 			}
-			#dispenser {
+			#dispenser, #dispenser2 {
 				position:absolute;
 				fill:darkgreen;
 				stroke:#000;
 				stroke-width:1px;
 			}
-			#parisons {
+			#parisons, #parisons2 {
 				stroke:#000;
 				stroke-width:0.5;
 				fill:#ee4;
 			}
-			#pre_dispensate {
+			#pre_dispensate, #pre_dispensate2 {
 				fill:#ee4;
 			}
-			#gate {
+			#gate, #gate2 {
 				stroke:#000;
 				stroke-width:5px;
 			}
-			#hot_knife {
+			#hot_knives, #hot_knives2 {
 				stroke:#f00;
 				stroke-width:1px;
 				fill:#ea0d01;
 			}
-			#split_die {
+			#waste_knives, #waste_knives2 {
+				visibility:visible;
+			}
+			#split_die, #split_die2 {
 				stroke:#000;
 				stroke-width:1px;
 				fill:forestgreen;
 			}
-			#nozzle {
+			#nozzle, #nozzle2 {
 				stroke:#000;
 				stroke-width:1px;
-			}
-			#title {
-				text-align:center;
-				font-family:"Myriad-Roman";
-				font-size:18px;
-				text-decoration:underline;
 			}
 			#bottle_capper, #bottle_capper2 {
 				stroke:#000;
@@ -251,6 +256,15 @@
 			}
 			#cap, #caps {
 				fill:#111;
+			}
+			#title {
+				text-align:center;
+				font-family:"Myriad-Roman";
+				font-size:18px;
+				text-decoration:underline;
+			}
+			#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4 {
+				visibility:"visible";
 			}
 		</style>
 
@@ -401,8 +415,14 @@
 						<g id="gate">
 							 <path d="M557.5,325 l40,0"></path>
 						</g>
-						<g id="hot_knife">
-							<path d="M600,325 l25,0 l0,5 l-25,-5"></path>
+						<g id="hot_knives2">
+							<path id="hot_knives" d="M600,325 l25,0 l0,5 l-25,-5"></path>
+							<g id="waste_knives">
+								<path id="waste_knife_topleft2" d="M772.5,352 l-25,0 l0,-5 l25,5"></path>
+								<path id="waste_knife_topright2" d="M832.5,352 l25,0 l0,-5 l-25,5"></path>
+								<path id="waste_knife_bottomleft2" d="M782.5,445 l-20,15 l3,4 l17,-19"></path>
+								<path id="waste_knife_bottomright2" d="M822.5,445 l20,15 l-3,4 l-17,-19"></path>
+							</g>
 						</g>
 						<g id="nozzle">
 							<path fill="#aaa" d="M918,200 l-205.5,0 c -15,0 -20,5 -20,20 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25 c0,-11.25 3.75,-15 15,-15 l205.5,0"></path>
@@ -465,67 +485,6 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p2" > 
 				
-					<style>
-						#EBM_animation {
-							position:absolute;
-							left:-475px;
-							top:-70px;
-							width:1014px;
-							height:500px;
-							transform:scale(1.2);
-						}
-						#dispenser2 {
-							position:absolute;
-							fill:darkgreen;
-							stroke:#000;
-							stroke-width:1px;
-						}
-						#parisons2 {
-							stroke:#000;
-							stroke-width:0.5;
-							fill:#ee4;
-						}
-						#pre_dispensate2 {
-							fill:#ee4;
-						}
-						#gate2 {
-							stroke:#000;
-							stroke-width:5px;
-						}
-						#hot_knives2 {
-							stroke:#f00;
-							stroke-width:1px;
-							fill:#ea0d01;
-						}
-						#waste_knives2 {
-							visibility:visible;
-						}
-						#split_die2 {
-							stroke:#000;
-							stroke-width:1px;
-							fill:forestgreen;
-						}
-						#nozzle2 {
-							stroke:#000;
-							stroke-width:1px;
-						}
-						#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4 {
-							visibility:"visible";
-						}
-						#bottle_capper2 {
-                            stroke:#000;
-                            stroke-width:0.5px;
-                        }
-                        #capper_arm2 {
-                            fill:#666;
-                        }
-                        #capper2 {
-                            fill:#999;
-                        }
-                        #caps2 {
-                            fill:#111;
-                        }
-					</style>
 					<svg id="EBM_animation">
 						<g id="parisons2">
 							<!-- parison 1 - will be behind dispenser and and pre_dispensate and slowly drop down when gate opens -->
