@@ -537,8 +537,8 @@
                         </g>
                         <path id="ghost"    d="M567.5,393.833 l0,-75 20,0 0,75"></path>
                         <g id="pre_dispensate2">
-							<path d="M547.5,185 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 
-									 l-20,-20 l0,-115"></path>
+							<path id="pre_pre_dispensate2"  d="M547.5,185 s15,0 30,20 s15,20 30,20 l0,75 l-20,20 l0,5 l-20,0 l0,-5 l-20,-20 l0,-115"></path>
+                            <path id="post_pre_dispensate2" d="M547.5,245 l60,0 0,55 -20,20 0,5 -20,0 0,-5 -20,-20 0,-55"></path>
 						</g>
 						<g id="piston2">
 							<path id="piston_shaft2" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
@@ -582,7 +582,7 @@
 						// gsap.to("#left_die2", {duration:0, x:-28, ease:"none"})
 						// gsap.to("#right_die2", {duration:0, x:28, ease:"none"})
                         gsap.to("#both2, #ghost", {duration:0, y:-75})
-                        gsap.to("#parison2, #stem2, #axial2, #axial2_test, #bottle2", {duration:0, autoAlpha:0})
+                        gsap.to("#parison2, #stem2, #axial2, #axial2_test, #bottle2, #post_pre_dispensate2", {duration:0, autoAlpha:0})
 
                         var tl = gsap.timeline({repeat:0})
                         tl.to("#both2, #ghost", {duration:1, y:0, ease:"none"})
@@ -593,8 +593,7 @@
                         .to("#right2", {duration:0.3, x:30}, 1.8)
                         .to("#bottom2", {duration:0.6, x:-10, y:20, rotation:45}, 2.1)
                         .to("#right2", {duration:0.6, x:55, ease:"back"}, 2.1)
-                        .to("#right2", {duration:0.6, y:90, ease:"sine.out"}, 2.1)
-                        .to("#right2", {duration:0.6, rotation:90, ease:"sine.out"}, 2.1)
+                        .to("#right2", {duration:0.6, y:90, rotation:90, ease:"sine.out"}, 2.1)
                         .to("#both2", {duration:0.5, x:67.5, ease:"none"}, 2.5)
                         .to("#both2", {duration:0.5, x:135, ease:"none"}, 3)
                         .to("#both2", {duration:0.4, rotation:-180, ease:"none"}, 2.8)
@@ -618,11 +617,11 @@
                         .to("#split_die2", {duration:0.6, y:0, ease:"sine.inOut"}, 5.65)
                         .to("#left_die2, #right_die2", {duration:0.6, x:0, ease:"sine.inOut"}, 5.65)
                         .to("#parison2", {duration:0.6, x:105, y:5, ease:"sine.inOut"}, 5.65)
-                            .to("#right2", {duration:0.6, rotation:0, y:0, ease:"sine.in"}, 5.65)
-                            .to("#right2", {duration:0.6, x:30, ease:"back.in"}, 5.65)
-                            .to("#bottom2", {duration:0.6, x:0, y:50, rotation:0, ease:"power1.in"}, 5.65)
-                            .to("#bottom2, #right2, #left2", {duration:0.3, x:0, y:0, ease:"power1.in"}, 6.25)
-                            .to("#injection_mould2", {duration:0.3, y:0, ease:"power1.in"}, 6.55)
+                        .to("#right2", {duration:0.6, rotation:0, y:0, ease:"sine.in"}, 5.65)
+                        .to("#right2", {duration:0.6, x:30, ease:"back.in"}, 5.65)
+                        .to("#bottom2", {duration:0.6, x:0, y:50, rotation:0, ease:"power1.in"}, 5.65)
+                        .to("#bottom2, #right2, #left2", {duration:0.3, x:0, y:0, ease:"power1.in"}, 6.25)
+                        .to("#injection_mould2", {duration:0.3, y:0, ease:"power1.in"}, 6.55)
                         .to("#left_die2, #right_die2", {duration:0.5, y:-25, ease:"none"}, 6.25)
                         .to("#parison2", {duration:0.5, x:105, y:-20, ease:"none"}, 6.25)
                         .to("#rodd2", {duration:1.5, y:95, ease:"sine.out"}, 6.755)
