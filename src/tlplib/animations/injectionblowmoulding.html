@@ -185,88 +185,116 @@
 				display:none;				
 			}
 		
-			#IBM_titlepage {
-				position:absolute;
-				left:-120px;
-				top:0px;
-				width:875px;
-				height:480px;
-				transform:scale(0.7);
-				border:#000 2px solid;
-			}
-			#IBM_animation {
-				position:absolute;
-				left:-475px;
-				top:-70px;
-				width:1014px;
-				height:500px;
-				transform:scale(1.2);
-			}
-			#bulk_extrudate {
-				stroke:none;
-				fill:#ee4;
-				fill-opacity:0.75;
-			}
-			#extruder {
-				position:absolute;
-			}
-			#dispenser, #dispenser2 {
-				position:absolute;
-				fill:darkgreen;
-				stroke:#000;
-				stroke-width:1px;
-			}
-			#parisons, #parisons2 {
-				stroke:#000;
-				stroke-width:0.5;
-				fill:#ee4;
-			}
-			#pre_dispensate, #pre_dispensate2 {
-				fill:#ee4;
-			}
-			#gate, #gate2 {
-				stroke:#000;
-				stroke-width:5px;
-			}
-			#hot_knives, #hot_knives2 {
-				stroke:#f00;
-				stroke-width:1px;
-				fill:#ea0d01;
-			}
-			#waste_knives, #waste_knives2 {
-				visibility:visible;
-			}
-			#split_die, #split_die2 {
-				stroke:#000;
-				stroke-width:1px;
-				fill:forestgreen;
-			}
-			#nozzle, #nozzle2 {
-				stroke:#000;
-				stroke-width:1px;
-			}
-			#bottle_capper, #bottle_capper2 {
-				stroke:#000;
-				stroke-width:0.5px;
-			}
-			#capper_arm, #capper_arm2 {
-				fill:#666;
-			}
-			#capper, #capper2 {
-				fill:#999;
-			}
-			#cap, #caps {
-				fill:#111;
-			}
-			#title {
-				text-align:center;
-				font-family:"Myriad-Roman";
-				font-size:18px;
-				text-decoration:underline;
-			}
-			#parison_test1, #parison_test2, #parison_test3, #parison_test4, #parison_test5, #parison_test6, #parison_waste1, #parison_waste2, #parison_waste3, #parison_waste4 {
-				visibility:"visible";
-			}
+            /*svg viewbox thingies */
+            #IBM_title_page {
+                position:absolute;
+                left:-209px;
+                top:-30px;
+                width:1055px;
+                height:500px;
+                transform:scale(0.6);
+                border:#000 2px solid;
+            }
+
+            #IBM_animation {
+                position:absolute;
+                left:-475px;
+                top:-80px;
+                width:1060px;
+                height:500px;
+            }
+            
+            /* elements in title page and animation page */
+            #bulk_extrudate, #bulk_extrudate2 {
+                stroke:none;
+                fill:#ee4;
+                fill-opacity:0.75;
+            }
+            #extruder {
+                position:absolute;
+            }
+            #ghost {
+                stroke:none;
+                fill:#ee4;
+                fill-opacity:1;
+            }
+            #dispenser, #dispenser2 {
+                position:absolute;
+                fill:darkgreen;
+            }
+            #piston_shaft, #piston_shaft2 {
+                fill:burlywood;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            #piston_plate, #piston_plate2 {
+                fill:slategrey;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            #pre_dispensate {
+                stroke:#000;
+                stroke-width:0.5;
+                fill:#ee4;
+            }
+            #pre_dispensate2 {
+                fill:#ee4
+            }
+            #hot_knives, #hot_knives2 {
+                stroke:#f00;
+                stroke-width:1px;
+                fill:#ea0d01;
+            }
+            #split_die, #split_die2 {
+                stroke:#000;
+                stroke-width:1px;
+                fill:forestgreen;
+            }
+            #box, #box2 {
+                stroke:#000;
+                stroke-width:1px;
+                fill:#ccc;
+            }
+            #rodd, #rodd2 {
+                stroke-width:0px;
+                fill:#222;
+            }
+            #nozzle, #nozzle2 {
+                stroke:#000;
+                stroke-width:1px;
+            }
+            #injection_mould, #injection_mould2 {
+                stroke:#000;
+                stroke-width:1px;
+                fill:forestgreen;
+            }
+            #bottle_capper, #bottle_capper2 {
+                stroke:#000;
+                stroke-width:0.5px;
+            }
+            #capper_arm, #capper_arm2 {
+                fill:#666;
+            }
+            #capper, #capper2 {
+                fill:#999;
+            }
+            #cap2 {
+                fill:#111;
+            }
+            #parisons2 {
+                stroke:#ee4;
+                stroke-width:2px;
+                /*border-radius:2px;*/
+                fill:#ee4;
+                fill-opacity:0.5;
+            }
+            #title {
+                text-align:center;
+                font-family:"Myriad-Roman";
+                font-size:18px;
+                text-decoration:underline;
+            }
 		</style>
-    </head>
+
+	</head>
 </html>
