@@ -484,7 +484,7 @@
                         </g>
                         <g id="pre_dispensate2">
                             <path d="M480,150 l10,0 17.5,35 30,0 0,10 -30,0 -17.5,35 -10,0"></path>
-                            <path id="a" d="M487.5,180 l52.326,0 0,20 -52.326,0 0,-20"></path>
+                            <path id="a" d="M482.5,185 l54,0 2.326,5 -2.326,5 -54,0"></path>
                         </g>
                         <g id="hot_knives2">
 							<g id="waste_knives2">
@@ -539,93 +539,94 @@
                         tl.to("#a", {duration:1, x:50, ease:"none"}, 0)
                         .to("#parison2", {duration:1, y:0, ease:"none"}, 0)
                         .to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, 0)
-                        .to("#a", {duration:0, x:0}, 1)
+                        .to("#a", {duration:0.5, autoAlpha:0, ease:"none"}, 1)
+                        .to("#a", {duration:0, autoAlpha:1, x:0}, 1.5)
                         
-                        .to("#screw_axis2", {duration:1, x:0, ease:"none"}, 1.25)
+                        // .to("#screw_axis2", {duration:1, x:0, ease:"none"}, 1.25)
                         
-                        .to("#injection_mould2, #both2", {duration:0.3, y:20}, 1.5)
+                        // .to("#injection_mould2, #both2", {duration:0.3, y:20}, 1.5)
                         
-                        .to("#piston_shaft2", {duration:1, morphSVG:"#piston_shaft2", ease:"none"}, 1.5)
-                        .to("#piston_plate2", {duration:1, y:0, ease:"none"}, 1.5)
-                        .to("#pre_pre_dispensate2", {duration:0.75, morphSVG:"#pre_pre_dispensate2", ease:"none"}, 1.5)
+                        // .to("#piston_shaft2", {duration:1, morphSVG:"#piston_shaft2", ease:"none"}, 1.5)
+                        // .to("#piston_plate2", {duration:1, y:0, ease:"none"}, 1.5)
+                        // .to("#pre_pre_dispensate2", {duration:0.75, morphSVG:"#pre_pre_dispensate2", ease:"none"}, 1.5)
                         
-                        .to("#left2", {duration:0.3, x:-30}, 1.8)
-                        .to("#bottom2", {duration:0.3, y:50}, 1.8)
-                        .to("#right2", {duration:0.3, x:30}, 1.8)
-                        .to("#bottom2", {duration:0.6, x:-10, y:20, rotation:45}, 2.1)
-                        .to("#right2", {duration:0.6, x:55, ease:"back"}, 2.1)
-                        .to("#right2", {duration:0.6, y:90, rotation:90, ease:"sine.out"}, 2.1)
+                        // .to("#left2", {duration:0.3, x:-30}, 1.8)
+                        // .to("#bottom2", {duration:0.3, y:50}, 1.8)
+                        // .to("#right2", {duration:0.3, x:30}, 1.8)
+                        // .to("#bottom2", {duration:0.6, x:-10, y:20, rotation:45}, 2.1)
+                        // .to("#right2", {duration:0.6, x:55, ease:"back"}, 2.1)
+                        // .to("#right2", {duration:0.6, y:90, rotation:90, ease:"sine.out"}, 2.1)
                         
-                        .to("#both2", {duration:0.5, x:67.5, ease:"none"}, 2.5)
-                        .to("#both2", {duration:0.5, x:135, ease:"none"}, 3)
-                        .to("#both2", {duration:0.4, rotation:-180, ease:"none"}, 2.8)
-                        .to("#both2", {duration:0.4, y:89, ease:"sine.inOut"}, 2.8)
+                        // .to("#both2", {duration:0.5, x:67.5, ease:"none"}, 2.5)
+                        // .to("#both2", {duration:0.5, x:135, ease:"none"}, 3)
+                        // .to("#both2", {duration:0.4, rotation:-180, ease:"none"}, 2.8)
+                        // .to("#both2", {duration:0.4, y:89, ease:"sine.inOut"}, 2.8)
                         
-                        .to("#waste_knives2", {duration:0.5, y:-40}, 3.25)
-                        .to("#waste_knife_bottomleft", {duration:0.5, x:20, ease:"none"}, 3.5)
-						.to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 3.5)
-						.to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 3.5)
-						.to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 3.5)
+                        // .to("#waste_knives2", {duration:0.5, y:-40}, 3.25)
+                        // .to("#waste_knife_bottomleft", {duration:0.5, x:20, ease:"none"}, 3.5)
+						// .to("#waste_knife_bottomright", {duration:0.5, x:-20, ease:"none"}, 3.5)
+						// .to("#waste_knife_bottomleft", {duration:0.5, y:-15, ease:"none"}, 3.5)
+						// .to("#waste_knife_bottomright", {duration:0.5, y:-15, ease:"none"}, 3.5)
                         
-                        .to("#stem2, #parison2", {duration:0, autoAlpha:1}, 4)
-                        .to("#both2", {duration:0, autoAlpha:0}, 4)
+                        // .to("#stem2, #parison2", {duration:0, autoAlpha:1}, 4)
+                        // .to("#both2", {duration:0, autoAlpha:0}, 4)
                         
-                        .to("#stem2", {duration:0.75, y:137.5, rotation:135, x:60, ease:"power1.in"}, 4)
+                        // .to("#stem2", {duration:0.75, y:137.5, rotation:135, x:60, ease:"power1.in"}, 4)
                         
-                        .to("#waste_knife_bottomleft", {duration:0.5, x:0, ease:"none"}, 4.25)
-						.to("#waste_knife_bottomright", {duration:0.5, x:0, ease:"none"}, 4.25)
-						.to("#waste_knife_bottomleft", {duration:0.5, y:0, ease:"none"}, 4.25)
-						.to("#waste_knife_bottomright", {duration:0.5, y:0, ease:"none"}, 4.25)
-                        .to("#waste_knives2", {duration:0.75, y:35}, 4.5)
+                        // .to("#waste_knife_bottomleft", {duration:0.5, x:0, ease:"none"}, 4.25)
+						// .to("#waste_knife_bottomright", {duration:0.5, x:0, ease:"none"}, 4.25)
+						// .to("#waste_knife_bottomleft", {duration:0.5, y:0, ease:"none"}, 4.25)
+						// .to("#waste_knife_bottomright", {duration:0.5, y:0, ease:"none"}, 4.25)
+                        // .to("#waste_knives2", {duration:0.75, y:35}, 4.5)
                         
-                        .to("#split_die2", {duration:0.75, y:-5, ease:"sine.inOut"}, 4.75)
-                        .to("#left_die2", {duration:0.75, x:-105, ease:"sine.inOut"}, 4.75)
-                        .to("#right_die2", {duration:0.75, x:-105, ease:"sine.inOut"}, 4.75)
+                        // .to("#split_die2", {duration:0.75, y:-5, ease:"sine.inOut"}, 4.75)
+                        // .to("#left_die2", {duration:0.75, x:-105, ease:"sine.inOut"}, 4.75)
+                        // .to("#right_die2", {duration:0.75, x:-105, ease:"sine.inOut"}, 4.75)
                         
-                        .to("#waste_knives2", {duration:0.5, y:0, ease:"sine.inOut"}, 5.65 + 2*t)
+                        // .to("#waste_knives2", {duration:0.5, y:0, ease:"sine.inOut"}, 5.65 + 2*t)
                         
-                        .to("#split_die2", {duration:0.6, y:0, ease:"sine.inOut"}, 5.65 + t)
-                        .to("#left_die2, #right_die2", {duration:0.6, x:0, ease:"sine.inOut"}, 5.65 + t)
-                        .to("#parison2", {duration:0.6, x:105, y:5, ease:"sine.inOut"}, 5.65 + t)
+                        // .to("#split_die2", {duration:0.6, y:0, ease:"sine.inOut"}, 5.65 + t)
+                        // .to("#left_die2, #right_die2", {duration:0.6, x:0, ease:"sine.inOut"}, 5.65 + t)
+                        // .to("#parison2", {duration:0.6, x:105, y:5, ease:"sine.inOut"}, 5.65 + t)
                         
-                        .to("#right2", {duration:0.6, rotation:0, y:0, ease:"sine.in"}, 5.65 + t)
-                        .to("#right2", {duration:0.6, x:30, ease:"back.in"}, 5.65 + t)
-                        .to("#bottom2", {duration:0.6, x:0, y:50, rotation:0, ease:"power1.in"}, 5.65 + t)
-                        .to("#bottom2, #right2, #left2", {duration:0.3, x:0, y:0, ease:"power1.in"}, 6.25 + t)
-                        .to("#injection_mould2", {duration:0.3, y:0, ease:"power1.in"}, 6.55 + t)
+                        // .to("#right2", {duration:0.6, rotation:0, y:0, ease:"sine.in"}, 5.65 + t)
+                        // .to("#right2", {duration:0.6, x:30, ease:"back.in"}, 5.65 + t)
+                        // .to("#bottom2", {duration:0.6, x:0, y:50, rotation:0, ease:"power1.in"}, 5.65 + t)
+                        // .to("#bottom2, #right2, #left2", {duration:0.3, x:0, y:0, ease:"power1.in"}, 6.25 + t)
+                        // .to("#injection_mould2", {duration:0.3, y:0, ease:"power1.in"}, 6.55 + t)
                         
-                        .to("#split_die2", {duration:1, x:150, ease:"sine.inOut"}, 10.25 + t)
-                        .to("#parison2", {duration:1, x:255, ease:"sine.inOut"}, 10.25 + t)
+                        // .to("#split_die2", {duration:1, x:150, ease:"sine.inOut"}, 10.25 + t)
+                        // .to("#parison2", {duration:1, x:255, ease:"sine.inOut"}, 10.25 + t)
                         
-                        .to("#split_die2", {duration:0.75, y:-10, ease:"sine.in"}, 10.75 + t)
-                        .to("#parison2", {duration:0.75, y:-5, ease:"sine.in"}, 10.75 + t)
-                        .to("#nozzle2", {duration:0.5, y:5, ease:"none"}, 11.5 + t)
+                        // .to("#split_die2", {duration:0.75, y:-10, ease:"sine.in"}, 10.75 + t)
+                        // .to("#parison2", {duration:0.75, y:-5, ease:"sine.in"}, 10.75 + t)
+                        // .to("#nozzle2", {duration:0.5, y:5, ease:"none"}, 11.5 + t)
                         
-                        .to("#parison2", {duration: 0.5, morphSVG: "#bottle2"}, 12.25 + t)
+                        // .to("#parison2", {duration: 0.5, morphSVG: "#bottle2"}, 12.25 + t)
                         
-                        .to("#nozzle2", {duration:0.5, y:0, ease:"none"}, 13 + t)
-                        .to("#split_die2", {duration:0.5, y:0, ease:"none"}, 13.5 + t)
-                        .to("#parison2", {duration:0.5, y:5, ease:"none"}, 13.5 + t)
+                        // .to("#nozzle2", {duration:0.5, y:0, ease:"none"}, 13 + t)
+                        // .to("#split_die2", {duration:0.5, y:0, ease:"none"}, 13.5 + t)
+                        // .to("#parison2", {duration:0.5, y:5, ease:"none"}, 13.5 + t)
                         
-                        .to("#left_die2", {duration:0.75, x:-20, ease:"none"}, 14 + t)
-						.to("#left_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
-						.to("#right_die2", {duration:0.75, x:20, ease:"none"}, 14 + t)
-						.to("#right_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
-						.to("#left_die2", {duration:0.25, x:-28, ease:"none"}, 14.75 + t)
-						.to("#right_die2", {duration:0.25, x:28, ease:"none"}, 14.75 + t)
+                        // .to("#left_die2", {duration:0.75, x:-20, ease:"none"}, 14 + t)
+						// .to("#left_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
+						// .to("#right_die2", {duration:0.75, x:20, ease:"none"}, 14 + t)
+						// .to("#right_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
+						// .to("#left_die2", {duration:0.25, x:-28, ease:"none"}, 14.75 + t)
+						// .to("#right_die2", {duration:0.25, x:28, ease:"none"}, 14.75 + t)
                         
-                        .to("#split_die2, #left_die2, #right_die2", {duration:1, x:0, y:0, ease:"sine.inOut"}, 15 + t)
+                        // .to("#split_die2, #left_die2, #right_die2", {duration:1, x:0, y:0, ease:"sine.inOut"}, 15 + t)
                         
-                        .to("#parison2", {duration:0.75, x:315, ease:"power1.out"}, 15.25 + t)
-                        .to("#parison2", {duration:0.75, y:-20, ease:"power1.in"}, 15.5 + t)
+                        // .to("#parison2", {duration:0.75, x:315, ease:"power1.out"}, 15.25 + t)
+                        // .to("#parison2", {duration:0.75, y:-20, ease:"power1.in"}, 15.5 + t)
                         
-                        .to("#capper2, #cap2", {duration:1, y:20, ease:"none"}, 16 + t)
+                        // .to("#capper2, #cap2", {duration:1, y:20, ease:"none"}, 16 + t)
                         
-                        .to("#capper2", {duration:1, y:0, ease:"none"}, 17.5 + t)
-                        .to("#capp2", {duration:0.5, y:13, ease:"none"}, 18.5 + t)
+                        // .to("#capper2", {duration:1, y:0, ease:"none"}, 17.5 + t)
+                        // .to("#capp2", {duration:0.5, y:13, ease:"none"}, 18.5 + t)
                         
-                        .to("#cap2", {duration:1, x:75, ease:"sine.inOut"}, 18.5 + t)
-                        .to("#parison2", {duration:1, x:390, ease:"sine.inOut"}, 18.5 + t)
+                        // .to("#cap2", {duration:1, x:75, ease:"sine.inOut"}, 18.5 + t)
+                        // .to("#parison2", {duration:1, x:390, ease:"sine.inOut"}, 18.5 + t)
 						
                         tl.pause()
 						// var tl = gsap.timeline({repeat:0})
