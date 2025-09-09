@@ -561,11 +561,19 @@
                         .to("#important2", {duration:0.25, y:-30, ease:"sine.out"}, 3)
                         .to("#important2", {duration:0.25, y:-20, ease:"sine.in"}, 3.25)
 
-                        .to("#important")
+                        .to("#split_die2", {duration:0.5, x:-160, ease:"sine.inOut"}, 3.25)
+                        .to("#left_die2", {duration:0.5, x:-10, ease:"back.out"}, 3.25)
+                        .to("#right_die2", {duration:0.5, x:10, ease:"back.out"}, 3.25)
 
+                        .to("#important2", {duration:0.75, y:152.5, ease:"none"}, 3.5)
 
+                        .to("#left_die2", {duration:0.5, x:0, ease:"sine.out"}, 4.25)
+                        .to("#right_die2", {duration:0.5, x:0, ease:"sine.out"}, 4.25)
 
-
+                        .to("#split_die2", {duration:0.5, x:0, ease:"sine.inOut"}, 5)
+                        .to("#important2", {duration:0.5, x:235, ease:"sine.inOut"}, 5)
+                        .to("#split_die2", {duration:0.5, y:10, ease:"sine.out"}, 5)
+                        .to("#important2", {duration:0.5, y:162.5, ease:"sine.out"}, 5)
 
 
 
