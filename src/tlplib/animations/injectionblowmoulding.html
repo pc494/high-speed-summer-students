@@ -222,9 +222,6 @@
                 position:absolute;
                 fill:darkgreen;
             }
-            #dispenser2, #piston2, #ghost, #both2 {
-                visibility:hidden;
-            }
             #piston_shaft, #piston_shaft2 {
                 fill:burlywood;
                 stroke:#000;
@@ -257,7 +254,7 @@
                 stroke:#000;
                 stroke-width:1px;
             }
-            #injection_mould, #injection_mould2, #ninjection_mould, #ninjection_mould2 {
+            #injection_mould, #injection_mould2 {
                 stroke:#000;
                 stroke-width:1px;
                 fill:forestgreen;
@@ -516,11 +513,6 @@
 							<path id="right_die2"   d="M827.5,350 l0,128 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 l25,0"></path>
 						</g>
                         <g id="injection_mould2">
-                            <path id="left2"        d="M537.5,320 l20,0 5,5 5,0 8.75,8.75 0,15 c-1,1.331 -3.5,1.331 -3.75,4.75 l0,25 l-3,0 l1,0 l0,4 l2,2 0,1 q-5,1 0,2 q-5,1 0,2 q-5,1 0,2 l0,2.333 -35,16.167 0,-90"></path>
-                            <path id="right2"       d="M617.5,320 l-20,0 -5,5 -5,0 -8.75,8.75 0,15 c1,1.331 3.5,1.331 3.75,4.75 l0,25 l3,0 l-1,0 l0,4 l-2,2 q5,1 0,2 q5,1 0,2 q5,1 0,2 l0,3.333 35,16.167 0,-90"></path>
-                            <path id="bottom2"      d="M537.5,410 l35,-16.167 2.5,0 0,-40.333 c0,-1.25 1.25,-2.5 2.5,-2.5 1.25,0 2.5,1.25 2.5,2.5 l0,40.333 2.5,0 35,16.167 -80,0"></path>
-                        </g>
-                        <g id="ninjection_mould2">
                             <path id="parison2"     d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"></path>
 
                             <path id="top2"     d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"></path>
@@ -555,9 +547,7 @@
                         var t = 0.2;
                         var tl = gsap.timeline({repeat:0})
                         
-                        tl.to("#piston_plate2", {duration:1, y:80, ease:"none"}, 0)
-                        .to("#piston_shaft2", {duration:1, morphSVG:"#piston_shaft3", ease:"none"}, 0)
-                        .to("#pre_pre_dispensate2", {duration:0.75, morphSVG:"#post_pre_dispensate2", ease:"none"}, 0.25)
+                        tl.to("#a", {duration:1, x:48.75, ease:"none"}, 0)
                         .to("#both2, #ghost", {duration:0.75, y:0, ease:"none"}, 0.25)
                         .to("#ghost", {duration:0, autoAlpha:0}, 1)
                         
