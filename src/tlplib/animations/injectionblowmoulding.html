@@ -486,12 +486,6 @@
                             <path d="M480,150 l10,0 17.5,35 30,0 0,10 -30,0 -17.5,35 -10,0"></path>
                             <path id="a" d="M487.5,180 l52.326,0 0,20 -52.326,0 0,-20"></path>
                         </g>
-						<g id="piston2">
-							<path id="piston_shaft2" d="M572.5,130 l0,25 l10,0 l0,-25 l-10,0"></path>
-                            <path id="piston_shaft3" d="M572.5,130 l0,105 l10,0 l0,-105 l-10,0"></path>
-							<path id="piston_plate2" d="M547.5,155 l60,0 l0,10 l-60,0 l0,-10"></path>
-						</g>
-
                         <g id="hot_knives2">
 							<g id="waste_knives2">
 								<path id="waste_knife_bottomleft"   d="M672.5,445 l-20,15 l3,4 l17,-19"></path>
@@ -542,10 +536,10 @@
                         var t = 0.2;
                         var tl = gsap.timeline({repeat:0})
                         
-                        tl.to("#a", {duration:1, x:48.75, ease:"none"}, 0)
+                        tl.to("#a", {duration:1, x:50, ease:"none"}, 0)
                         .to("#parison2", {duration:1, y:0, ease:"none"}, 0)
                         .to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, 0)
-                        .to("#a", {duration:0, x:}, 1)
+                        .to("#a", {duration:0, x:0}, 1)
                         
                         .to("#screw_axis2", {duration:1, x:0, ease:"none"}, 1.25)
                         
