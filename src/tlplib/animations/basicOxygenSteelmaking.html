@@ -227,6 +227,19 @@
 								d="M250,250 C280,270 295,240 310,250 Q320,260 330,250 C345,240 360,270 390,250
 									L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
 							
+							<g id="bubbles">
+								<circle class="bubble" id="b1" cx="0" cy="0" r="3"></circle>
+								<circle class="bubble" id="b2" cx="0" cy="0" r="3"></circle>
+								<circle class="bubble" id="b3" cx="0" cy="0" r="3"></circle>
+							</g>
+
+							<path id="scrap" d="M0,0 l0,10 l15,0 l0,-10 l-15,0"></path>
+
+							<g id="lance">
+								<rect id="lance_shadow" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
+								<rect id="lance_fill" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
+							</g>
+
 							<path id="furnace_walls"
 								d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l16,-8 l4,8 l0,95 l-25,50 l-15,0 a80,40 0 0 1 -80,0 l-15,0 l-25,-50 l0,-95 l35,-70 l15,0 
 									M350,100 l0,10 l25,50 l16,-8 l-26,-52 l-15,0"></path>
@@ -236,19 +249,43 @@
 
 						</g>
 
-						<g id="guidelines">
+						<!-- <g id="guidelines">
 							<line x1="160" x2="160" y1="0" y2="350"></line>
 							<line x1="320" x2="320" y1="0" y2="350"></line>
 							<line x1="480" x2="480" y1="0" y2="350"></line>
 							<line x1="0" x2="640" y1="175" y2="175"></line>
 							<line x1="0" x2="640" y1="350" y2="350"></line>
-						</g>
+						</g> -->
 					</svg>
 
 					<style>
+						#BOS #furnace #scrap {
+							fill: slategrey;
+							stroke: none;
+							visibility: hidden;
+						}
+
+						#BOS #furnace .bubble {
+							fill: white;
+							stroke: none;
+							opacity: 0;
+						}
+
+						#BOS #furnace #lance_fill {
+							fill: lightsteelblue;
+							stroke: white;
+							stroke-width: 2px;
+							opacity: 0.6;
+						}
+
+						#BOS #furnace #lance_shadow {
+							fill: lightsteelblue;
+							filter: blur(4px);
+							stroke:none;
+						}
 
 						#BOS #furnace #steel_plug {
-							fill: lightgrey;
+							fill: darkgrey;
 							stroke: none;
 						}
 
@@ -289,7 +326,9 @@
 						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
 					</div>
 
-					<script></script>
+					<script>
+
+					</script>
 					
 				</div>
 				<!-- end payj - p2 -->
