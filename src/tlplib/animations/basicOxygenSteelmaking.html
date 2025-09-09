@@ -234,12 +234,15 @@
 							<circle class="bubble" id="b3" cx="0" cy="0" r="3"></circle>
 						</g>
 
-						<path class="BOS" id="scrap" d="M0,0 l2,10 l15,-3 l-2,-10 l-15,3"></path>
+						<path class="BOS" id="scrap" d="M0,0 l4,20 l30,-6 l-4,-20 l-30,6"></path>
 
 						<g class="BOS" id="lance">
 							<rect id="lance_shadow" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
 							<rect id="lance_fill" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
 						</g>
+
+						<path id="furnace_guts" style="display:none"
+							d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l-20,-60 l0,-10"></path>
 
 						<path class="BOS" id="furnace_walls"
 							d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l16,-8 l4,8 l0,95 l-25,50 l-15,0 a80,40 0 0 1 -80,0 l-15,0 l-25,-50 l0,-95 l35,-70 l15,0 
@@ -354,8 +357,7 @@
 						.set("#caption", {innerHTML: "BOS takes place immeidately after blast furnace process."})
 						.set("#furnace_walls, #steel_plug", {visibility:"visible"})
 						
-						// add iron and scraps 
-						
+						// add iron 
 						t.addLabel("t1",">")
 						.set("#caption", {innerHTML: "Molten iron from the blast furnace is transferred to the BOF by ladles. <br> The process of filling the BOF with ingredients is called <strong> charging </strong>."})
 						.set("#ladle, #iron_pour, #steel", {visibility:"visible", opacity: 0})
@@ -367,6 +369,7 @@
 						.to("#steel", 0.5, {attr:{d:"M250,250 C280,250 295,250 310,250 Q320,250 330,250 C345,250 360,250 390,250 L390,260 l-25,50 l-90,0 l-25,-50 Z"}}, "<")
 						.set("#ladle, #iron_pour", {visibility:"hidden"})
 
+						// add scrap
 						t.addLabel("t2",">")
 						.set("#caption", {innerHTML: "Thermal energy required in BOS process is provided by heat generated in exothermic reactions; a calculated amount of cold scrap is added to maintain temperature control."})
 						.set("#scrap", {visibility:"visible"})
@@ -375,11 +378,11 @@
 						.to("#scrap", 1, {opacity:0})
 						.set("#scrap", {visibility:"hidden"})
 						
+						// lance - blasts oxygen 
 						t.addLabel("t3",">")
+						.set("#caption", {innerHTML: "Oxygen is blasted into "})
 						
 
-
-						// lance - blasts oxygen 
 
 						// fluxes - blowing and makes emulsion 
 
@@ -412,11 +415,9 @@
 
 							if (dir=="f"){
 								t.tweenFromTo("t"+prv, "t"+nxt)
-								console.log(dir)
 							}
 							else if (dir=="c"){
 								t.seek("t"+nxt)
-								console.log(dir)
 							}
 
 							curr = nxt
