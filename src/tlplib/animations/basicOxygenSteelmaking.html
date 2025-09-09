@@ -222,6 +222,8 @@
 							d="M250,240 C280,265 290,235 310,250 Q320,270 330,250 C350,235 360,265 390,240
 								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
 
+						<path class="BOS" id="iron_pour" d="M290,70 Q320,70 320,280"></path>
+
 						<path class="BOS" id="steel"
 							d="M250,250 C280,270 295,240 310,250 Q320,260 330,250 C345,240 360,270 390,250
 								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
@@ -232,7 +234,7 @@
 							<circle class="bubble" id="b3" cx="0" cy="0" r="3"></circle>
 						</g>
 
-						<path class="BOS" id="scrap" d="M0,0 l0,10 l15,0 l0,-10 l-15,0"></path>
+						<path class="BOS" id="scrap" d="M0,0 l2,10 l15,-3 l-2,-10 l-15,3"></path>
 
 						<g class="BOS" id="lance">
 							<rect id="lance_shadow" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
@@ -259,6 +261,13 @@
 					</svg>
 
 					<style>
+
+						#iron_pour {
+							fill:none; 
+							stroke: gold;
+							stroke-width: 10px;
+						}
+
 						#ladle {
 							fill:dimgrey;
 							stroke:none;
@@ -338,25 +347,34 @@
 						var nxt = 1
 						var curr = 1
 
-						
+
 
 						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.001, ease:"none"}})
 						t.addLabel("t0",0)
-						.set("#caption", {textContent: "BOS takes place immeidately after blast furnace process."})
+						.set("#caption", {innerHTML: "BOS takes place immeidately after blast furnace process."})
 						.set("#furnace_walls, #steel_plug", {visibility:"visible"})
 						
 						// add iron and scraps 
 						
 						t.addLabel("t1",">")
-						.set("#caption", {textContent: "Molten iron from the blast furnace is transferred to the BOF by ladles."})
-						.set("#ladle", {visibility:"visible", opacity: 0})
+						.set("#caption", {innerHTML: "Molten iron from the blast furnace is transferred to the BOF by ladles. <br> The process of filling the BOF with ingredients is called <strong> charging </strong>."})
+						.set("#ladle, #iron_pour, #steel", {visibility:"visible", opacity: 0})
 						.to("#ladle", 0.5, {opacity:1})
 						.to("#ladle", 1, {rotate:90, transformOrigin:"80% 80%"}, "<")
-						
+						.to("#iron_pour", 0.5, {opacity:1})
+						.to("#steel", 0.5, {opacity:1}, ">-0.2")
+						.to("#ladle, #iron_pour", 0.5, {opacity:0}, ">+0.5")
+						.to("#steel", 0.5, {attr:{d:"M250,250 C280,250 295,250 310,250 Q320,250 330,250 C345,250 360,250 390,250 L390,260 l-25,50 l-90,0 l-25,-50 Z"}}, "<")
+						.set("#ladle, #iron_pour", {visibility:"hidden"})
 
 						t.addLabel("t2",">")
-						.set("#caption", {textContent: "red"})
-
+						.set("#caption", {innerHTML: "Thermal energy required in BOS process is provided by heat generated in exothermic reactions; a calculated amount of cold scrap is added to maintain temperature control."})
+						.set("#scrap", {visibility:"visible"})
+						.to("#scrap", 1, {motionPath:{path:"M350,70 Q300,80 300,270", alignOrigin:[0.5, 0.5], autoRotate:true}})
+						.to("#steel", 0.5, {attr:{d:"M250,240 C280,240 295,240 310,240 Q320,240 330,240 C345,240 360,240 390,240 L390,260 l-25,50 l-90,0 l-25,-50 Z"}}, ">-0.2")
+						.to("#scrap", 1, {opacity:0})
+						.set("#scrap", {visibility:"hidden"})
+						
 						t.addLabel("t3",">")
 						
 
@@ -387,12 +405,20 @@
 						function back(){
 							prv = curr
 							nxt = Number(curr)-1
-							curr = move(prv,nxt)
+							curr = move(prv,nxt, "c")
 						}
 
-						function move(prv, nxt){
+						function move(prv, nxt, dir="f"){
 
-							t.tweenFromTo("t"+prv, "t"+nxt)
+							if (dir=="f"){
+								t.tweenFromTo("t"+prv, "t"+nxt)
+								console.log(dir)
+							}
+							else if (dir=="c"){
+								t.seek("t"+nxt)
+								console.log(dir)
+							}
+
 							curr = nxt
 							console.log(prv, curr, nxt)
 							console.log("current label: "+t.currentLabel())
