@@ -198,7 +198,7 @@
 
             #IBM_animation {
                 position:absolute;
-                left:-475px;
+                left:-470px;
                 top:-80px;
                 width:1060px;
                 height:500px;
@@ -217,6 +217,10 @@
                 stroke-width:1px;
                 fill:#eee;
                 stroke:#000;
+            }
+            #block {
+                stroke:none;
+                fill:#fff;
             }
             #dispenser, #dispenser2 {
                 position:absolute;
@@ -483,7 +487,8 @@
                             <path id="bottle2"      d="M690,345 l-2.5,0 0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,1 -10,6.667 s-5,3.333 -5,15 l0,10 s0,1 2,2 l0,31 s-2,1 -2,2 l0,30 s0,5 10,0 l4,-3 s4,-2 6,-2 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 -2.5,0"></path>
                         </g>
                         <g id="pre_dispensate2">
-                            <path d="M480,150 l10,0 17.5,35 30,0 0,10 -30,0 -17.5,35 -10,0"></path>
+                            <path id="b" d="M480,150 l10,0 17.5,35 30,0 0,5 0,5 -30,0 -17.5,35 -10,0"></path>
+                            <path id="c" d="M480,150 l10,0 17.5,35 30,0 2.326,5 -2.326,5 -30,0 -17.5,35 -10,0"></path>
                             <path id="a" d="M482.5,185 l54,0 2.326,5 -2.326,5 -54,0"></path>
                         </g>
                         <g id="hot_knives2">
@@ -514,8 +519,9 @@
                             <path id="segment3" d="M480,230 l10,0 0,20 -10,0"></path>
                             <path id="segment4" d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"></path>
 							<path id="segment5" d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"></path>
-                            <path id="screw_axis2" d="M480,160 l5,0 15,30 -15,30 -5,0"></path>
+                            <path id="screw_axis2" d="M470,160 l15,0 15,30 -15,30 -15,0"></path>
                         </g>
+                        <path id="block" d="M470,130 l10,0 0,120 -10,0"></path>
                         <g id="bottle_capper2">
                             <g id="caps2">
                                 <path id="cap2"         d="M999,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
@@ -529,7 +535,7 @@
 
                     <script>
 
-                        gsap.to("#bottle2", {duration:0, autoAlpha:0})
+                        gsap.to("#bottle2, #c", {duration:0, autoAlpha:0})
                         gsap.to("#injection_mould2", {duration:0, rotation:90, x:65, y:-15})
                         gsap.to("#parison2", {duration:0, y:50})
 
@@ -539,9 +545,14 @@
                         tl.to("#a", {duration:1, x:50, ease:"none"}, 0)
                         .to("#parison2", {duration:1, y:0, ease:"none"}, 0)
                         .to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, 0)
-                        .to("#a", {duration:0.5, autoAlpha:0, ease:"none"}, 1)
-                        .to("#a", {duration:0, autoAlpha:1, x:0}, 1.5)
+
+                        .to("#b", {duration:0, morphSVG:"#c", ease:"none"}, 0.5)
+
+                        .to("#a", {duration:0, autoAlpha:0, ease:"none"}, 1)
                         
+                        .to("#a", {duration:0, x:3, autoAlpha:1, ease:"none"}, 1.5)
+                        .to("#b", {duration:0, morphSVG:"#b", ease:"none"}, 1.5)
+                        .to("#a, #screw_axis2", {duration:1, x:0, ease:"none"}, 1.5)
                         // .to("#screw_axis2", {duration:1, x:0, ease:"none"}, 1.25)
                         
                         // .to("#injection_mould2, #both2", {duration:0.3, y:20}, 1.5)
