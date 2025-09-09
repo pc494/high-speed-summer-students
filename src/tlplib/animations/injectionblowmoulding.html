@@ -575,28 +575,33 @@
                         .to("#split_die2", {duration:0.75, y:10, ease:"sine.out"}, 4.75)
                         .to("#important2", {duration:0.75, y:162.5, ease:"sine.out"}, 4.75)
 
-                        .to("#split_die2", {duration:0.75, y:-10, ease:"sine.in"}, 5.5)
-                        .to("#important2", {duration:0.75, y:142.5, ease:"sine.in"}, 5.5)
+                        .to("#split_die2", {duration:0.75, y:-10, ease:"none"}, 5.5)
+                        .to("#important2", {duration:0.75, y:142.5, ease:"none"}, 5.5)
                         .to("#nozzle2", {duration:0.5, y:5, ease:"none"}, 6.25)
                         
                         .to("#parison2", {duration: 0.5, morphSVG: "#bottle2"}, 7)
                         
                         .to("#nozzle2", {duration:0.5, y:0, ease:"none"}, 7.75)
-                        .to("#split_die2", {duration:0.5, y:10, ease:"none"}, 8.25)
-                        .to("#important2", {duration:0.5, y:162.5, ease:"none"}, 8.25)
+                        .to("#split_die2", {duration:0.5, y:10, ease:"none"}, 7.75)
+                        .to("#important2", {duration:0.5, y:162.5, ease:"none"}, 7.75)
                         
-                        // .to("#left_die2", {duration:0.75, x:-20, ease:"none"}, 14 + t)
-						// .to("#left_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
-						// .to("#right_die2", {duration:0.75, x:20, ease:"none"}, 14 + t)
-						// .to("#right_die2", {duration:0.75, y:15, ease:"none"}, 14 + t)
-						// .to("#left_die2", {duration:0.25, x:-28, ease:"none"}, 14.75 + t)
-						// .to("#right_die2", {duration:0.25, x:28, ease:"none"}, 14.75 + t)
+                        .to("#left_die2", {duration:0.5, x:-20, ease:"none"}, 8.25)
+						.to("#left_die2", {duration:0.5, y:15, ease:"none"}, 8.25)
+						.to("#right_die2", {duration:0.5, x:20, ease:"none"}, 8.25)
+						.to("#right_die2", {duration:0.5, y:15, ease:"none"}, 8.25)
+						.to("#left_die2", {duration:0.15, x:-28, ease:"none"}, 8.75)
+						.to("#right_die2", {duration:0.15, x:28, ease:"none"}, 8.75)
                         
-                        // .to("#split_die2, #left_die2, #right_die2", {duration:1, x:0, y:0, ease:"sine.inOut"}, 15 + t)
+                        .to("#important2", {duration:0.3, x:255, ease:"power1.in"}, 8.9)
+                        .to("#important2", {duration:0.45, x:315, ease:"power1.out"}, 9.2)
+                        .to("#important2", {duration:0.75, y:82.5, ease:"expo.in"}, 8.9)
+
+                        .to("#split_die2, #left_die2, #right_die2", {duration:1, x:0, y:0, ease:"sine.inOut"}, 9.25)
                         
-                        // .to("#parison2", {duration:0.75, x:315, ease:"power1.out"}, 15.25 + t)
-                        // .to("#parison2", {duration:0.75, y:-20, ease:"power1.in"}, 15.5 + t)
                         
+
+
+
                         // .to("#capper2, #cap2", {duration:1, y:20, ease:"none"}, 16 + t)
                         
                         // .to("#capper2", {duration:1, y:0, ease:"none"}, 17.5 + t)
