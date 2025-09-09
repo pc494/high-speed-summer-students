@@ -214,45 +214,7 @@
 					
 					<svg width="640" height="350">		
 							
-						<path class="BOS" id="air_slag_mixture"
-							d="M250,190 C300,160 340,220 390,190
-								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
-
-						<path class="BOS" id="slag"
-							d="M250,240 C280,265 290,235 310,250 Q320,270 330,250 C350,235 360,265 390,240
-								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
-
-						<path class="BOS" id="iron_pour" d="M290,70 Q320,70 320,280"></path>
-
-						<path class="BOS" id="steel"
-							d="M250,250 C280,270 295,240 310,250 Q320,260 330,250 C345,240 360,270 390,250
-								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
-
-						<g class="BOS" id="bubbles">
-							<circle class="bubble" id="b1" cx="0" cy="0" r="3"></circle>
-							<circle class="bubble" id="b2" cx="0" cy="0" r="3"></circle>
-							<circle class="bubble" id="b3" cx="0" cy="0" r="3"></circle>
-						</g>
-
-						<path class="BOS" id="scrap" d="M0,0 l4,20 l30,-6 l-4,-20 l-30,6"></path>
-
-						<g class="BOS" id="lance">
-							<rect id="lance_shadow" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
-							<rect id="lance_fill" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
-						</g>
-
-						<path id="furnace_guts" style="display:none"
-							d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l-20,-60 l0,-10"></path>
-
-						<path class="BOS" id="furnace_walls"
-							d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l16,-8 l4,8 l0,95 l-25,50 l-15,0 a80,40 0 0 1 -80,0 l-15,0 l-25,-50 l0,-95 l35,-70 l15,0 
-								M350,100 l0,10 l25,50 l16,-8 l-26,-52 l-15,0"></path>
-
-						<path class="BOS" id="steel_plug"
-							d="M375,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
-
-						<path class="BOS" id="ladle"
-							d="M200,40 l70,0 l-15,50 l-40,0 l-15,-50"></path>
+						
 
 						<g id="guidelines">
 							<line x1="160" x2="160" y1="0" y2="350"></line>
@@ -265,74 +227,11 @@
 
 					<style>
 
-						#iron_pour {
-							fill:none; 
-							stroke: gold;
-							stroke-width: 10px;
-						}
-
-						#ladle {
-							fill:dimgrey;
-							stroke:none;
-						}
-
-						#scrap {
-							fill: slategrey;
-							stroke: none;
-							visibility: hidden;
-						}
-
-						.bubble {
-							fill: white;
-							stroke: none;
-							opacity: 0;
-						}
-
-						#lance_fill {
-							fill: lightsteelblue;
-							stroke: white;
-							stroke-width: 2px;
-							opacity: 0.6;
-						}
-
-						#lance_shadow {
-							fill: lightsteelblue;
-							filter: blur(4px);
-							stroke:none;
-						}
-
-						#steel_plug {
-							fill: darkgrey;
-							stroke: none;
-						}
-
-						#steel {
-							fill: gold; 
-							stroke: none
-						}
-
-						#slag {
-							fill: orange;
-							stroke: none
-						}
-
-						#air_slag_mixture {
-							fill: burlywood;
-							stroke: none
-						}
-
-						#furnace_walls {
-							fill:dimgrey;
-							stroke: none;
-						}
+						
 
 						#guidelines { 
 							stroke: grey;
 							opacity: 0.3;
-						}
-
-						.BOS {
-							visibility: hidden;
 						}
 
 					</style>
@@ -353,42 +252,15 @@
 
 
 						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.001, ease:"none"}})
-						t.addLabel("t0",0)
-						.set("#caption", {innerHTML: "BOS takes place immeidately after blast furnace process."})
-						.set("#furnace_walls, #steel_plug", {visibility:"visible"})
-						
-						// add iron 
-						t.addLabel("t1",">")
-						.set("#caption", {innerHTML: "Molten iron from the blast furnace is transferred to the BOF by ladles. <br> The process of filling the BOF with ingredients is called <strong> charging </strong>."})
-						.set("#ladle, #iron_pour, #steel", {visibility:"visible", opacity: 0})
-						.to("#ladle", 0.5, {opacity:1})
-						.to("#ladle", 1, {rotate:90, transformOrigin:"80% 80%"}, "<")
-						.to("#iron_pour", 0.5, {opacity:1})
-						.to("#steel", 0.5, {opacity:1}, ">-0.2")
-						.to("#ladle, #iron_pour", 0.5, {opacity:0}, ">+0.5")
-						.to("#steel", 0.5, {attr:{d:"M250,250 C280,250 295,250 310,250 Q320,250 330,250 C345,250 360,250 390,250 L390,260 l-25,50 l-90,0 l-25,-50 Z"}}, "<")
-						.set("#ladle, #iron_pour", {visibility:"hidden"})
-
-						// add scrap
-						t.addLabel("t2",">")
-						.set("#caption", {innerHTML: "Thermal energy required in BOS process is provided by heat generated in exothermic reactions; a calculated amount of cold scrap is added to maintain temperature control."})
-						.set("#scrap", {visibility:"visible"})
-						.to("#scrap", 1, {motionPath:{path:"M350,70 Q300,80 300,270", alignOrigin:[0.5, 0.5], autoRotate:true}})
-						.to("#steel", 0.5, {attr:{d:"M250,240 C280,240 295,240 310,240 Q320,240 330,240 C345,240 360,240 390,240 L390,260 l-25,50 l-90,0 l-25,-50 Z"}}, ">-0.2")
-						.to("#scrap", 1, {opacity:0})
-						.set("#scrap", {visibility:"hidden"})
-						
-						// lance - blasts oxygen 
-						t.addLabel("t3",">")
-						.set("#caption", {innerHTML: "Oxygen is blasted into "})
-						
-
-
-						// fluxes - blowing and makes emulsion 
-
-						// tap the steel 
-
-						// pour out the slag 
+						// tilt + add scrap
+						// add molten iron
+						// add fluxes
+						// back to upright + oxygen lance 
+						// blasts oxygen 
+						// slag emulsifies 
+						// tilt + tap out steel
+						// pour out slag
+						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
 
 						move(0,1)
 
