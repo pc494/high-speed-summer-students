@@ -263,7 +263,7 @@
 						<g id="lance">
 							<rect id="lance_blur" style="fill:none; stroke:lightsteelblue; stroke-width:4px; filter: blur(5px);"
 								x="385" y="0" rx="5" width="10" height="140"></rect>
-							<rect id="lance" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
+							<rect id="lance_solid" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
 								x="385" y="0" rx="5" width="10" height="140"></rect>
 						</g>
 						
@@ -348,9 +348,9 @@
 						.to("#scrap_adder", 1, {opacity:1, x:210, y:120}, "<")
 						.to("#scrap_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
 						pour(t, "270,135", "330,270", "slategrey", 0.5)
-						t.to("#scrap", 2.5, {opacity:1, y:2}, ">-2")
+						t.to("#scrap", 2.5, {opacity:1, y:12}, ">-2")
 						.to("#scrap_ladle_content", 1, {opacity:0, y:10}, "<+1")
-						.to("#scrap_adder", 1, {x:100, y:120, opacity:0})
+						.to("#scrap_adder", 1, {x:100, y:120, opacity:0}, ">-0.5")
 						.set("#scrap_adder", {visibility:"hidden", opacity:0})
 
 						// add molten iron
@@ -361,8 +361,8 @@
 						.to("#iron_adder", 1, {opacity:1, x:200, y:120}, "<")
 						.to("#iron_adder", 1, {rotate:80, transformOrigin:"70% 70%"})
 						pour(t, "270,150", "350,280", "gold", 1.5)
-						t.to("#iron", 2.5, {opacity:1, y:5}, ">-2")
-						.to("#iron_adder", 1, {x:100, y:120, opacity:0})
+						t.to("#iron", 2.5, {opacity:1, y:15}, ">-2")
+						.to("#iron_adder", 1, {x:100, y:120, opacity:0}, ">-0.5")
 						.set("#iron_adder", {visibility:"hidden", opacity:0})
 
 						t.addLabel("t3", ">")
@@ -372,12 +372,24 @@
 						.to("#flux_adder", 1, {opacity:1, x:210, y:120}, "<")
 						.to("#flux_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
 						pour(t, "270,135", "330,270", "whitesmoke", 0)
-						t.to("#iron, #scrap", 2.5, {opacity:1, y:0}, ">-1")
-						.to("#flux_ladle_content", 1, {opacity:0, y:10}, "<+1")
-						.to("#flux_adder", 1, {x:100, y:120, opacity:0})
+						t.to("#iron, #scrap", 2.5, {opacity:1, y:10}, ">-1")
+						.to("#flux_ladle_content", 0.5, {opacity:0, y:10}, "<")
+						.to("#flux_adder", 1, {x:100, y:120, opacity:0}, ">")
 						.set("#flux_adder", {visibility:"hidden", opacity:0})
 
 						t.addLabel("t4", ">")
+						.set("#caption", {innerHTML: "The furnace is then set back upright, and an oxygen lance is lowered to within a few feet of the surface."})
+						.set("#lance", {visibility:"visible", y:10})
+						.to("#furnace", 1, {rotate:0, y:0})
+						.to(".inners", 1, {y:0}, "<")
+						.to("#lance", 0.5, {y:75, opacity:1})
+
+						t.addLabel("t5",">")
+						.set("#caption", {innerHTML: "The lance blows high-purity oxygen at high speed and pressure; the oxygen ignites C dissolved in steel; CO&#x2082; forms as the oxidation product. <br> The reaction is exothermic and the heat released melts the scrap."})
+						.to("#scrap", 3, {opacity:0, y:5})
+						.to("#lance_blur", 0.5, {filter:"blur(15px)"}, "<")
+						.to("#lance_solid", 0.5, {opacity:1}, "<")
+						.to("#iron", 3, {y:2}, "<")
 
 						
 						// add fluxes
