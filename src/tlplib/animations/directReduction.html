@@ -697,12 +697,10 @@
                   offsetY: 3,
                 },
               });
-            gsap
-              .timeline({ repeat: -1 })
-              .to("#sponge_iron", 2, {
-                motionPath: { path: "#iron_exiting", offsetX: 3, offsetY: 3 },
-                opacity: 0,
-              });
+            gsap.timeline({ repeat: -1 }).to("#sponge_iron", 2, {
+              motionPath: { path: "#iron_exiting", offsetX: 3, offsetY: 3 },
+              opacity: 0,
+            });
             gsap
               .timeline({ repeat: -1, defaults: { ease: "none" } })
               .to("#ore_fill, #sponge_iron_fill", 2, { y: 15 });
