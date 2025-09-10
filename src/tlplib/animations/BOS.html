@@ -16,7 +16,6 @@
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
 		
-		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
 
 		<link rel="stylesheet" href="titlecard.css"/>
 
@@ -212,9 +211,18 @@
 
 					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
 					
-					<svg width="640" height="350">	
+					<svg id="svg" width="640" height="350">	
+
+						<g id="motion_paths" style="fill:none">
+							<path id="pour_path" d=""></path>
+							<path id="neg_path" d=""></path>
+						</g>
+
+						<path class="inners" id="scrap_furnace_content" style="fill:slategrey; stroke:none"
+							d="M320,270 Q390,240 460,270 L460,300 l-140,0 Z"></path>
+					
 							
-						<g id="furnace" style="fill-opacity:0.7">
+						<g id="furnace">
 							<path id="furnace_guts" style="fill:white; stroke:red"
 								d="M350,120 l0,10 l-20,40 l0,65 l25,50 l70,0 l25,-50 l0,-60 
 									l100,0 l0,200 l-320,0 l0,-200 l0,-55 l100,0 l20,0"></path>
@@ -233,22 +241,22 @@
 						</g>
 
 						<g id="iron">
-							<path id="scrap_content"
+							<path id="iron_content" 
 								d="M5,0 Q30,-20 50,0 "></path>
 							<path id="iron_ladle" style="fill:dimgrey; stroke:none"
-							d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
+								d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
 						</g>
 
 						<g id="flux">
-							<path id="flux_content"
+							<path id="flux_content" 
 								d="M5,0 Q30,-20 55,0 "></path>
 							<path id="flux_ladle" style="fill:dimgrey; stroke:none"
 								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
 						</g>
 
 						<g id="scrap">
-							<path id="scrap_content"
-								d="M5,0 Q30,-20 55,0 "></path>
+							<path id="scrap_ladle_content" style="fill:slategrey; stroke:none"
+								d="M5,5 Q30,-30 55,5 "></path>
 							<path id="scrap_ladle" style="fill:dimgrey; stroke:none"
 								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
 						</g>
@@ -260,7 +268,6 @@
 								x="385" y="0" rx="5" width="10" height="140"></rect>
 						</g>
 						
-
 						<g id="guidelines" style="stroke:grey; opacity:0.4">
 							<line x1="160" x2="160" y1="0" y2="350"></line>
 							<line x1="320" x2="320" y1="0" y2="350"></line>
@@ -268,10 +275,11 @@
 							<line x1="0" x2="640" y1="175" y2="175"></line>
 							<line x1="0" x2="640" y1="350" y2="350"></line>
 						</g>
+
 					</svg>
 
 					<style>
-						#iron, #scrap,#flux, #lance {
+						.inners, #iron, #scrap,#flux, #lance {
 							visibility: hidden;
 							opacity: 0;
 						}
@@ -290,6 +298,51 @@
 						var nxt = 1
 						var curr = 1
 
+						function pour(timeline, start, end, colour){
+
+							var pour_path = document.getElementById("pour_path")
+							var neg_path = document.getElementById("neg_path")
+
+							var upper_point = {x:start.split(",")[0], y:start.split(",")[1]}
+							var lower_point = {x:end.split(",")[0], y:end.split(",")[1]}
+							var mid_point = {}
+							mid_point.x = lower_point.x
+							mid_point.y = Number(upper_point.y) + Number(0.25*(lower_point.y - upper_point.y))
+							var d_string = `M${upper_point.x},${upper_point.y} Q${mid_point.x},${mid_point.y} ${lower_point.x},${lower_point.y}`
+							
+							pour_path.setAttribute("d", d_string)
+							pour_path.setAttribute("stroke", colour)
+							pour_path.setAttribute("stroke-width", 8)
+							pour_path.setAttribute("stroke-linecap", "round")
+							pour_path.style.visibility = "hidden"
+
+							neg_path.setAttribute("d", d_string)
+							neg_path.setAttribute("stroke", "white")
+							neg_path.setAttribute("stroke-width", 10)
+							neg_path.setAttribute("stroke-linecap", "square")
+							neg_path.style.visibility = "hidden"
+
+							var length = pour_path.getTotalLength()
+							var phantom = {progress:0}
+							function start_pour_update(){
+								pour_path.style.strokeDasharray = [phantom.progress*length, length].join(" ")
+								console.log(phantom.progress)
+							}
+							
+							var phantom2 = {progress:0}
+							function end_pour_update(){
+								neg_path.style.strokeDasharray = [phantom2.progress*length, length].join(" ")
+							}
+
+							timeline.set("#pour_path", {visibility: "visible"})
+							.to(phantom, 1, {progress:1, onUpdate:start_pour_update})
+							.set("#neg_path", {visibility: "visible"}, ">+0.5")
+							.to(phantom2, 1, {progress:1, onUpdate:end_pour_update})
+							.set("#pour_path, #neg_path", {visibility: "hidden"})
+							.set("#caption", {innerHTML: ""})
+
+						}
+
 						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.0001, ease:"none"}})
 
 						t.addLabel("t0",0)
@@ -298,10 +351,14 @@
 						// tilt + add scrap
 						t.addLabel("t1", ">")
 						.set("#caption", {innerHTML: "The amount of cold scrap added to the BOF is carefully calculated to control product composition and furnace temperature."})
-						.set("#scrap", {visibility:"visible", x:100, y:120})
+						.set("#scrap, #scrap_furnace_content", {visibility:"visible"})
 						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
-						.to("#scrap", 1, {opacity:1, x:210}, "<")
+						.fromTo("#scrap", 1,  {x:100, y:120}, {opacity:1, x:210, y:120}, "<")
 						.to("#scrap", 1, {rotate:60, transformOrigin:"70% 70%"})
+						pour(t, "270,135", "330,270", "slategrey")
+						t.fromTo("#scrap_furnace_content", 2.5, {y:30}, {opacity:1, y:0}, ">-2")
+						.to("#scrap_ladle_content", 1, {opacity:0}, "<")
+
 				
 						// add molten iron
 						// add fluxes
