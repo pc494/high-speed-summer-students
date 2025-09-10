@@ -4,17 +4,18 @@
     <meta charset="utf-8" />
     <title>Basic Oxygen Furnace</title>
 
-    <!-- Greensock library  -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		
 
     <script>
       gsap.registerPlugin(MotionPathPlugin);
@@ -180,78 +181,87 @@
         display: none;
       }
 
-      /*  Other */
-      p,
-      text {
-        font-family: sans-serif;
-      }
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+					
+					<svg id="svg" width="640" height="350">	
 
-      #caption {
-        position: absolute;
-        top: 365px;
-        height: 45px;
-        left: 20px;
-        width: 600px;
-        margin: auto auto;
-        text-align: center;
-        vertical-align: middle;
-        text-overflow: hidden;
-      }
-    </style>
-  </head>
+						<g>
+							<path class="motion_paths" id="pour_path" style="fill:none; stroke-width:8px; stroke-linecap:round" d=""></path>
+							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
+						</g>
 
-  <body>
-    <div id="container">
-      <div id="kanvas">
-        <!-- DoITPoMS  and CC logos -->
-        <div id="para">
-          Re-use of this resource is governed by a Creative Commons
-          Attribution-<br />
-          Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
-          http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
-        </div>
-        <!-- end para -->
-        <div id="cc">
-          <img
-            src="../../../images/by-nc-sa.svg"
-            alt="creative commons"
-            onMouseOver="showTxt()"
-            onMouseOut="hideTxt()"
-            height="40"
-            width="120"
-          />
-          <img
-            src="../../../images/roo.png"
-            alt="DoITPoMS logo"
-            height="40"
-            width="180"
-            style="float: right"
-            ;
-          />
-        </div>
-        <!-- end cc -->
+						<path class="inners" id="iron" style="fill:gold; stroke:none"
+							d="M300,230 L460,230 L480,300 l-180,0 Z"></path>
+						<path class="inners" id="scrap" style="fill:slategrey; stroke:none"
+							d="M300,280 Q390,240 480,280 L480,300 l-180,0 Z"></path>
 
-        <script>
-          setAnimDimensions(640, 480);
-        </script>
+						<g id="furnace">
+							<path id="furnace_guts" style="fill:white; stroke:red"
+								d="M350,120 l0,10 l-20,40 l0,65 l25,50 l70,0 l25,-50 l0,-60 
+									l100,0 l0,200 l-320,0 l0,-200 l0,-55 l100,0 l20,0"></path>
 
-        <!--  new page starts here    -->
-        <div class="payj" id="p1">
-          <p id="titlecard">Basic Oxygen Steelmaking (BOS)</p>
-          <div class="nav" style="top: 280px">
-            <p class="dbutton" id="start" onClick="gotoPage(2)"></p>
-          </div>
-        </div>
-        <!-- end payj - p1 -->
+							<path id="furnace_walls" style="fill:dimgrey; stroke:none"
+								d="M360,120 l0,10 l-20,40 l0,60 l20,40 
+									a60,40 0 0 0 60,0 
+									l20,-40 l0,-60 l16,-8 l4,8 
+									l0,70 l-27,54 l-13,0 
+									a60,40 0 0 1 -60,0
+									l-13,0 l-27,-54 l0,-70 l25,-50 l15,0 
+									m60,0 l0,10 l15,30 l16,-8 l-16,-32 l-15,0"></path>
 
-        <!--  new page starts here    -->
-        <div class="payj" id="p2">
-          <p
-            class="dbutton"
-            id="restart"
-            onclick="restart()"
-            style="position: absolute"
-          ></p>
+							<path id="steel_plug" style="fill:darkgrey; stroke:none"
+								d="M435,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
+						</g>
+
+						<g class="adder" id="iron_adder">
+							<path id="iron_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
+						</g>
+
+						<g class="adder" id="flux_adder">
+							<path id="flux_ladle_content" style="fill:gainsboro; stroke:none"
+								d="M5,0 Q30,-20 55,0 "></path>
+							<path id="flux_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
+						</g>
+
+						<g class="adder" id="scrap_adder">
+							<path id="scrap_ladle_content" style="fill:slategrey; stroke:none"
+								d="M5,5 Q30,-30 55,5 "></path>
+							<path id="scrap_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
+						</g>
+
+						<g id="lance">
+							<rect id="lance_blur" style="fill:none; stroke:lightsteelblue; stroke-width:4px; filter: blur(5px);"
+								x="385" y="0" rx="5" width="10" height="140"></rect>
+							<rect id="lance_solid" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
+								x="385" y="0" rx="5" width="10" height="140"></rect>
+						</g>
+						
+						<g id="guidelines" style="stroke:grey; opacity:0.4">
+							<line x1="160" x2="160" y1="0" y2="350"></line>
+							<line x1="320" x2="320" y1="0" y2="350"></line>
+							<line x1="480" x2="480" y1="0" y2="350"></line>
+							<line x1="0" x2="640" y1="175" y2="175"></line>
+							<line x1="0" x2="640" y1="350" y2="350"></line>
+						</g>
+
+					</svg>
+
+					<style>
+						.motion_paths,.inners, .adder, #lance {
+							visibility: hidden;
+							opacity: 0;
+						}
+					</style>
+					
+					<p id="caption"></p>
+					
+					<div class="nav"> 
+						<p class="dbutton" id="back" onclick="back()"></p>
+						<p class="dbutton" id="next" onclick="next()"></p>
+					</div>
 
           <svg width="640" height="350">
             <g id="guidelines">
@@ -270,17 +280,108 @@
             }
           </style>
 
-          <p id="caption"></p>
+						function pour(timeline, start, end, colour, dur){
 
-          <div class="nav">
-            <p class="dbutton" id="back" onclick="back()"></p>
-            <p class="dbutton" id="next" onclick="next()"></p>
-          </div>
+							var pour_path = document.getElementById("pour_path")
+							var neg_path = document.getElementById("neg_path")
 
-          <script>
-            var prv = 0;
-            var nxt = 1;
-            var curr = 1;
+							var upper_point = {x:start.split(",")[0], y:start.split(",")[1]}
+							var lower_point = {x:end.split(",")[0], y:end.split(",")[1]}
+							var mid_point = {}
+							mid_point.x = lower_point.x
+							mid_point.y = Number(upper_point.y) + Number(0.25*(lower_point.y - upper_point.y))
+							var d_string = `M${upper_point.x},${upper_point.y} Q${mid_point.x},${mid_point.y} ${lower_point.x},${lower_point.y}`
+
+							function set_d() {
+								pour_path.setAttribute("d", d_string)
+								neg_path.setAttribute("d", d_string)
+							}
+
+							timeline.set(".motion_paths", {opacity:1, onComplete:set_d})
+							timeline.set("#pour_path", {stroke:colour})
+							timeline.set("#pour_path", {visibility: "visible"})
+							var phantom1 = {progress:0}
+							function start_pour_update(){
+								pour_path.style.strokeDasharray = [phantom1.progress*pour_path.getTotalLength(), pour_path.getTotalLength()].join(" ")
+							}
+							timeline.to(phantom1, 0.5, {progress:1, onUpdate:start_pour_update})
+							
+							timeline.set("#neg_path", {visibility: "visible"}, ">+"+dur)
+							var phantom2 = {progress:0}
+							function end_pour_update(){
+								neg_path.style.strokeDasharray = [phantom2.progress*neg_path.getTotalLength(), neg_path.getTotalLength()].join(" ")
+							}
+							timeline.to(phantom2, 0.5, {progress:1, onUpdate:end_pour_update})
+
+							timeline.set(".motion_paths", {visibility: "hidden"})
+	
+						}
+
+						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.0001, ease:"none"}})
+
+						t.addLabel("t0",0)
+						.set("#caption", {innerHTML: "BOS typically follows immediately after the blast furnace process; <br> the two facilities are physically situated nearby each other."})
+						
+						// tilt + add scrap
+						t.addLabel("t1", ">")
+						.set("#caption", {innerHTML: "The amount of <strong>cold scrap</strong> added to the BOF is carefully calculated to control product composition and furnace temperature."})
+						.set("#scrap_adder", {visibility:"visible", x:100, y:120})
+						.set("#scrap", {visibility:"visible", y:30})
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
+						.to("#scrap_adder", 1, {opacity:1, x:210, y:120}, "<")
+						.to("#scrap_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
+						pour(t, "270,135", "330,270", "slategrey", 0.5)
+						t.to("#scrap", 2.5, {opacity:1, y:12}, ">-2")
+						.to("#scrap_ladle_content", 1, {opacity:0, y:10}, "<+1")
+						.to("#scrap_adder", 1, {x:100, y:120, opacity:0}, ">-0.5")
+						.set("#scrap_adder", {visibility:"hidden", opacity:0})
+
+						// add molten iron
+						t.addLabel("t2", ">")
+						.set("#caption", {innerHTML: "<strong>Molten iron</strong> from the blast furnace are transported to the BOF using refractory-lined ladles."})
+						.set("#iron_adder", {visibility:"visible", x:100, y:120})
+						.set("#iron", {visibility:"visible", y:30})
+						.to("#iron_adder", 1, {opacity:1, x:200, y:120}, "<")
+						.to("#iron_adder", 1, {rotate:80, transformOrigin:"70% 70%"})
+						pour(t, "270,150", "350,280", "gold", 1.5)
+						t.to("#iron", 2.5, {opacity:1, y:15}, ">-2")
+						.to("#iron_adder", 1, {x:100, y:120, opacity:0}, ">-0.5")
+						.set("#iron_adder", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t3", ">")
+						.set("#caption", {innerHTML: "<strong>Fluxes</strong> are added to for slag formation. <br> Limestone or dolomite is stypically used for this."})
+						.set("#flux_adder", {visibility:"visible", x:100, y:120})
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
+						.to("#flux_adder", 1, {opacity:1, x:210, y:120}, "<")
+						.to("#flux_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
+						pour(t, "270,135", "330,270", "whitesmoke", 0)
+						t.to("#iron, #scrap", 2.5, {opacity:1, y:10}, ">-1")
+						.to("#flux_ladle_content", 0.5, {opacity:0, y:10}, "<")
+						.to("#flux_adder", 1, {x:100, y:120, opacity:0}, ">")
+						.set("#flux_adder", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t4", ">")
+						.set("#caption", {innerHTML: "The furnace is then set back upright, and an oxygen lance is lowered to within a few feet of the surface."})
+						.set("#lance", {visibility:"visible", y:10})
+						.to("#furnace", 1, {rotate:0, y:0})
+						.to(".inners", 1, {y:0}, "<")
+						.to("#lance", 0.5, {y:75, opacity:1})
+
+						t.addLabel("t5",">")
+						.set("#caption", {innerHTML: "The lance blows high-purity oxygen at high speed and pressure; the oxygen ignites C dissolved in steel; CO&#x2082; forms as the oxidation product. <br> The reaction is exothermic and the heat released melts the scrap."})
+						.to("#scrap", 3, {opacity:0, y:5})
+						.to("#lance_blur", 0.5, {filter:"blur(15px)"}, "<")
+						.to("#lance_solid", 0.5, {opacity:1}, "<")
+						.to("#iron", 3, {y:2}, "<")
+
+						
+						// add fluxes
+						// back to upright + oxygen lance 
+						// blasts oxygen 
+						// slag emulsifies 
+						// tilt + tap out steel
+						// pour out slag
+						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
 
             var t = gsap.timeline({
               paused: true,
