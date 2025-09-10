@@ -1,0 +1,274 @@
+<html>
+    <head>
+        
+        <meta charset="utf-8" />
+
+		<title>Injection Moulding</title>
+		
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>	-->
+
+    	
+		<script>
+
+			// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+
+		</script>
+		
+        <style>
+
+			#container {
+				position:relative;
+			}
+			
+			#kanvas { 
+				position:relative;
+			}
+			
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				background-color: #fff;
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				cursor: pointer;
+				background-color: #603;
+				height: 25px;
+				margin: 0px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			
+			#start {
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			/* page divs */
+			.leftText {
+				position:absolute;
+				left:0px;
+				top:0px;
+				padding: 7px;
+				width:280px;
+				text-align:justify;
+				font-size: 15px;
+				font-family: Arial, Helvetica, sans-serif;
+				background-color:#a6ba45; 
+			}
+
+			#anim1, #anim2, #anim3, #anim4, #anim5, #anim6, #anim7, #anim8, #anim9 {
+				position:absolute;
+				left:200px;
+				top:0px;
+				width:300px;
+				font-family: Arial, Helvetica, sans-serif;
+				background-color:#dededf;  
+				/*visibility: hidden;*/
+			}
+			
+			.nav {
+				position:absolute;
+				text-align:center;
+		  		left:130px;
+		  		top:445px;
+				width:300px;
+			}
+
+			/* page id */
+			#p1 {
+				display:block;				
+			}
+
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+		
+            /*svg viewbox thingies */
+            #IM_title_page {
+                position:absolute;
+                left:-209px;
+                top:-30px;
+                width:1055px;
+                height:500px;
+                transform:scale(0.6);
+                border:#000 2px solid;
+            }
+
+            #IM_animation {
+                position:absolute;
+                left:-470px;
+                top:-80px;
+                width:1060px;
+                height:500px;
+            }
+            
+            /* elements in title page and animation page */
+            #bulk_extrudate, #bulk_extrudate2 {
+                stroke:none;
+                fill:#ee4;
+                fill-opacity:0.75;
+            }
+
+            #extruder {
+                position:absolute;
+            }
+
+            #machinery, #machinery2 {
+                stroke-width:1px;
+                fill:#eee;
+                stroke:#000;
+            }
+
+            #block {
+                stroke:none;
+                fill:#fff;
+            }
+
+            #dispenser, #dispenser2 {
+                position:absolute;
+                fill:darkgreen;
+            }
+
+            #pre_dispensate {
+                stroke:#000;
+                stroke-width:0.5;
+                fill:#ee4;
+                fill-opacity:0.75;
+            }
+
+            #pre_dispensate2 {
+                fill:#ee4
+            }
+
+            #injection_mould, #injection_mould2, #splitter, #splitter2 {
+                stroke:#000;
+                stroke-width:1px;
+                fill:forestgreen;
+            }
+
+            #parisons, #parisons2, #parison, #parison2 {
+                stroke:#ee4;
+                stroke-width:2px;
+                /*border-radius:2px;*/
+                fill:#ee4;
+                fill-opacity:0.5;
+            }
+
+            #title {
+                text-align:center;
+                font-family:"Myriad-Roman";
+                font-size:18px;
+                text-decoration:underline;
+            }
+            
+		</style>
+
+	</head>
+
+    <body>
+
+
+
+    </body>
+</html>
