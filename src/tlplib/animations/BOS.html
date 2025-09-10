@@ -214,18 +214,34 @@
 					
 					<svg width="640" height="350">		
 							
-						<g id="furnace">
-							<path class="BOS" id="furnace_walls" style="fill:dimgrey; stroke:none"
+						<g>
+							<path id="furnace_walls" style="fill:dimgrey; stroke:none"
 								d="M360,120 l0,10 l-20,40 l0,60 l20,40 
-									l60,0 
+									a60,40 0 0 0 60,0 
 									l20,-40 l0,-60 l16,-8 l4,8 
-									l0,70 l-25,50 l-15,0 
-									l-60,0 
-									l-15,0 l-25,-50 l0,-70 l25,-50 l15,0 
+									l0,70 l-27,54 l-13,0 
+									a60,40 0 0 1 -60,0
+									l-13,0 l-27,-54 l0,-70 l25,-50 l15,0 
 									m60,0 l0,10 l15,30 l16,-8 l-16,-32 l-15,0"></path>
 
-							<path class="BOS" id="steel_plug" style="fill:darkgrey; stroke:none"
+							<path id="steel_plug" style="fill:darkgrey; stroke:none"
 								d="M435,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
+								
+							
+							<path id="furnace_guts" style="fill:white; stroke:red"
+								d=""></path>
+						</g>
+
+						<g>
+							<path class="temp_parts" id="ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
+
+							<g class="temp_parts" id="lance">
+								<rect id="lance_blur" style="fill:none; stroke:lightsteelblue; stroke-width:4px; filter: blur(5px);"
+									x="385" y="0" rx="5" width="10" height="140"></rect>
+								<rect id="lance" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
+									x="385" y="0" rx="5" width="10" height="140"></rect>
+							</g>
 						</g>
 
 						<g id="guidelines" style="stroke:grey; opacity:0.4">
@@ -238,10 +254,12 @@
 					</svg>
 
 					<style>
-
+						.temp_parts {
+							visibility: hidden;
+						}
 					</style>
 					
-					<p id="caption">  </p>
+					<p id="caption"></p>
 					
 					<div class="nav"> 
 						<p class="dbutton" id="back" onclick="back()"></p>
@@ -254,9 +272,9 @@
 						var nxt = 1
 						var curr = 1
 
-
-
 						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.001, ease:"none"}})
+
+						
 						// tilt + add scrap
 						// add molten iron
 						// add fluxes
