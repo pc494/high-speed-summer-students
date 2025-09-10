@@ -198,10 +198,10 @@
 
             #IM_animation {
                 position:absolute;
-                left:-375px;
-                top:120px;
-                width:1060px;
-                height:500px;
+                left:-610px;
+                top:-50px;
+                width:750px;
+                height:275px;
 				transform:scale(2.5);
             }
             
@@ -250,11 +250,16 @@
             }
 
             #parisons, #parisons2 {
-                stroke:#000;
+                stroke:#ee4;
                 stroke-width:1px;
                 /*border-radius:2px;*/
                 fill:#ee4;
                 fill-opacity:1;
+            }
+
+			#parison2 {
+                stroke:#000;
+                stroke-width:1px;
             }
 
             #title {
@@ -511,10 +516,13 @@
 						.to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, t-0.1)
 						.to("#bee", {duration:0.25, x:0, ease: "expoScale(5,1.5,none)"}, 0+t)
 						.to("#bee", {duration:0.375, morphSVG:"#cee", ease:"none"}, 0.25+t)
+						.to("#cee", {duration:0, autoAlpha:1}, 0.625+t)
 						.to("#bee", {duration:0.125, morphSVG:"#dee", ease:"none"}, 0.625+t)
+						.to("#dee", {duration:0, autoAlpha:1}, 0.75+t)
+						.to("#cee", {duration:0, autoAlpha:0}, 0.75+t)
 						.to("#bee", {duration:0.25, morphSVG:"#parison2", ease:"none"}, 0.75+t)
 						.to("#parison2", {duration:0, autoAlpha:1}, 1+t)
-						.to("#bee", {duration:0, autoAlpha:0}, 1+t)
+						.to("#bee, #dee", {duration:0, autoAlpha:0}, 1+t)
 						.to("#aa, #screw_axis2", {duration:1, x:0}, 1+t)
 
 						.to("#parison2, #ejector2, #topl2, #topr2, #bottoml2, #bottomr2", {duration:0.4, x:20, ease:"none"}, 2+t)
