@@ -218,11 +218,10 @@
 							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
 						</g>
 
-						
 						<path class="inners" id="iron" style="fill:gold; stroke:none"
-							d="M300,240 L460,240 L480,300 l-180,0 Z"></path>
+							d="M300,230 L460,230 L480,300 l-180,0 Z"></path>
 						<path class="inners" id="scrap" style="fill:slategrey; stroke:none"
-							d="M300,270 Q390,240 480,270 L480,300 l-180,0 Z"></path>
+							d="M300,280 Q390,240 480,280 L480,300 l-180,0 Z"></path>
 
 						<g id="furnace">
 							<path id="furnace_guts" style="fill:white; stroke:red"
@@ -248,7 +247,7 @@
 						</g>
 
 						<g class="adder" id="flux_adder">
-							<path id="flux_content" 
+							<path id="flux_ladle_content" style="fill:gainsboro; stroke:none"
 								d="M5,0 Q30,-20 55,0 "></path>
 							<path id="flux_ladle" style="fill:dimgrey; stroke:none"
 								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
@@ -298,7 +297,7 @@
 						var nxt = 1
 						var curr = 1
 
-						function pour(timeline, start, end, colour){
+						function pour(timeline, start, end, colour, dur){
 
 							var pour_path = document.getElementById("pour_path")
 							var neg_path = document.getElementById("neg_path")
@@ -322,14 +321,14 @@
 							function start_pour_update(){
 								pour_path.style.strokeDasharray = [phantom1.progress*pour_path.getTotalLength(), pour_path.getTotalLength()].join(" ")
 							}
-							timeline.to(phantom1, 1, {progress:1, onUpdate:start_pour_update})
+							timeline.to(phantom1, 0.5, {progress:1, onUpdate:start_pour_update})
 							
-							timeline.set("#neg_path", {visibility: "visible"}, ">+0.5")
+							timeline.set("#neg_path", {visibility: "visible"}, ">+"+dur)
 							var phantom2 = {progress:0}
 							function end_pour_update(){
 								neg_path.style.strokeDasharray = [phantom2.progress*neg_path.getTotalLength(), neg_path.getTotalLength()].join(" ")
 							}
-							timeline.to(phantom2, 1, {progress:1, onUpdate:end_pour_update})
+							timeline.to(phantom2, 0.5, {progress:1, onUpdate:end_pour_update})
 
 							timeline.set(".motion_paths", {visibility: "hidden"})
 	
@@ -348,9 +347,9 @@
 						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
 						.to("#scrap_adder", 1, {opacity:1, x:210, y:120}, "<")
 						.to("#scrap_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
-						pour(t, "270,135", "330,270", "slategrey")
-						t.to("#scrap", 2.5, {opacity:1, y:0}, ">-2")
-						.to("#scrap_ladle_content", 1, {opacity:0, y:10}, "<")
+						pour(t, "270,135", "330,270", "slategrey", 0.5)
+						t.to("#scrap", 2.5, {opacity:1, y:2}, ">-2")
+						.to("#scrap_ladle_content", 1, {opacity:0, y:10}, "<+1")
 						.to("#scrap_adder", 1, {x:100, y:120, opacity:0})
 						.set("#scrap_adder", {visibility:"hidden", opacity:0})
 
@@ -361,10 +360,25 @@
 						.set("#iron", {visibility:"visible", y:30})
 						.to("#iron_adder", 1, {opacity:1, x:200, y:120}, "<")
 						.to("#iron_adder", 1, {rotate:80, transformOrigin:"70% 70%"})
-						pour(t, "270,150", "350,280", "gold")
-						t.to("#iron", 2.5, {opacity:1, y:0}, ">-2")
+						pour(t, "270,150", "350,280", "gold", 1.5)
+						t.to("#iron", 2.5, {opacity:1, y:5}, ">-2")
 						.to("#iron_adder", 1, {x:100, y:120, opacity:0})
 						.set("#iron_adder", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t3", ">")
+						.set("#caption", {innerHTML: "<strong>Fluxes</strong> are added to for slag formation. <br> Limestone or dolomite is stypically used for this."})
+						.set("#flux_adder", {visibility:"visible", x:100, y:120})
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
+						.to("#flux_adder", 1, {opacity:1, x:210, y:120}, "<")
+						.to("#flux_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
+						pour(t, "270,135", "330,270", "whitesmoke", 0)
+						t.to("#iron, #scrap", 2.5, {opacity:1, y:0}, ">-1")
+						.to("#flux_ladle_content", 1, {opacity:0, y:10}, "<+1")
+						.to("#flux_adder", 1, {x:100, y:120, opacity:0})
+						.set("#flux_adder", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t4", ">")
+
 						
 						// add fluxes
 						// back to upright + oxygen lance 
