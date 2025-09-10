@@ -212,9 +212,13 @@
 
 					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
 					
-					<svg width="640" height="350">		
+					<svg width="640" height="350">	
 							
-						<g>
+						<g id="furnace" style="fill-opacity:0.7">
+							<path id="furnace_guts" style="fill:white; stroke:red"
+								d="M350,120 l0,10 l-20,40 l0,65 l25,50 l70,0 l25,-50 l0,-60 
+									l100,0 l0,200 l-320,0 l0,-200 l0,-55 l100,0 l20,0"></path>
+
 							<path id="furnace_walls" style="fill:dimgrey; stroke:none"
 								d="M360,120 l0,10 l-20,40 l0,60 l20,40 
 									a60,40 0 0 0 60,0 
@@ -226,23 +230,36 @@
 
 							<path id="steel_plug" style="fill:darkgrey; stroke:none"
 								d="M435,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
-								
-							
-							<path id="furnace_guts" style="fill:white; stroke:red"
-								d=""></path>
 						</g>
 
-						<g>
-							<path class="temp_parts" id="ladle" style="fill:dimgrey; stroke:none"
-								d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
-
-							<g class="temp_parts" id="lance">
-								<rect id="lance_blur" style="fill:none; stroke:lightsteelblue; stroke-width:4px; filter: blur(5px);"
-									x="385" y="0" rx="5" width="10" height="140"></rect>
-								<rect id="lance" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
-									x="385" y="0" rx="5" width="10" height="140"></rect>
-							</g>
+						<g id="iron">
+							<path id="scrap_content"
+								d="M5,0 Q30,-20 50,0 "></path>
+							<path id="iron_ladle" style="fill:dimgrey; stroke:none"
+							d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
 						</g>
+
+						<g id="flux">
+							<path id="flux_content"
+								d="M5,0 Q30,-20 55,0 "></path>
+							<path id="flux_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
+						</g>
+
+						<g id="scrap">
+							<path id="scrap_content"
+								d="M5,0 Q30,-20 55,0 "></path>
+							<path id="scrap_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
+						</g>
+
+						<g id="lance">
+							<rect id="lance_blur" style="fill:none; stroke:lightsteelblue; stroke-width:4px; filter: blur(5px);"
+								x="385" y="0" rx="5" width="10" height="140"></rect>
+							<rect id="lance" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
+								x="385" y="0" rx="5" width="10" height="140"></rect>
+						</g>
+						
 
 						<g id="guidelines" style="stroke:grey; opacity:0.4">
 							<line x1="160" x2="160" y1="0" y2="350"></line>
@@ -254,8 +271,9 @@
 					</svg>
 
 					<style>
-						.temp_parts {
+						#iron, #scrap,#flux, #lance {
 							visibility: hidden;
+							opacity: 0;
 						}
 					</style>
 					
@@ -272,10 +290,19 @@
 						var nxt = 1
 						var curr = 1
 
-						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.001, ease:"none"}})
+						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.0001, ease:"none"}})
 
+						t.addLabel("t0",0)
+						.set("#caption", {innerHTML: "BOS typically follows immediately after blast furnace; <br> the two facilities are physically situated nearby each other."})
 						
 						// tilt + add scrap
+						t.addLabel("t1", ">")
+						.set("#caption", {innerHTML: "The amount of cold scrap added to the BOF is carefully calculated to control product composition and furnace temperature."})
+						.set("#scrap", {visibility:"visible", x:100, y:120})
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
+						.to("#scrap", 1, {opacity:1, x:210}, "<")
+						.to("#scrap", 1, {rotate:60, transformOrigin:"70% 70%"})
+				
 						// add molten iron
 						// add fluxes
 						// back to upright + oxygen lance 
