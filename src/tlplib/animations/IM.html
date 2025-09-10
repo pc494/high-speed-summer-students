@@ -10,14 +10,15 @@
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
-
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>	-->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
+        <script>document.addEventListener("DOMContentLoaded", (event) => {gsap.registerPlugin(RoughEase)});</script>
 
     	
 		<script>
@@ -249,10 +250,10 @@
 
             #parisons, #parisons2 {
                 stroke:#ee4;
-                stroke-width:2px;
+                stroke-width:1px;
                 /*border-radius:2px;*/
                 fill:#ee4;
-                fill-opacity:0.5;
+                fill-opacity:1;
             }
 
             #title {
@@ -468,13 +469,16 @@
                     <svg id="IM_animation">
 
                         <g id="parisons2">
-							<path id="parison2" d="M539.25,190 l8.25,-13.75 0,-11.75 6,-3.5 a18,18 0 0 1 24,-18 18,18 0 0 0 -18,18 l18,10.5 -6,3.5 0,30 6,3.5 -18,10.5 a18,18 0 0 0 18,18 18,18 0 0 1 -24,-18 l-6,-3.5 0,-11.75 -8.25,-13.25"></path>
+							<path id="bee" d="M539.25,190 l7.5,-12.5 0.75,-1.25 a16,16 0 0 1 0,27.5 l-0.75,-1.25 -7.5,-12.5"></path>
+							<path id="cee" d="M539.25,190 l8.25,-13.75 0,-11.75 a25.5,25.5 0 0 1 0,51 l0,-11.75 -8.25,-13.75"></path>
+							<path id="dee" d="M539.25,190 l8.25,-13.75 0,-11.75 6,-3.5 6,0 18,10.5 -6,3.5 0,30 6,3.5 -18,10.5 -6,0 -6,-3.5 0,-11.75 -8.25,-13.25"></path>
+							<path id="parison2" d="M539.25,190 l8.25,-13.75 0,-11.75 6,-3.5 a18,18 0 0 1 24,-18 18,18 0 0 0 -18,18 l18,10.5 -6,3.5 0,30 6,3.5 -18,10.5 a18,18 0 0 0 18,18 18,18 0 0 1 -24,-18 l-6,-3.5 0,-11.75 -8.25,-13.75"></path>
                         </g>
                         <g id="pre_dispensate2">
-                            <path id="a" d="M482.5,185 l54,0 4,5 -4,5 -54,0"></path>
-                            <path id="b" d="M480,150 l10,0 17.5,35 30,0 0,5 0,5 -30,0 -17.5,35 -10,0"></path>
-                            <path id="c" d="M480,150 l10,0 17.5,35 30,0 4,5 -4,5 -30,0 -17.5,35 -10,0"></path>
-                            <path id="d" d="M480,150 l10,0 17.5,35 25,0 4,5 -4,5 -25,0 -17.5,35 -10,0"></path>
+                            <path id="aa" d="M482.5,185 l50,0 4,5 -4,5 -50,0"></path>
+                           
+                            
+                            <path id="dd" d="M480,150 l10,0 17.5,35 25,0 4,5 -4,5 -25,0 -17.5,35 -10,0"></path>
                         </g>
                         <g id="injection_mould2">
 							<path id="ejector2" d="M571.5,185 l30,0 0,10 -30,0 0,-10"></path>
@@ -493,6 +497,22 @@
                     </svg>
 
                     <script>
+
+						gsap.to("#bee", {duration:0, x:-25})
+						gsap.to("#cee, #dee, #parison2", {duration:0, autoAlpha:0})
+
+						var t = 1.2
+						var tl = gsap.timeline({repeat:0})
+
+						tl.to("#aa", {duration:0.5, x:5}, t-0.5)
+						
+						.to("#bee", {duration:0.5, x:0, ease: "expoScale(5,1.5,none)"}, 0+t)
+						.to("#bee", {duration:0.75, morphSVG:"#cee", ease:"none"}, 0.5+t)
+						.to("#bee", {duration:0.75, morphSVG:"#dee", ease:"none"}, 1.25+t)
+						.to("#bee", {duration:0.5, morphSVG:"#parison2", ease:"none"}, 2+t)
+						.to("#parison2", {duration:0, autoAlpha:1}, 2.5+t)
+						.to("#bee", {duration:0, autoAlpha:0}, 2.5+t)
+						
 						
                         // gsap.to("#bottle2, #c, #parisoni, #topi, #bottomi, #rodi, #parison2i, #top2i, #bottom2i, #rod2i", {duration:0, autoAlpha:0})
                         // gsap.to("#injec_mou, #important, #injec_mou2, #important2", {duration:0, rotation:90, x:65, y:-15})
@@ -573,7 +593,7 @@
                         // .to("#cap2", {duration:1, x:150, ease:"sine.inOut"}, 14.25)
                         // .to("#parison2", {duration:1, x:217.5, ease:"sine.inOut"}, 14.25)
 						
-                        // tl.pause()
+                        tl.pause()
 					</script>
 					
 					<div class="nav"> 
