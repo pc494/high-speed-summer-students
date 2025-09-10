@@ -1,18 +1,16 @@
 <html>
-    
-    <head>
-        
-        <meta charset="utf-8" />
+  <head>
+    <meta charset="utf-8" />
 
-		<title>Injection Blow Moulding</title>
-		
-		<!-- Greensock library  -->
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+    <title>Injection Blow Moulding</title>
 
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+    <!-- Greensock library  -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
@@ -20,633 +18,958 @@
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>	-->
 
-    	
-		<script>
+    <script>
+      // hide and show CC licence words
+      function showTxt() {
+        document.getElementById("para").style.visibility = "visible";
+      } // end showTxt
 
-			// hide and show CC licence words
-			function showTxt() {   
-				document.getElementById("para").style.visibility = 'visible';
-			}  // end showTxt
+      function hideTxt() {
+        document.getElementById("para").style.visibility = "hidden";
+      } // end hideTxt
 
-			function hideTxt() { 
-				document.getElementById("para").style.visibility = 'hidden';
-			}  // end hideTxt
-			
-			// page navigation
-			function gotoPage(p) {
-				// replace next fn gEBCN as fails in IE<9
-				var x = document.getElementsByClassName("payj");
-				var len = x.length;
-				for (var i=1; i<(len+1); i++) {
-					var ppp = eval('p'+i);
-					document.getElementById('p'+i).style.display = 'none';
-					if (i == p) {
-						document.getElementById('p'+i).style.display = 'block';
-					}
-				}	
-			}
-			
-			// sets the dimensions of kanvas and positions the bottom logos			
-			function setAnimDimensions(w,h)  {
-				//w = animation width
-				//h = animation height
-				document.getElementById("kanvas").style.height = String(h) + "px";
-				document.getElementById("kanvas").style.width = String(w) + "px";
-				document.getElementById("kanvas").style.margin = "0px auto";
-				document.getElementById("kanvas").style.border = "2px solid blue";
-				// position footers
-				var divcc = document.getElementById("cc");
-				var divpara = document.getElementById("para");
-				divcc.style.position = 'absolute';
-				divpara.style.position = 'absolute';
-				divcc.style.top = (h - 40) + "px";
-				divpara.style.top = (h - 85) + "px";						
-			}
+      // page navigation
+      function gotoPage(p) {
+        // replace next fn gEBCN as fails in IE<9
+        var x = document.getElementsByClassName("payj");
+        var len = x.length;
+        for (var i = 1; i < len + 1; i++) {
+          var ppp = eval("p" + i);
+          document.getElementById("p" + i).style.display = "none";
+          if (i == p) {
+            document.getElementById("p" + i).style.display = "block";
+          }
+        }
+      }
 
-		</script>
-		
-        <style>
+      // sets the dimensions of kanvas and positions the bottom logos
+      function setAnimDimensions(w, h) {
+        //w = animation width
+        //h = animation height
+        document.getElementById("kanvas").style.height = String(h) + "px";
+        document.getElementById("kanvas").style.width = String(w) + "px";
+        document.getElementById("kanvas").style.margin = "0px auto";
+        document.getElementById("kanvas").style.border = "2px solid blue";
+        // position footers
+        var divcc = document.getElementById("cc");
+        var divpara = document.getElementById("para");
+        divcc.style.position = "absolute";
+        divpara.style.position = "absolute";
+        divcc.style.top = h - 40 + "px";
+        divpara.style.top = h - 85 + "px";
+      }
+    </script>
 
-			#container {
-				position:relative;
-			}
-			
-			#kanvas { 
-				position:relative;
-			}
-			
-			#cc {
-				position: absolute; 
-				width:100%; 
-				/*background-color:#cc0000;  */
-			}
-			
-			#para {
-				position: absolute;  
-				padding:0px;
-				font-family:Arial;
-				font-weight: bold;
-				font-size: 11px;
-				color:blue; 
-				background-color: #fff;
-				border-style: solid;
-				border-color: #000000;
-				border-width:1px;
-				visibility: hidden;
-				z-index: 200;
-			}
-			
-			/* DOiTPoMS buttons */
-			.dbutton {
-				cursor: pointer;
-				background-color: #603;
-				height: 25px;
-				margin: 0px;
-				background-position: bottom;
-				display: inline-block;  /* allows on sameline */
-			}
+    <style>
+      #container {
+        position: relative;
+      }
 
-			.dbutton:hover {
-				background-position: center; 
-			}
+      #kanvas {
+        position: relative;
+      }
 
-			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
-				width: 79px;
-				background-image: url('../../../images/back.png');
-			}
+      #cc {
+        position: absolute;
+        width: 100%;
+        /*background-color:#cc0000;  */
+      }
 
-			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
-				width: 75px;
-				background-image: url('../../../images/next.png');
-			}
-			
-			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
-				width: 99px;
-				background-image: url('../../../images/restart.png');
-			}
-			
-			#reset {
-				width: 84px;
-				background-image: url('../../../images/reset.png');
-			}
-			
-			#start {
-				width: 76px;
-				background-image: url('../../../images/start.png');
-			}
-			
-			#pause {
-				width: 83px;
-				background-image: url('../../../images/pause.png');
-			}
-			
-			#continue {
-				width: 118px;
-				background-image: url('../../../images/continue.png');
-			}
-			
-			/* page divs */
-			.leftText {
-				position:absolute;
-				left:0px;
-				top:0px;
-				padding: 7px;
-				width:280px;
-				text-align:justify;
-				font-size: 15px;
-				font-family: Arial, Helvetica, sans-serif;
-				background-color:#a6ba45; 
-			}
+      #para {
+        position: absolute;
+        padding: 0px;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 11px;
+        color: blue;
+        background-color: #fff;
+        border-style: solid;
+        border-color: #000000;
+        border-width: 1px;
+        visibility: hidden;
+        z-index: 200;
+      }
 
-			#anim1, #anim2, #anim3, #anim4, #anim5, #anim6, #anim7, #anim8, #anim9 {
-				position:absolute;
-				left:200px;
-				top:0px;
-				width:300px;
-				font-family: Arial, Helvetica, sans-serif;
-				background-color:#dededf;  
-				/*visibility: hidden;*/
-			}
-			
-			.nav {
-				position:absolute;
-				text-align:center;
-		  		left:130px;
-		  		top:445px;
-				width:300px;
-			}
+      /* DOiTPoMS buttons */
+      .dbutton {
+        cursor: pointer;
+        background-color: #603;
+        height: 25px;
+        margin: 0px;
+        background-position: bottom;
+        display: inline-block; /* allows on sameline */
+      }
 
-			/* page id */
-			#p1 {
-				display:block;				
-			}
+      .dbutton:hover {
+        background-position: center;
+      }
 
-			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
-				display:none;				
-			}
-		
-            /*svg viewbox thingies */
-            #IBM_title_page {
-                position:absolute;
-                left:-209px;
-                top:-30px;
-                width:1055px;
-                height:500px;
-                transform:scale(0.6);
-                border:#000 2px solid;
-            }
+      #back,
+      #back2,
+      #back3,
+      #back4,
+      #back5,
+      #back6,
+      #back7 {
+        width: 79px;
+        background-image: url("../../../images/back.png");
+      }
 
-            #IBM_animation {
-                position:absolute;
-                left:-470px;
-                top:-80px;
-                width:1060px;
-                height:500px;
-            }
-            
-            /* elements in title page and animation page */
-            #bulk_extrudate, #bulk_extrudate2 {
-                stroke:none;
-                fill:#ee4;
-                fill-opacity:0.75;
-            }
-            #extruder {
-                position:absolute;
-            }
-            #machinery, #machinery2 {
-                stroke-width:1px;
-                fill:#eee;
-                stroke:#000;
-            }
-            #block {
-                stroke:none;
-                fill:#fff;
-            }
-            #dispenser, #dispenser2 {
-                position:absolute;
-                fill:darkgreen;
-            }
-            #piston_shaft, #piston_shaft2 {
-                fill:burlywood;
-                stroke:#000;
-                stroke-width:1px;
-            }
-            #piston_plate, #piston_plate2 {
-                fill:slategrey;
-                stroke:#000;
-                stroke-width:1px;
-            }
-            #pre_dispensate {
-                stroke:#000;
-                stroke-width:0.5;
-                fill:#ee4;
-                fill-opacity:0.75;
-            }
-            #pre_dispensate2 {
-                fill:#ee4
-            }
-            #split_die, #split_die2, #injection_mould, #injection_mould2, #splitter, #splitter2 {
-                stroke:#000;
-                stroke-width:1px;
-                fill:forestgreen;
-            }
-            #nozzle, #nozzle2 {
-                stroke:#000;
-                stroke-width:1px;
-            }
-            #bottle_capper, #bottle_capper2 {
-                stroke:#000;
-                stroke-width:0.5px;
-            }
-            #capper_arm, #capper_arm2 {
-                fill:#666;
-            }
-            #capper, #capper2 {
-                fill:#999;
-            }
-            #cap2 {
-                fill:#111;
-            }
-            #parisons, #parisons2, #parison, #parison2 {
-                stroke:#ee4;
-                stroke-width:2px;
-                /*border-radius:2px;*/
-                fill:#ee4;
-                fill-opacity:0.5;
-            }
-            #title {
-                text-align:center;
-                font-family:"Myriad-Roman";
-                font-size:18px;
-                text-decoration:underline;
-            }
-		</style>
+      #next,
+      #next2,
+      #next3,
+      #next4,
+      #next5,
+      #next6,
+      #next7 {
+        width: 75px;
+        background-image: url("../../../images/next.png");
+      }
 
-	</head>
+      #restart,
+      #restart2,
+      #restart3,
+      #restart5,
+      #restart6,
+      #restart7 {
+        width: 99px;
+        background-image: url("../../../images/restart.png");
+      }
 
-    <body>
-		
-		<div id="container"> 
-			
-			<div id="kanvas"> 
-				
-				<!-- DoITPoMS  and CC logos -->
-				<div id="para"> Re-use of this resource is governed by a Creative Commons 
-					Attribution-<br />
-					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
-					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
-				</div>
-				<!-- end para -->
-				
-				<div id="cc" > <img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
-				
-					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
-				
-				</div>
-				<!-- end cc -->
-				
-				<script>
-				
-					setAnimDimensions(640,480);
-				
-				</script>
-				
-				<!-- divs for storyline -->
-				<!--  new page starts here    -->
-				<div class="payj" id="p1"> 
-                    
-                    <svg id="IBM_title_page">
+      #reset {
+        width: 84px;
+        background-image: url("../../../images/reset.png");
+      }
 
-                        <g id="extruder">
-							<g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
-								<path d="M35,180 q15.734,-60 31.468,0"></path>
-								<path d="M75.516,200 q15.734,60 31.468,0"></path>
-								
-								<path d="M110,180 q15.734,-60 31.468,0"></path>
-								<path d="M150.516,200 q15.734,60 31.468,0"></path>
-							
+      #start {
+        width: 76px;
+        background-image: url("../../../images/start.png");
+      }
 
+      #pause {
+        width: 83px;
+        background-image: url("../../../images/pause.png");
+      }
 
+      #continue {
+        width: 118px;
+        background-image: url("../../../images/continue.png");
+      }
 
+      /* page divs */
+      .leftText {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        padding: 7px;
+        width: 280px;
+        text-align: justify;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #a6ba45;
+      }
 
-								<path d="M185,180 q15.734,-60 31.468,0"></path>
-								<path d="M225.516,200 q15.734,60 31.468,0"></path>
-								
-								<path d="M260,180 q15.734,-60 31.468,0"></path>
-								<path d="M300.516,200 q15.734,60 31.468,0"></path>
+      #anim1,
+      #anim2,
+      #anim3,
+      #anim4,
+      #anim5,
+      #anim6,
+      #anim7,
+      #anim8,
+      #anim9 {
+        position: absolute;
+        left: 200px;
+        top: 0px;
+        width: 300px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #dededf;
+        /*visibility: hidden;*/
+      }
 
+      .nav {
+        position: absolute;
+        text-align: center;
+        left: 130px;
+        top: 445px;
+        width: 300px;
+      }
 
+      /* page id */
+      #p1 {
+        display: block;
+      }
 
-								<path d="M335,180 q15.734,-60 31.468,0"></path>
-								<path d="M375.516,200 q15.734,60 31.468,0"></path>
-								
-								<path d="M410,180 q15.734,-60 31.468,0"></path>
-								<path d="M450.516,200 q15.734,60 31.468,0"></path>
-							</g>
-							<g id="screw_axis" stroke-width="1" fill="#eee" stroke="#000">
-								<path d="M35,180 l150,0 l150,-20 l150,0 l15,30 l-15,30 l-150,0 l-150,-20 l-150,0 l0,-20"></path>
-							</g>
-							<g id="screw">
-								<g id="curly_bits" fill="#ccc" stroke-width="0.5" stroke="#000">
-									<path d="M34.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-12"></path>
-									<path d="M107.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,12"></path>
-								
-									<path d="M109.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-12"></path>
-									<path d="M182.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,12"></path>
-								
-									<!-- 4 curly bits from diagonal -->
-									<path d="M184.7,180 l12.034,-1.434 s15,-2 21.850,10 s-1.4455,-5 -5,-20"></path>
-									<path d="M255.921,209.456 l-12.034,-1.434 s-13.5,-1.8 -19.850,-16 s1.4455,5 6,25"></path>
+      #p2,
+      #p3,
+      #p4,
+      #p5,
+      #p6,
+      #p7,
+      #p8,
+      #p9 {
+        display: none;
+      }
 
-									<path d="M263.090,169.548 l10.034,-1.5 s15,-2 19.850,15 s-1.4455,-5 -5,-20"></path>
-									<path d="M327.014,218.975 l-7.034,-0.92 s-15,-2 -20.850,-23 s1.4455,5 5.5,23.5"></path>
-									
-									<!-- 4 curly bits from wider screw -->
-									<path d="M341.8,160 l7.5,0 s10,0 19.950,30 s-1.4455,-5 -10,-34"></path>
-									<path d="M400.284,220 l-7.5,0 s-10,0 -19.950,-30 s1.4455,5 10,34"></path>
+      /*svg viewbox thingies */
+      #IBM_title_page {
+        position: absolute;
+        left: -209px;
+        top: -30px;
+        width: 1055px;
+        height: 500px;
+        transform: scale(0.6);
+        border: #000 2px solid;
+      }
 
-									<path d="M416.8,160 l7.5,0 s10,0 19.950,30 s-1.4455,-5 -10,-34"></path>
-									<path d="M475.284,220 l-7.5,0 s-10,0 -19.950,-30 s1.4455,5 10,34"></path>
-								</g>
-							
-								<g id="sine_curve_things" fill="#666" stroke-width="1" stroke="#000">
-									<path d="M50.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
-									<path d="M125.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
-								
-									<!-- 2 new sine curves for diagonal bit -->
-									<path d="M200.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
-									<path d="M275.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
+      #IBM_animation {
+        position: absolute;
+        left: -470px;
+        top: -80px;
+        width: 1060px;
+        height: 500px;
+      }
 
-									<!-- 2 new sine curves for wider bit -->
-									<path d="M350.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
-									<path d="M425.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"></path>
-								</g>
-							</g>
-							<g id="bulk_extrudate"> <!--Flood shapes from Extrusion1-->
-								<!-- <path d="M35,150 l455,0 l17.5,35 l30,0 l0,10 l-30,0 l-17.5,35 l-455,0 l0,-80"></path> -->
-								<g>
-									<path d="M54.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
-									<path d="M129.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
-									<!-- <path d="M-20.75,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path> -->
-								</g>
-								<g>
-									<path d="M204.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
-									<path d="M279.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
-								</g>
-								<g>
-									<path d="M354.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
-									<path d="M429.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path>
-								</g>
-								<g>
-									<!-- hopper stuff -->
-									<path d="M76,150 l18,0 l0,-40 l30,-60 l-39,-23 l-39,23 l30,60 l0,40"></path>
-								</g>
-							</g>
-							<g id="machinery">
-								<path id="segment1" d="M30,30 l6,0 l40,80 l0,40 l-56,0 l0,-20 l50,0 l0,-20 
-													   l-40,-80"></path>
-								<path id="segment2" d="M94,150 l0,-40 l40,-80 l6,0 l-40,80 l0,20 l390,0 l0,20 
-													   l-396,0"></path>
-								<path id="segment3" d="M20,230 l470,0 l0,20 l-470,0 l0,-20"></path>
-								<path id="segment4" d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"></path>
-								<path id="segment5" d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"></path>
-								<path id="rotator" d="M20,230 l0,-80 l15,0 l0,80 l-15,0"></path>
-							</g>
-						</g>
-                        <g id="pre_dispensate">
-                            <path id="d" d="M507.5,185 l30,0 2.326,5 -2.326,5 -30,0"></path>
-                            <!-- <path id="e" d="M480,150 l10,0 17.5,35 30,0 0,5 0,5 -30,0 -17.5,35 -10,0"></path>
+      /* elements in title page and animation page */
+      #bulk_extrudate,
+      #bulk_extrudate2 {
+        stroke: none;
+        fill: #ee4;
+        fill-opacity: 0.75;
+      }
+      #extruder {
+        position: absolute;
+      }
+      #machinery,
+      #machinery2 {
+        stroke-width: 1px;
+        fill: #eee;
+        stroke: #000;
+      }
+      #block {
+        stroke: none;
+        fill: #fff;
+      }
+      #dispenser,
+      #dispenser2 {
+        position: absolute;
+        fill: darkgreen;
+      }
+      #piston_shaft,
+      #piston_shaft2 {
+        fill: burlywood;
+        stroke: #000;
+        stroke-width: 1px;
+      }
+      #piston_plate,
+      #piston_plate2 {
+        fill: slategrey;
+        stroke: #000;
+        stroke-width: 1px;
+      }
+      #pre_dispensate {
+        stroke: #000;
+        stroke-width: 0.5;
+        fill: #ee4;
+        fill-opacity: 0.75;
+      }
+      #pre_dispensate2 {
+        fill: #ee4;
+      }
+      #split_die,
+      #split_die2,
+      #injection_mould,
+      #injection_mould2,
+      #splitter,
+      #splitter2 {
+        stroke: #000;
+        stroke-width: 1px;
+        fill: forestgreen;
+      }
+      #nozzle,
+      #nozzle2 {
+        stroke: #000;
+        stroke-width: 1px;
+      }
+      #bottle_capper,
+      #bottle_capper2 {
+        stroke: #000;
+        stroke-width: 0.5px;
+      }
+      #capper_arm,
+      #capper_arm2 {
+        fill: #666;
+      }
+      #capper,
+      #capper2 {
+        fill: #999;
+      }
+      #cap2 {
+        fill: #111;
+      }
+      #parisons,
+      #parisons2,
+      #parison,
+      #parison2 {
+        stroke: #ee4;
+        stroke-width: 2px;
+        /*border-radius:2px;*/
+        fill: #ee4;
+        fill-opacity: 0.5;
+      }
+      #title {
+        text-align: center;
+        font-family: "Myriad-Roman";
+        font-size: 18px;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="kanvas">
+        <!-- DoITPoMS  and CC logos -->
+        <div id="para">
+          Re-use of this resource is governed by a Creative Commons
+          Attribution-<br />
+          Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+          http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
+        </div>
+        <!-- end para -->
+
+        <div id="cc">
+          <img
+            src="../../../images/by-nc-sa.svg"
+            alt="creative commons"
+            onMouseOver="showTxt()"
+            onMouseOut="hideTxt()"
+            height="40"
+            width="120"
+          />
+
+          <img
+            src="../../../images/roo.png"
+            alt="DoITPoMS logo"
+            height="40"
+            width="180"
+            style="float: right"
+            ;
+          />
+        </div>
+        <!-- end cc -->
+
+        <script>
+          setAnimDimensions(640, 480);
+        </script>
+
+        <!-- divs for storyline -->
+        <!--  new page starts here    -->
+        <div class="payj" id="p1">
+          <svg id="IBM_title_page">
+            <g id="extruder">
+              <g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
+                <path d="M35,180 q15.734,-60 31.468,0"></path>
+                <path d="M75.516,200 q15.734,60 31.468,0"></path>
+
+                <path d="M110,180 q15.734,-60 31.468,0"></path>
+                <path d="M150.516,200 q15.734,60 31.468,0"></path>
+
+                <path d="M185,180 q15.734,-60 31.468,0"></path>
+                <path d="M225.516,200 q15.734,60 31.468,0"></path>
+
+                <path d="M260,180 q15.734,-60 31.468,0"></path>
+                <path d="M300.516,200 q15.734,60 31.468,0"></path>
+
+                <path d="M335,180 q15.734,-60 31.468,0"></path>
+                <path d="M375.516,200 q15.734,60 31.468,0"></path>
+
+                <path d="M410,180 q15.734,-60 31.468,0"></path>
+                <path d="M450.516,200 q15.734,60 31.468,0"></path>
+              </g>
+              <g id="screw_axis" stroke-width="1" fill="#eee" stroke="#000">
+                <path
+                  d="M35,180 l150,0 l150,-20 l150,0 l15,30 l-15,30 l-150,0 l-150,-20 l-150,0 l0,-20"
+                ></path>
+              </g>
+              <g id="screw">
+                <g id="curly_bits" fill="#ccc" stroke-width="0.5" stroke="#000">
+                  <path
+                    d="M34.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-12"
+                  ></path>
+                  <path
+                    d="M107.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,12"
+                  ></path>
+
+                  <path
+                    d="M109.7,180 l16.034,0 s15,0 18.850,10 s-1.4455,-5 -2.891,-12"
+                  ></path>
+                  <path
+                    d="M182.284,200 l-16.034,0 s-15,0 -18.850,-10 s1.4455,5 2.891,12"
+                  ></path>
+
+                  <!-- 4 curly bits from diagonal -->
+                  <path
+                    d="M184.7,180 l12.034,-1.434 s15,-2 21.850,10 s-1.4455,-5 -5,-20"
+                  ></path>
+                  <path
+                    d="M255.921,209.456 l-12.034,-1.434 s-13.5,-1.8 -19.850,-16 s1.4455,5 6,25"
+                  ></path>
+
+                  <path
+                    d="M263.090,169.548 l10.034,-1.5 s15,-2 19.850,15 s-1.4455,-5 -5,-20"
+                  ></path>
+                  <path
+                    d="M327.014,218.975 l-7.034,-0.92 s-15,-2 -20.850,-23 s1.4455,5 5.5,23.5"
+                  ></path>
+
+                  <!-- 4 curly bits from wider screw -->
+                  <path
+                    d="M341.8,160 l7.5,0 s10,0 19.950,30 s-1.4455,-5 -10,-34"
+                  ></path>
+                  <path
+                    d="M400.284,220 l-7.5,0 s-10,0 -19.950,-30 s1.4455,5 10,34"
+                  ></path>
+
+                  <path
+                    d="M416.8,160 l7.5,0 s10,0 19.950,30 s-1.4455,-5 -10,-34"
+                  ></path>
+                  <path
+                    d="M475.284,220 l-7.5,0 s-10,0 -19.950,-30 s1.4455,5 10,34"
+                  ></path>
+                </g>
+
+                <g
+                  id="sine_curve_things"
+                  fill="#666"
+                  stroke-width="1"
+                  stroke="#000"
+                >
+                  <path
+                    d="M50.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"
+                  ></path>
+                  <path
+                    d="M125.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"
+                  ></path>
+
+                  <!-- 2 new sine curves for diagonal bit -->
+                  <path
+                    d="M200.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"
+                  ></path>
+                  <path
+                    d="M275.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"
+                  ></path>
+
+                  <!-- 2 new sine curves for wider bit -->
+                  <path
+                    d="M350.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"
+                  ></path>
+                  <path
+                    d="M425.734,150 l3.016,0 s6.813,0 18.75,40 s14,40 18.75,40 l-3.016,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40"
+                  ></path>
+                </g>
+              </g>
+              <g id="bulk_extrudate">
+                <!--Flood shapes from Extrusion1-->
+                <!-- <path d="M35,150 l455,0 l17.5,35 l30,0 l0,10 l-30,0 l-17.5,35 l-455,0 l0,-80"></path> -->
+                <g>
+                  <path
+                    d="M54.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"
+                  ></path>
+                  <path
+                    d="M129.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"
+                  ></path>
+                  <!-- <path d="M-20.75,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"></path> -->
+                </g>
+                <g>
+                  <path
+                    d="M204.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"
+                  ></path>
+                  <path
+                    d="M279.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"
+                  ></path>
+                </g>
+                <g>
+                  <path
+                    d="M354.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"
+                  ></path>
+                  <path
+                    d="M429.250,150 s6.813,0 18.75,40 s14,40 18.75,40 l70.984,0 s-6.813,0 -18.75,-40 s-14,-40 -18.75-40 l-70.984,0"
+                  ></path>
+                </g>
+                <g>
+                  <!-- hopper stuff -->
+                  <path
+                    d="M76,150 l18,0 l0,-40 l30,-60 l-39,-23 l-39,23 l30,60 l0,40"
+                  ></path>
+                </g>
+              </g>
+              <g id="machinery">
+                <path
+                  id="segment1"
+                  d="M30,30 l6,0 l40,80 l0,40 l-56,0 l0,-20 l50,0 l0,-20 
+													   l-40,-80"
+                ></path>
+                <path
+                  id="segment2"
+                  d="M94,150 l0,-40 l40,-80 l6,0 l-40,80 l0,20 l390,0 l0,20 
+													   l-396,0"
+                ></path>
+                <path
+                  id="segment3"
+                  d="M20,230 l470,0 l0,20 l-470,0 l0,-20"
+                ></path>
+                <path
+                  id="segment4"
+                  d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"
+                ></path>
+                <path
+                  id="segment5"
+                  d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"
+                ></path>
+                <path id="rotator" d="M20,230 l0,-80 l15,0 l0,80 l-15,0"></path>
+              </g>
+            </g>
+            <g id="pre_dispensate">
+              <path id="d" d="M507.5,185 l30,0 2.326,5 -2.326,5 -30,0"></path>
+              <!-- <path id="e" d="M480,150 l10,0 17.5,35 30,0 0,5 0,5 -30,0 -17.5,35 -10,0"></path>
                             <path id="f" d="M480,150 l10,0 17.5,35 30,0 2.326,5 -2.326,5 -30,0 -17.5,35 -10,0"></path> -->
-                            <!-- <path id="g" d="M480,150 l10,0 17.5,35 25,0 2.326,5 -2.326,5 -25,0 -17.5,35 -10,0"></path> -->
-                        </g>
-                        <g id="injection_mould">
-                            <g id="important">
-                                <path id="rod"     d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"></path>
-                                <path id="parison" d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"></path>
+              <!-- <path id="g" d="M480,150 l10,0 17.5,35 25,0 2.326,5 -2.326,5 -25,0 -17.5,35 -10,0"></path> -->
+            </g>
+            <g id="injection_mould">
+              <g id="important">
+                <path
+                  id="rod"
+                  d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"
+                ></path>
+                <path
+                  id="parison"
+                  d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"
+                ></path>
 
-                                <path id="topi"     d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"></path>
-                                <path id="bottomi"  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"></path>
-                            </g>
-                            <g id="injec_mou">
-                                <path id="rodi"     d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"></path>
-                                <path id="parisoni" d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"></path>
+                <path
+                  id="topi"
+                  d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"
+                ></path>
+                <path
+                  id="bottomi"
+                  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"
+                ></path>
+              </g>
+              <g id="injec_mou">
+                <path
+                  id="rodi"
+                  d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"
+                ></path>
+                <path
+                  id="parisoni"
+                  d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"
+                ></path>
 
-                                <path id="top"     d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"></path>
-                                <path id="bottom"  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"></path>
-                            </g>
-                        </g>
-                        <g id="split_die">
-							<path id="left_die"    d="M767.5,350 l0,128 l30,0 l0,-20 s-2,0 -6,2 l-4,3 s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-3.333 l-25,0"></path>
-							<path id="right_die"   d="M827.5,350 l0,128 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 l25,0"></path>
-						</g>
-                        <g id="nozzle">
-							<!-- moved up by 15 -->
-							<path fill="#aaa"       d="M1060,180 l-250,0 c-15,0 -20,5 -20,20 l0,132.5 l3.75,3.75 l1.25,0 l0,-136.25 c0,-11.25 3.75,-15 15,-15 l250,0"></path>
-							<path fill="#aaa"       d="M1060,195 l-250,0 c-3.75,0 -5,3.75 -5,5 l0,132.5 l-3.75,3.75 l-1.25,0 l0,-136.25 c0,-7.5 2.5,-10 10,-10 l250,0"></path>
-							<path fill="#444"       d="M1060,170 l-242.5,0 c-26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l242.5,0"></path>
-						</g>
-                        <g id="splitter">
-                            <path d="M857.5,235 l15,0 a2.5,2.5 180 0 1 0,5 l-15,0 a2.5,2.5 180 0 1 0,-5"></path>
-                            <path d="M863.75,235 l2.5,0 a1.25,1.25 90 0 1 1.25,1.25 l0,2.5 a1.25,1.25 90 0 1 -1.25,1.25 l-2.5,0 a1.25,1.25 90 0 1 -1.25,-1.25 l0,-2.5a1.25,1.25 90 0 1 1.25,-1.25"></path>
-                        </g>
-                        <g id="bottle_capper">
-                            <g id="caps">
-                                <path id="cap"         d="M924,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
-                                </g>
-                            <path id="capper"      d="M922.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"></path>
-                            <path id="capper_arm"  d="M1060,220 l-107.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l107.5,0"></path>
-                        </g>
-                    </svg>
-                    <div id="title">
-						<p>Injection Blow Moulding</p>
-					</div>
-                    <div class="nav"> 
-                
-                        <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
-                
-                    </div>
-                
-                    <div id="anim1">
-                    </div>
-                    <!-- end anim1 -->
-				
-				</div>
-				<!-- end payj - p1 -->
-				
+                <path
+                  id="top"
+                  d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"
+                ></path>
+                <path
+                  id="bottom"
+                  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"
+                ></path>
+              </g>
+            </g>
+            <g id="split_die">
+              <path
+                id="left_die"
+                d="M767.5,350 l0,128 l30,0 l0,-20 s-2,0 -6,2 l-4,3 s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-3.333 l-25,0"
+              ></path>
+              <path
+                id="right_die"
+                d="M827.5,350 l0,128 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 l25,0"
+              ></path>
+            </g>
+            <g id="nozzle">
+              <!-- moved up by 15 -->
+              <path
+                fill="#aaa"
+                d="M1060,180 l-250,0 c-15,0 -20,5 -20,20 l0,132.5 l3.75,3.75 l1.25,0 l0,-136.25 c0,-11.25 3.75,-15 15,-15 l250,0"
+              ></path>
+              <path
+                fill="#aaa"
+                d="M1060,195 l-250,0 c-3.75,0 -5,3.75 -5,5 l0,132.5 l-3.75,3.75 l-1.25,0 l0,-136.25 c0,-7.5 2.5,-10 10,-10 l250,0"
+              ></path>
+              <path
+                fill="#444"
+                d="M1060,170 l-242.5,0 c-26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l242.5,0"
+              ></path>
+            </g>
+            <g id="splitter">
+              <path
+                d="M857.5,235 l15,0 a2.5,2.5 180 0 1 0,5 l-15,0 a2.5,2.5 180 0 1 0,-5"
+              ></path>
+              <path
+                d="M863.75,235 l2.5,0 a1.25,1.25 90 0 1 1.25,1.25 l0,2.5 a1.25,1.25 90 0 1 -1.25,1.25 l-2.5,0 a1.25,1.25 90 0 1 -1.25,-1.25 l0,-2.5a1.25,1.25 90 0 1 1.25,-1.25"
+              ></path>
+            </g>
+            <g id="bottle_capper">
+              <g id="caps">
+                <path
+                  id="cap"
+                  d="M924,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"
+                ></path>
+              </g>
+              <path
+                id="capper"
+                d="M922.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"
+              ></path>
+              <path
+                id="capper_arm"
+                d="M1060,220 l-107.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l107.5,0"
+              ></path>
+            </g>
+          </svg>
+          <div id="title">
+            <p>Injection Blow Moulding</p>
+          </div>
+          <div class="nav">
+            <p class="dbutton" id="start" onClick="gotoPage(2)"></p>
+          </div>
 
+          <div id="anim1"></div>
+          <!-- end anim1 -->
+        </div>
+        <!-- end payj - p1 -->
 
+        <!--  new page starts here    -->
+        <div class="payj" id="p2">
+          <svg id="IBM_animation">
+            <g id="parisons2">
+              <path
+                id="bottle2"
+                d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,1 -10,6.667 s-5,3.333 -5,15 l0,10 s0,1 2,2 l0,31 s-2,1 -2,2 l0,30 s0,5 10,0 l4,-3 s4,-2 6,-2 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333"
+              ></path>
+            </g>
+            <g id="pre_dispensate2">
+              <path id="a" d="M482.5,185 l54,0 2.326,5 -2.326,5 -54,0"></path>
+              <path
+                id="b"
+                d="M480,150 l10,0 17.5,35 30,0 0,5 0,5 -30,0 -17.5,35 -10,0"
+              ></path>
+              <path
+                id="c"
+                d="M480,150 l10,0 17.5,35 30,0 2.326,5 -2.326,5 -30,0 -17.5,35 -10,0"
+              ></path>
+              <path
+                id="d"
+                d="M480,150 l10,0 17.5,35 25,0 2.326,5 -2.326,5 -25,0 -17.5,35 -10,0"
+              ></path>
+            </g>
+            <g id="injection_mould2">
+              <g id="important2">
+                <path
+                  id="rod2"
+                  d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"
+                ></path>
+                <path
+                  id="parison2"
+                  d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"
+                ></path>
 
+                <path
+                  id="top2i"
+                  d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"
+                ></path>
+                <path
+                  id="bottom2i"
+                  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"
+                ></path>
+              </g>
+              <g id="injec_mou2">
+                <path
+                  id="rod2i"
+                  d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"
+                ></path>
+                <path
+                  id="parison2i"
+                  d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"
+                ></path>
 
+                <path
+                  id="top2"
+                  d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"
+                ></path>
+                <path
+                  id="bottom2"
+                  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"
+                ></path>
+              </g>
+            </g>
+            <g id="split_die2">
+              <path
+                id="left_die2"
+                d="M767.5,350 l0,128 l30,0 l0,-20 s-2,0 -6,2 l-4,3 s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-3.333 l-25,0"
+              ></path>
+              <path
+                id="right_die2"
+                d="M827.5,350 l0,128 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 l25,0"
+              ></path>
+            </g>
+            <g id="nozzle2">
+              <!-- moved up by 15 -->
+              <path
+                fill="#aaa"
+                d="M1060,180 l-250,0 c-15,0 -20,5 -20,20 l0,132.5 l3.75,3.75 l1.25,0 l0,-136.25 c0,-11.25 3.75,-15 15,-15 l250,0"
+              ></path>
+              <path
+                fill="#aaa"
+                d="M1060,195 l-250,0 c-3.75,0 -5,3.75 -5,5 l0,132.5 l-3.75,3.75 l-1.25,0 l0,-136.25 c0,-7.5 2.5,-10 10,-10 l250,0"
+              ></path>
+              <path
+                fill="#444"
+                d="M1060,170 l-242.5,0 c-26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l242.5,0"
+              ></path>
+            </g>
+            <g id="splitter2">
+              <path
+                d="M857.5,235 l15,0 a2.5,2.5 180 0 1 0,5 l-15,0 a2.5,2.5 180 0 1 0,-5"
+              ></path>
+              <path
+                d="M863.75,235 l2.5,0 a1.25,1.25 90 0 1 1.25,1.25 l0,2.5 a1.25,1.25 90 0 1 -1.25,1.25 l-2.5,0 a1.25,1.25 90 0 1 -1.25,-1.25 l0,-2.5a1.25,1.25 90 0 1 1.25,-1.25"
+              ></path>
+            </g>
+            <g id="machinery2">
+              <path id="segment2" d="M480,130 l10,0 0,20 -10,0"></path>
+              <path id="segment3" d="M480,230 l10,0 0,20 -10,0"></path>
+              <path
+                id="segment4"
+                d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"
+              ></path>
+              <path
+                id="segment5"
+                d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"
+              ></path>
+              <path
+                id="screw_axis2"
+                d="M470,160 l15,0 15,30 -15,30 -15,0"
+              ></path>
+            </g>
+            <path id="block" d="M470,130 l10,0 0,120 -10,0"></path>
+            <g id="bottle_capper2">
+              <g id="caps2">
+                <path
+                  id="cap2"
+                  d="M924,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"
+                ></path>
+                <path
+                  id="capp2"
+                  d="M924,300.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"
+                ></path>
+              </g>
+              <path
+                id="capper2"
+                d="M922.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"
+              ></path>
+              <path
+                id="capper_arm2"
+                d="M1060,220 l-107.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l107.5,0"
+              ></path>
+            </g>
+          </svg>
 
+          <script>
+            gsap.to(
+              "#bottle2, #c, #parisoni, #topi, #bottomi, #rodi, #parison2i, #top2i, #bottom2i, #rod2i",
+              { duration: 0, autoAlpha: 0 },
+            );
+            gsap.to("#injec_mou, #important, #injec_mou2, #important2", {
+              duration: 0,
+              rotation: 90,
+              x: 65,
+              y: -15,
+            });
+            gsap.to("#parison2", { duration: 0, y: 50 });
 
+            var t = 0.2;
+            var tl = gsap.timeline({ repeat: 0 });
 
-				<!--  new page starts here    -->
-				<div class="payj" id="p2" >
-                    
-                    <svg id="IBM_animation">
+            tl.to("#a", { duration: 1, x: 50, ease: "none" }, 0)
+              .to("#parison2", { duration: 1, y: 0, ease: "none" }, 0)
+              .to("#screw_axis2", { duration: 1, x: 7.5, ease: "none" }, 0)
 
-                        <g id="parisons2">
-                            <path id="bottle2"      d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,1 -10,6.667 s-5,3.333 -5,15 l0,10 s0,1 2,2 l0,31 s-2,1 -2,2 l0,30 s0,5 10,0 l4,-3 s4,-2 6,-2 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333"></path>
-                        </g>
-                        <g id="pre_dispensate2">
-                            <path id="a" d="M482.5,185 l54,0 2.326,5 -2.326,5 -54,0"></path>
-                            <path id="b" d="M480,150 l10,0 17.5,35 30,0 0,5 0,5 -30,0 -17.5,35 -10,0"></path>
-                            <path id="c" d="M480,150 l10,0 17.5,35 30,0 2.326,5 -2.326,5 -30,0 -17.5,35 -10,0"></path>
-                            <path id="d" d="M480,150 l10,0 17.5,35 25,0 2.326,5 -2.326,5 -25,0 -17.5,35 -10,0"></path>
-                        </g>
-                        <g id="injection_mould2">
-                            <g id="important2">
-                                <path id="rod2"     d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"></path>
-                                <path id="parison2" d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"></path>
+              .to("#b", { duration: 0, morphSVG: "#c", ease: "none" }, 0.5)
 
-                                <path id="top2i"     d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"></path>
-                                <path id="bottom2i"  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"></path>
-                            </g>
-                            <g id="injec_mou2">
-                                <path id="rod2i"     d="M560,180 l0,57.833 a2.5,2.5 180 0 0 5,0 l0,-57.833 l-5,0"></path>
-                                <path id="parison2i" d="M557.5,197.5 l0,3.333 q-5,1 0,2 -5,1 0,2 -5,1 0,2 l-2,2 0,4 -1,0 3,0 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 0,24 0,0.1 0,0.1 0,0.1 0,0.1 0,0.1 a5,5 180 0 0 10,0 l0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-24 0,-0.1 0,-0.1 0,-0.1 0,-0.1 0,-0.1 3,0 -1,0 0,-4 -2,-2 0,-1 q5,-1 0,-2 5,-1 0,-2 5,-1 0,-2 l0,-2.333"></path>
+              .to("#a", { duration: 0, autoAlpha: 0, ease: "none" }, 1)
 
-                                <path id="top2"     d="M537.5,195 l 22.5,0 0,2.5 -2.5,0 0,3.333        q-5,1 0,2 -5,1 0,2 -5,1 0,2 l   -2,2 0,4 -1,0  3,0 0,25 a5,5 75.522 0 0  3.75,4.841 l0,1 -3.75,1.326 -20,0 0,-50"></path>
-                                <path id="bottom2"  d="M587.5,195 l-22.5,0 0,2.5  2.5,0        0,2.333 q 5,1 0,2  5,1 0,2  5,1 0,2 l0,1 2,2 0,4  1,0 -3,0 0,25 a5,5 75.522 0 1 -3.75,4.841 l0,1  3.75,1.326  20,0 0,-50"></path>
-                            </g>
-                        </g>
-                        <g id="split_die2">
-							<path id="left_die2"    d="M767.5,350 l0,128 l30,0 l0,-20 s-2,0 -6,2 l-4,3 s-10,5 -10,0 l0,-30 s0,-1 2,-2 l0,-31 s-2,-1 -2,-2 l0,-10 s0,-11.667 5,-15 l10,-6.667 l0,-1 l-3,0 l1,0 l0,-4 l2,-2 q-5,-1 0,-2 q-5,-1 0,-2 q-5,-1 0,-2 l0,-3.333 l-25,0"></path>
-							<path id="right_die2"   d="M827.5,350 l0,128 l-30,0 l0,-20 s2,0 6,2 l4,3 s10,5 10,0 l0,-30 s0,-1 -2,-2 l0,-31 s2,-1 2,-2 l0,-10 s0,-11.667 -5,-15 l-10,-6.667 l0,-1 l3,0 l-1,0 l0,-4 l-2,-2 l0,-1 q5,-1 0,-2 q5,-1 0,-2 q5,-1 0,-2 l0,-2.333 l25,0"></path>
-						</g>
-                        <g id="nozzle2">
-							<!-- moved up by 15 -->
-							<path fill="#aaa"       d="M1060,180 l-250,0 c-15,0 -20,5 -20,20 l0,132.5 l3.75,3.75 l1.25,0 l0,-136.25 c0,-11.25 3.75,-15 15,-15 l250,0"></path>
-							<path fill="#aaa"       d="M1060,195 l-250,0 c-3.75,0 -5,3.75 -5,5 l0,132.5 l-3.75,3.75 l-1.25,0 l0,-136.25 c0,-7.5 2.5,-10 10,-10 l250,0"></path>
-							<path fill="#444"       d="M1060,170 l-242.5,0 c-26.25,0 -35,8.75 -35,35 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100 c0,-3.75 1.25,-5 5,-5 l242.5,0"></path>
-						</g>
-                        <g id="splitter2">
-                            <path d="M857.5,235 l15,0 a2.5,2.5 180 0 1 0,5 l-15,0 a2.5,2.5 180 0 1 0,-5"></path>
-                            <path d="M863.75,235 l2.5,0 a1.25,1.25 90 0 1 1.25,1.25 l0,2.5 a1.25,1.25 90 0 1 -1.25,1.25 l-2.5,0 a1.25,1.25 90 0 1 -1.25,-1.25 l0,-2.5a1.25,1.25 90 0 1 1.25,-1.25"></path>
-                        </g>
-                        <g id="machinery2">
-                            <path id="segment2" d="M480,130 l10,0 0,20 -10,0"></path>
-                            <path id="segment3" d="M480,230 l10,0 0,20 -10,0"></path>
-                            <path id="segment4" d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"></path>
-							<path id="segment5" d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"></path>
-                            <path id="screw_axis2" d="M470,160 l15,0 15,30 -15,30 -15,0"></path>
-                        </g>
-                        <path id="block" d="M470,130 l10,0 0,120 -10,0"></path>
-                        <g id="bottle_capper2">
-                            <g id="caps2">
-                                <path id="cap2"         d="M924,313.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
-                                <path id="capp2"        d="M924,300.5 l0,-8 a2,2 90 0 1 2,-2 l13,0 a2,2 90 0 1 2,2 l0,8 l-17,0"></path>
-                            </g>
-                            <path id="capper2"      d="M922.5,275 l0,25 a5,5 90 0 0 5,5 l10,0 a5,5 90 0 0 5,-5 l0,-25"></path>
-                            <path id="capper_arm2"  d="M1060,220 l-107.5,0 a35,35 90 0 0 -35,35 l0,40 a5,5 90 0 0 5,5 l20,0 a5,5 90 0 0 5,-5 l0,-40 a5,5 90 0 1 5,-5 l107.5,0"></path>
-                        </g>
-                    
-                    </svg>
+              .to("#b", { duration: 0.5, morphSVG: "#d", ease: "none" }, 1.5)
+              .to(
+                "#a, #screw_axis2",
+                { duration: 0.5, x: 0, ease: "none" },
+                1.5,
+              )
 
-                    <script>
+              .to(
+                "#injec_mou2, #important2",
+                { duration: 0.25, x: 75, ease: "none" },
+                2,
+              )
+              .to("#top2", { duration: 0.25, x: -10, ease: "none" }, 2.25)
+              .to("#bottom2", { duration: 0.25, x: 10, ease: "none" }, 2.25)
+              .to("#important2", { duration: 0.5, x: 125, ease: "none" }, 2.5)
+              .to(
+                "#important2",
+                { duration: 0.5, rotation: 0, x: 75, ease: "none" },
+                3,
+              )
+              .to(
+                "#important2",
+                { duration: 0.25, y: -30, ease: "sine.out" },
+                3,
+              )
+              .to(
+                "#important2",
+                { duration: 0.25, y: -20, ease: "sine.in" },
+                3.25,
+              )
 
-                        gsap.to("#bottle2, #c, #parisoni, #topi, #bottomi, #rodi, #parison2i, #top2i, #bottom2i, #rod2i", {duration:0, autoAlpha:0})
-                        gsap.to("#injec_mou, #important, #injec_mou2, #important2", {duration:0, rotation:90, x:65, y:-15})
-                        gsap.to("#parison2", {duration:0, y:50})
+              .to(
+                "#split_die2",
+                { duration: 0.5, x: -160, ease: "sine.inOut" },
+                3.25,
+              )
+              .to(
+                "#left_die2",
+                { duration: 0.5, x: -10, ease: "back.out" },
+                3.25,
+              )
+              .to(
+                "#right_die2",
+                { duration: 0.5, x: 10, ease: "back.out" },
+                3.25,
+              )
 
-                        var t = 0.2;
-                        var tl = gsap.timeline({repeat:0})
-                        
-                        tl.to("#a", {duration:1, x:50, ease:"none"}, 0)
-                        .to("#parison2", {duration:1, y:0, ease:"none"}, 0)
-                        .to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, 0)
+              .to(
+                "#important2",
+                { duration: 0.75, y: 152.5, ease: "none" },
+                3.5,
+              )
 
-                        .to("#b", {duration:0, morphSVG:"#c", ease:"none"}, 0.5)
+              .to("#left_die2", { duration: 0.5, x: 0, ease: "sine.out" }, 4.25)
+              .to(
+                "#right_die2",
+                { duration: 0.5, x: 0, ease: "sine.out" },
+                4.25,
+              )
 
-                        .to("#a", {duration:0, autoAlpha:0, ease:"none"}, 1)
+              .to(
+                "#split_die2",
+                { duration: 0.75, x: 0, ease: "sine.inOut" },
+                4.75,
+              )
+              .to(
+                "#important2",
+                { duration: 0.75, x: 235, ease: "sine.inOut" },
+                4.75,
+              )
+              .to(
+                "#split_die2",
+                { duration: 0.75, y: 10, ease: "sine.out" },
+                4.75,
+              )
+              .to(
+                "#important2",
+                { duration: 0.75, y: 162.5, ease: "sine.out" },
+                4.75,
+              )
 
-                        .to("#b", {duration:0.5, morphSVG:"#d", ease:"none"}, 1.5)
-                        .to("#a, #screw_axis2", {duration:0.5, x:0, ease:"none"}, 1.5)
-                        
-                        .to("#injec_mou2, #important2", {duration:0.25, x:75, ease:"none"}, 2)
-                        .to("#top2", {duration:0.25, x:-10, ease:"none"}, 2.25)
-                        .to("#bottom2", {duration:0.25, x:10, ease:"none"}, 2.25)
-                        .to("#important2", {duration:0.5, x:125, ease:"none"}, 2.5)
-                        .to("#important2", {duration:0.5, rotation:0, x:75, ease:"none"}, 3)
-                        .to("#important2", {duration:0.25, y:-30, ease:"sine.out"}, 3)
-                        .to("#important2", {duration:0.25, y:-20, ease:"sine.in"}, 3.25)
+              .to("#split_die2", { duration: 0.75, y: -10, ease: "none" }, 5.5)
+              .to(
+                "#important2",
+                { duration: 0.75, y: 142.5, ease: "none" },
+                5.5,
+              )
+              .to("#nozzle2", { duration: 0.5, y: 5, ease: "none" }, 6.25)
 
-                        .to("#split_die2", {duration:0.5, x:-160, ease:"sine.inOut"}, 3.25)
-                        .to("#left_die2", {duration:0.5, x:-10, ease:"back.out"}, 3.25)
-                        .to("#right_die2", {duration:0.5, x:10, ease:"back.out"}, 3.25)
+              .to("#parison2", { duration: 0.5, morphSVG: "#bottle2" }, 7)
 
-                        .to("#important2", {duration:0.75, y:152.5, ease:"none"}, 3.5)
+              .to("#nozzle2", { duration: 0.5, y: 0, ease: "none" }, 7.75)
+              .to("#split_die2", { duration: 0.5, y: 10, ease: "none" }, 7.75)
+              .to(
+                "#important2",
+                { duration: 0.5, y: 162.5, ease: "none" },
+                7.75,
+              )
 
-                        .to("#left_die2", {duration:0.5, x:0, ease:"sine.out"}, 4.25)
-                        .to("#right_die2", {duration:0.5, x:0, ease:"sine.out"}, 4.25)
+              .to("#left_die2", { duration: 0.5, x: -20, ease: "none" }, 8.25)
+              .to("#left_die2", { duration: 0.5, y: 15, ease: "none" }, 8.25)
+              .to("#right_die2", { duration: 0.5, x: 20, ease: "none" }, 8.25)
+              .to("#right_die2", { duration: 0.5, y: 15, ease: "none" }, 8.25)
+              .to("#left_die2", { duration: 0.15, x: -28, ease: "none" }, 8.75)
+              .to("#right_die2", { duration: 0.15, x: 28, ease: "none" }, 8.75)
 
-                        .to("#split_die2", {duration:0.75, x:0, ease:"sine.inOut"}, 4.75)
-                        .to("#important2", {duration:0.75, x:235, ease:"sine.inOut"}, 4.75)
-                        .to("#split_die2", {duration:0.75, y:10, ease:"sine.out"}, 4.75)
-                        .to("#important2", {duration:0.75, y:162.5, ease:"sine.out"}, 4.75)
+              .to(
+                "#important2",
+                { duration: 0.3, x: 255, ease: "power1.in" },
+                8.9,
+              )
+              .to(
+                "#important2",
+                { duration: 0.45, x: 302.5, ease: "power1.out" },
+                9.2,
+              )
+              .to(
+                "#important2",
+                { duration: 0.75, y: 65, ease: "expo.in" },
+                8.9,
+              )
 
-                        .to("#split_die2", {duration:0.75, y:-10, ease:"none"}, 5.5)
-                        .to("#important2", {duration:0.75, y:142.5, ease:"none"}, 5.5)
-                        .to("#nozzle2", {duration:0.5, y:5, ease:"none"}, 6.25)
-                        
-                        .to("#parison2", {duration: 0.5, morphSVG: "#bottle2"}, 7)
-                        
-                        .to("#nozzle2", {duration:0.5, y:0, ease:"none"}, 7.75)
-                        .to("#split_die2", {duration:0.5, y:10, ease:"none"}, 7.75)
-                        .to("#important2", {duration:0.5, y:162.5, ease:"none"}, 7.75)
-                        
-                        .to("#left_die2", {duration:0.5, x:-20, ease:"none"}, 8.25)
-						.to("#left_die2", {duration:0.5, y:15, ease:"none"}, 8.25)
-						.to("#right_die2", {duration:0.5, x:20, ease:"none"}, 8.25)
-						.to("#right_die2", {duration:0.5, y:15, ease:"none"}, 8.25)
-						.to("#left_die2", {duration:0.15, x:-28, ease:"none"}, 8.75)
-						.to("#right_die2", {duration:0.15, x:28, ease:"none"}, 8.75)
-                        
-                        .to("#important2", {duration:0.3, x:255, ease:"power1.in"}, 8.9)
-                        .to("#important2", {duration:0.45, x:302.5, ease:"power1.out"}, 9.2)
-                        .to("#important2", {duration:0.75, y:65, ease:"expo.in"}, 8.9)
+              .to(
+                "#split_die2, #left_die2, #right_die2",
+                { duration: 1, x: 0, y: 0, ease: "sine.inOut" },
+                9.25,
+              )
 
-                        .to("#split_die2, #left_die2, #right_die2", {duration:1, x:0, y:0, ease:"sine.inOut"}, 9.25)
-                        
-                        .to("#splitter2", {duration:1.32, y:81.5, ease:"none"}, 9.75)
-                        .to("#parison2", {duration:0.92, y:57.5, ease:"none"}, 10.11)        
+              .to("#splitter2", { duration: 1.32, y: 81.5, ease: "none" }, 9.75)
+              .to("#parison2", { duration: 0.92, y: 57.5, ease: "none" }, 10.11)
 
-                        .to("#rod2", {duration:0.25, x:-20, ease:"none"}, 11)
-                        .to("#splitter2", {duration:1.32, y:0, ease:"none"}, 11.25)
+              .to("#rod2", { duration: 0.25, x: -20, ease: "none" }, 11)
+              .to("#splitter2", { duration: 1.32, y: 0, ease: "none" }, 11.25)
 
-                        .to("#parison2", {duration:0.75, x:67.5, y:61, ease:"power1.out"}, 11.5)
+              .to(
+                "#parison2",
+                { duration: 0.75, x: 67.5, y: 61, ease: "power1.out" },
+                11.5,
+              )
 
-                        .to("#capper2, #cap2", {duration:1, y:20, ease:"none"}, 12.25)
-                        
-                        .to("#capper2", {duration:1, y:0, ease:"none"}, 13.25)
-                        .to("#capp2", {duration:0.5, y:13, ease:"none"}, 14.25)
-                        
-                        .to("#cap2", {duration:1, x:150, ease:"sine.inOut"}, 14.25)
-                        .to("#parison2", {duration:1, x:217.5, ease:"sine.inOut"}, 14.25)
-						
-                        tl.pause()
-					</script>
-					
-					<div class="nav"> 
-						<p class="dbutton" id="start" onClick="tl.play()"></p >
-						<p class="dbutton" id="pause" onClick="tl.pause()"></p >
-						<p class="dbutton" id="restart" onClick="tl.restart()"></p >
-				
-					</div>				
-				
-					<div id="anim2">
-					</div>
-					<!-- end anim2 -->
-				
-				</div>
-				<!-- end payj - p2 -->
+              .to(
+                "#capper2, #cap2",
+                { duration: 1, y: 20, ease: "none" },
+                12.25,
+              )
 
-			</div>
-			<!-- kanvas -->
+              .to("#capper2", { duration: 1, y: 0, ease: "none" }, 13.25)
+              .to("#capp2", { duration: 0.5, y: 13, ease: "none" }, 14.25)
 
-		</div>
-		<!-- container -->
+              .to("#cap2", { duration: 1, x: 150, ease: "sine.inOut" }, 14.25)
+              .to(
+                "#parison2",
+                { duration: 1, x: 217.5, ease: "sine.inOut" },
+                14.25,
+              );
 
-	</body>
+            tl.pause();
+          </script>
 
+          <div class="nav">
+            <p class="dbutton" id="start" onClick="tl.play()"></p>
+            <p class="dbutton" id="pause" onClick="tl.pause()"></p>
+            <p class="dbutton" id="restart" onClick="tl.restart()"></p>
+          </div>
+
+          <div id="anim2"></div>
+          <!-- end anim2 -->
+        </div>
+        <!-- end payj - p2 -->
+      </div>
+      <!-- kanvas -->
+    </div>
+    <!-- container -->
+  </body>
 </html>
