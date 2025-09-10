@@ -501,18 +501,18 @@
 						gsap.to("#bee", {duration:0, x:-25})
 						gsap.to("#cee, #dee, #parison2", {duration:0, autoAlpha:0})
 
-						var t = 1.2
+						var t = 1
 						var tl = gsap.timeline({repeat:0})
 
-						tl.to("#aa", {duration:0.5, x:5}, t-0.5)
-						
-						.to("#bee", {duration:0.5, x:0, ease: "expoScale(5,1.5,none)"}, 0+t)
-						.to("#bee", {duration:0.75, morphSVG:"#cee", ease:"none"}, 0.5+t)
-						.to("#bee", {duration:0.75, morphSVG:"#dee", ease:"none"}, 1.25+t)
-						.to("#bee", {duration:0.5, morphSVG:"#parison2", ease:"none"}, 2+t)
-						.to("#parison2", {duration:0, autoAlpha:1}, 2.5+t)
-						.to("#bee", {duration:0, autoAlpha:0}, 2.5+t)
-						.to("#aa", {duration:0.5, x:0}, 2.5+t)
+						tl.to("#aa", {duration:0.1, x:5}, t-0.1)
+						.to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, t-0.1)
+						.to("#bee", {duration:0.25, x:0, ease: "expoScale(5,1.5,none)"}, 0+t)
+						.to("#bee", {duration:0.375, morphSVG:"#cee", ease:"none"}, 0.25+t)
+						.to("#bee", {duration:0.125, morphSVG:"#dee", ease:"none"}, 0.625+t)
+						.to("#bee", {duration:0.25, morphSVG:"#parison2", ease:"none"}, 0.75+t)
+						.to("#parison2", {duration:0, autoAlpha:1}, 1+t)
+						.to("#bee", {duration:0, autoAlpha:0}, 1+t)
+						.to("#aa, #screw_axis2", {duration:1, x:0}, 1+t)
 						
                         // gsap.to("#bottle2, #c, #parisoni, #topi, #bottomi, #rodi, #parison2i, #top2i, #bottom2i, #rod2i", {duration:0, autoAlpha:0})
                         // gsap.to("#injec_mou, #important, #injec_mou2, #important2", {duration:0, rotation:90, x:65, y:-15})
