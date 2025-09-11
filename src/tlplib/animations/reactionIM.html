@@ -577,8 +577,16 @@
           <svg id="RIM_animation">
             <g id="parisons2">
               <path
-                id="nope"
-                d="M690,266 l169,0 0,10 -169,0 0,-10"
+                id="nope1"
+                d="M690,266 l169,0 0,0 -169,0 0,0"
+              ></path>
+              <path
+                id="nope2"
+                d="M690,266 l169,0 0,100 -169,0 0,-100"
+              ></path>
+              <path
+                id="nope3"
+                d="M769.5,266 l3.75,3.75 0,6.25 1.25,1.25 1.25,-1.25 0,-6.25 3.75,-3.75 -10,0"
               ></path>
               <path
                 id="parison2"
@@ -919,31 +927,41 @@
 
           <script>
             gsap.to("#machinery2", {
+              duration:0,  
               rotation: 36.86989765,
               x: -155,
-              y: -360.5,
+              y: -410.5,
+              ease:"none"
             });
 
             gsap.to("#machinery3", {
+              duration:0,  
               rotation: -36.86989765,
               x: 755,
-              y: -360.5,
+              y: -410.5,
               scaleX: -1,
+              ease:"none"
             });
 
             gsap.to("#reactants2, #reaction_mould2, #injection_mould2, #parisons2", {
+              duration:0,
               x: -455,
-              y:-90
+              y:-140,
+              ease:"none"
             });
 
-            // gsap.to("#bee", {duration:0, x:-25})
-            // gsap.to("#parison2", {duration:0, autoAlpha:0})
 
-            // var t = 1
-            // var tl = gsap.timeline({repeat:-1})
-            // tl.timeScale(1.5)
+            gsap.to("#parison2, #nope1, #nope2, #nope3, #reactants2", {duration:0, autoAlpha:0})
 
-            // tl.to("#aa", {duration:0.1, x:5}, t-0.1)
+            var t = 1
+            var tl = gsap.timeline({repeat:0})
+            tl.timeScale(1)
+
+            tl.to("#reactants2", {duration:2, autoAlpha:1, ease:"none"}, 0)
+            .to("#nope1", {duration:0, autoAlpha:1}, 2)
+            .to("#nope1", {duration:2, morphSVG:"#nope2", ease:"none"}, 2)
+            .to("#parison2, #nope3", {duration:0, autoAlpha:1}, 4)
+            .to("#nope1", {duration:0, autoAlpha:0}, 4)
             // .to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, t-0.1)
             // .to("#bee", {duration:0.25, x:0, ease: "expoScale(5,1.5,none)"}, 0+t)
             // .to("#bee", {duration:0.375, morphSVG:"#cee", ease:"none"}, 0.25+t)
