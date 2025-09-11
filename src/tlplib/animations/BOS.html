@@ -220,8 +220,8 @@
 
 						<path class="BOS" id="emission" style="fill:lightgrey; stroke:none; filter:blur(20px)"
 							d="M300,190 Q340,190 360,180 C370,175 370,200 390,200 C410,200 410,175 420,180 Q430,190 480,190 L480,300 l-180,0 Z"></path>
-						<path class="BOS" id="emulsion" style="fill:burlywood; stroke:none; filter:blur(0px)"
-							d="M300,180 L480,180 L480,300 l-180,0 Z"></path>
+						<rect class="BOS" id="emulsion" style="fill:burlywood; stroke:none; filter:blur(0px)"
+							x="300" y="180" width="180" height="300"></rect>
 						<path class="BOS" id="slag" style="fill:orange; stroke:none"
 							d="M300,225 Q340,225 355,220 C375,210 365,245 390,245 C415,245 405,210 425,220 Q440,225 480,225 L480,300 l-180,0 Z"></path>
 						<path class="BOS" id="iron" style="fill:gold; stroke:none"
@@ -230,11 +230,17 @@
 							d="M300,280 Q390,240 480,280 L480,300 l-180,0 Z"></path>
 
 						<g class="BOS" id="furnace">
-							<path id="furnace_guts" style="fill:white; stroke:red"
-								d="M350,120 l0,10 l-20,40 l0,65 l25,50 l70,0 l25,-50 l0,-60 
-									l100,0 l0,200 l-320,0 l0,-200 l0,-55 l100,0 l20,0"></path>
+							<path id="furnace_guts_bottom" style="fill:white"
+								d="M350,120 l0,10 l-20,40 l0,65 l25,50 l70,0 l25,-50 l0,-67, l5,-5
+									l145,0 l0,312 l-420,0 l0,-305 l0,-50 l150,0 l20,0"></path>
 
-							<path id="furnace_walls" style="fill:dimgrey; stroke:none"
+							<path id="furnace_guts_top" style="fill:white"
+								d="M430,120 l0,10 l11,22 l159,0 l0,-32 l0,-200 l-169,0 l-20,0 l0,200 Z"></path>
+
+							<path id="furnace_guts_plug" style="fill:white"
+								d="M451,150 l120,0 l0,15 l-120,0"></path>
+
+							<path id="furnace_walls" style="fill:dimgrey; stroke:none; opacity:1"
 								d="M360,120 l0,10 l-20,40 l0,60 l20,40 
 									a60,40 0 0 0 60,0 
 									l20,-40 l0,-60 l16,-8 l4,8 
@@ -353,7 +359,7 @@
 						.set("#scrap_adder", {visibility:"visible", x:100, y:120})
 						.set("#scrap", {visibility:"visible", y:30})
 						.to(".BOS", 1,{x:0})
-						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"}, "<")
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%", x:-30, y:20}, "<")
 						.to("#scrap_adder", 1, {opacity:1, x:210, y:120}, "<")
 						.to("#scrap_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
 						pour(t, "270,135", "330,270", "slategrey", 0.5)
@@ -389,7 +395,7 @@
 						t.addLabel("t4", ">")
 						.set("#caption", {innerHTML: "The furnace is then set back upright, and an oxygen lance is lowered to within a few feet of the surface."})
 						.set("#lance", {visibility:"visible", y:10})
-						.to("#furnace", 1, {rotate:0, y:0})
+						.to("#furnace", 1, {rotate:0, y:0, x:0})
 						.to(".BOS", 1, {x:-70}, "<")
 						.to("#iron, #scrap", 1, {y:0}, "<")
 						.to("#lance", 0.5, {y:75, opacity:1})
@@ -423,9 +429,13 @@
 
 						t.addLabel("t8", ">")
 						.set("#caption", {innerHTML: "The product steel is tapped out from the side. <br> This is often transferred in its molten state to continuos casting facility nearby."})
-						.to("#furnace", 1, {rotate:80, transformOrigin:"50% 20%"}, "<")
-						.to("#iron", 1, {attr:{d:"M240,200 Q250,200 260,200 C270,200 280,200 290,200 C300,200 310,200 320,200 Q420,200 450,200 L450,400 l-230,0 Z"}}, "<")
-						.to("#emulsion", 1, {y:0, attr:{d:"M240,195 L450,195 L450,250 l-230,0 Z"}}, "<")
+						.to("#furnace", 1, {rotate:85, transformOrigin:"50% 50%"}, "<")
+						.to("#iron", 1, {y:-3}, "<")
+						.to("#emulsion", 1, {y:42, height:10}, "<")
+						.to("#steel_plug", 0.5, {opacity:0})
+						.to("#furnace_guts_plug", 2, {x:100}, "<")
+						.to("#iron", 2, {y:10, scaleY:10}, "<")
+						.to("#emulsion", 2, {y:65, width:120}, "<")
 						
 						
 						// tilt + tap out steel
