@@ -218,18 +218,18 @@
 							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
 						</g>
 
-						<path class="inners" id="emission" style="fill:lightgrey; stroke:none; filter:blur(20px)"
+						<path class="BOS" id="emission" style="fill:lightgrey; stroke:none; filter:blur(20px)"
 							d="M300,190 Q340,190 360,180 C370,175 370,200 390,200 C410,200 410,175 420,180 Q430,190 480,190 L480,300 l-180,0 Z"></path>
-						<path class="inners" id="emulsion" style="fill:burlywood; stroke:none; filter:blur(0px)"
+						<path class="BOS" id="emulsion" style="fill:burlywood; stroke:none; filter:blur(0px)"
 							d="M300,180 L480,180 L480,300 l-180,0 Z"></path>
-						<path class="inners" id="slag" style="fill:orange; stroke:none"
+						<path class="BOS" id="slag" style="fill:orange; stroke:none"
 							d="M300,225 Q340,225 355,220 C375,210 365,245 390,245 C415,245 405,210 425,220 Q440,225 480,225 L480,300 l-180,0 Z"></path>
-						<path class="inners" id="iron" style="fill:gold; stroke:none"
-							d="M300,230 L340,230 360,230 L370,230 370,230 390,230 L410,230 410,230 420,230 L440,230 480,230 L480,300 l-180,0 Z"></path>
-						<path class="inners" id="scrap" style="fill:slategrey; stroke:none"
+						<path class="BOS" id="iron" style="fill:gold; stroke:none"
+							d="M300,230 Q340,230 360,230 C370,230 370,230 390,230 C410,230 410,230 420,230 Q440,230 480,230 L480,300 l-180,0 Z"></path>
+						<path class="BOS" id="scrap" style="fill:slategrey; stroke:none"
 							d="M300,280 Q390,240 480,280 L480,300 l-180,0 Z"></path>
 
-						<g id="furnace">
+						<g class="BOS" id="furnace">
 							<path id="furnace_guts" style="fill:white; stroke:red"
 								d="M350,120 l0,10 l-20,40 l0,65 l25,50 l70,0 l25,-50 l0,-60 
 									l100,0 l0,200 l-320,0 l0,-200 l0,-55 l100,0 l20,0"></path>
@@ -247,26 +247,26 @@
 								d="M435,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
 						</g>
 
-						<g class="adder" id="iron_adder">
+						<g class="BOS" id="iron_adder">
 							<path id="iron_ladle" style="fill:dimgrey; stroke:none"
 								d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
 						</g>
 
-						<g class="adder" id="flux_adder">
+						<g class="BOS" id="flux_adder">
 							<path id="flux_ladle_content" style="fill:gainsboro; stroke:none"
 								d="M5,0 Q30,-20 55,0 "></path>
 							<path id="flux_ladle" style="fill:dimgrey; stroke:none"
 								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
 						</g>
 
-						<g class="adder" id="scrap_adder">
+						<g class="BOS" id="scrap_adder">
 							<path id="scrap_ladle_content" style="fill:slategrey; stroke:none"
 								d="M5,5 Q30,-30 55,5 "></path>
 							<path id="scrap_ladle" style="fill:dimgrey; stroke:none"
 								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
 						</g>
 
-						<g id="lance">
+						<g class="BOS" id="lance">
 							<rect id="lance_blur" style="fill:none; stroke:cornflowerblue; stroke-width:1px; filter: blur(1px);"
 								x="385" y="0" rx="5" width="10" height="140"></rect>
 							<rect id="lance_solid" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
@@ -284,7 +284,7 @@
 					</svg>
 
 					<style>
-						.motion_paths,.inners, .adder, #lance {
+						.BOS, .motion_paths{
 							visibility: hidden;
 							opacity: 0;
 						}
@@ -344,13 +344,16 @@
 
 						t.addLabel("t0",0)
 						.set("#caption", {innerHTML: "BOS typically follows immediately after the blast furnace process; <br> the two facilities are physically situated nearby each other."})
-						
+						.set("#furnace", {visibility:"visible", opacity:1})
+						.set(".BOS", {x:-70})
+
 						// tilt + add scrap
 						t.addLabel("t1", ">")
 						.set("#caption", {innerHTML: "The amount of <strong>cold scrap</strong> added to the BOF is carefully calculated to control product composition and furnace temperature."})
 						.set("#scrap_adder", {visibility:"visible", x:100, y:120})
 						.set("#scrap", {visibility:"visible", y:30})
-						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
+						.to(".BOS", 1,{x:0})
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"}, "<")
 						.to("#scrap_adder", 1, {opacity:1, x:210, y:120}, "<")
 						.to("#scrap_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
 						pour(t, "270,135", "330,270", "slategrey", 0.5)
@@ -372,7 +375,7 @@
 						.set("#iron_adder", {visibility:"hidden", opacity:0})
 
 						t.addLabel("t3", ">")
-						.set("#caption", {innerHTML: "<strong>Fluxes</strong> are added to for slag formation. <br> Limestone or dolomite is stypically used for this."})
+						.set("#caption", {innerHTML: "<strong>Fluxes</strong> are added to for slag formation. <br> Limestone or dolomite is typically used for this."})
 						.set("#flux_adder", {visibility:"visible", x:100, y:120})
 						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
 						.to("#flux_adder", 1, {opacity:1, x:210, y:120}, "<")
@@ -387,7 +390,8 @@
 						.set("#caption", {innerHTML: "The furnace is then set back upright, and an oxygen lance is lowered to within a few feet of the surface."})
 						.set("#lance", {visibility:"visible", y:10})
 						.to("#furnace", 1, {rotate:0, y:0})
-						.to(".inners", 1, {y:0}, "<")
+						.to(".BOS", 1, {x:-70}, "<")
+						.to("#iron, #scrap", 1, {y:0}, "<")
 						.to("#lance", 0.5, {y:75, opacity:1})
 
 						t.addLabel("t5",">")
@@ -395,7 +399,6 @@
 						.set("#slag", {visibility:"visible", y:10})
 						.set("#emission", {visibility:"visible", y:50})
 						.to("#lance_blur", 0.5, {filter:"blur(15px)", strokeWidth:"5px"})
-						.to("#lance_solid", 0.5, {opacity:1}, "<")
 						.to("#iron", 0.5, {attr:{d:"M300,230 Q350,230 360,220 C370,215 370,240 390,240 C410,240 410,215 420,220 Q430,230 480,230 L480,300 l-180,0 Z"}}, "<")
 						.to("#scrap", 2, {y:10, attr:{d:"M300,220 Q390,320 480,220 L480,300 l-180,0 Z"}}, "<")
 						.to("#slag, #emission", 1, {y:0,opacity:1}, "<+1")
@@ -410,11 +413,25 @@
 						.set("#slag", {visibility:"hidden", opacity:0})
 
 						t.addLabel("t7", ">")
+						.set("#caption", {innerHTML: "After the blowing stage, the oxygen flow is turned off and the lance is retrieved."})
+						.to("#lance_blur", 0.5, {filter:"blur(0px)", strokeWidth:"0px"})
+						.to("#emulsion", 2, {y:40, opacity:1, fill:"tan"}, "<")
+						.to("#iron", 1.5, {attr:{d:"M300,230 Q340,230 360,230 C370,230 370,230 390,230 C410,230 410,230 420,230 Q440,230 480,230 L480,300 l-180,0 Z"}}, "<")
+						.to("#lance", 1, {y:10, opacity:0}, ">")
+
+						t.addLabel("t8", ">")
+						.set("#caption", {innerHTML: "The product steel is tapped out from the side. <br> This is often transferred in its molten state to continuos casting facility nearby."})
+						.to(".BOS", 1,{x:-120, y:-40})
+						.to("#furnace", 1, {rotate:70, transformOrigin:"50% 50%"}, "<")
+						.to("#iron", 1, {x:-110, y:-18}, "<")
+						.to("#emulsion", 1, {x:-90, y:0}, "<")
+						
+						
 						// tilt + tap out steel
 						// pour out slag
 						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
 
-						move(5,6)
+						move(7,8)
 
 						function restart(){
 							gotoPage(1)
