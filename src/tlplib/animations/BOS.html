@@ -220,8 +220,10 @@
 
 						<path class="inners" id="emission" style="fill:lightgrey; stroke:none; filter:blur(20px)"
 							d="M300,190 Q340,190 360,180 C370,175 370,200 390,200 C410,200 410,175 420,180 Q430,190 480,190 L480,300 l-180,0 Z"></path>
+						<path class="inners" id="emulsion" style="fill:burlywood; stroke:none; filter:blur(0px)"
+							d="M300,180 L480,180 L480,300 l-180,0 Z"></path>
 						<path class="inners" id="slag" style="fill:orange; stroke:none"
-							d="M300,225 Q340,225 360,220 C370,215 370,245 390,245 C410,245 410,215 420,220 Q430,225 480,225 L480,300 l-180,0 Z"></path>
+							d="M300,225 Q340,225 355,220 C375,210 365,245 390,245 C415,245 405,210 425,220 Q440,225 480,225 L480,300 l-180,0 Z"></path>
 						<path class="inners" id="iron" style="fill:gold; stroke:none"
 							d="M300,230 L340,230 360,230 L370,230 370,230 390,230 L410,230 410,230 420,230 L440,230 480,230 L480,300 l-180,0 Z"></path>
 						<path class="inners" id="scrap" style="fill:slategrey; stroke:none"
@@ -389,19 +391,25 @@
 						.to("#lance", 0.5, {y:75, opacity:1})
 
 						t.addLabel("t5",">")
-						.set("#caption", {innerHTML: "The lance blows high-purity oxygen at high speed and pressure; the oxygen ignites C dissolved in steel; CO&#x2082; forms as the oxidation product. <br> The reaction is exothermic and the heat released melts the scrap."})
+						.set("#caption", {innerHTML: "The lance blows <strong>high-purity oxygen</strong> at high speed and pressure; the oxygen ignites C dissolved in steel; CO&#x2082; forms as the oxidation product. <br> The reaction is <strong>exothermic</strong> and the heat released melts the scrap."})
 						.set("#slag", {visibility:"visible", y:10})
 						.set("#emission", {visibility:"visible", y:50})
 						.to("#lance_blur", 0.5, {filter:"blur(15px)", strokeWidth:"5px"})
 						.to("#lance_solid", 0.5, {opacity:1}, "<")
-						.to("#iron", 0.5, {attr:{d:"M300,230 Q340,230 360,220 C370,215 370,240 390,240 C410,240 410,215 420,220 Q430,230 480,230 L480,300 l-180,0 Z"}}, "<")
+						.to("#iron", 0.5, {attr:{d:"M300,230 Q350,230 360,220 C370,215 370,240 390,240 C410,240 410,215 420,220 Q430,230 480,230 L480,300 l-180,0 Z"}}, "<")
 						.to("#scrap", 2, {y:10, attr:{d:"M300,220 Q390,320 480,220 L480,300 l-180,0 Z"}}, "<")
 						.to("#slag, #emission", 1, {y:0,opacity:1}, "<+1")
-						
-						// add fluxes
-						// back to upright + oxygen lance 
-						// blasts oxygen 
-						// slag emulsifies 
+						.set("#scrap", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t6", ">")
+						.set("#caption", {innerHTML: "Impurities oxidises and form a <strong>slag</strong>, which forms an emulsion with air. <br> The foamed slag is insulating, improving thermal efficiency of the process."})
+						.set("#emulsion", {visibility:"visible", y:20})
+						.to("#emulsion", 2, {y:0, opacity:0.7})
+						.to("#slag", 2, {y:5, opacity:0}, "<")
+						.to("#iron", 2, {attr:{d:"M300,235 Q350,235 360,225 C370,220 370,240 390,240 C410,240 410,220 420,225 Q430,235 480,235 L480,300 l-180,0 Z"}}, "<")
+						.set("#slag", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t7", ">")
 						// tilt + tap out steel
 						// pour out slag
 						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
