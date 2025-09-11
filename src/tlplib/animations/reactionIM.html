@@ -586,7 +586,7 @@
               ></path>
               <path
                 id="nope3"
-                d="M769.5,266 l3.75,3.75 0,6.25 1.25,1.25 1.25,-1.25 0,-6.25 3.75,-3.75 -10,0"
+                d="M769.5,266.5 l3.75,3.75 0,5.75 1.25,1.25 1.25,-1.25 0,-5.75 3.75,-3.75 -10,0"
               ></path>
               <path
                 id="parison2"
@@ -953,42 +953,31 @@
 
             gsap.to("#parison2, #nope1, #nope2, #nope3, #reactants2", {duration:0, autoAlpha:0})
 
-            var t = 1
-            var tl = gsap.timeline({repeat:0})
+            var cnt3 = 0
+            var tl = gsap.timeline({paused:true, repeat:-1})
             tl.timeScale(1)
 
-            tl.to("#reactants2", {duration:2, autoAlpha:1, ease:"none"}, 0)
-            .to("#nope1", {duration:0, autoAlpha:1}, 2)
-            .to("#nope1", {duration:2, morphSVG:"#nope2", ease:"none"}, 2)
-            .to("#parison2, #nope3", {duration:0, autoAlpha:1}, 4)
-            .to("#nope1", {duration:0, autoAlpha:0}, 4)
-            // .to("#screw_axis2", {duration:1, x:7.5, ease:"none"}, t-0.1)
-            // .to("#bee", {duration:0.25, x:0, ease: "expoScale(5,1.5,none)"}, 0+t)
-            // .to("#bee", {duration:0.375, morphSVG:"#cee", ease:"none"}, 0.25+t)
-            // .to("#cee", {duration:0, autoAlpha:1}, 0.625+t)
-            // .to("#bee", {duration:0.125, morphSVG:"#dee", ease:"none"}, 0.625+t)
-            // .to("#dee", {duration:0, autoAlpha:1}, 0.75+t)
-            // .to("#cee", {duration:0, autoAlpha:0}, 0.75+t)
-            // .to("#bee", {duration:0.25, morphSVG:"#parison2", ease:"none"}, 0.75+t)
-            // .to("#parison2", {duration:0, autoAlpha:1}, 1+t)
-            // .to("#bee, #dee", {duration:0, autoAlpha:0}, 1+t)
-            // .to("#aa, #screw_axis2", {duration:1, x:0}, 1+t)
+            tl.to("#nope1", {duration:0, autoAlpha:1}, 0)
+            .to("#nope1", {duration:2, morphSVG:"#nope2", ease:"none"}, 0)
+            .to("#parison2", {duration:0, autoAlpha:1}, 2.25)
+            .to("#nope1", {duration:0, autoAlpha:0}, 2.25)
+            .to("#parison2, #bottom2", {duration:0.25, y:20, ease:"none"}, 2.25)
+            .to("#parison2", {duration:0.5, y:70, ease:"none"}, 2.5)
+            .to("#bottom2", {duration:0.5, y:120, ease:"none"}, 2.5)
+            .to("#parison2", {duration:2, x:420, ease:"none"}, 3)
+            .to("#bottom2", {duration:0.75, y:0, ease:"none"}, 4)
 
-            // .to("#parison2, #ejector2, #topl2, #topr2, #bottoml2, #bottomr2", {duration:0.4, x:20, ease:"none"}, 2+t)
-            // .to("#topl2", {duration:0.5, y:-10, ease:"none"}, 2.5+t)
-            // .to("#bottoml2", {duration:0.5, y:10, ease:"none"}, 2.5+t)
-            // .to("#parison2, #ejector2, #topr2, #bottomr2", {duration:1.35, x:87.5, ease:"none"}, 2.75+t)
-            // .to("#topl2, #bottoml2", {duration:0.5, x:0, y:0, ease:"none"}, 4.1+t)
-            // .to("#ejector2, #parison2", {duration:0.6, x:57.5, ease:"none"}, 4.1+t)
-            // .to("#ejector2", {duration:0.6, x:87.5, ease:"none"}, 4.9+t)
-            // .to("#parison2", {duration:2, y:200, ease:"none"}, 5.5+t)
-            // .to("#ejector2, #topr2, #bottomr2", {duration:0.875, x:0, ease:"none"}, 6.5+t)
+            function pplay() {
+                tl.play()
+            }
 
-            tl.pause();
+            function rim() {
+              gsap.to("#reactants2, #nope3", {duration:2, autoAlpha:1, ease:"none", onComplete:pplay})
+            }
           </script>
 
           <div class="nav">
-            <p class="dbutton" id="start" onClick="tl.play()"></p>
+            <p class="dbutton" id="start" onClick="rim()"></p>
             <p class="dbutton" id="pause" onClick="tl.pause()"></p>
           </div>
 
