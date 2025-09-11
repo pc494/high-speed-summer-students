@@ -298,8 +298,13 @@
       #reaction_mould,
       #reaction_mould2 {
         stroke: #000;
-        stroke-width: 1px;
+        stroke-width: 0.5px;
         fill: mediumslateblue;
+      }
+
+      #reactants,
+      #reactants2 {
+        stroke:none;
       }
 
       #parisons,
@@ -568,19 +573,26 @@
         <!-- end payj - p1 -->
 
         <!--  new page starts here    -->
-        <div class="payj" id="p2">
+        <div class="payj" id="p2"> 
           <svg id="RIM_animation">
             <g id="parisons2"></g>
             <g id="injection_mould2"></g>
-            <g id="reaction_mould2"></g>
+            <g 
+            id="reactants2"
+            >
+              <defs>
+                <linearGradient id="grad2" x1="0%" x2="100%" y1="0%" y2="0%">
+                  <stop offset="0%" stop-color="rgba(238, 238, 68, 0.75)" />
+                  <stop offset="50%" stop-color="rgba(238, 153, 68, 1)" />
+                  <stop offset="100%" stop-color="rgba(238, 68, 68, 0.75)" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M682.5,256 l21,-28 -22.1,-16.575 3.7,-9.725 24.4,18.3 36,-48 a40.625,40.625 0 0 1 59,0 l36,48 24.4,-18.3 3.7,9.725 -22.1,16.575 21,28 -87.5,0 0,10 -10,0 0,-10 -87.5,0"
+                fill="url(#grad2)"
+              ></path>
+            </g>
             <g id="machinery2">
-              <g id="pre_dispensate2">
-                <path id="aa" d="M482.5,185 l50,0 4,5 -4,5 -50,0"></path>
-                <path
-                  id="dd"
-                  d="M480,150 l10,0 17.5,35 25,0 4,5 -4,5 -25,0 -17.5,35 -10,0"
-                ></path>
-              </g>
               <g id="extruder">
                 <g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
                   <path d="M35,180 q15.734,-60 31.468,0"></path>
@@ -724,13 +736,6 @@
               ></path>
             </g>
             <g id="machinery3">
-              <g id="pre_dispensate3">
-                <path id="aa" d="M482.5,185 l50,0 4,5 -4,5 -50,0"></path>
-                <path
-                  id="dd"
-                  d="M480,150 l10,0 17.5,35 25,0 4,5 -4,5 -25,0 -17.5,35 -10,0"
-                ></path>
-              </g>
               <g id="extruder">
                 <g id="quads" fill="#ccc" stroke-width="1" stroke="#000">
                   <path d="M35,180 q15.734,-60 31.468,0"></path>
@@ -873,7 +878,6 @@
                 d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"
               ></path>
             </g>
-
             <g
               id="reaction_mould2"
             >
@@ -884,7 +888,7 @@
                 d="M887.5,266 l-33,-44 -8,6 21,28 -87.5,0 0,10 107.5,0"
               ></path>
               <path
-                d="M734.5,170 l-33,44 8,6 30,-40 71,0 30,40 8,-6 -33,-44 a 50.625,50.625 0 0 0 -81,0"
+                d="M734.5,170 l-33,44 8,6 36,-48 a40.625,40.625 0 0 1 59,0 l36,48 8,-6 -33,-44 a 50.625,50.625 0 0 0 -81,0"
               ></path>              
             </g>
           </svg>
