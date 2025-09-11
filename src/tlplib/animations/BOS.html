@@ -218,13 +218,14 @@
 							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
 						</g>
 
+						<path class="inners" id="emission" style="fill:lightgrey; stroke:none; filter:blur(20px)"
+							d="M300,190 Q340,190 360,180 C370,175 370,200 390,200 C410,200 410,175 420,180 Q430,190 480,190 L480,300 l-180,0 Z"></path>
+						<path class="inners" id="slag" style="fill:orange; stroke:none"
+							d="M300,225 Q340,225 360,220 C370,215 370,245 390,245 C410,245 410,215 420,220 Q430,225 480,225 L480,300 l-180,0 Z"></path>
 						<path class="inners" id="iron" style="fill:gold; stroke:none"
 							d="M300,230 L340,230 360,230 L370,230 370,230 390,230 L410,230 410,230 420,230 L440,230 480,230 L480,300 l-180,0 Z"></path>
 						<path class="inners" id="scrap" style="fill:slategrey; stroke:none"
 							d="M300,280 Q390,240 480,280 L480,300 l-180,0 Z"></path>
-
-						<path class="inners" id="emission" style="fill:lightgrey; stroke:none"
-							d=""></path>
 
 						<g id="furnace">
 							<path id="furnace_guts" style="fill:white; stroke:red"
@@ -389,11 +390,13 @@
 
 						t.addLabel("t5",">")
 						.set("#caption", {innerHTML: "The lance blows high-purity oxygen at high speed and pressure; the oxygen ignites C dissolved in steel; CO&#x2082; forms as the oxidation product. <br> The reaction is exothermic and the heat released melts the scrap."})
+						.set("#slag", {visibility:"visible", y:10})
+						.set("#emission", {visibility:"visible", y:50})
 						.to("#lance_blur", 0.5, {filter:"blur(15px)", strokeWidth:"5px"})
 						.to("#lance_solid", 0.5, {opacity:1}, "<")
 						.to("#iron", 0.5, {attr:{d:"M300,230 Q340,230 360,220 C370,215 370,240 390,240 C410,240 410,215 420,220 Q430,230 480,230 L480,300 l-180,0 Z"}}, "<")
-						.to("#scrap", 1, {opacity:0, attr:{d:"M300,220 Q390,320 480,220 L480,300 l-180,0 Z"}}, "<")
-
+						.to("#scrap", 2, {y:10, attr:{d:"M300,220 Q390,320 480,220 L480,300 l-180,0 Z"}}, "<")
+						.to("#slag, #emission", 1, {y:0,opacity:1}, "<+1")
 						
 						// add fluxes
 						// back to upright + oxygen lance 
@@ -403,7 +406,7 @@
 						// pour out slag
 						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
 
-						move(4,5)
+						move(5,6)
 
 						function restart(){
 							gotoPage(1)
