@@ -415,16 +415,17 @@
 						t.addLabel("t7", ">")
 						.set("#caption", {innerHTML: "After the blowing stage, the oxygen flow is turned off and the lance is retrieved."})
 						.to("#lance_blur", 0.5, {filter:"blur(0px)", strokeWidth:"0px"})
+						.to("#emission", 2, {y:40, opacity:0}, "<")
 						.to("#emulsion", 2, {y:40, opacity:1, fill:"tan"}, "<")
 						.to("#iron", 1.5, {attr:{d:"M300,230 Q340,230 360,230 C370,230 370,230 390,230 C410,230 410,230 420,230 Q440,230 480,230 L480,300 l-180,0 Z"}}, "<")
 						.to("#lance", 1, {y:10, opacity:0}, ">")
+						.set("#emission", {visibility: "hidden"})
 
 						t.addLabel("t8", ">")
 						.set("#caption", {innerHTML: "The product steel is tapped out from the side. <br> This is often transferred in its molten state to continuos casting facility nearby."})
-						.to(".BOS", 1,{x:-120, y:-40})
-						.to("#furnace", 1, {rotate:70, transformOrigin:"50% 50%"}, "<")
-						.to("#iron", 1, {x:-110, y:-18}, "<")
-						.to("#emulsion", 1, {x:-90, y:0}, "<")
+						.to("#furnace", 1, {rotate:80, transformOrigin:"50% 20%"}, "<")
+						.to("#iron", 1, {attr:{d:"M240,200 Q250,200 260,200 C270,200 280,200 290,200 C300,200 310,200 320,200 Q420,200 450,200 L450,400 l-230,0 Z"}}, "<")
+						.to("#emulsion", 1, {y:0, attr:{d:"M240,195 L450,195 L450,250 l-230,0 Z"}}, "<")
 						
 						
 						// tilt + tap out steel
