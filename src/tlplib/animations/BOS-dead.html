@@ -1,451 +1,558 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Basic Oxygen Furnace</title>
-
-		<!-- Greensock library  -->
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
-		
-		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
-
-		<link rel="stylesheet" href="titlecard.css"/>
-
-		<script>
-		// hide and show CC licence words
-			function showTxt() {   
-				document.getElementById("para").style.visibility = 'visible';
-			}  // end showTxt
-
-			function hideTxt() { 
-				document.getElementById("para").style.visibility = 'hidden';
-			}  // end hideTxt
-			
-			// page navigation
-			function gotoPage(p) {
-				// replace next fn gEBCN as fails in IE<9
-				var x = document.getElementsByClassName("payj");
-				var len = x.length;
-				for (var i=1; i<(len+1); i++) {
-					var ppp = eval('p'+i);
-					document.getElementById('p'+i).style.display = 'none';
-					if (i == p) {
-						document.getElementById('p'+i).style.display = 'block';
-					}
-				}	
-			}
-			
-			// sets the dimensions of kanvas and positions the bottom logos			
-			function setAnimDimensions(w,h)  {
-				//w = animation width
-				//h = animation height
-				document.getElementById("kanvas").style.height = String(h) + "px";
-				document.getElementById("kanvas").style.width = String(w) + "px";
-				document.getElementById("kanvas").style.margin = "0px auto";
-				document.getElementById("kanvas").style.border = "2px solid blue";
-				// position footers
-				var divcc = document.getElementById("cc");
-				var divpara = document.getElementById("para");
-				divcc.style.position = 'absolute';
-				divpara.style.position = 'absolute';
-				divcc.style.top = (h - 40) + "px";
-				divpara.style.top = (h - 85) + "px";						
-			}
-		</script>
-		
-		<style>
-
-			#container {
-				position:relative;
-			}
-			#kanvas { 
-				position:relative;
-			}
-
-			/* cc information banner & pop-up */
-			#cc {
-				position: absolute; 
-				width:100%; 
-				/*background-color:#cc0000;  */
-			}
-			
-			#para {
-				position: absolute;  
-				padding:0px;
-				font-family:Arial;
-				font-weight: bold;
-				font-size: 11px;
-				color:blue; 
-				border-style: solid;
-				border-color: #000000;
-				border-width:1px;
-				visibility: hidden;
-				z-index: 200;
-				background-color: white;
-			}
-			
-			/* DOiTPoMS buttons */
-			.dbutton {
-				background-color: pink;
-				cursor: pointer;
-				height: 25px;
-				margin: 5px;
-				background-position: bottom;
-				display: inline-block;  /* allows on sameline */
-			}
-
-			.dbutton:hover {
-				background-position: center; 
-			}
-
-			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
-				width: 79px;
-				background-image: url('../../../images/back.png');
-			}
-
-			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
-				width: 75px;
-				background-image: url('../../../images/next.png');
-			}
-			
-			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
-				width: 99px;
-				background-image: url('../../../images/restart.png');
-			}
-			#reset {
-				width: 84px;
-				background-image: url('../../../images/reset.png');
-			}
-			#start { 
-				width: 76px;
-				background-image: url('../../../images/start.png');
-			}
-			#pause {
-				width: 83px;
-				background-image: url('../../../images/pause.png');
-			}
-			#continue {
-				width: 118px;
-				background-image: url('../../../images/continue.png');
-			}
-			
-			.nav {
-				position:absolute;
-				left:170px;
-				top:420px;
-				width:300px;
-				text-align: center;
-			}
-
-			/* page id */
-			/* CAHNGE THIS!!! */
-			#p2 {
-				display:block;				
-			}
-			#p1, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
-				display:none;				
-			}
-
-			/*  Other */
-			p,text {
-				font-family: sans-serif;
-			}
-
-			#caption {
-				position: absolute;
-				top: 365px;
-				height: 45px;
-				left: 20px;
-				width: 600px;
-				margin: auto auto;
-				text-align: center;
-				vertical-align: middle;
-				text-overflow: hidden;
-			}
-		</style>
-		
-	</head>
-	
-	<body>
-		<div id="container"> 
-			<div id="kanvas"> 
-
-				<!-- DoITPoMS  and CC logos -->
-				<div id="para"> 
-					Re-use of this resource is governed by a Creative Commons Attribution-<br />
-					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
-					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
-				</div>
-				<!-- end para -->
-				<div id="cc" > 
-					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
-					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
-				</div>
-				<!-- end cc -->
-
-				<script>
-					setAnimDimensions(640,480);
-				</script>
-
-				<!--  new page starts here    -->
-				<div class="payj" id="p1"> 
-
-					<p id="titlecard"> Basic Oxygen Steelmaking (BOS) </p>
-					<div class="nav" style="top:280px"> 
-						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
-					</div>
-					
-				</div>
-				<!-- end payj - p1 -->
-
-				<!--  new page starts here    -->
-				<div class="payj" id="p2"> 
-
-					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
-					
-					<svg width="640" height="350">		
-							
-						<path class="BOS" id="air_slag_mixture"
-							d="M250,190 C300,160 340,220 390,190
-								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
-
-						<path class="BOS" id="slag"
-							d="M250,240 C280,265 290,235 310,250 Q320,270 330,250 C350,235 360,265 390,240
-								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
-
-						<path class="BOS" id="iron_pour" d="M290,70 Q320,70 320,280"></path>
-
-						<path class="BOS" id="steel"
-							d="M250,250 C280,270 295,240 310,250 Q320,260 330,250 C345,240 360,270 390,250
-								L390,260 l-25,50 l-90,0 l-25,-50 Z"></path>
-
-						<g class="BOS" id="bubbles">
-							<circle class="bubble" id="b1" cx="0" cy="0" r="3"></circle>
-							<circle class="bubble" id="b2" cx="0" cy="0" r="3"></circle>
-							<circle class="bubble" id="b3" cx="0" cy="0" r="3"></circle>
-						</g>
-
-						<path class="BOS" id="scrap" d="M0,0 l4,20 l30,-6 l-4,-20 l-30,6"></path>
-
-						<g class="BOS" id="lance">
-							<rect id="lance_shadow" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
-							<rect id="lance_fill" x="315" y="30" width="10" height="150" rx="5" ry="5"></rect>
-						</g>
-
-						<path id="furnace_guts" style="display:none"
-							d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l-20,-60 l0,-10"></path>
-
-						<path class="BOS" id="furnace_walls"
-							d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l16,-8 l4,8 l0,95 l-25,50 l-15,0 a80,40 0 0 1 -80,0 l-15,0 l-25,-50 l0,-95 l35,-70 l15,0 
-								M350,100 l0,10 l25,50 l16,-8 l-26,-52 l-15,0"></path>
-
-						<path class="BOS" id="steel_plug"
-							d="M375,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
-
-						<path class="BOS" id="ladle"
-							d="M200,40 l70,0 l-15,50 l-40,0 l-15,-50"></path>
-
-						<g id="guidelines">
-							<line x1="160" x2="160" y1="0" y2="350"></line>
-							<line x1="320" x2="320" y1="0" y2="350"></line>
-							<line x1="480" x2="480" y1="0" y2="350"></line>
-							<line x1="0" x2="640" y1="175" y2="175"></line>
-							<line x1="0" x2="640" y1="350" y2="350"></line>
-						</g>
-					</svg>
-
-					<style>
-
-						#iron_pour {
-							fill:none; 
-							stroke: gold;
-							stroke-width: 10px;
-						}
-
-						#ladle {
-							fill:dimgrey;
-							stroke:none;
-						}
-
-						#scrap {
-							fill: slategrey;
-							stroke: none;
-							visibility: hidden;
-						}
-
-						.bubble {
-							fill: white;
-							stroke: none;
-							opacity: 0;
-						}
-
-						#lance_fill {
-							fill: lightsteelblue;
-							stroke: white;
-							stroke-width: 2px;
-							opacity: 0.6;
-						}
-
-						#lance_shadow {
-							fill: lightsteelblue;
-							filter: blur(4px);
-							stroke:none;
-						}
-
-						#steel_plug {
-							fill: darkgrey;
-							stroke: none;
-						}
-
-						#steel {
-							fill: gold; 
-							stroke: none
-						}
-
-						#slag {
-							fill: orange;
-							stroke: none
-						}
-
-						#air_slag_mixture {
-							fill: burlywood;
-							stroke: none
-						}
-
-						#furnace_walls {
-							fill:dimgrey;
-							stroke: none;
-						}
-
-						#guidelines { 
-							stroke: grey;
-							opacity: 0.3;
-						}
-
-						.BOS {
-							visibility: hidden;
-						}
-
-					</style>
-					
-					<p id="caption">  </p>
-					
-					<div class="nav"> 
-						<p class="dbutton" id="back" onclick="back()"></p>
-						<p class="dbutton" id="next" onclick="next()"></p>
-					</div>
-
-					<script>
-
-						var prv = 0
-						var nxt = 1
-						var curr = 1
-
-
-
-						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.001, ease:"none"}})
-						t.addLabel("t0",0)
-						.set("#caption", {innerHTML: "BOS takes place immeidately after blast furnace process."})
-						.set("#furnace_walls, #steel_plug", {visibility:"visible"})
-						
-						// add iron 
-						t.addLabel("t1",">")
-						.set("#caption", {innerHTML: "Molten iron from the blast furnace is transferred to the BOF by ladles. <br> The process of filling the BOF with ingredients is called <strong> charging </strong>."})
-						.set("#ladle, #iron_pour, #steel", {visibility:"visible", opacity: 0})
-						.to("#ladle", 0.5, {opacity:1})
-						.to("#ladle", 1, {rotate:90, transformOrigin:"80% 80%"}, "<")
-						.to("#iron_pour", 0.5, {opacity:1})
-						.to("#steel", 0.5, {opacity:1}, ">-0.2")
-						.to("#ladle, #iron_pour", 0.5, {opacity:0}, ">+0.5")
-						.to("#steel", 0.5, {attr:{d:"M250,250 C280,250 295,250 310,250 Q320,250 330,250 C345,250 360,250 390,250 L390,260 l-25,50 l-90,0 l-25,-50 Z"}}, "<")
-						.set("#ladle, #iron_pour", {visibility:"hidden"})
-
-						// add scrap
-						t.addLabel("t2",">")
-						.set("#caption", {innerHTML: "Thermal energy required in BOS process is provided by heat generated in exothermic reactions; a calculated amount of cold scrap is added to maintain temperature control."})
-						.set("#scrap", {visibility:"visible"})
-						.to("#scrap", 1, {motionPath:{path:"M350,70 Q300,80 300,270", alignOrigin:[0.5, 0.5], autoRotate:true}})
-						.to("#steel", 0.5, {attr:{d:"M250,240 C280,240 295,240 310,240 Q320,240 330,240 C345,240 360,240 390,240 L390,260 l-25,50 l-90,0 l-25,-50 Z"}}, ">-0.2")
-						.to("#scrap", 1, {opacity:0})
-						.set("#scrap", {visibility:"hidden"})
-						
-						// lance - blasts oxygen 
-						t.addLabel("t3",">")
-						.set("#caption", {innerHTML: "Oxygen is blasted into "})
-						
-
-
-						// fluxes - blowing and makes emulsion 
-
-						// tap the steel 
-
-						// pour out the slag 
-
-						move(0,1)
-
-						function restart(){
-							gotoPage(1)
-							prv = 0
-							nxt = 1
-							curr = move(prv, nxt)
-						}
-
-						function next(){
-							prv = curr
-							nxt = Number(curr)+1
-							curr = move(prv, nxt)
-						}
-
-						function back(){
-							prv = curr
-							nxt = Number(curr)-1
-							curr = move(prv,nxt, "c")
-						}
-
-						function move(prv, nxt, dir="f"){
-
-							if (dir=="f"){
-								t.tweenFromTo("t"+prv, "t"+nxt)
-							}
-							else if (dir=="c"){
-								t.seek("t"+nxt)
-							}
-
-							curr = nxt
-							console.log(prv, curr, nxt)
-							console.log("current label: "+t.currentLabel())
-
-							if(curr == 1){
-								document.getElementById("back").style.visibility = "hidden"
-							}
-							else if(curr == 12){
-								document.getElementById("next").style.visibility = "hidden"
-							}
-							else {
-								document.getElementById("back").style.visibility = "visible"
-								document.getElementById("next").style.visibility = "visible"
-							}
-
-							return(curr)
-
-						}
-					</script>
-					
-				</div>
-				<!-- end payj - p2 -->
-
-			</div> <!-- kanvas -->
-
-		</div> <!-- container -->
-
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Basic Oxygen Furnace</title>
+
+    <!-- Greensock library  -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+
+    <script>
+      gsap.registerPlugin(MotionPathPlugin);
+    </script>
+
+    <link rel="stylesheet" href="titlecard.css" />
+
+    <script>
+      // hide and show CC licence words
+      function showTxt() {
+        document.getElementById("para").style.visibility = "visible";
+      } // end showTxt
+
+      function hideTxt() {
+        document.getElementById("para").style.visibility = "hidden";
+      } // end hideTxt
+
+      // page navigation
+      function gotoPage(p) {
+        // replace next fn gEBCN as fails in IE<9
+        var x = document.getElementsByClassName("payj");
+        var len = x.length;
+        for (var i = 1; i < len + 1; i++) {
+          var ppp = eval("p" + i);
+          document.getElementById("p" + i).style.display = "none";
+          if (i == p) {
+            document.getElementById("p" + i).style.display = "block";
+          }
+        }
+      }
+
+      // sets the dimensions of kanvas and positions the bottom logos
+      function setAnimDimensions(w, h) {
+        //w = animation width
+        //h = animation height
+        document.getElementById("kanvas").style.height = String(h) + "px";
+        document.getElementById("kanvas").style.width = String(w) + "px";
+        document.getElementById("kanvas").style.margin = "0px auto";
+        document.getElementById("kanvas").style.border = "2px solid blue";
+        // position footers
+        var divcc = document.getElementById("cc");
+        var divpara = document.getElementById("para");
+        divcc.style.position = "absolute";
+        divpara.style.position = "absolute";
+        divcc.style.top = h - 40 + "px";
+        divpara.style.top = h - 85 + "px";
+      }
+    </script>
+
+    <style>
+      #container {
+        position: relative;
+      }
+      #kanvas {
+        position: relative;
+      }
+
+      /* cc information banner & pop-up */
+      #cc {
+        position: absolute;
+        width: 100%;
+        /*background-color:#cc0000;  */
+      }
+
+      #para {
+        position: absolute;
+        padding: 0px;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 11px;
+        color: blue;
+        border-style: solid;
+        border-color: #000000;
+        border-width: 1px;
+        visibility: hidden;
+        z-index: 200;
+        background-color: white;
+      }
+
+      /* DOiTPoMS buttons */
+      .dbutton {
+        background-color: pink;
+        cursor: pointer;
+        height: 25px;
+        margin: 5px;
+        background-position: bottom;
+        display: inline-block; /* allows on sameline */
+      }
+
+      .dbutton:hover {
+        background-position: center;
+      }
+
+      #back,
+      #back2,
+      #back3,
+      #back4,
+      #back5,
+      #back6,
+      #back7 {
+        width: 79px;
+        background-image: url("../../../images/back.png");
+      }
+
+      #next,
+      #next2,
+      #next3,
+      #next4,
+      #next5,
+      #next6,
+      #next7 {
+        width: 75px;
+        background-image: url("../../../images/next.png");
+      }
+
+      #restart,
+      #restart2,
+      #restart3,
+      #restart5,
+      #restart6,
+      #restart7 {
+        width: 99px;
+        background-image: url("../../../images/restart.png");
+      }
+      #reset {
+        width: 84px;
+        background-image: url("../../../images/reset.png");
+      }
+      #start {
+        width: 76px;
+        background-image: url("../../../images/start.png");
+      }
+      #pause {
+        width: 83px;
+        background-image: url("../../../images/pause.png");
+      }
+      #continue {
+        width: 118px;
+        background-image: url("../../../images/continue.png");
+      }
+
+      .nav {
+        position: absolute;
+        left: 170px;
+        top: 420px;
+        width: 300px;
+        text-align: center;
+      }
+
+      /* page id */
+      /* CAHNGE THIS!!! */
+      #p2 {
+        display: block;
+      }
+      #p1,
+      #p3,
+      #p4,
+      #p5,
+      #p6,
+      #p7,
+      #p8,
+      #p9 {
+        display: none;
+      }
+
+      /*  Other */
+      p,
+      text {
+        font-family: sans-serif;
+      }
+
+      #caption {
+        position: absolute;
+        top: 365px;
+        height: 45px;
+        left: 20px;
+        width: 600px;
+        margin: auto auto;
+        text-align: center;
+        vertical-align: middle;
+        text-overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="kanvas">
+        <!-- DoITPoMS  and CC logos -->
+        <div id="para">
+          Re-use of this resource is governed by a Creative Commons
+          Attribution-<br />
+          Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+          http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
+        </div>
+        <!-- end para -->
+        <div id="cc">
+          <img
+            src="../../../images/by-nc-sa.svg"
+            alt="creative commons"
+            onMouseOver="showTxt()"
+            onMouseOut="hideTxt()"
+            height="40"
+            width="120"
+          />
+          <img
+            src="../../../images/roo.png"
+            alt="DoITPoMS logo"
+            height="40"
+            width="180"
+            style="float: right"
+            ;
+          />
+        </div>
+        <!-- end cc -->
+
+        <script>
+          setAnimDimensions(640, 480);
+        </script>
+
+        <!--  new page starts here    -->
+        <div class="payj" id="p1">
+          <p id="titlecard">Basic Oxygen Steelmaking (BOS)</p>
+          <div class="nav" style="top: 280px">
+            <p class="dbutton" id="start" onClick="gotoPage(2)"></p>
+          </div>
+        </div>
+        <!-- end payj - p1 -->
+
+        <!--  new page starts here    -->
+        <div class="payj" id="p2">
+          <p
+            class="dbutton"
+            id="restart"
+            onclick="restart()"
+            style="position: absolute"
+          ></p>
+
+          <svg width="640" height="350">
+            <path
+              class="BOS"
+              id="air_slag_mixture"
+              d="M250,190 C300,160 340,220 390,190
+								L390,260 l-25,50 l-90,0 l-25,-50 Z"
+            ></path>
+
+            <path
+              class="BOS"
+              id="slag"
+              d="M250,240 C280,265 290,235 310,250 Q320,270 330,250 C350,235 360,265 390,240
+								L390,260 l-25,50 l-90,0 l-25,-50 Z"
+            ></path>
+
+            <path class="BOS" id="iron_pour" d="M290,70 Q320,70 320,280"></path>
+
+            <path
+              class="BOS"
+              id="steel"
+              d="M250,250 C280,270 295,240 310,250 Q320,260 330,250 C345,240 360,270 390,250
+								L390,260 l-25,50 l-90,0 l-25,-50 Z"
+            ></path>
+
+            <g class="BOS" id="bubbles">
+              <circle class="bubble" id="b1" cx="0" cy="0" r="3"></circle>
+              <circle class="bubble" id="b2" cx="0" cy="0" r="3"></circle>
+              <circle class="bubble" id="b3" cx="0" cy="0" r="3"></circle>
+            </g>
+
+            <path
+              class="BOS"
+              id="scrap"
+              d="M0,0 l4,20 l30,-6 l-4,-20 l-30,6"
+            ></path>
+
+            <g class="BOS" id="lance">
+              <rect
+                id="lance_shadow"
+                x="315"
+                y="30"
+                width="10"
+                height="150"
+                rx="5"
+                ry="5"
+              ></rect>
+              <rect
+                id="lance_fill"
+                x="315"
+                y="30"
+                width="10"
+                height="150"
+                rx="5"
+                ry="5"
+              ></rect>
+            </g>
+
+            <path
+              id="furnace_guts"
+              style="display: none"
+              d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l-20,-60 l0,-10"
+            ></path>
+
+            <path
+              class="BOS"
+              id="furnace_walls"
+              d="M290,100 l0,10 l-30,60 l0,80 l20,40 a80,40 0 0 0 80,0 l20,-40 l0,-80 l16,-8 l4,8 l0,95 l-25,50 l-15,0 a80,40 0 0 1 -80,0 l-15,0 l-25,-50 l0,-95 l35,-70 l15,0 
+								M350,100 l0,10 l25,50 l16,-8 l-26,-52 l-15,0"
+            ></path>
+
+            <path
+              class="BOS"
+              id="steel_plug"
+              d="M375,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"
+            ></path>
+
+            <path
+              class="BOS"
+              id="ladle"
+              d="M200,40 l70,0 l-15,50 l-40,0 l-15,-50"
+            ></path>
+
+            <g id="guidelines">
+              <line x1="160" x2="160" y1="0" y2="350"></line>
+              <line x1="320" x2="320" y1="0" y2="350"></line>
+              <line x1="480" x2="480" y1="0" y2="350"></line>
+              <line x1="0" x2="640" y1="175" y2="175"></line>
+              <line x1="0" x2="640" y1="350" y2="350"></line>
+            </g>
+          </svg>
+
+          <style>
+            #iron_pour {
+              fill: none;
+              stroke: gold;
+              stroke-width: 10px;
+            }
+
+            #ladle {
+              fill: dimgrey;
+              stroke: none;
+            }
+
+            #scrap {
+              fill: slategrey;
+              stroke: none;
+              visibility: hidden;
+            }
+
+            .bubble {
+              fill: white;
+              stroke: none;
+              opacity: 0;
+            }
+
+            #lance_fill {
+              fill: lightsteelblue;
+              stroke: white;
+              stroke-width: 2px;
+              opacity: 0.6;
+            }
+
+            #lance_shadow {
+              fill: lightsteelblue;
+              filter: blur(4px);
+              stroke: none;
+            }
+
+            #steel_plug {
+              fill: darkgrey;
+              stroke: none;
+            }
+
+            #steel {
+              fill: gold;
+              stroke: none;
+            }
+
+            #slag {
+              fill: orange;
+              stroke: none;
+            }
+
+            #air_slag_mixture {
+              fill: burlywood;
+              stroke: none;
+            }
+
+            #furnace_walls {
+              fill: dimgrey;
+              stroke: none;
+            }
+
+            #guidelines {
+              stroke: grey;
+              opacity: 0.3;
+            }
+
+            .BOS {
+              visibility: hidden;
+            }
+          </style>
+
+          <p id="caption"></p>
+
+          <div class="nav">
+            <p class="dbutton" id="back" onclick="back()"></p>
+            <p class="dbutton" id="next" onclick="next()"></p>
+          </div>
+
+          <script>
+            var prv = 0;
+            var nxt = 1;
+            var curr = 1;
+
+            var t = gsap.timeline({
+              paused: true,
+              defaults: { duration: 0, delay: 0.001, ease: "none" },
+            });
+            t.addLabel("t0", 0)
+              .set("#caption", {
+                innerHTML:
+                  "BOS takes place immeidately after blast furnace process.",
+              })
+              .set("#furnace_walls, #steel_plug", { visibility: "visible" });
+
+            // add iron
+            t.addLabel("t1", ">")
+              .set("#caption", {
+                innerHTML:
+                  "Molten iron from the blast furnace is transferred to the BOF by ladles. <br> The process of filling the BOF with ingredients is called <strong> charging </strong>.",
+              })
+              .set("#ladle, #iron_pour, #steel", {
+                visibility: "visible",
+                opacity: 0,
+              })
+              .to("#ladle", 0.5, { opacity: 1 })
+              .to("#ladle", 1, { rotate: 90, transformOrigin: "80% 80%" }, "<")
+              .to("#iron_pour", 0.5, { opacity: 1 })
+              .to("#steel", 0.5, { opacity: 1 }, ">-0.2")
+              .to("#ladle, #iron_pour", 0.5, { opacity: 0 }, ">+0.5")
+              .to(
+                "#steel",
+                0.5,
+                {
+                  attr: {
+                    d: "M250,250 C280,250 295,250 310,250 Q320,250 330,250 C345,250 360,250 390,250 L390,260 l-25,50 l-90,0 l-25,-50 Z",
+                  },
+                },
+                "<",
+              )
+              .set("#ladle, #iron_pour", { visibility: "hidden" });
+
+            // add scrap
+            t.addLabel("t2", ">")
+              .set("#caption", {
+                innerHTML:
+                  "Thermal energy required in BOS process is provided by heat generated in exothermic reactions; a calculated amount of cold scrap is added to maintain temperature control.",
+              })
+              .set("#scrap", { visibility: "visible" })
+              .to("#scrap", 1, {
+                motionPath: {
+                  path: "M350,70 Q300,80 300,270",
+                  alignOrigin: [0.5, 0.5],
+                  autoRotate: true,
+                },
+              })
+              .to(
+                "#steel",
+                0.5,
+                {
+                  attr: {
+                    d: "M250,240 C280,240 295,240 310,240 Q320,240 330,240 C345,240 360,240 390,240 L390,260 l-25,50 l-90,0 l-25,-50 Z",
+                  },
+                },
+                ">-0.2",
+              )
+              .to("#scrap", 1, { opacity: 0 })
+              .set("#scrap", { visibility: "hidden" });
+
+            // lance - blasts oxygen
+            t.addLabel("t3", ">").set("#caption", {
+              innerHTML: "Oxygen is blasted into ",
+            });
+
+            // fluxes - blowing and makes emulsion
+
+            // tap the steel
+
+            // pour out the slag
+
+            move(0, 1);
+
+            function restart() {
+              gotoPage(1);
+              prv = 0;
+              nxt = 1;
+              curr = move(prv, nxt);
+            }
+
+            function next() {
+              prv = curr;
+              nxt = Number(curr) + 1;
+              curr = move(prv, nxt);
+            }
+
+            function back() {
+              prv = curr;
+              nxt = Number(curr) - 1;
+              curr = move(prv, nxt, "c");
+            }
+
+            function move(prv, nxt, dir = "f") {
+              if (dir == "f") {
+                t.tweenFromTo("t" + prv, "t" + nxt);
+              } else if (dir == "c") {
+                t.seek("t" + nxt);
+              }
+
+              curr = nxt;
+              console.log(prv, curr, nxt);
+              console.log("current label: " + t.currentLabel());
+
+              if (curr == 1) {
+                document.getElementById("back").style.visibility = "hidden";
+              } else if (curr == 12) {
+                document.getElementById("next").style.visibility = "hidden";
+              } else {
+                document.getElementById("back").style.visibility = "visible";
+                document.getElementById("next").style.visibility = "visible";
+              }
+
+              return curr;
+            }
+          </script>
+        </div>
+        <!-- end payj - p2 -->
+      </div>
+      <!-- kanvas -->
+    </div>
+    <!-- container -->
+  </body>
 </html>

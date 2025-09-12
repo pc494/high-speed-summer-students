@@ -1,486 +1,767 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Direct Reduction</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>Direct Reduction</title>
 
-		<!-- Greensock library  -->
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
-		
-		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
+    <!-- Greensock library  -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
 
-		<link rel="stylesheet" href="titlecard.css"/>
+    <script>
+      gsap.registerPlugin(MotionPathPlugin);
+    </script>
 
-		<script>
-		// hide and show CC licence words
-			function showTxt() {   
-				document.getElementById("para").style.visibility = 'visible';
-			}  // end showTxt
+    <link rel="stylesheet" href="titlecard.css" />
 
-			function hideTxt() { 
-				document.getElementById("para").style.visibility = 'hidden';
-			}  // end hideTxt
-			
-			// page navigation
-			function gotoPage(p) {
-				// replace next fn gEBCN as fails in IE<9
-				var x = document.getElementsByClassName("payj");
-				var len = x.length;
-				for (var i=1; i<(len+1); i++) {
-					var ppp = eval('p'+i);
-					document.getElementById('p'+i).style.display = 'none';
-					if (i == p) {
-						document.getElementById('p'+i).style.display = 'block';
-					}
-				}	
-			}
-			
-			// sets the dimensions of kanvas and positions the bottom logos			
-			function setAnimDimensions(w,h)  {
-				//w = animation width
-				//h = animation height
-				document.getElementById("kanvas").style.height = String(h) + "px";
-				document.getElementById("kanvas").style.width = String(w) + "px";
-				document.getElementById("kanvas").style.margin = "0px auto";
-				document.getElementById("kanvas").style.border = "2px solid blue";
-				// position footers
-				var divcc = document.getElementById("cc");
-				var divpara = document.getElementById("para");
-				divcc.style.position = 'absolute';
-				divpara.style.position = 'absolute';
-				divcc.style.top = (h - 40) + "px";
-				divpara.style.top = (h - 85) + "px";						
-			}
-		</script>
-		
-		<style>
+    <script>
+      // hide and show CC licence words
+      function showTxt() {
+        document.getElementById("para").style.visibility = "visible";
+      } // end showTxt
 
-			#container {
-				position:relative;
-			}
-			#kanvas { 
-				position:relative;
-			}
+      function hideTxt() {
+        document.getElementById("para").style.visibility = "hidden";
+      } // end hideTxt
 
-			/* cc information banner & pop-up */
-			#cc {
-				position: absolute; 
-				width:100%; 
-				/*background-color:#cc0000;  */
-			}
-			
-			#para {
-				position: absolute;  
-				padding:0px;
-				font-family:Arial;
-				font-weight: bold;
-				font-size: 11px;
-				color:blue; 
-				border-style: solid;
-				border-color: #000000;
-				border-width:1px;
-				visibility: hidden;
-				z-index: 200;
-				background-color: white;
-			}
-			
-			/* DOiTPoMS buttons */
-			.dbutton {
-				background-color: pink;
-				cursor: pointer;
-				height: 25px;
-				margin: 5px;
-				background-position: bottom;
-				display: inline-block;  /* allows on sameline */
-			}
+      // page navigation
+      function gotoPage(p) {
+        // replace next fn gEBCN as fails in IE<9
+        var x = document.getElementsByClassName("payj");
+        var len = x.length;
+        for (var i = 1; i < len + 1; i++) {
+          var ppp = eval("p" + i);
+          document.getElementById("p" + i).style.display = "none";
+          if (i == p) {
+            document.getElementById("p" + i).style.display = "block";
+          }
+        }
+      }
 
-			.dbutton:hover {
-				background-position: center; 
-			}
+      // sets the dimensions of kanvas and positions the bottom logos
+      function setAnimDimensions(w, h) {
+        //w = animation width
+        //h = animation height
+        document.getElementById("kanvas").style.height = String(h) + "px";
+        document.getElementById("kanvas").style.width = String(w) + "px";
+        document.getElementById("kanvas").style.margin = "0px auto";
+        document.getElementById("kanvas").style.border = "2px solid blue";
+        // position footers
+        var divcc = document.getElementById("cc");
+        var divpara = document.getElementById("para");
+        divcc.style.position = "absolute";
+        divpara.style.position = "absolute";
+        divcc.style.top = h - 40 + "px";
+        divpara.style.top = h - 85 + "px";
+      }
+    </script>
 
-			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
-				width: 79px;
-				background-image: url('../../../images/back.png');
-			}
+    <style>
+      #container {
+        position: relative;
+      }
+      #kanvas {
+        position: relative;
+      }
 
-			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
-				width: 75px;
-				background-image: url('../../../images/next.png');
-			}
-			
-			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
-				width: 99px;
-				background-image: url('../../../images/restart.png');
-			}
-			#reset {
-				width: 84px;
-				background-image: url('../../../images/reset.png');
-			}
-			#start { 
-				width: 76px;
-				background-image: url('../../../images/start.png');
-			}
-			#pause {
-				width: 83px;
-				background-image: url('../../../images/pause.png');
-			}
-			#continue {
-				width: 118px;
-				background-image: url('../../../images/continue.png');
-			}
-			
-			.nav {
-				position:absolute;
-				left:170px;
-				top:420px;
-				width:300px;
-				text-align: center;
-			}
+      /* cc information banner & pop-up */
+      #cc {
+        position: absolute;
+        width: 100%;
+        /*background-color:#cc0000;  */
+      }
 
-			/* page id */
-			/* CAHNGE THIS!!! */
-			#p1 {
-				display:block;				
-			}
-			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
-				display:none;				
-			}
+      #para {
+        position: absolute;
+        padding: 0px;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 11px;
+        color: blue;
+        border-style: solid;
+        border-color: #000000;
+        border-width: 1px;
+        visibility: hidden;
+        z-index: 200;
+        background-color: white;
+      }
 
-			/*  Other */
-			p,text {
-				font-family: sans-serif;
-			}
+      /* DOiTPoMS buttons */
+      .dbutton {
+        background-color: pink;
+        cursor: pointer;
+        height: 25px;
+        margin: 5px;
+        background-position: bottom;
+        display: inline-block; /* allows on sameline */
+      }
 
-			#caption {
-				position: absolute;
-				top: 365px;
-				height: 45px;
-				left: 20px;
-				width: 600px;
-				margin: auto auto;
-				text-align: center;
-				vertical-align: middle;
-				text-overflow: hidden;
-			}
-		</style>
-		
-	</head>
-	
-	<body>
-		<div id="container"> 
-			<div id="kanvas"> 
+      .dbutton:hover {
+        background-position: center;
+      }
 
-				<!-- DoITPoMS  and CC logos -->
-				<div id="para"> 
-					Re-use of this resource is governed by a Creative Commons Attribution-<br />
-					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
-					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
-				</div>
-				<!-- end para -->
-				<div id="cc" > 
-					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
-					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
-				</div>
-				<!-- end cc -->
+      #back,
+      #back2,
+      #back3,
+      #back4,
+      #back5,
+      #back6,
+      #back7 {
+        width: 79px;
+        background-image: url("../../../images/back.png");
+      }
 
-				<script>
-					setAnimDimensions(640,480);
-				</script>
+      #next,
+      #next2,
+      #next3,
+      #next4,
+      #next5,
+      #next6,
+      #next7 {
+        width: 75px;
+        background-image: url("../../../images/next.png");
+      }
 
-				<!--  new page starts here    -->
-				<div class="payj" id="p1"> 
+      #restart,
+      #restart2,
+      #restart3,
+      #restart5,
+      #restart6,
+      #restart7 {
+        width: 99px;
+        background-image: url("../../../images/restart.png");
+      }
+      #reset {
+        width: 84px;
+        background-image: url("../../../images/reset.png");
+      }
+      #start {
+        width: 76px;
+        background-image: url("../../../images/start.png");
+      }
+      #pause {
+        width: 83px;
+        background-image: url("../../../images/pause.png");
+      }
+      #continue {
+        width: 118px;
+        background-image: url("../../../images/continue.png");
+      }
 
-					<p id="titlecard"> Direct Reduction of Iron (DRI) </p>
-					<div class="nav" style="top:280px"> 
-						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
-					</div>
-					
-				</div>
-				<!-- end payj - p1 -->
+      .nav {
+        position: absolute;
+        left: 170px;
+        top: 420px;
+        width: 300px;
+        text-align: center;
+      }
 
-				<!--  new page starts here    -->
-				<div class="payj" id="p2"> 
+      /* page id */
+      /* CAHNGE THIS!!! */
+      #p1 {
+        display: block;
+      }
+      #p2,
+      #p3,
+      #p4,
+      #p5,
+      #p6,
+      #p7,
+      #p8,
+      #p9 {
+        display: none;
+      }
 
-					<p class="dbutton" id="restart" onclick="reset()" style="position:absolute"></p>
+      /*  Other */
+      p,
+      text {
+        font-family: sans-serif;
+      }
 
-					
-					<svg id="DRI" width="640" height="350">		
-						<defs>
-							<pattern id="ore_fill"  x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
-								<rect style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.9;" x="3" y="3" width="6" height="6" rx="1"></rect>
-							</pattern>
-							<pattern id="sponge_iron_fill"  x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
-								<rect style="fill:none; stroke:#aaa; stroke-width:6px; stroke-opacity:0.9; stroke-dasharray: 4,1;" x="3" y="3" width="6" height="6" rx="1"></rect>
-							</pattern>
-							<linearGradient id="furnace_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-								<stop offset="0%" stop-color="grey" stop-opacity="0"/>
-								<stop offset="60%" stop-color="pink" stop-opacity="0.6"/>
-								<stop offset="100%" stop-color="lightskyblue" stop-opacity="0"/>
-							</linearGradient>
-						</defs>
+      #caption {
+        position: absolute;
+        top: 365px;
+        height: 45px;
+        left: 20px;
+        width: 600px;
+        margin: auto auto;
+        text-align: center;
+        vertical-align: middle;
+        text-overflow: hidden;
+      }
+    </style>
+  </head>
 
-						<g id="furnace">
+  <body>
+    <div id="container">
+      <div id="kanvas">
+        <!-- DoITPoMS  and CC logos -->
+        <div id="para">
+          Re-use of this resource is governed by a Creative Commons
+          Attribution-<br />
+          Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+          http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
+        </div>
+        <!-- end para -->
+        <div id="cc">
+          <img
+            src="../../../images/by-nc-sa.svg"
+            alt="creative commons"
+            onMouseOver="showTxt()"
+            onMouseOut="hideTxt()"
+            height="40"
+            width="120"
+          />
+          <img
+            src="../../../images/roo.png"
+            alt="DoITPoMS logo"
+            height="40"
+            width="180"
+            style="float: right"
+            ;
+          />
+        </div>
+        <!-- end cc -->
 
-							<g>
-								<rect x="0" y="70" width="640" height="215" fill="url(#furnace_gradient)"></rect>
-								<rect id="ores" x="0" y="120" width="640" height="75" fill="url(#ore_fill)"></rect>
-								<rect id="sponge_irons" x="0" y="195" width="640" height="75" fill="url(#sponge_iron_fill)"></rect>
-								<rect id="ore" x="0" y="0" width="6" height="6" rx="1" style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.6;"></rect>
-								<rect id="sponge_iron" x="0" y="0" width="6" height="6" rx="1" style="fill:none; stroke:#999; stroke-width:6px; stroke-opacity:0.6; stroke-dasharray:4,1"></rect>
-							</g>
+        <script>
+          setAnimDimensions(640, 480);
+        </script>
 
-							<path id="furnace_guts"
-								d="M300,0 L300,70 l-20,0 l-10,20 l-20,0 L250,0 L300,0
+        <!--  new page starts here    -->
+        <div class="payj" id="p1">
+          <p id="titlecard">Direct Reduction of Iron (DRI)</p>
+          <div class="nav" style="top: 280px">
+            <p class="dbutton" id="start" onClick="gotoPage(2)"></p>
+          </div>
+        </div>
+        <!-- end payj - p1 -->
+
+        <!--  new page starts here    -->
+        <div class="payj" id="p2">
+          <p
+            class="dbutton"
+            id="restart"
+            onclick="reset()"
+            style="position: absolute"
+          ></p>
+
+          <svg id="DRI" width="640" height="350">
+            <defs>
+              <pattern
+                id="ore_fill"
+                x="0"
+                y="0"
+                width="15"
+                height="15"
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  style="
+                    fill: none;
+                    stroke: #999;
+                    stroke-width: 6px;
+                    stroke-opacity: 0.9;
+                  "
+                  x="3"
+                  y="3"
+                  width="6"
+                  height="6"
+                  rx="1"
+                ></rect>
+              </pattern>
+              <pattern
+                id="sponge_iron_fill"
+                x="0"
+                y="0"
+                width="15"
+                height="15"
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  style="
+                    fill: none;
+                    stroke: #aaa;
+                    stroke-width: 6px;
+                    stroke-opacity: 0.9;
+                    stroke-dasharray: 4, 1;
+                  "
+                  x="3"
+                  y="3"
+                  width="6"
+                  height="6"
+                  rx="1"
+                ></rect>
+              </pattern>
+              <linearGradient
+                id="furnace_gradient"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
+                <stop offset="0%" stop-color="grey" stop-opacity="0" />
+                <stop offset="60%" stop-color="pink" stop-opacity="0.6" />
+                <stop
+                  offset="100%"
+                  stop-color="lightskyblue"
+                  stop-opacity="0"
+                />
+              </linearGradient>
+            </defs>
+
+            <g id="furnace">
+              <g>
+                <rect
+                  x="0"
+                  y="70"
+                  width="640"
+                  height="215"
+                  fill="url(#furnace_gradient)"
+                ></rect>
+                <rect
+                  id="ores"
+                  x="0"
+                  y="120"
+                  width="640"
+                  height="75"
+                  fill="url(#ore_fill)"
+                ></rect>
+                <rect
+                  id="sponge_irons"
+                  x="0"
+                  y="195"
+                  width="640"
+                  height="75"
+                  fill="url(#sponge_iron_fill)"
+                ></rect>
+                <rect
+                  id="ore"
+                  x="0"
+                  y="0"
+                  width="6"
+                  height="6"
+                  rx="1"
+                  style="
+                    fill: none;
+                    stroke: #999;
+                    stroke-width: 6px;
+                    stroke-opacity: 0.6;
+                  "
+                ></rect>
+                <rect
+                  id="sponge_iron"
+                  x="0"
+                  y="0"
+                  width="6"
+                  height="6"
+                  rx="1"
+                  style="
+                    fill: none;
+                    stroke: #999;
+                    stroke-width: 6px;
+                    stroke-opacity: 0.6;
+                    stroke-dasharray: 4, 1;
+                  "
+                ></rect>
+              </g>
+
+              <path
+                id="furnace_guts"
+                d="M300,0 L300,70 l-20,0 l-10,20 l-20,0 L250,0 L300,0
 									M240,0 L240,100 L265,100 l-10,150 l40,35 l15,0 L310,350 L0,350 L0,0 L240,0
 									M340,0 L340,70 l20,0 l10,20 l20,0 L390,0 L340,0
-									M400,0 L400,100 L375,100 l10,150 l-40,35 l-15,0 L330,350 L640,350 L640,0 L400,0"></path>
+									M400,0 L400,100 L375,100 l10,150 l-40,35 l-15,0 L330,350 L640,350 L640,0 L400,0"
+              ></path>
 
-							<path id="furnace_walls"
-								d="M300,70 l-20,0 l-10,20 l10,0 l5,-10 l15,0 l0,-10
+              <path
+                id="furnace_walls"
+                d="M300,70 l-20,0 l-10,20 l10,0 l5,-10 l15,0 l0,-10
 									M265,100 l-10,150 l40,35 l15,0 l0,-10 l-35,-35 l0,-140 l-10,0
 									M340,70 l20,0 l10,20 l-10,0 l-5,-10 l-15,0 l0,-10
-									M375,100 l10,150 l-40,35 l-15,0 l0,-10 l35,-35 l0,-140 l10,0"></path>
+									M375,100 l10,150 l-40,35 l-15,0 l0,-10 l35,-35 l0,-140 l10,0"
+              ></path>
 
-							<path id="exhaust_pipes"
-								d="M240,50 L240,100 L275,100 
+              <path
+                id="exhaust_pipes"
+                d="M240,50 L240,100 L275,100 
 									M250,50 L250,90 L280,89
 									M400,50 L400,100 L365,100
-									M390, 50 L390,90 L360,89"></path>
-							
-							<path id="hopper"
-								d="M320,60 l0,25 l-10,10 m10,-10 l10,10"></path>
-							
-							<path id="reducing_gas_pipes"
-								d="M200,170 l75,0 M200,180 l75,0 M200,190 l75,0 
-									M365,170 l75,0 M365,180 l75,0 M365,190 l75,0"></path>
-							
-							<path id="cooling_gas_pipes"
-								d="M285,250 l-30,30 l-30,0 M295,260 l-35,35 l-30,0
-									M355,250 l30,30 l30,0 M345,260 l35,35 l30,0"></path>
-							
-							<g id="motionpaths" style="display:none">
-								<path id="adding_ores_left" d="M305,40 C310,90 280,90 285,135"></path>
-								<path id="adding_ores_right" d="M325,40 C320,90 350,90 345,135"></path>
-								<path id="iron_exiting" d="M315,255 l0,80"></path>
-							</g>
+									M390, 50 L390,90 L360,89"
+              ></path>
 
-							<g id="gas_paths">
-								<path class="reduction_gas" id="reduction_gas_l1" d="M280,170 c20,0 30,-20 30,-30"></path>
-								<path class="reduction_gas" id="reduction_gas_l2" d="M280, 180 q25,-10 40,5"></path>
-								<path class="reduction_gas" id="reduction_gas_l3" d="M280,190 c20,0 30,30 30,40"></path>
-								<path class="reduction_gas" id="reduction_gas_r1" d="M360,170 c-20,0 -30,-20 -30,-30"></path>
-								<path class="reduction_gas" id="reduction_gas_r2" d="M360, 180 q-25,-10 -40,15"></path>
-								<path class="reduction_gas" id="reduction_gas_r3" d="M360,190 c-20,0 -30,30 -30,40"></path>
-								<path class="cooling_gas" id="cooling_gas_l1" d="M290,245 q10,-5 5,-30"></path>
-								<path class="cooling_gas" id="cooling_gas_l2" d="M300,255 c10,-10 15,-20 15,-30"></path>
-								<path class="cooling_gas" id="cooling_gas_r1" d="M350,245 q-10,-5 -5,-30"></path>
-								<path class="cooling_gas" id="cooling_gas_r2" d="M340,255 c-10,-10 -15,-20 -15,-30"></path>
-								<path class="exhaust" id="exhaust_l1" d="M245,80 c5,-40 -10,-40 0,-60"></path>
-								<path class="exhaust" id="exhaust_r1" d="M395,80 c-5,-40 10,-40 0,-60"></path>
-							</g>
+              <path id="hopper" d="M320,60 l0,25 l-10,10 m10,-10 l10,10"></path>
 
-							<g id="pointers">
-								<g class="pointer">
-									<text class="label" x="460" y="125">Hopper</text>
-									<line class="line" x1="340" y1="95" x2="450" y2="120"></line>
-									<circle id="hopper_pointer" class="laser" cx="340" cy="95" r="4"></circle>
-								</g>
-	
-								<g class="pointer">
-									<text class="label" x="90" y="85">Exhaust</text>
-									<line class="line" x1="245" y1="40" x2="160" y2="80"></line>
-									<circle id="exhaust_pointer" class="laser" cx="245" cy="40" r="4"></circle>
-								</g>
-	
-								<g class="pointer">
-									<text class="label" x="50" y="165">Reducing gas</text>
-									<line class="line" x1="290" y1="180" x2="160" y2="160"></line>
-									<circle id="reducing_gas_pointer" class="laser" cx="290" cy="180" r="4"></circle>
-								</g>
-	
-								<g class="pointer">
-									<text class="label" x="460" y="225">Cooling gas</text>
-									<line class="line" x1="345" y1="250" x2="450" y2="220"></line>
-									<circle id="cooling_gas_pointer" class="laser" cx="345" cy="250" r="4"></circle>
-								</g>
-	
-								<g class="pointer">
-									<text class="label" x="90" y="275">Product</text>
-									<line class="line" x1="320" y1="300" x2="160" y2="270"></line>
-									<circle id="product_pointer" class="laser" cx="320" cy="300" r="4"></circle>
-								</g>
-							</g>
-						</g>
-					</svg>
+              <path
+                id="reducing_gas_pipes"
+                d="M200,170 l75,0 M200,180 l75,0 M200,190 l75,0 
+									M365,170 l75,0 M365,180 l75,0 M365,190 l75,0"
+              ></path>
 
-					<style>
+              <path
+                id="cooling_gas_pipes"
+                d="M285,250 l-30,30 l-30,0 M295,260 l-35,35 l-30,0
+									M355,250 l30,30 l30,0 M345,260 l35,35 l30,0"
+              ></path>
 
-						path {
-							fill:none
-						}
+              <g id="motionpaths" style="display: none">
+                <path
+                  id="adding_ores_left"
+                  d="M305,40 C310,90 280,90 285,135"
+                ></path>
+                <path
+                  id="adding_ores_right"
+                  d="M325,40 C320,90 350,90 345,135"
+                ></path>
+                <path id="iron_exiting" d="M315,255 l0,80"></path>
+              </g>
 
-						.pointer .laser {
-							fill:red;
-							stroke:black;
-							stroke-width: 1px;
-						}
+              <g id="gas_paths">
+                <path
+                  class="reduction_gas"
+                  id="reduction_gas_l1"
+                  d="M280,170 c20,0 30,-20 30,-30"
+                ></path>
+                <path
+                  class="reduction_gas"
+                  id="reduction_gas_l2"
+                  d="M280, 180 q25,-10 40,5"
+                ></path>
+                <path
+                  class="reduction_gas"
+                  id="reduction_gas_l3"
+                  d="M280,190 c20,0 30,30 30,40"
+                ></path>
+                <path
+                  class="reduction_gas"
+                  id="reduction_gas_r1"
+                  d="M360,170 c-20,0 -30,-20 -30,-30"
+                ></path>
+                <path
+                  class="reduction_gas"
+                  id="reduction_gas_r2"
+                  d="M360, 180 q-25,-10 -40,15"
+                ></path>
+                <path
+                  class="reduction_gas"
+                  id="reduction_gas_r3"
+                  d="M360,190 c-20,0 -30,30 -30,40"
+                ></path>
+                <path
+                  class="cooling_gas"
+                  id="cooling_gas_l1"
+                  d="M290,245 q10,-5 5,-30"
+                ></path>
+                <path
+                  class="cooling_gas"
+                  id="cooling_gas_l2"
+                  d="M300,255 c10,-10 15,-20 15,-30"
+                ></path>
+                <path
+                  class="cooling_gas"
+                  id="cooling_gas_r1"
+                  d="M350,245 q-10,-5 -5,-30"
+                ></path>
+                <path
+                  class="cooling_gas"
+                  id="cooling_gas_r2"
+                  d="M340,255 c-10,-10 -15,-20 -15,-30"
+                ></path>
+                <path
+                  class="exhaust"
+                  id="exhaust_l1"
+                  d="M245,80 c5,-40 -10,-40 0,-60"
+                ></path>
+                <path
+                  class="exhaust"
+                  id="exhaust_r1"
+                  d="M395,80 c-5,-40 10,-40 0,-60"
+                ></path>
+              </g>
 
-						.pointer .line {
-							stroke:black;
-							stroke-width: 1px;
-						}
+              <g id="pointers">
+                <g class="pointer">
+                  <text class="label" x="460" y="125">Hopper</text>
+                  <line class="line" x1="340" y1="95" x2="450" y2="120"></line>
+                  <circle
+                    id="hopper_pointer"
+                    class="laser"
+                    cx="340"
+                    cy="95"
+                    r="4"
+                  ></circle>
+                </g>
 
-						.pointer .laser:hover, .pointer .laser:focus-visible {
-							stroke:red;
-							cursor: pointer;
-							stroke-width: 2px;
-						}
+                <g class="pointer">
+                  <text class="label" x="90" y="85">Exhaust</text>
+                  <line class="line" x1="245" y1="40" x2="160" y2="80"></line>
+                  <circle
+                    id="exhaust_pointer"
+                    class="laser"
+                    cx="245"
+                    cy="40"
+                    r="4"
+                  ></circle>
+                </g>
 
-						.pointer .laser:active {
-							stroke:none;
-						}
+                <g class="pointer">
+                  <text class="label" x="50" y="165">Reducing gas</text>
+                  <line class="line" x1="290" y1="180" x2="160" y2="160"></line>
+                  <circle
+                    id="reducing_gas_pointer"
+                    class="laser"
+                    cx="290"
+                    cy="180"
+                    r="4"
+                  ></circle>
+                </g>
 
-						#gas_paths {
-							stroke-linecap: round;
-						}
-						#gas_paths .reduction_gas {
-							stroke: hotpink
-						}
+                <g class="pointer">
+                  <text class="label" x="460" y="225">Cooling gas</text>
+                  <line class="line" x1="345" y1="250" x2="450" y2="220"></line>
+                  <circle
+                    id="cooling_gas_pointer"
+                    class="laser"
+                    cx="345"
+                    cy="250"
+                    r="4"
+                  ></circle>
+                </g>
 
-						#gas_paths .cooling_gas {
-							stroke: deepskyblue
-						}
+                <g class="pointer">
+                  <text class="label" x="90" y="275">Product</text>
+                  <line class="line" x1="320" y1="300" x2="160" y2="270"></line>
+                  <circle
+                    id="product_pointer"
+                    class="laser"
+                    cx="320"
+                    cy="300"
+                    r="4"
+                  ></circle>
+                </g>
+              </g>
+            </g>
+          </svg>
 
-						#gas_paths .exhaust {
-							stroke:silver
-						}
-						#furnace #furnace_guts {
-							fill:white;
-							stroke: none 
-						}
+          <style>
+            path {
+              fill: none;
+            }
 
-						#furnace #furnace_walls {
-							fill: dimgrey;
-							stroke:none 
-						}
+            .pointer .laser {
+              fill: red;
+              stroke: black;
+              stroke-width: 1px;
+            }
 
-						#furnace #exhaust_pipes {
-							stroke:dimgrey;
-							stroke-width: 2px;
-						}
+            .pointer .line {
+              stroke: black;
+              stroke-width: 1px;
+            }
 
-						#furnace #hopper {
-							fill: none;
-							stroke: dimgray;
-							stroke-width: 2px
-						}
+            .pointer .laser:hover,
+            .pointer .laser:focus-visible {
+              stroke: red;
+              cursor: pointer;
+              stroke-width: 2px;
+            }
 
-						#furnace #reducing_gas_inlet {
-							fill: lightpink;
-							stroke: none;
-						}
+            .pointer .laser:active {
+              stroke: none;
+            }
 
-						#furnace #reducing_gas_pipes {
-							fill:none;
-							stroke: lightpink;
-							stroke-width: 5px;
-						}
+            #gas_paths {
+              stroke-linecap: round;
+            }
+            #gas_paths .reduction_gas {
+              stroke: hotpink;
+            }
 
-						#furnace #cooling_gas_inlet {
-							fill: lightskyblue;
-							stroke: none;
-						}
+            #gas_paths .cooling_gas {
+              stroke: deepskyblue;
+            }
 
-						#furnace #cooling_gas_pipes {
-							fill:none;
-							stroke: lightskyblue;
-							stroke-width: 5px;
-						}
+            #gas_paths .exhaust {
+              stroke: silver;
+            }
+            #furnace #furnace_guts {
+              fill: white;
+              stroke: none;
+            }
 
-						#guidelines {
-							stroke:grey; 
-							stroke-opacity:0.3;
-						}
-					</style>
-					
-					<p id="caption"> <em>Click on red pointers to start</em> </p>
-					
-					<div class="nav"> 
-						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
-					</div>
+            #furnace #furnace_walls {
+              fill: dimgrey;
+              stroke: none;
+            }
 
-					<script>
+            #furnace #exhaust_pipes {
+              stroke: dimgrey;
+              stroke-width: 2px;
+            }
 
-						document.querySelectorAll("#gas_paths path").forEach(path => {
-							path.setAttribute("stroke-width", "3px")
-							path.setAttribute("opacity", 0)
-							var phantomPath = {length:0, totalPathLength: path.getTotalLength()}
-							function updateDasharray(){
-								path.style.strokeDasharray = [phantomPath.length, phantomPath.totalPathLength].join(" ")
-							}
-							var d = Number(path.id.slice(-1))
-							gsap.timeline({repeat:-1, delay:d}).to(phantomPath, 2.5, {length:phantomPath.totalPathLength, onUpdate:updateDasharray}).set(path, {opacity:1}, "<").to(path, 2.5, {opacity:0}, "<")
-						})
+            #furnace #hopper {
+              fill: none;
+              stroke: dimgray;
+              stroke-width: 2px;
+            }
 
-						gsap.timeline({repeat:-1}).to("#ore", 2, {motionPath:{path:"#adding_ores_left", offsetX:3, offsetY:3}}, 0).to("#ore", 2, {motionPath:{path:"#adding_ores_right", offsetX:3, offsetY:3}})
-						gsap.timeline({repeat:-1}).to("#sponge_iron", 2, {motionPath:{path:"#iron_exiting", offsetX:3, offsetY:3}, opacity:0})
-						gsap.timeline({repeat:-1, defaults:{ease:"none"}}).to("#ore_fill, #sponge_iron_fill", 2, {y:15})
+            #furnace #reducing_gas_inlet {
+              fill: lightpink;
+              stroke: none;
+            }
 
-						var captions = {}
-						captions["hopper"] = "Lump ores are added to the shaft furnace from the hopper. <br>"
-						captions["reducing_gas"] = "Heated gas (~1000&#x00B0;C) reduces ores to iron. The reduction reaction does not require melting the ores, which reduces energy requirements significantly. <br> Currently, the gas mixture is derived from natural gas and consists primarily of CO."
-						captions["cooling_gas"] = "The sponge iron produced is cooled before leaving the furnace, to prevent excessive re-oxidation in ambient air."
-						captions["product"] = "Oxygen is removed from ores during the DRI process, which leaves the surface cracked. The resulting product is called sponge iron after its appearance."
-						captions["exhaust"] = "When CO is used as the main reducing gas, the exhaust is mainly CO&#x2082; <br> The exhuast is sometimes re-processed to capture and re-use any waste CO. "
+            #furnace #reducing_gas_pipes {
+              fill: none;
+              stroke: lightpink;
+              stroke-width: 5px;
+            }
 
-						document.querySelectorAll(".pointer .laser").forEach(p => {
-							p.addEventListener("click", function(event){
-								var name = p.id.slice(0,-8)
-								var ploc = p.getBoundingClientRect()
-								var wloc = document.getElementById("DRI").getBoundingClientRect()
-								var x = ploc.x - wloc.x + 0.5*ploc.width
-								var y = ploc.y - wloc.y + 0.5*ploc.height
-								var zoomtl = gsap.timeline()
-								zoomtl.to("#caption", {innerHTML:" "})
-								zoomtl.to("#pointers", 0.2, {opacity:0}, 0)
-								zoomtl.to("#furnace", 1, {scale:2.5, x:320-2.5*x, y:175-2.5*y})
-								zoomtl.set("#caption", {innerHTML:captions[String(name)]})
-								zoomtl.set("#pointers", {visibility: "hidden"})
-								zoomtl.set("#back", {visibility: "visible"})
-							})
-						})
+            #furnace #cooling_gas_inlet {
+              fill: lightskyblue;
+              stroke: none;
+            }
 
-						function back() {
-							var backtl = gsap.timeline()							
-							backtl.set("#back", {visibility: "hidden"})
-							backtl.set("#pointers", {visibility: "visible"})
-							backtl.set("#caption", {innerHTML:" "})
-							backtl.to("#furnace", 1, {scale:1, x:0, y:0})
-							backtl.to("#pointers", 0.2, {opacity:1})
-							backtl.set("#caption", {innerHTML:"<em>Click on red pointers to start</em>"})
-						}
-					
-						function reset(){
-							gotoPage(1)
-							back()
-						}
-					</script>
-					
-				</div>
-				<!-- end payj - p2 -->
+            #furnace #cooling_gas_pipes {
+              fill: none;
+              stroke: lightskyblue;
+              stroke-width: 5px;
+            }
 
-			</div> <!-- kanvas -->
+            #guidelines {
+              stroke: grey;
+              stroke-opacity: 0.3;
+            }
+          </style>
 
-		</div> <!-- container -->
+          <p id="caption"><em>Click on red pointers to start</em></p>
 
-	</body>
+          <div class="nav">
+            <p
+              class="dbutton"
+              id="back"
+              onclick="back()"
+              style="visibility: hidden"
+            ></p>
+          </div>
+
+          <script>
+            document.querySelectorAll("#gas_paths path").forEach((path) => {
+              path.setAttribute("stroke-width", "3px");
+              path.setAttribute("opacity", 0);
+              var phantomPath = {
+                length: 0,
+                totalPathLength: path.getTotalLength(),
+              };
+              function updateDasharray() {
+                path.style.strokeDasharray = [
+                  phantomPath.length,
+                  phantomPath.totalPathLength,
+                ].join(" ");
+              }
+              var d = Number(path.id.slice(-1));
+              gsap
+                .timeline({ repeat: -1, delay: d })
+                .to(phantomPath, 2.5, {
+                  length: phantomPath.totalPathLength,
+                  onUpdate: updateDasharray,
+                })
+                .set(path, { opacity: 1 }, "<")
+                .to(path, 2.5, { opacity: 0 }, "<");
+            });
+
+            gsap
+              .timeline({ repeat: -1 })
+              .to(
+                "#ore",
+                2,
+                {
+                  motionPath: {
+                    path: "#adding_ores_left",
+                    offsetX: 3,
+                    offsetY: 3,
+                  },
+                },
+                0,
+              )
+              .to("#ore", 2, {
+                motionPath: {
+                  path: "#adding_ores_right",
+                  offsetX: 3,
+                  offsetY: 3,
+                },
+              });
+            gsap.timeline({ repeat: -1 }).to("#sponge_iron", 2, {
+              motionPath: { path: "#iron_exiting", offsetX: 3, offsetY: 3 },
+              opacity: 0,
+            });
+            gsap
+              .timeline({ repeat: -1, defaults: { ease: "none" } })
+              .to("#ore_fill, #sponge_iron_fill", 2, { y: 15 });
+
+            var captions = {};
+            captions["hopper"] =
+              "Lump ores are added to the shaft furnace from the hopper. <br>";
+            captions["reducing_gas"] =
+              "Heated gas (~1000&#x00B0;C) reduces ores to iron. The reduction reaction does not require melting the ores, which reduces energy requirements significantly. <br> Currently, the gas mixture is derived from natural gas and consists primarily of CO.";
+            captions["cooling_gas"] =
+              "The sponge iron produced is cooled before leaving the furnace, to prevent excessive re-oxidation in ambient air.";
+            captions["product"] =
+              "Oxygen is removed from ores during the DRI process, which leaves the surface cracked. The resulting product is called sponge iron after its appearance.";
+            captions["exhaust"] =
+              "When CO is used as the main reducing gas, the exhaust is mainly CO&#x2082; <br> The exhuast is sometimes re-processed to capture and re-use any waste CO. ";
+
+            document.querySelectorAll(".pointer .laser").forEach((p) => {
+              p.addEventListener("click", function (event) {
+                var name = p.id.slice(0, -8);
+                var ploc = p.getBoundingClientRect();
+                var wloc = document
+                  .getElementById("DRI")
+                  .getBoundingClientRect();
+                var x = ploc.x - wloc.x + 0.5 * ploc.width;
+                var y = ploc.y - wloc.y + 0.5 * ploc.height;
+                var zoomtl = gsap.timeline();
+                zoomtl.to("#caption", { innerHTML: " " });
+                zoomtl.to("#pointers", 0.2, { opacity: 0 }, 0);
+                zoomtl.to("#furnace", 1, {
+                  scale: 2.5,
+                  x: 320 - 2.5 * x,
+                  y: 175 - 2.5 * y,
+                });
+                zoomtl.set("#caption", { innerHTML: captions[String(name)] });
+                zoomtl.set("#pointers", { visibility: "hidden" });
+                zoomtl.set("#back", { visibility: "visible" });
+              });
+            });
+
+            function back() {
+              var backtl = gsap.timeline();
+              backtl.set("#back", { visibility: "hidden" });
+              backtl.set("#pointers", { visibility: "visible" });
+              backtl.set("#caption", { innerHTML: " " });
+              backtl.to("#furnace", 1, { scale: 1, x: 0, y: 0 });
+              backtl.to("#pointers", 0.2, { opacity: 1 });
+              backtl.set("#caption", {
+                innerHTML: "<em>Click on red pointers to start</em>",
+              });
+            }
+
+            function reset() {
+              gotoPage(1);
+              back();
+            }
+          </script>
+        </div>
+        <!-- end payj - p2 -->
+      </div>
+      <!-- kanvas -->
+    </div>
+    <!-- container -->
+  </body>
 </html>
