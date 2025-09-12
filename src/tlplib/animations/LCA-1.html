@@ -869,6 +869,9 @@
               t.timeScale(speed).tweenFromTo("t" + prv, "t" + nxt); 
               var dur = Math.abs((t.labels["t"+nxt] - t.labels["t"+prv])/speed);
 
+              curr = nxt;
+              console.log(prv, curr, nxt);
+              
               if (curr > 1) {
                   gsap.set("#back", {visibility: "visible", delay:dur});
                 }
@@ -876,10 +879,8 @@
                 gsap.set("#next", {visibility: "visible", delay:dur});
               }
 
-              curr = nxt;
-              console.log(prv, curr, nxt);
               return curr;
-              
+
             }
 
             move(0, 1);
