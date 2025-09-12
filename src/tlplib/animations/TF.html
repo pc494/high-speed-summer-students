@@ -326,6 +326,15 @@
             font-size: 18px;
             text-decoration: underline;
           }
+
+          .atitle {
+            border:#000 1px solid;
+            display:inline-block;
+            transform:scale(0.3);
+            margin:8px;
+            left:112px; /* as 8px margin will make border start at 120px, width of svg scaled to 0.3*640px=192px ==> second svg's border starts at 112+8+192+8+8=328 and finishes at 328+192=520px which is also 120px from the right hence symmetrical  */
+            top:104px; /*say we want svgs to finishes 15% from bottom of page, and with margins of 8px the top of top svg's margin will need to start at 480-(0.15*480[=72])+8-(0.3*480[=144])-8-8-144-8=104px */
+          }
         </style>
     </head>
 
@@ -359,7 +368,18 @@
 				<!-- divs for storyline -->
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
-						
+					<svg id="titlea" class="atitle">
+                        
+                    </svg> 
+					<svg id="titleb" class="atitle">
+
+                    </svg> 
+					<svg id="titlec" class="atitle">
+
+                    </svg> 
+					<svg id="titled" class="atitle">
+
+                    </svg>
                     <div class="nav"> 
                 
                         <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
