@@ -328,8 +328,9 @@
           }
 
           .container>svg {
-                border:#000 1px solid;
+                border:#000 2px solid;
                 margin: 8px;
+                cursor:pointer;
             }
           .container {
                 display: grid;
@@ -337,7 +338,7 @@
                 height: 65%;
                 position:absolute;
                 left:17.5%;
-                bottom:15%;
+                bottom:12.5%;
                 grid-template-columns: auto auto;
             }
 
@@ -375,23 +376,18 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
 					<div class="container">
-                        <svg id="titlea" viewbox="0 0 640 480">
-                            <path d="M0,0 l640,0 0,480 -640,0 0,-480" stroke="red" stroke-width="10" fill="none"></path>
+                        <svg id="titlea" viewbox="0 0 640 480" onclick="gotoPage(2)">
+                        
                         </svg> 
-                        <svg id="titleb" viewbox="0 0 640 480">
-                            <path d="M0,0 l640,0 0,480 -640,0 0,-480" stroke="red" stroke-width="10" fill="none"></path>
+                        <svg id="titleb" viewbox="0 0 640 480" onclick="gotoPage(3)">
+                        
                         </svg> 
-                        <svg id="titlec" viewbox="0 0 640 480">
-                            <path d="M0,0 l640,0 0,480 -640,0 0,-480" stroke="red" stroke-width="10" fill="none"></path>
+                        <svg id="titlec" viewbox="0 0 640 480" onclick="gotoPage(4)">
+                        
                         </svg> 
-                        <svg id="titled" viewbox="0 0 640 480">
-                            <path d="M0,0 l640,0 0,480 -640,0 0,-480" stroke="red" stroke-width="10" fill="none"></path>
+                        <svg id="titled" viewbox="0 0 640 480" onclick="gotoPage(5)">
+                            
                         </svg>
-                    </div>
-                    <div class="nav"> 
-                
-                        <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
-                
                     </div>
 					
 					<div id="anim1">
@@ -403,21 +399,67 @@
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p2" > 
+                    <style>
+                        .heater {
+                            fill:#777;
+                            stroke:#000;
+                            stroke-width: 1px;
+                        }
+                        /* .heater {
+                            fill: #ea0d01;
+                            stroke: #f00;
+                            stroke-width: 1px;
+                        } */
+                        .sheet {
+                            fill: none;
+                            stroke: #ee4;
+                            stroke-width: 2px;
+                        }
+                        .aparatus {
+                            fill: forestgreen;
+                            stroke: #000;
+                            stroke-width: 1px;
+                        }
+                        .gap {
+                            fill:forestgreen;
+                            fill-opacity:0.3;
+                            stroke:#000;
+                            stroke-width:0.5px;
+                        }
+                        .clamp {
+                            fill:royalblue;
+                            stroke:#000;
+                            stroke-width:1px;
+                        }
+                        .support {
+                            fill:firebrick;
+                            stroke:#000;
+                            stroke-width:1px;
+                        }
+                    </style>
                     <svg id="vacuum">
-                        <g id="heater">
-                            <path id="heater_vac" d="M220,50h200v50h-200z" />
+                        <g class="heater">
+                            <path id="heater_vac" d="M230,50h180v25h-180z"/>
                         </g>
-                        <g id="sheet_vac">
-
+                        <g class="sheet">
+                            <path id="sheet_vac" d="M200,85h25h25h19h102h19h25h25"/>
+                            <path id="sheet_vac_morph" d="M200,85h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                         </g>
-                        <g id="aparatus_vac">
-
+                        <g class="aparatus">
+                            <path id="aparatus_vac" d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
+                            <path id="aparatus_vac2" d="M175,95h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z  M269,179.75q56,-30.010 102,0v15.25h-102z  M379.66,179.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
                         </g>
-                        <g id="clamp_vac">
-
+                        <g class="gap">
+                            <path id="gap_vac" d="M260.34,179.75a15,15 0,0,0 8.66,0v15.25h-8.66zM371.40,179.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
                         </g>
-                        <g id="support_vac">
-
+                        <g class="clamp">
+                            <path id="clamp_vac1" d="M200,120h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
+                            <path id="clamp_vac2" d="M440,120h25v10s10,20 20,0v-90s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v110s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_vac3" d="M200,120h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                            <path id="clamp_vac4" d="M440,120h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                        </g>
+                        <g class="support">
+                            <path id="support_vac" d="M200,120h20l25,75h15.34v20h-60.34zM269,195h102v20h-102zM440,120h-20l-25,75h-15.34v20h60.34z"/>
                         </g>
                     </svg>
                     <div class="nav"> 
