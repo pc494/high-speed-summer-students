@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Electric arc Furnace</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		
+
+		<link rel="stylesheet" href="titlecard.css"/>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+		
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				background-color: pink;
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
+
+			/* page id */
+			#p1 {
+				display:block;				
+			}
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+
+			/*  Other */
+			p,text {
+				font-family: sans-serif;
+			}
+
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+
+					<p id="titlecard"> Electric Arc Furnace (EAF) </p>
+					<div class="nav" style="top:280px"> 
+						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					</div>
+					
+				</div>
+				<!-- end payj - p1 -->
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
+
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+					
+					<svg id="svg" width="640" height="350">	
+
+						<g>
+							<path class="motion_paths" id="pour_path" style="fill:none; stroke-width:8px; stroke-linecap:round" d=""></path>
+							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
+						</g>
+
+					</svg>
+
+					<style>
+						.motion_paths{
+							visibility: hidden;
+							opacity: 0;
+						}
+					</style>
+					
+					<p id="caption"></p>
+					
+					<div class="nav"> 
+						<p class="dbutton" id="back" onclick="back()"></p>
+						<p class="dbutton" id="next" onclick="next()"></p>
+					</div>
+
+					<script>
+
+						var prv = 0
+						var nxt = 1
+						var curr = 1
+
+						function pour(timeline, start, end, colour, dur){
+
+							var pour_path = document.querySelector("#pour_path")
+							var neg_path = document.querySelector("#neg_path")
+
+							var upper_point = {x:start.split(",")[0], y:start.split(",")[1]}
+							var lower_point = {x:end.split(",")[0], y:end.split(",")[1]}
+							var mid_point = {}
+							mid_point.x = lower_point.x
+							mid_point.y = Number(upper_point.y) + Number(0.25*(lower_point.y - upper_point.y))
+							var d_string = `M${upper_point.x},${upper_point.y} Q${mid_point.x},${mid_point.y} ${lower_point.x},${lower_point.y}`
+
+							function set_d() {
+								pour_path.setAttribute("d", d_string)
+								neg_path.setAttribute("d", d_string)
+							}
+
+							timeline.set([pour_path, neg_path], {opacity:1, onComplete:set_d})
+							timeline.set(pour_path, {stroke:colour})
+							timeline.set(pour_path, {visibility: "visible"})
+							var phantom1 = {progress:0}
+							function start_pour_update(){
+								pour_path.style.strokeDasharray = [phantom1.progress*pour_path.getTotalLength(), pour_path.getTotalLength()].join(" ")
+							}
+							timeline.to(phantom1, 0.5, {progress:1, onUpdate:start_pour_update})
+							
+							timeline.set(neg_path, {visibility: "visible"}, ">+"+dur)
+							var phantom2 = {progress:0}
+							function end_pour_update(){
+								neg_path.style.strokeDasharray = [phantom2.progress*neg_path.getTotalLength(), neg_path.getTotalLength()].join(" ")
+							}
+							timeline.to(phantom2, 0.5, {progress:1, onUpdate:end_pour_update})
+
+							timeline.set([pour_path, neg_path], {visibility: "hidden"})
+	
+						}
+
+						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.0001, ease:"none"}})
+
+						t.addLabel("t0",0)
+						.set("#caption", {innerHTML: "EAF is typically used for recycling or as the succeeding step to DRI."})
+
+						function restart(){
+							gotoPage(1)
+							prv = 0
+							nxt = 1
+							curr = move(prv, nxt)
+						}
+
+						function next(){
+							prv = curr
+							nxt = Number(curr)+1
+							curr = move(prv, nxt)
+						}
+
+						function back(){
+							prv = curr
+							nxt = Number(curr)-1
+							curr = move(prv,nxt, "c")
+						}
+
+						function move(prv, nxt, dir="f"){
+
+							if (dir=="f"){
+								t.tweenFromTo("t"+prv, "t"+nxt)
+							}
+							else if (dir=="c"){
+								t.seek("t"+nxt)
+							}
+
+							curr = nxt
+							console.log(prv, curr, nxt)
+							console.log("current label: "+t.currentLabel())
+
+							if(curr == 1){
+								document.getElementById("back").style.visibility = "hidden"
+							}
+							else if(curr == 10){
+								document.getElementById("next").style.visibility = "hidden"
+							}
+							else {
+								document.getElementById("back").style.visibility = "visible"
+								document.getElementById("next").style.visibility = "visible"
+							}
+
+							return(curr)
+
+						}
+
+						var maxstep = Object.keys(t.labels).length 
+						var speed = 3
+						function move(prv, nxt, dir="f") {
+
+							gsap.set("#back, #next", {visibility: "hidden"})
+
+							if (dir=="f") {
+								t.timeScale(speed).tweenFromTo("t" + prv, "t" + nxt); 
+								var dur = Math.abs((t.labels["t"+nxt] - t.labels["t"+prv])/speed);
+							} else {
+								t.seek("t"+nxt); 
+								var dur = 0;
+							}
+
+							curr = nxt;
+							console.log(prv, curr, nxt);
+							
+							if (curr > 1) {
+								gsap.set("#back", {visibility: "visible", delay:dur});
+								}
+							if (curr < maxstep) {
+								gsap.set("#next", {visibility: "visible", delay:dur});
+							}
+
+							return curr;
+						}
+
+						move(0, 1);
+
+					</script>
+					
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>
