@@ -146,11 +146,10 @@
 			}
 
 			/* page id */
-			/* CAHNGE THIS!!! */
-			#p2 {
+			#p1 {
 				display:block;				
 			}
-			#p1, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
 				display:none;				
 			}
 
@@ -235,12 +234,12 @@
 									l145,0 l0,312 l-420,0 l0,-305 l0,-50 l150,0 l20,0"></path>
 
 							<path id="furnace_guts_top" style="fill:white"
-								d="M430,120 l0,10 l11,22 l159,0 l0,-32 l0,-200 l-169,0 l-20,0 l0,200 Z"></path>
+								d="M430,120 l0,10 l11,22 l159,0 l0,-32 l0,-200 l-180,0 l0,200 Z"></path>
 
 							<path id="furnace_guts_plug" style="fill:white"
 								d="M451,150 l120,0 l0,15 l-120,0"></path>
 
-							<path id="furnace_walls" style="fill:dimgrey; stroke:none; opacity:1"
+							<path id="furnace_walls" style="fill:dimgrey; stroke:none"
 								d="M360,120 l0,10 l-20,40 l0,60 l20,40 
 									a60,40 0 0 0 60,0 
 									l20,-40 l0,-60 l16,-8 l4,8 
@@ -278,14 +277,6 @@
 							<rect id="lance_solid" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
 								x="385" y="0" rx="5" width="10" height="140"></rect>
 						</g>
-						
-						<g id="guidelines" style="stroke:grey; opacity:0.4">
-							<line x1="160" x2="160" y1="0" y2="350"></line>
-							<line x1="320" x2="320" y1="0" y2="350"></line>
-							<line x1="480" x2="480" y1="0" y2="350"></line>
-							<line x1="0" x2="640" y1="175" y2="175"></line>
-							<line x1="0" x2="640" y1="350" y2="350"></line>
-						</g>
 
 					</svg>
 
@@ -311,8 +302,8 @@
 
 						function pour(timeline, start, end, colour, dur){
 
-							var pour_path = document.getElementById("pour_path")
-							var neg_path = document.getElementById("neg_path")
+							var pour_path = document.querySelector("#pour_path")
+							var neg_path = document.querySelector("#neg_path")
 
 							var upper_point = {x:start.split(",")[0], y:start.split(",")[1]}
 							var lower_point = {x:end.split(",")[0], y:end.split(",")[1]}
@@ -326,23 +317,23 @@
 								neg_path.setAttribute("d", d_string)
 							}
 
-							timeline.set(".motion_paths", {opacity:1, onComplete:set_d})
-							timeline.set("#pour_path", {stroke:colour})
-							timeline.set("#pour_path", {visibility: "visible"})
+							timeline.set([pour_path, neg_path], {opacity:1, onComplete:set_d})
+							timeline.set(pour_path, {stroke:colour})
+							timeline.set(pour_path, {visibility: "visible"})
 							var phantom1 = {progress:0}
 							function start_pour_update(){
 								pour_path.style.strokeDasharray = [phantom1.progress*pour_path.getTotalLength(), pour_path.getTotalLength()].join(" ")
 							}
 							timeline.to(phantom1, 0.5, {progress:1, onUpdate:start_pour_update})
 							
-							timeline.set("#neg_path", {visibility: "visible"}, ">+"+dur)
+							timeline.set(neg_path, {visibility: "visible"}, ">+"+dur)
 							var phantom2 = {progress:0}
 							function end_pour_update(){
 								neg_path.style.strokeDasharray = [phantom2.progress*neg_path.getTotalLength(), neg_path.getTotalLength()].join(" ")
 							}
 							timeline.to(phantom2, 0.5, {progress:1, onUpdate:end_pour_update})
 
-							timeline.set(".motion_paths", {visibility: "hidden"})
+							timeline.set([pour_path, neg_path], {visibility: "hidden"})
 	
 						}
 
@@ -350,15 +341,13 @@
 
 						t.addLabel("t0",0)
 						.set("#caption", {innerHTML: "BOS typically follows immediately after the blast furnace process; <br> the two facilities are physically situated nearby each other."})
-						.set("#furnace", {visibility:"visible", opacity:1})
-						.set(".BOS", {x:-70})
+						.set("#furnace", {visibility:"visible", opacity:1, x:-70})
 
 						// tilt + add scrap
 						t.addLabel("t1", ">")
 						.set("#caption", {innerHTML: "The amount of <strong>cold scrap</strong> added to the BOF is carefully calculated to control product composition and furnace temperature."})
 						.set("#scrap_adder", {visibility:"visible", x:100, y:120})
 						.set("#scrap", {visibility:"visible", y:30})
-						.to(".BOS", 1,{x:0})
 						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%", x:-30, y:20}, "<")
 						.to("#scrap_adder", 1, {opacity:1, x:210, y:120}, "<")
 						.to("#scrap_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
@@ -383,7 +372,6 @@
 						t.addLabel("t3", ">")
 						.set("#caption", {innerHTML: "<strong>Fluxes</strong> are added to for slag formation. <br> Limestone or dolomite is typically used for this."})
 						.set("#flux_adder", {visibility:"visible", x:100, y:120})
-						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
 						.to("#flux_adder", 1, {opacity:1, x:210, y:120}, "<")
 						.to("#flux_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
 						pour(t, "270,135", "330,270", "whitesmoke", 0)
@@ -413,7 +401,7 @@
 						t.addLabel("t6", ">")
 						.set("#caption", {innerHTML: "Impurities oxidises and form a <strong>slag</strong>, which forms an emulsion with air. <br> The foamed slag is insulating, improving thermal efficiency of the process."})
 						.set("#emulsion", {visibility:"visible", y:20})
-						.to("#emulsion", 2, {y:0, opacity:0.7})
+						.to("#emulsion", 2, {y:0, opacity:1})
 						.to("#slag", 2, {y:5, opacity:0}, "<")
 						.to("#iron", 2, {attr:{d:"M300,235 Q350,235 360,225 C370,220 370,240 390,240 C410,240 410,220 420,225 Q430,235 480,235 L480,300 l-180,0 Z"}}, "<")
 						.set("#slag", {visibility:"hidden", opacity:0})
@@ -422,24 +410,29 @@
 						.set("#caption", {innerHTML: "After the blowing stage, the oxygen flow is turned off and the lance is retrieved."})
 						.to("#lance_blur", 0.5, {filter:"blur(0px)", strokeWidth:"0px"})
 						.to("#emission", 2, {y:40, opacity:0}, "<")
-						.to("#emulsion", 2, {y:40, opacity:1, fill:"tan"}, "<")
-						.to("#iron", 1.5, {attr:{d:"M300,230 Q340,230 360,230 C370,230 370,230 390,230 C410,230 410,230 420,230 Q440,230 480,230 L480,300 l-180,0 Z"}}, "<")
+						.to("#emulsion", 2, {y:45}, "<")
+						.to("#iron", 1.5, {attr:{d:"M300,230 Q340,230 360,230 C370,230 370,230 390,230 C410,230 410,230 440,230 Q500,230 540,270 L540,300 l-240,0 Z"}}, "<")
+						.to("#iron", 0.5, {stroke:"burlywood", strokeWidth:"10px", vectorEffect:"non-scaling-stroke"}, ">")
 						.to("#lance", 1, {y:10, opacity:0}, ">")
-						.set("#emission", {visibility: "hidden"})
+						.set("#emission, #emulsion", {visibility: "hidden", opacity:0})
 
 						t.addLabel("t8", ">")
-						.set("#caption", {innerHTML: "The product steel is tapped out from the side. <br> This is often transferred in its molten state to continuos casting facility nearby."})
+						.set("#caption", {innerHTML: "The product steel is tapped out from the side. <br> This is often transferred immeidately in its molten state to continuous casting."})
 						.to("#furnace", 1, {rotate:85, transformOrigin:"50% 50%"}, "<")
-						.to("#iron", 1, {y:-3}, "<")
-						.to("#emulsion", 1, {y:42, height:10}, "<")
-						.to("#steel_plug", 0.5, {opacity:0})
+						.to("#iron", 1, {y:-3, strokeWidth:5}, "<")
+						.to("#steel_plug", 0.5, {opacity:0}, ">+0.1")
 						.to("#furnace_guts_plug", 2, {x:100}, "<")
 						.to("#iron", 2, {y:10, scaleY:10}, "<")
-						.to("#emulsion", 2, {y:65, width:120}, "<")
+						.set("#furnace_guts_plug", {x:0, opacity:0})
+						.to("#furnace_guts_plug, #steel_plug", 0.5, {opacity:1})
+
+						t.addLabel("t9", ">")
+						.set("#caption", {innerHTML: "Any remanent content is poured out, and the furnace is readied for another round of steelmaking."})
+						.to("#furnace", 1, {rotate:130})
+						.to("#iron", 1, {rotate:30, transformOrigin:"50% 0%", y:30}, "<")
+						.to("#iron", 0.5, {opacity:0}, ">-0.5")
+						.to("#furnace", 1.5, {rotate:0}, ">+0.5")
 						
-						
-						// tilt + tap out steel
-						// pour out slag
 						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
 
 						function restart(){
@@ -477,7 +470,7 @@
 							if(curr == 1){
 								document.getElementById("back").style.visibility = "hidden"
 							}
-							else if(curr == 12){
+							else if(curr == 10){
 								document.getElementById("next").style.visibility = "hidden"
 							}
 							else {
