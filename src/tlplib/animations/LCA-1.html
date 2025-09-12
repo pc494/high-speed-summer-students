@@ -860,18 +860,18 @@
             }
 
             var maxstep = Object.keys(t.labels).length
-            
+            var speed = 1.5
+
             function move(prv, nxt) {
 
               gsap.set("#back, #next", {visibility: "hidden"})
-
-              var speed = 1.5
+              
               t.timeScale(speed).tweenFromTo("t" + prv, "t" + nxt); 
               var dur = Math.abs((t.labels["t"+nxt] - t.labels["t"+prv])/speed);
 
               curr = nxt;
               console.log(prv, curr, nxt);
-              
+
               if (curr > 1) {
                   gsap.set("#back", {visibility: "visible", delay:dur});
                 }
