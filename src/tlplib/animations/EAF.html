@@ -217,12 +217,36 @@
 							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
 						</g>
 
+						<g id="bin">
+							<path class="bin" id="bin_top" d="M100,240 a120,80 0 0 1 120,0 l0,70 l-15,0 l0,-60 a120,80 0 0 0 -90,0 l0,60 l-15,0 Z"></path>
+
+							<rect class="bin" id="bin_left" x="100" y="310" width="60" height="10"></rect>
+							<rect class="bin" id="bin_right" x="160" y="310" width="60" height="10"></rect>
+
+							<path class="pipe" id="bin_pipe" d="M220,260 l10,0"></path>
+						</g>
+
+						<g style="fill:blue; opacity:0.2"> 
+							<rect x="100" y="240" width="120" height="80"></rect>
+							<rect x="320" y="160" width="240" height="160"></rect>
+						</g>
+
 					</svg>
 
 					<style>
+						.bin {
+							fill:dimgrey;
+							stroke: none
+						}
+
 						.motion_paths{
 							visibility: hidden;
 							opacity: 0;
+						}
+						
+						path {
+							fill:none;
+							stroke:red;
 						}
 					</style>
 					
