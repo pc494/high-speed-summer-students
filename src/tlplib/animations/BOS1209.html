@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Basic Oxygen Furnace</title>
+	<head>
+		<meta charset="utf-8" />
+		<title>Basic Oxygen Furnace</title>
 
 		<!-- Greensock library  -->
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -17,169 +17,197 @@
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
 		
 
-    <script>
-      gsap.registerPlugin(MotionPathPlugin);
-    </script>
+		<link rel="stylesheet" href="titlecard.css"/>
 
-    <link rel="stylesheet" href="titlecard.css" />
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
 
-    <script>
-      // hide and show CC licence words
-      function showTxt() {
-        document.getElementById("para").style.visibility = "visible";
-      } // end showTxt
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+		
+		<style>
 
-      function hideTxt() {
-        document.getElementById("para").style.visibility = "hidden";
-      } // end hideTxt
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
 
-      // page navigation
-      function gotoPage(p) {
-        // replace next fn gEBCN as fails in IE<9
-        var x = document.getElementsByClassName("payj");
-        var len = x.length;
-        for (var i = 1; i < len + 1; i++) {
-          var ppp = eval("p" + i);
-          document.getElementById("p" + i).style.display = "none";
-          if (i == p) {
-            document.getElementById("p" + i).style.display = "block";
-          }
-        }
-      }
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				background-color: pink;
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
 
-      // sets the dimensions of kanvas and positions the bottom logos
-      function setAnimDimensions(w, h) {
-        //w = animation width
-        //h = animation height
-        document.getElementById("kanvas").style.height = String(h) + "px";
-        document.getElementById("kanvas").style.width = String(w) + "px";
-        document.getElementById("kanvas").style.margin = "0px auto";
-        document.getElementById("kanvas").style.border = "2px solid blue";
-        // position footers
-        var divcc = document.getElementById("cc");
-        var divpara = document.getElementById("para");
-        divcc.style.position = "absolute";
-        divpara.style.position = "absolute";
-        divcc.style.top = h - 40 + "px";
-        divpara.style.top = h - 85 + "px";
-      }
-    </script>
+			.dbutton:hover {
+				background-position: center; 
+			}
 
-    <style>
-      #container {
-        position: relative;
-      }
-      #kanvas {
-        position: relative;
-      }
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
 
-      /* cc information banner & pop-up */
-      #cc {
-        position: absolute;
-        width: 100%;
-        /*background-color:#cc0000;  */
-      }
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
 
-      #para {
-        position: absolute;
-        padding: 0px;
-        font-family: Arial;
-        font-weight: bold;
-        font-size: 11px;
-        color: blue;
-        border-style: solid;
-        border-color: #000000;
-        border-width: 1px;
-        visibility: hidden;
-        z-index: 200;
-        background-color: white;
-      }
+			/* page id */
+			/* CAHNGE THIS!!! */
+			#p2 {
+				display:block;				
+			}
+			#p1, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
 
-      /* DOiTPoMS buttons */
-      .dbutton {
-        background-color: pink;
-        cursor: pointer;
-        height: 25px;
-        margin: 5px;
-        background-position: bottom;
-        display: inline-block; /* allows on sameline */
-      }
+			/*  Other */
+			p,text {
+				font-family: sans-serif;
+			}
 
-      .dbutton:hover {
-        background-position: center;
-      }
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
 
-      #back,
-      #back2,
-      #back3,
-      #back4,
-      #back5,
-      #back6,
-      #back7 {
-        width: 79px;
-        background-image: url("../../../images/back.png");
-      }
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
 
-      #next,
-      #next2,
-      #next3,
-      #next4,
-      #next5,
-      #next6,
-      #next7 {
-        width: 75px;
-        background-image: url("../../../images/next.png");
-      }
+				<script>
+					setAnimDimensions(640,480);
+				</script>
 
-      #restart,
-      #restart2,
-      #restart3,
-      #restart5,
-      #restart6,
-      #restart7 {
-        width: 99px;
-        background-image: url("../../../images/restart.png");
-      }
-      #reset {
-        width: 84px;
-        background-image: url("../../../images/reset.png");
-      }
-      #start {
-        width: 76px;
-        background-image: url("../../../images/start.png");
-      }
-      #pause {
-        width: 83px;
-        background-image: url("../../../images/pause.png");
-      }
-      #continue {
-        width: 118px;
-        background-image: url("../../../images/continue.png");
-      }
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
 
-      .nav {
-        position: absolute;
-        left: 170px;
-        top: 420px;
-        width: 300px;
-        text-align: center;
-      }
+					<p id="titlecard"> Basic Oxygen Steelmaking (BOS) </p>
+					<div class="nav" style="top:280px"> 
+						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					</div>
+					
+				</div>
+				<!-- end payj - p1 -->
 
-      /* page id */
-      /* CAHNGE THIS!!! */
-      #p2 {
-        display: block;
-      }
-      #p1,
-      #p3,
-      #p4,
-      #p5,
-      #p6,
-      #p7,
-      #p8,
-      #p9 {
-        display: none;
-      }
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
 
 					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
 					
@@ -275,22 +303,11 @@
 						<p class="dbutton" id="next" onclick="next()"></p>
 					</div>
 
-          <svg width="640" height="350">
-            <g id="guidelines">
-              <line x1="160" x2="160" y1="0" y2="350"></line>
-              <line x1="320" x2="320" y1="0" y2="350"></line>
-              <line x1="480" x2="480" y1="0" y2="350"></line>
-              <line x1="0" x2="640" y1="175" y2="175"></line>
-              <line x1="0" x2="640" y1="350" y2="350"></line>
-            </g>
-          </svg>
+					<script>
 
-          <style>
-            #guidelines {
-              stroke: grey;
-              opacity: 0.3;
-            }
-          </style>
+						var prv = 0
+						var nxt = 1
+						var curr = 1
 
 						function pour(timeline, start, end, colour, dur){
 
@@ -425,7 +442,7 @@
 						// pour out slag
 						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
 
-						move(4,5)
+						move(7,8)
 
 						function restart(){
 							gotoPage(1)
@@ -473,69 +490,14 @@
 							return(curr)
 
 						}
-            var t = gsap.timeline({
-              paused: true,
-              defaults: { duration: 0, delay: 0.001, ease: "none" },
-            });
-            // tilt + add scrap
-            // add molten iron
-            // add fluxes
-            // back to upright + oxygen lance
-            // blasts oxygen
-            // slag emulsifies
-            // tilt + tap out steel
-            // pour out slag
-            // https://www.youtube.com/watch?v=aXqB9iq1a4Q
+					</script>
+					
+				</div>
+				<!-- end payj - p2 -->
 
-            move(0, 1);
+			</div> <!-- kanvas -->
 
-            function restart() {
-              gotoPage(1);
-              prv = 0;
-              nxt = 1;
-              curr = move(prv, nxt);
-            }
+		</div> <!-- container -->
 
-            function next() {
-              prv = curr;
-              nxt = Number(curr) + 1;
-              curr = move(prv, nxt);
-            }
-
-            function back() {
-              prv = curr;
-              nxt = Number(curr) - 1;
-              curr = move(prv, nxt, "c");
-            }
-
-            function move(prv, nxt, dir = "f") {
-              if (dir == "f") {
-                t.tweenFromTo("t" + prv, "t" + nxt);
-              } else if (dir == "c") {
-                t.seek("t" + nxt);
-              }
-
-              curr = nxt;
-              console.log(prv, curr, nxt);
-              console.log("current label: " + t.currentLabel());
-
-              if (curr == 1) {
-                document.getElementById("back").style.visibility = "hidden";
-              } else if (curr == 12) {
-                document.getElementById("next").style.visibility = "hidden";
-              } else {
-                document.getElementById("back").style.visibility = "visible";
-                document.getElementById("next").style.visibility = "visible";
-              }
-
-              return curr;
-            }
-          </script>
-        </div>
-        <!-- end payj - p2 -->
-      </div>
-      <!-- kanvas -->
-    </div>
-    <!-- container -->
-  </body>
+	</body>
 </html>
