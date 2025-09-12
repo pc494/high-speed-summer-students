@@ -27,7 +27,6 @@
     </script>
 
     <link rel="stylesheet" href="titlecard.css" />
-    <link rel="stylesheet" href="LCA-1.css" />
 
     <script>
       // hide and show CC licence words
@@ -110,13 +109,14 @@
         background-position: bottom;
         display: inline-block; /* allows on sameline */
         z-index: 300;
+        background-color: pink;
       }
 
       .dbutton:hover {
         background-position: center;
       }
 
-      #backbutton,
+      #back,
       #back2,
       #back3,
       #back4,
@@ -127,7 +127,7 @@
         background-image: url("../../../images/back.png");
       }
 
-      #nextbutton,
+      #next,
       #next2,
       #next3,
       #next4,
@@ -612,8 +612,8 @@
           <div class="panel">
             <p id="caption">Caption</p>
             <div class="navbar">
-              <p class="dbutton" id="backbutton" onclick="back()"></p>
-              <p class="dbutton" id="nextbutton" onclick="next()"></p>
+              <p class="dbutton" id="back" onclick="back()"></p>
+              <p class="dbutton" id="next" onclick="next()"></p>
             </div>
           </div>
 
@@ -700,7 +700,7 @@
                   "Each step of the process has associated resource consumptions and emissions",
               })
               .to("#sysB_group", {
-                duration: 1.5,
+                duration: 1,
                 opacity: 0.15,
                 scale: 2,
                 translateX: -580,
@@ -708,7 +708,7 @@
               })
               .to(
                 "#sysA_group",
-                { duration: 1.5, scale: 2, translateY: 45, translateX: -580 },
+                { duration: 1, scale: 2, translateY: 45, translateX: -580 },
                 "<",
               )
               .to("#sysA-bound", {
@@ -719,7 +719,7 @@
               })
               .to(
                 "#sysA_stepbox, #sysA_manufacture, #sysA_input, #sysA_output",
-                { duration: 1.5, opacity: 1 },
+                { duration: 1, opacity: 1 },
                 "<-0.5",
               )
 
@@ -840,8 +840,6 @@
               )
               .to("#sysB-bound", { delay: 1, opacity: 1 }, ">-0.5");
 
-            move(0, 1);
-
             function restart() {
               gotoPage(1);
               prv = 0;
@@ -861,26 +859,31 @@
               curr = move(prv, nxt);
             }
 
+            var maxstep = Object.keys(t.labels).length
+            var speed = 1.5
+
             function move(prv, nxt) {
-              t.tweenFromTo("t" + prv, "t" + nxt);
+
+              gsap.set("#back, #next", {visibility: "hidden"})
+              
+              t.timeScale(speed).tweenFromTo("t" + prv, "t" + nxt); 
+              var dur = Math.abs((t.labels["t"+nxt] - t.labels["t"+prv])/speed);
+
               curr = nxt;
               console.log(prv, curr, nxt);
 
-              if (curr == 1) {
-                document.getElementById("backbutton").style.visibility =
-                  "hidden";
-              } else if (curr == 12) {
-                document.getElementById("nextbutton").style.visibility =
-                  "hidden";
-              } else {
-                document.getElementById("backbutton").style.visibility =
-                  "visible";
-                document.getElementById("nextbutton").style.visibility =
-                  "visible";
+              if (curr > 1) {
+                  gsap.set("#back", {visibility: "visible", delay:dur});
+                }
+              if (curr < maxstep) {
+                gsap.set("#next", {visibility: "visible", delay:dur});
               }
 
               return curr;
+
             }
+
+            move(0, 1);
           </script>
         </div>
         <!-- end payj - p2 -->
