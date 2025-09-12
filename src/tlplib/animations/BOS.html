@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Basic Oxygen Furnace</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		
+
+		<link rel="stylesheet" href="titlecard.css"/>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+		
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				background-color: pink;
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
+
+			/* page id */
+			/* CAHNGE THIS!!! */
+			#p2 {
+				display:block;				
+			}
+			#p1, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+
+			/*  Other */
+			p,text {
+				font-family: sans-serif;
+			}
+
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+
+					<p id="titlecard"> Basic Oxygen Steelmaking (BOS) </p>
+					<div class="nav" style="top:280px"> 
+						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					</div>
+					
+				</div>
+				<!-- end payj - p1 -->
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
+
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+					
+					<svg id="svg" width="640" height="350">	
+
+						<g>
+							<path class="motion_paths" id="pour_path" style="fill:none; stroke-width:8px; stroke-linecap:round" d=""></path>
+							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
+						</g>
+
+						<path class="BOS" id="emission" style="fill:lightgrey; stroke:none; filter:blur(20px)"
+							d="M300,190 Q340,190 360,180 C370,175 370,200 390,200 C410,200 410,175 420,180 Q430,190 480,190 L480,300 l-180,0 Z"></path>
+						<rect class="BOS" id="emulsion" style="fill:burlywood; stroke:none; filter:blur(0px)"
+							x="300" y="180" width="180" height="300"></rect>
+						<path class="BOS" id="slag" style="fill:orange; stroke:none"
+							d="M300,225 Q340,225 355,220 C375,210 365,245 390,245 C415,245 405,210 425,220 Q440,225 480,225 L480,300 l-180,0 Z"></path>
+						<path class="BOS" id="iron" style="fill:gold; stroke:none"
+							d="M300,230 Q340,230 360,230 C370,230 370,230 390,230 C410,230 410,230 420,230 Q440,230 480,230 L480,300 l-180,0 Z"></path>
+						<path class="BOS" id="scrap" style="fill:slategrey; stroke:none"
+							d="M300,280 Q390,240 480,280 L480,300 l-180,0 Z"></path>
+
+						<g class="BOS" id="furnace">
+							<path id="furnace_guts_bottom" style="fill:white"
+								d="M350,120 l0,10 l-20,40 l0,65 l25,50 l70,0 l25,-50 l0,-67, l5,-5
+									l145,0 l0,312 l-420,0 l0,-305 l0,-50 l150,0 l20,0"></path>
+
+							<path id="furnace_guts_top" style="fill:white"
+								d="M430,120 l0,10 l11,22 l159,0 l0,-32 l0,-200 l-169,0 l-20,0 l0,200 Z"></path>
+
+							<path id="furnace_guts_plug" style="fill:white"
+								d="M451,150 l120,0 l0,15 l-120,0"></path>
+
+							<path id="furnace_walls" style="fill:dimgrey; stroke:none; opacity:1"
+								d="M360,120 l0,10 l-20,40 l0,60 l20,40 
+									a60,40 0 0 0 60,0 
+									l20,-40 l0,-60 l16,-8 l4,8 
+									l0,70 l-27,54 l-13,0 
+									a60,40 0 0 1 -60,0
+									l-13,0 l-27,-54 l0,-70 l25,-50 l15,0 
+									m60,0 l0,10 l15,30 l16,-8 l-16,-32 l-15,0"></path>
+
+							<path id="steel_plug" style="fill:darkgrey; stroke:none"
+								d="M435,160 l16,-8 l-2,-4 l4,-2 l9,18 l-4,2 l-2,-4 l-16,8 l-5,-10"></path>
+						</g>
+
+						<g class="BOS" id="iron_adder">
+							<path id="iron_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,50 l40,0 l3,-30 l15,-30 l-6,-2 l-20,12 Z"></path>
+						</g>
+
+						<g class="BOS" id="flux_adder">
+							<path id="flux_ladle_content" style="fill:gainsboro; stroke:none"
+								d="M5,0 Q30,-20 55,0 "></path>
+							<path id="flux_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
+						</g>
+
+						<g class="BOS" id="scrap_adder">
+							<path id="scrap_ladle_content" style="fill:slategrey; stroke:none"
+								d="M5,5 Q30,-30 55,5 "></path>
+							<path id="scrap_ladle" style="fill:dimgrey; stroke:none"
+								d="M0,0 l5,30 l50,0 l5,-30 Z"></path>
+						</g>
+
+						<g class="BOS" id="lance">
+							<rect id="lance_blur" style="fill:none; stroke:cornflowerblue; stroke-width:1px; filter: blur(1px);"
+								x="385" y="0" rx="5" width="10" height="140"></rect>
+							<rect id="lance_solid" style="fill:lightsteelblue; stroke:white; stroke-width:2px; stroke-opacity: 0.6; opacity:0.8"
+								x="385" y="0" rx="5" width="10" height="140"></rect>
+						</g>
+						
+						<g id="guidelines" style="stroke:grey; opacity:0.4">
+							<line x1="160" x2="160" y1="0" y2="350"></line>
+							<line x1="320" x2="320" y1="0" y2="350"></line>
+							<line x1="480" x2="480" y1="0" y2="350"></line>
+							<line x1="0" x2="640" y1="175" y2="175"></line>
+							<line x1="0" x2="640" y1="350" y2="350"></line>
+						</g>
+
+					</svg>
+
+					<style>
+						.BOS, .motion_paths{
+							visibility: hidden;
+							opacity: 0;
+						}
+					</style>
+					
+					<p id="caption"></p>
+					
+					<div class="nav"> 
+						<p class="dbutton" id="back" onclick="back()"></p>
+						<p class="dbutton" id="next" onclick="next()"></p>
+					</div>
+
+					<script>
+
+						var prv = 0
+						var nxt = 1
+						var curr = 1
+
+						function pour(timeline, start, end, colour, dur){
+
+							var pour_path = document.getElementById("pour_path")
+							var neg_path = document.getElementById("neg_path")
+
+							var upper_point = {x:start.split(",")[0], y:start.split(",")[1]}
+							var lower_point = {x:end.split(",")[0], y:end.split(",")[1]}
+							var mid_point = {}
+							mid_point.x = lower_point.x
+							mid_point.y = Number(upper_point.y) + Number(0.25*(lower_point.y - upper_point.y))
+							var d_string = `M${upper_point.x},${upper_point.y} Q${mid_point.x},${mid_point.y} ${lower_point.x},${lower_point.y}`
+
+							function set_d() {
+								pour_path.setAttribute("d", d_string)
+								neg_path.setAttribute("d", d_string)
+							}
+
+							timeline.set(".motion_paths", {opacity:1, onComplete:set_d})
+							timeline.set("#pour_path", {stroke:colour})
+							timeline.set("#pour_path", {visibility: "visible"})
+							var phantom1 = {progress:0}
+							function start_pour_update(){
+								pour_path.style.strokeDasharray = [phantom1.progress*pour_path.getTotalLength(), pour_path.getTotalLength()].join(" ")
+							}
+							timeline.to(phantom1, 0.5, {progress:1, onUpdate:start_pour_update})
+							
+							timeline.set("#neg_path", {visibility: "visible"}, ">+"+dur)
+							var phantom2 = {progress:0}
+							function end_pour_update(){
+								neg_path.style.strokeDasharray = [phantom2.progress*neg_path.getTotalLength(), neg_path.getTotalLength()].join(" ")
+							}
+							timeline.to(phantom2, 0.5, {progress:1, onUpdate:end_pour_update})
+
+							timeline.set(".motion_paths", {visibility: "hidden"})
+	
+						}
+
+						var t=gsap.timeline({paused:true, defaults:{duration:0, delay:0.0001, ease:"none"}})
+
+						t.addLabel("t0",0)
+						.set("#caption", {innerHTML: "BOS typically follows immediately after the blast furnace process; <br> the two facilities are physically situated nearby each other."})
+						.set("#furnace", {visibility:"visible", opacity:1})
+						.set(".BOS", {x:-70})
+
+						// tilt + add scrap
+						t.addLabel("t1", ">")
+						.set("#caption", {innerHTML: "The amount of <strong>cold scrap</strong> added to the BOF is carefully calculated to control product composition and furnace temperature."})
+						.set("#scrap_adder", {visibility:"visible", x:100, y:120})
+						.set("#scrap", {visibility:"visible", y:30})
+						.to(".BOS", 1,{x:0})
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%", x:-30, y:20}, "<")
+						.to("#scrap_adder", 1, {opacity:1, x:210, y:120}, "<")
+						.to("#scrap_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
+						pour(t, "270,135", "330,270", "slategrey", 0.5)
+						t.to("#scrap", 2.5, {opacity:1, y:12}, ">-2")
+						.to("#scrap_ladle_content", 1, {opacity:0, y:10}, "<+1")
+						.to("#scrap_adder", 1, {x:100, y:120, opacity:0}, ">-0.5")
+						.set("#scrap_adder", {visibility:"hidden", opacity:0})
+
+						// add molten iron
+						t.addLabel("t2", ">")
+						.set("#caption", {innerHTML: "<strong>Molten iron</strong> from the blast furnace are transported to the BOF using refractory-lined ladles."})
+						.set("#iron_adder", {visibility:"visible", x:100, y:120})
+						.set("#iron", {visibility:"visible", y:30})
+						.to("#iron_adder", 1, {opacity:1, x:200, y:120}, "<")
+						.to("#iron_adder", 1, {rotate:80, transformOrigin:"70% 70%"})
+						pour(t, "270,150", "350,280", "gold", 1.5)
+						t.to("#iron", 2.5, {opacity:1, y:15}, ">-2")
+						.to("#iron_adder", 1, {x:100, y:120, opacity:0}, ">-0.5")
+						.set("#iron_adder", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t3", ">")
+						.set("#caption", {innerHTML: "<strong>Fluxes</strong> are added to for slag formation. <br> Limestone or dolomite is typically used for this."})
+						.set("#flux_adder", {visibility:"visible", x:100, y:120})
+						.to("#furnace", 1, {rotate:-45, transformOrigin:"50% 50%"})
+						.to("#flux_adder", 1, {opacity:1, x:210, y:120}, "<")
+						.to("#flux_adder", 1, {rotate:60, transformOrigin:"70% 70%"})
+						pour(t, "270,135", "330,270", "whitesmoke", 0)
+						t.to("#iron, #scrap", 2.5, {opacity:1, y:10}, ">-1")
+						.to("#flux_ladle_content", 0.5, {opacity:0, y:10}, "<")
+						.to("#flux_adder", 1, {x:100, y:120, opacity:0}, ">")
+						.set("#flux_adder", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t4", ">")
+						.set("#caption", {innerHTML: "The furnace is then set back upright, and an oxygen lance is lowered to within a few feet of the surface."})
+						.set("#lance", {visibility:"visible", y:10})
+						.to("#furnace", 1, {rotate:0, y:0, x:0})
+						.to(".BOS", 1, {x:-70}, "<")
+						.to("#iron, #scrap", 1, {y:0}, "<")
+						.to("#lance", 0.5, {y:75, opacity:1})
+
+						t.addLabel("t5",">")
+						.set("#caption", {innerHTML: "The lance blows <strong>high-purity oxygen</strong> at high speed and pressure; the oxygen ignites C dissolved in steel; CO&#x2082; forms as the oxidation product. <br> The reaction is <strong>exothermic</strong> and the heat released melts the scrap."})
+						.set("#slag", {visibility:"visible", y:10})
+						.set("#emission", {visibility:"visible", y:50})
+						.to("#lance_blur", 0.5, {filter:"blur(15px)", strokeWidth:"5px"})
+						.to("#iron", 0.5, {attr:{d:"M300,230 Q350,230 360,220 C370,215 370,240 390,240 C410,240 410,215 420,220 Q430,230 480,230 L480,300 l-180,0 Z"}}, "<")
+						.to("#scrap", 2, {y:10, attr:{d:"M300,220 Q390,320 480,220 L480,300 l-180,0 Z"}}, "<")
+						.to("#slag, #emission", 1, {y:0,opacity:1}, "<+1")
+						.set("#scrap", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t6", ">")
+						.set("#caption", {innerHTML: "Impurities oxidises and form a <strong>slag</strong>, which forms an emulsion with air. <br> The foamed slag is insulating, improving thermal efficiency of the process."})
+						.set("#emulsion", {visibility:"visible", y:20})
+						.to("#emulsion", 2, {y:0, opacity:0.7})
+						.to("#slag", 2, {y:5, opacity:0}, "<")
+						.to("#iron", 2, {attr:{d:"M300,235 Q350,235 360,225 C370,220 370,240 390,240 C410,240 410,220 420,225 Q430,235 480,235 L480,300 l-180,0 Z"}}, "<")
+						.set("#slag", {visibility:"hidden", opacity:0})
+
+						t.addLabel("t7", ">")
+						.set("#caption", {innerHTML: "After the blowing stage, the oxygen flow is turned off and the lance is retrieved."})
+						.to("#lance_blur", 0.5, {filter:"blur(0px)", strokeWidth:"0px"})
+						.to("#emission", 2, {y:40, opacity:0}, "<")
+						.to("#emulsion", 2, {y:40, opacity:1, fill:"tan"}, "<")
+						.to("#iron", 1.5, {attr:{d:"M300,230 Q340,230 360,230 C370,230 370,230 390,230 C410,230 410,230 420,230 Q440,230 480,230 L480,300 l-180,0 Z"}}, "<")
+						.to("#lance", 1, {y:10, opacity:0}, ">")
+						.set("#emission", {visibility: "hidden"})
+
+						t.addLabel("t8", ">")
+						.set("#caption", {innerHTML: "The product steel is tapped out from the side. <br> This is often transferred in its molten state to continuos casting facility nearby."})
+						.to("#furnace", 1, {rotate:85, transformOrigin:"50% 50%"}, "<")
+						.to("#iron", 1, {y:-3}, "<")
+						.to("#emulsion", 1, {y:42, height:10}, "<")
+						.to("#steel_plug", 0.5, {opacity:0})
+						.to("#furnace_guts_plug", 2, {x:100}, "<")
+						.to("#iron", 2, {y:10, scaleY:10}, "<")
+						.to("#emulsion", 2, {y:65, width:120}, "<")
+						
+						
+						// tilt + tap out steel
+						// pour out slag
+						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
+
+						move(7,8)
+
+						function restart(){
+							gotoPage(1)
+							prv = 0
+							nxt = 1
+							curr = move(prv, nxt)
+						}
+
+						function next(){
+							prv = curr
+							nxt = Number(curr)+1
+							curr = move(prv, nxt)
+						}
+
+						function back(){
+							prv = curr
+							nxt = Number(curr)-1
+							curr = move(prv,nxt, "c")
+						}
+
+						function move(prv, nxt, dir="f"){
+
+							if (dir=="f"){
+								t.tweenFromTo("t"+prv, "t"+nxt)
+							}
+							else if (dir=="c"){
+								t.seek("t"+nxt)
+							}
+
+							curr = nxt
+							console.log(prv, curr, nxt)
+							console.log("current label: "+t.currentLabel())
+
+							if(curr == 1){
+								document.getElementById("back").style.visibility = "hidden"
+							}
+							else if(curr == 12){
+								document.getElementById("next").style.visibility = "hidden"
+							}
+							else {
+								document.getElementById("back").style.visibility = "visible"
+								document.getElementById("next").style.visibility = "visible"
+							}
+
+							return(curr)
+
+						}
+					</script>
+					
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>
