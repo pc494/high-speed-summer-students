@@ -425,6 +425,54 @@
 						// pour out slag
 						// https://www.youtube.com/watch?v=aXqB9iq1a4Q
 
+						move(4,5)
+
+						function restart(){
+							gotoPage(1)
+							prv = 0
+							nxt = 1
+							curr = move(prv, nxt)
+						}
+
+						function next(){
+							prv = curr
+							nxt = Number(curr)+1
+							curr = move(prv, nxt)
+						}
+
+						function back(){
+							prv = curr
+							nxt = Number(curr)-1
+							curr = move(prv,nxt, "c")
+						}
+
+						function move(prv, nxt, dir="f"){
+
+							if (dir=="f"){
+								t.tweenFromTo("t"+prv, "t"+nxt)
+							}
+							else if (dir=="c"){
+								t.seek("t"+nxt)
+							}
+
+							curr = nxt
+							console.log(prv, curr, nxt)
+							console.log("current label: "+t.currentLabel())
+
+							if(curr == 1){
+								document.getElementById("back").style.visibility = "hidden"
+							}
+							else if(curr == 12){
+								document.getElementById("next").style.visibility = "hidden"
+							}
+							else {
+								document.getElementById("back").style.visibility = "visible"
+								document.getElementById("next").style.visibility = "visible"
+							}
+
+							return(curr)
+
+						}
             var t = gsap.timeline({
               paused: true,
               defaults: { duration: 0, delay: 0.001, ease: "none" },
