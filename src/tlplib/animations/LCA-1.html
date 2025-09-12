@@ -110,13 +110,14 @@
         background-position: bottom;
         display: inline-block; /* allows on sameline */
         z-index: 300;
+        background-color: pink;
       }
 
       .dbutton:hover {
         background-position: center;
       }
 
-      #backbutton,
+      #back,
       #back2,
       #back3,
       #back4,
@@ -127,7 +128,7 @@
         background-image: url("../../../images/back.png");
       }
 
-      #nextbutton,
+      #next,
       #next2,
       #next3,
       #next4,
@@ -612,8 +613,8 @@
           <div class="panel">
             <p id="caption">Caption</p>
             <div class="navbar">
-              <p class="dbutton" id="backbutton" onclick="back()"></p>
-              <p class="dbutton" id="nextbutton" onclick="next()"></p>
+              <p class="dbutton" id="back" onclick="back()"></p>
+              <p class="dbutton" id="next" onclick="next()"></p>
             </div>
           </div>
 
@@ -862,21 +863,23 @@
             }
 
             function move(prv, nxt) {
-              t.tweenFromTo("t" + prv, "t" + nxt);
+
+              gsap.set("#back, #next", {visibility: "hidden"})
+              if (curr == 12 ) {gsap.set("#next", {visibility: "hidden"})}
+
+              var speed = 1.5
+              t.timeScale(speed).tweenFromTo("t" + prv, "t" + nxt);
               curr = nxt;
               console.log(prv, curr, nxt);
 
-              if (curr == 1) {
-                document.getElementById("backbutton").style.visibility =
-                  "hidden";
-              } else if (curr == 12) {
-                document.getElementById("nextbutton").style.visibility =
-                  "hidden";
-              } else {
-                document.getElementById("backbutton").style.visibility =
-                  "visible";
-                document.getElementById("nextbutton").style.visibility =
-                  "visible";
+              var dur = Math.abs((t.labels["t"+nxt] - t.labels["t"+prv])/speed);
+              console.log(dur)
+
+              if (curr > 1) {
+                  gsap.set("#back", {visibility: "visible", delay:dur});
+                }
+              if (curr < 12) {
+                gsap.set("#next", {visibility: "visible", delay:dur});
               }
 
               return curr;
