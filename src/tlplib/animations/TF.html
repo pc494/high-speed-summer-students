@@ -372,7 +372,13 @@
                 fill: #ea0d01;
                 stroke: #f00;
                 stroke-width: 1px;
-            } 
+            }
+            .heater_gap {
+                fill:#777;
+                fill-opacity:0.3;
+                stroke:#000;
+                stroke-width:0.5px;
+            }
             .sheet {
                 fill: #ee4;
                 fill-opacity: 0.5;
@@ -706,18 +712,16 @@
 				<div class="payj" id="p4" > 
                     <svg id="pressure">
                         <g class="heater">
-                            <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/>
-                            <path id="heater_vac" d="M230,50h180v25h-180z"/>
+                            <!-- <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/> -->
+                            <path id="heater_pre_dummy" d="M225,50h42.5v25h-42.5zM277.5,50h85v25h-85zM372.5,50h42.5v25h-42.5z"/>
+                            <!-- <path id="heater_vac" d="M230,50h180v25h-180z"/> -->
+                        </g>
+                        <g class="heater_gap">
+                            <path id="heater_gap_pre" d="M267.5,50h10v25h-10zM362.5,50h10v25h-10z"/>
                         </g>
                         <g class="aparatus">
-                            <path id="aparatus_vac"  d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
-                            <path id="aparatus_vac2" d="M175,95h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z
-                                                        M269,179.75q56,-30.010 102,0v15.25h-102z
-                                                        M379.66,179.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
-                        </g>
-                        <g class="gap">
-                            <path id="gap_vac" d="M260.34,179.75a15,15 0,0,0 8.66,0v15.25h-8.66z
-                                                  M371.40,179.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
+                            <path id="aparatus_pre1"  d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
+                            <path id="aparatus_pre2" d="M175,95h50l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h50v25h-45l-25,75h-150l-25,-75h-45z"/>
                         </g>
                         <g class="clamp">
                             <path id="clamp_vac1" d="M200,120h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
@@ -726,7 +730,7 @@
                             <path id="clamp_vac4" d="M440,120h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
                         </g>
                         <g class="support">
-                            <path id="support_vac" d="M200,120h20l25,75h15.34v20h-60.34zM269,195h102v20h-102zM440,120h-20l-25,75h-15.34v20h60.34z"/>
+                            <path id="support_vac" d="M200,120h20l25,75h150l25,-75h20v95h-240z"/>
                         </g>
                         <g class="vacuum">
                             <path id="port1_vac" d="M258.35,227.5v-10h-10v5l10,5v50
@@ -753,7 +757,7 @@
                         var tlv = gsap.timeline({paused:true, repeat:-1})
                         tlv.timeScale(1)
 
-                        tlv.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
+                        tlv.to("#aparatus_vac1", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
                         .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
                         .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
@@ -767,7 +771,7 @@
                         .to("#heater_vac", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
                         .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
                         .to("#port1_vac, #port2_vac", {duration:1, y:20, ease:"none"}, 4.25)
-                        .to("#aparatus_vac", {duration:1, y:0, ease:"none"}, 5.25)
+                        .to("#aparatus_vac1", {duration:1, y:0, ease:"none"}, 5.25)
                         .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.25)
                         .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
                         .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 6.25)
