@@ -63,6 +63,20 @@
             divcc.style.top = h - 40 + "px";
             divpara.style.top = h - 85 + "px";
           }
+          function fudge() {
+            tlv.restart()
+            tlv.pause()
+            gotoPage(1)
+            tld.restart()
+            tld.pause()
+            gotoPage(1)
+            tlp.restart()
+            tlp.pause()
+            gotoPage(1)
+            tlpl.restart()
+            tlpl.pause()
+            gotoPage(1)
+          }
         </script>
     
         <style>
@@ -569,10 +583,10 @@
                         gsap.to("#clamp_vac3, #clamp_vac4, #sheet_vac_morph", {duration:0, autoAlpha:0})
                         gsap.to("#port1_vac, #port2_vac", {duration:0, y:20, ease:"none"})
 
-                        var tl = gsap.timeline({paused:true, repeat:-1})
-                        tl.timeScale(1)
+                        var tlv = gsap.timeline({paused:true, repeat:-1})
+                        tlv.timeScale(1)
 
-                        tl.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
+                        tlv.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
                         .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
                         .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
@@ -594,9 +608,9 @@
                         .to("#sheet_new_vac", {duration:2, x:445, ease:"power1.out"}, 8)
                     </script>
                     <div class="nav"> 
-                        <p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
-                        <p class="dbutton" id="start" onClick="tl.play()"></p >
-                        <p class="dbutton" id="pause" onClick="tl.pause()"></p >
+                        <p class="dbutton" id="back2" onClick="fudge()"></p >
+                        <p class="dbutton" id="start" onClick="tlv.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tlv.pause()"></p >
                     </div>
 				</div>
 				<!-- end payj - p2 -->
@@ -659,7 +673,6 @@
 
                         var tld = gsap.timeline({paused:true, repeat:-1})
                         tld.timeScale(1)
-
                         tld.to("#aparatus_drp1", {duration:1, y:40, ease:"none"}, 0)
                         .to("#clamp_drp1", {duration:1, morphSVG:"#clamp_drp3", ease:"none"}, 0)
                         .to("#clamp_drp2", {duration:1, morphSVG:"#clamp_drp4", ease:"none"}, 0)
@@ -682,7 +695,7 @@
                         .to("#sheet_new_drp", {duration:2, x:445, ease:"power1.out"}, 7.75)
                     </script>
                     <div class="nav">
-                        <p class="dbutton" id="back3" onClick="gotoPage(1)"></p >
+                        <p class="dbutton" id="back3" onClick="fudge()"></p >
                         <p class="dbutton" id="start" onClick="tld.play()"></p >
                         <p class="dbutton" id="pause" onClick="tld.pause()"></p >    
                     </div>
@@ -691,43 +704,33 @@
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p4" > 
-                    
                     <svg id="pressure">
                         
                     </svg>
+                    <script>
 
+                    </script>
                     <div class="nav"> 
-                    
-                        <p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
-                        <p class="dbutton" id="next4" onClick="gotoPage(5)"></p >
-                    
+                        <p class="dbutton" id="back3" onClick="fudge()"></p >
+                        <p class="dbutton" id="start" onClick="tlp.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tlp.pause()"></p > 
                     </div>
-				
-					<div id="anim4">
-					</div>
-					<!-- end anim 4 -->
-				
 				</div>
 				<!-- end payj - p4 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p5" > 
-                    
                     <svg id="plug">
                         
                     </svg>
+                    <script>
 
+                    </script>
                     <div class="nav"> 
-            
-                        <p class="dbutton" id="back5" onClick="gotoPage(4)"></p >
-                        <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
-                
+                        <p class="dbutton" id="back3" onClick="fudge()"></p >
+                        <p class="dbutton" id="start" onClick="tlpl.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tlpl.pause()"></p > 
                     </div>
-				
-					<div id="anim5">
-					</div>
-					<!-- end anim 5 -->
-				
 				</div>
 				<!-- end payj - p5 -->
 
