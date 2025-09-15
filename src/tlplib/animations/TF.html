@@ -718,6 +718,7 @@
                         <g class="heater">
                             <!-- <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/> -->
                             <path id="heater_pre_dummy" d="M225,50h42.5v25h-42.5zM277.5,50h85v25h-85zM372.5,50h42.5v25h-42.5z"/>
+                            <path id="heater_pre" d="M225,50h42.5v25h-42.5zM277.5,50h85v25h-85zM372.5,50h42.5v25h-42.5z"/>
                             <!-- <path id="heater_vac" d="M230,50h180v25h-180z"/> -->
                         </g>
                         <g class="heater_gap">
@@ -753,12 +754,11 @@
                     <div class="page_txt" id="pump_txt_pre"><p>Pump</p></div>
                     <script>
                         gsap.to("#clamp_pre3, #clamp_pre4, #sheet_pre_morph", {duration:0, autoAlpha:0})
-                        gsap.to("#pump1_pre, #pump2_pre", {duration:0, y:20, ease:"none"})
 
-                        var tlv = gsap.timeline({paused:true, repeat:-1})
-                        tlv.timeScale(1)
+                        var tlp = gsap.timeline({paused:true, repeat:-1})
+                        tlp.timeScale(1)
 
-                        tlv.to("#aparatus_pre1", {duration:1, y:20, ease:"none"}, 0)
+                        tlp.to("#aparatus_pre1, #heater", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre3", ease:"none"}, 0)
                         .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre4", ease:"none"}, 0)
                         .to("#sheet_pre", {duration:0.5, y:10, ease:"none"}, 0.5)
