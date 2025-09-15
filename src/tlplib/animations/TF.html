@@ -431,7 +431,7 @@
                 position:absolute;
                 
             }
-            #heater_txt_vac, #heater_txt_drp {
+            #heater_txt_vac {
                 left:292.5px;
                 top:31.25px;
             }
@@ -439,13 +439,37 @@
                 left:95px;
                 top:18.75px;
             }
+            #heater_txt_drp {
+                left:292.5px;
+                top:31.25px;
+            }
             #heater_txt_drpt {
                 left:303px;
                 top:18.75px;
             }
-            #vacuum_txt_vac, #vacuum_txt_drp {
+            #heater_txt_pre {
+                left:;
+                top:;
+            }
+            #heater_txt_pret {
+                left:;
+                top:;
+            }
+            #pump_txt_pre {
+                left:;
+                top:;
+            }
+            #pump_txt_pret {
+                left:;
+                top:;
+            }
+            #vacuum_txt_vac {
                 left:286.25px;
                 top:225px;
+            }
+            #vacuum_txt_drp {
+                left:282.75px;
+                top:245px;
             }
             #vacuum_txt_vact {
                 left:94px;
@@ -676,8 +700,8 @@
                             <path id="sheet_drp_morf" d="M200,150h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25"/>
                         </g>
                     </svg>
-                    <div id="heater_txt_drp"><p>Heater</p></div>
-                    <div id="vacuum_txt_drp"><p>Vacuum</p></div>
+                    <div class="page_txt" id="heater_txt_drp"><p>Heater</p></div>
+                    <div class="page_txt" id="vacuum_txt_drp"><p>Vacuum</p></div>
                     <script>
                         gsap.to("#clamp_drp3, #clamp_drp4, #sheet_drp_morph", {duration:0, autoAlpha:0})
 
@@ -755,7 +779,7 @@
                         </g>
                     </svg>
                     <div class="page_txt" id="heater_txt_pre"><p>Heater</p></div>
-                    <div class="page_txt" id="pump_txt_pre"><p>Pump</p></div>
+                    <div class="page_txt" id="pump_txt_pre"><p>Pumps</p></div>
                     <script>
                         gsap.to("#clamp_pre3, #clamp_pre4, #sheet_pre_morph", {duration:0, autoAlpha:0})
 
