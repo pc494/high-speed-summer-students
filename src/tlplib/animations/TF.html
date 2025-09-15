@@ -515,11 +515,6 @@
                             <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/>
                             <path id="heater_vac" d="M230,50h180v25h-180z"/>
                         </g>
-                        <g class="sheet">
-                            <path id="sheet_vac" d="M200,85h25h5h20h19h102h19h20h5h25"/>
-                            <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
-                            <path id="sheet_vac_morph" d="M200,85h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
-                        </g>
                         <g class="aparatus">
                             <path id="aparatus_vac" d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
                             <path id="aparatus_vac2" d="M175,95h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z  M269,179.75q56,-30.010 102,0v15.25h-102z  M379.66,179.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
@@ -542,6 +537,12 @@
                             <!-- <path id="port2_vac" d="M358.9,217.5h33.66a2.5,2.5 0 0 1 2.5,2.5v2.5a2.5,2.5 0 0 1 -2.5,2.5h-33.66a2.5,2.5 0 0 1 -2.5,-2.5v-2.5a2.5,2.5 0 0 1 2.5,-2.5
                                                     M394.33,223.54l-12.5,12.5a2.5,2.5 0 0 0 -0.73,1.77v60
                                                     M357.13,223.54l12.5,12.5a2.5,2.5 0 0 1 0.73,1.77v60"/> -->
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_vac" d="M200,85h25h5h20h19h102h19h20h5h25"/>
+                            <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
+                            <path id="sheet_vac_morph" d="M200,85h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                            <path id="sheet_new_vac" d="M-245,85h240"/>
                         </g>
                     </svg>
                     <div id="heater_txt_vac"><p>Heater</p></div>
@@ -572,6 +573,7 @@
                         .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
                         .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 6.25)
                         .to("#sheet_vac", {duration:2, x:445, ease:"power1.in"}, 7)
+                        .to("#sheet_new_vac", {duration:2, x:445, ease:"power1.out"}, 8)
                     </script>
                     <div class="nav"> 
 						
