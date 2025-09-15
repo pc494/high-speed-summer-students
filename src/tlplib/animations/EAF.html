@@ -212,42 +212,87 @@
 					
 					<svg id="svg" width="640" height="350">	
 
+						<defs>
+							<marker id="flange" markerWidth="10" markerHeight="10" refX="0" refY="1" orient="auto-start-reverse" markerUnits="strokeWidth">
+								<path d="M0,0 L0,2 L1,2 L1,0 z" fill="dimgrey" stroke="none"/>
+							</marker>
+							<linearGradient id="fire_fill" x1="0%" y1="0%" x2="0%" y2="100%">
+								<stop offset="5%" stop-color="gold" stop-opacity="1"></stop>
+								<stop offset="15%" stop-color="orange" stop-opacity="0.7"></stop>
+								<stop offset="100%" stop-color="orange" stop-opacity="0"></stop>
+							</linearGradient>
+						</defs>
+
 						<g>
 							<path class="motion_paths" id="pour_path" style="fill:none; stroke-width:8px; stroke-linecap:round" d=""></path>
 							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
 						</g>
 
 						<g id="bin">
-							<path class="bin" id="bin_top" d="M100,240 a120,80 0 0 1 120,0 l0,70 l-15,0 l0,-60 a120,80 0 0 0 -90,0 l0,60 l-15,0 Z"></path>
+							<path class="bin" id="bin_top" d="M80,220 a120,80 0 0 1 120,0 l0,70 l-15,0 l0,-60 a120,80 0 0 0 -90,0 l0,60 l-15,0 Z"></path>
 
-							<rect class="bin" id="bin_left" x="100" y="310" width="60" height="10"></rect>
-							<rect class="bin" id="bin_right" x="160" y="310" width="60" height="10"></rect>
+							<rect class="bin" id="bin_left" x="80" y="290" width="60" height="10"></rect>
+							<rect class="bin" id="bin_right" x="140" y="290" width="60" height="10"></rect>
 
-							<path class="pipe" id="bin_pipe" d="M220,260 l10,0"></path>
+							<path class="pipe" id="bin_pipe" marker-end="url(#flange)" d="M200,240 l15,0"></path>
 						</g>
 
-						<g style="fill:blue; opacity:0.2"> 
-							<rect x="100" y="240" width="120" height="80"></rect>
-							<rect x="320" y="160" width="240" height="160"></rect>
+						<g id="furnace">
+							<path class="furnace" id="furnace_body" d="M320,150 l50,-10 l15,0 l0,10 l-40,10 l0,75 l-25,0 Z M540,150 l-50,-10 l-15,0 l0,10 l40,10 l0,105 l25,0 Z M320,240 l25,0 l0,35 l170,0 l0,-5 l25,0 l0,30 l-220,0 Z"></path>
+							
+							<line class="fire" x1="355" y1="210" x2="385" y2="255"></line>
+							<line class="fire" x1="505" y1="210" x2="475" y2="255"></line>
+							<path class="burner" d="M345,180 l10,15 l-10,10 Z M515,180 l-10,15 l10,10 Z"></path>
+
+							<g id="furnace_lid">
+								<path class="furnace" d="M370,125 l0,15 l15,0 l0,-15 Z m25,0 l0,10 l5,0 l0,-10 Z m15,0 l0,10 l15,0 l0,-10 Z m25,0 l0,10 l15,0 l0,-10 Z m25,0 l0,10 l15,0 l0,5 l15,0 l0,-15 Z"></path>
+								<path class="pipe" marker-end="url(#flange)" d="M390,135 l0,-20 l-60,0"></path>
+								<g id="electrodes">
+									<line class="electrode" x1="405" x2="405" y1="70" y2="240"></line>
+									<line class="electrode" x1="430" x2="430" y1="70" y2="240"></line>
+									<line class="electrode" x1="455" x2="455" y1="70" y2="240"></line>
+								</g>
+							</g>
 						</g>
 
 					</svg>
 
 					<style>
-						.bin {
+						.bin, .furnace {
 							fill:dimgrey;
 							stroke: none
+						}
+
+						.pipe {
+							fill: none;
+							stroke: darkgrey;
+							stroke-width: 10px;
+						}
+
+						.burner{
+							fill: darkgrey;
+							stroke: none
+						}
+
+						.fire {
+							fill: none;
+							stroke: url(#fire_fill);
+							stroke-width: 10px;
+							stroke-linecap: round;
+							filter: blur(2px)
+						}
+
+						.electrode {
+							fill: none;
+							stroke: darkorange;
+							stroke-width: 10px;
 						}
 
 						.motion_paths{
 							visibility: hidden;
 							opacity: 0;
 						}
-						
-						path {
-							fill:none;
-							stroke:red;
-						}
+				
 					</style>
 					
 					<p id="caption"></p>
