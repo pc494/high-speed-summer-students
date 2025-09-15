@@ -726,7 +726,11 @@
                         </g>
                         <g class="aparatus">
                             <path id="aparatus_pre1"  d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
-                            <path id="aparatus_pre2" d="M175,95h50l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h50v25h-45l-25,75h-150l-25,-75h-45z"/>
+                            <path id="aparatus_pre2" d="M175,95h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45zM269,179.75q56,-30.010 102,0v15.25h-102zM379.66,179.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                        </g>
+                        <g class="gap">
+                            <path id="gap_pre" d="M260.34,179.75a15,15 0,0,0 8.66,0v15.25h-8.66z
+                                                  M371.40,179.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
                         </g>
                         <g class="clamp">
                             <path id="clamp_pre1" d="M200,120h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
@@ -735,7 +739,7 @@
                             <path id="clamp_pre4" d="M440,120h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
                         </g>
                         <g class="support">
-                            <path id="support_pre" d="M200,120h20l25,75h150l25,-75h20v95h-240z"/>
+                            <path id="support_pre" d="M200,120h20l25,75h15.34v20h-60.34zM269,195h102v20h-102zM440,120h-20l-25,75h-15.34v20h60.34z"/>
                         </g>
                         <g class="pump">
                             <path id="pump1_pre" d="M267.5,40v-20a15,15 0 1 1 15,15h-5v5h2.5v5h-15v-5z
@@ -755,24 +759,24 @@
                     <script>
                         gsap.to("#clamp_pre3, #clamp_pre4, #sheet_pre_morph", {duration:0, autoAlpha:0})
 
-                        var tlp = gsap.timeline({paused:true, repeat:-1})
+                        var tlp = gsap.timeline({paused:true, repeat:0})
                         tlp.timeScale(1)
 
-                        tlp.to("#aparatus_pre1, #heater", {duration:1, y:20, ease:"none"}, 0)
+                        tlp.to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre3", ease:"none"}, 0)
                         .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre4", ease:"none"}, 0)
                         .to("#sheet_pre", {duration:0.5, y:10, ease:"none"}, 0.5)
-                        .to("#heater_pre", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
-                        .to("#heater_pre", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
-                        .to("#pump1_pre, #pump2_pre", {duration:1, y:0, ease:"none"}, 1.5)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
+                        .to("#pump1_pre, #pump2_pre", {duration:1, y:25, ease:"none"}, 1.5)
                         .to("#heater_pre_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
-                        .to("#heater_pre", {duration:0, x:0, y:0, ease:"none"}, 2)
+                        .to("#heater_pre", {duration:0, x:0, y:20, ease:"none"}, 2)
                         .to("#sheet_pre", {duration:1.25, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3)
                         .to("#heater_pre_dummy", {duration:0, autoAlpha:1}, 4.25)
-                        .to("#heater_pre", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
-                        .to("#heater_pre", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
-                        .to("#pump1_pre, #pump2_pre", {duration:1, y:20, ease:"none"}, 4.25)
-                        .to("#aparatus_pre1", {duration:1, y:0, ease:"none"}, 5.25)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
+                        .to("#pump1_pre, #pump2_pre", {duration:1, y:0, ease:"none"}, 4.25)
+                        .to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre", {duration:1, y:0, ease:"none"}, 5.25)
                         .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.25)
                         .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
                         .to("#sheet_pre", {duration:0.5, y:0, ease:"none"}, 6.25)
