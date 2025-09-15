@@ -466,6 +466,8 @@
                         var tl = gsap.timeline({paused:true, repeat:0})
                         tl.timeScale(1)
                         tl.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
+                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
+                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
                         .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
                     </script>
                     <div class="nav"> 
