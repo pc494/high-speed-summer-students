@@ -405,7 +405,7 @@
                             stroke:#000;
                             stroke-width: 1px;
                         }
-                        /* .heater {
+                        /* .heater_hot {
                             fill: #ea0d01;
                             stroke: #f00;
                             stroke-width: 1px;
@@ -439,6 +439,7 @@
                     </style>
                     <svg id="vacuum">
                         <g class="heater">
+                            <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/>
                             <path id="heater_vac" d="M230,50h180v25h-180z"/>
                         </g>
                         <g class="sheet">
@@ -463,12 +464,17 @@
                         </g>
                     </svg>
                     <script>
+                        gsap.to("#clamp_vac3, #clamp_vac4, #sheet_vac_morph", {duration:0, autoAlpha:0})
+
                         var tl = gsap.timeline({paused:true, repeat:0})
                         tl.timeScale(1)
+
                         tl.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
                         .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
                         .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
+                        .to("#heater_vac", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
+                        .to("#heater_vac", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
                     </script>
                     <div class="nav"> 
 						
