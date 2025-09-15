@@ -759,7 +759,7 @@
                     <script>
                         gsap.to("#clamp_pre3, #clamp_pre4, #sheet_pre_morph", {duration:0, autoAlpha:0})
 
-                        var tlp = gsap.timeline({paused:true, repeat:0})
+                        var tlp = gsap.timeline({paused:true, repeat:-1})
                         tlp.timeScale(1)
 
                         tlp.to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre", {duration:1, y:20, ease:"none"}, 0)
