@@ -384,40 +384,43 @@
                 stroke-width:5px;
                 border-radius:2px;
             }
-            #heater_txt_vac {
+            .title_txt {
+                font-family:"Myriad-Roman";
+                font-size:6px;
+                font-weight:100;
+                text-anchor:middle;
+                position:absolute;
+            }
+            .page_txt {
                 font-family:"Myriad-Roman";
                 font-size:20px;
                 font-weight:100;
                 text-anchor:middle;
                 position:absolute;
+                
+            }
+            #heater_txt_vac, #heater_txt_drp {
                 left:292.5px;
                 top:31.25px;
             }
             #heater_txt_vact {
-                font-family:"Myriad-Roman";
-                font-size:6px;
-                font-weight:100;
-                text-anchor:middle;
-                position:absolute;
                 left:95px;
                 top:18.75px;
             }
-            #vacuum_txt_vac {
-                font-family:"Myriad-Roman";
-                font-size:20px;
-                font-weight:100;
-                text-anchor:middle;
-                position:absolute;
+            #heater_txt_drpt {
+                left:303px;
+                top:18.75px;
+            }
+            #vacuum_txt_vac, #vacuum_txt_drp {
                 left:286.25px;
                 top:225px;
             }
             #vacuum_txt_vact {
-                font-family:"Myriad-Roman";
-                font-size:6px;
-                font-weight:100;
-                text-anchor:middle;
-                position:absolute;
                 left:94px;
+                top:70px;
+            }
+            #vacuum_txt_drpt {
+                left:302px;
                 top:70px;
             }
         </style>
@@ -481,13 +484,15 @@
                                     <path id="port2_vact" d="M368.97,227.5v-10h-10v5l10,5v50M381.77,227.25v-10h10v5l-10,5v50"/>
                                 </g>
                             </svg>
-                            <div id="heater_txt_vact"><p>Heater</p></div>
-                            <div id="vacuum_txt_vact"><p>Vacuum</p></div>
+                            <div class="title_txt" id="heater_txt_vact"><p>Heater</p></div>
+                            <div class="title_txt" id="vacuum_txt_vact"><p>Vacuum</p></div>
                         </div>
                         <div> 
                             <svg id="titleb" viewbox="0 0 640 480" onclick="gotoPage(3)">
                             
                             </svg>
+                            <div class="title_txt" id="heater_txt_drpt"><p>Heater</p></div>
+                            <div class="title_txt" id="vacuum_txt_drpt"><p>Vacuum</p></div>
                         </div>
                         <div> 
                             <svg id="titlec" viewbox="0 0 640 480" onclick="gotoPage(4)">
@@ -545,8 +550,8 @@
                             <path id="sheet_new_vac" d="M-245,85h240"/>
                         </g>
                     </svg>
-                    <div id="heater_txt_vac"><p>Heater</p></div>
-                    <div id="vacuum_txt_vac"><p>Vacuum</p></div>
+                    <div class="page_txt" id="heater_txt_vac"><p>Heater</p></div>
+                    <div class="page_txt" id="vacuum_txt_vac"><p>Vacuum</p></div>
                     <script>
                         gsap.to("#clamp_vac3, #clamp_vac4, #sheet_vac_morph", {duration:0, autoAlpha:0})
                         gsap.to("#port1_vac, #port2_vac", {duration:0, y:20, ease:"none"})
@@ -592,18 +597,12 @@
                             <path id="heater_vac" d="M230,50h180v25h-180z"/>
                         </g>
                     </svg>
-
+                    <div id="heater_txt_drp"><p>Heater</p></div>
+                    <div id="vacuum_txt_drp"><p>Vacuum</p></div>
                     <div class="nav"> 
-                
                         <p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
-                        <p class="dbutton" id="next3" onClick="gotoPage(4)"></p >
-                    
+                        <p class="dbutton" id="next3" onClick="gotoPage(4)"></p >    
                     </div>
-				
-					<div id="anim3">
-					</div>
-					<!-- end anim 3 -->
-				
 				</div>
 				<!-- end payj - p3 -->
 				
