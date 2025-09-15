@@ -327,12 +327,12 @@
             text-decoration: underline;
           }
 
-          .container>div>svg {
+            .container>div>svg {
                 border:#000 2px solid;
                 margin: 8px;
                 cursor:pointer;
             }
-          .container {
+            .container {
                 display: grid;
                 width: 65%;
                 height: 65%;
@@ -341,7 +341,85 @@
                 bottom:12.5%;
                 grid-template-columns: auto auto;
             }
-
+            .heater {
+                fill:#777;
+                stroke:#000;
+                stroke-width: 1px;
+            }
+            .heater_hot {
+                fill: #ea0d01;
+                stroke: #f00;
+                stroke-width: 1px;
+            } 
+            .sheet {
+                fill: #ee4;
+                fill-opacity: 0.5;
+                stroke: #ee4;
+                stroke-width: 2px;
+            }
+            .aparatus {
+                fill: forestgreen;
+                stroke: #000;
+                stroke-width: 1px;
+            }
+            .gap {
+                fill:forestgreen;
+                fill-opacity:0.3;
+                stroke:#000;
+                stroke-width:0.5px;
+            }
+            .clamp {
+                fill:royalblue;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            .support {
+                fill:firebrick;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            .vacuum {
+                fill:none;
+                stroke:#000;
+                stroke-width:5px;
+                border-radius:2px;
+            }
+            #heater_txt_vac {
+                font-family:"Myriad-Roman";
+                font-size:20px;
+                font-weight:100;
+                text-anchor:middle;
+                position:absolute;
+                left:292.5px;
+                top:31.25px;
+            }
+            #heater_txt_vact {
+                font-family:"Myriad-Roman";
+                font-size:6px;
+                font-weight:100;
+                text-anchor:middle;
+                position:absolute;
+                left:95px;
+                top:18.75px;
+            }
+            #vacuum_txt_vac {
+                font-family:"Myriad-Roman";
+                font-size:20px;
+                font-weight:100;
+                text-anchor:middle;
+                position:absolute;
+                left:286.25px;
+                top:225px;
+            }
+            #vacuum_txt_vact {
+                font-family:"Myriad-Roman";
+                font-size:6px;
+                font-weight:100;
+                text-anchor:middle;
+                position:absolute;
+                left:94px;
+                top:70px;
+            }
         </style>
     </head>
 
@@ -432,87 +510,6 @@
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p2" > 
-                    <style>
-                        .heater {
-                            fill:#777;
-                            stroke:#000;
-                            stroke-width: 1px;
-                        }
-                        .heater_hot {
-                            fill: #ea0d01;
-                            stroke: #f00;
-                            stroke-width: 1px;
-                        } 
-                        .sheet {
-                            fill: #ee4;
-                            fill-opacity: 0.5;
-                            stroke: #ee4;
-                            stroke-width: 2px;
-                        }
-                        .aparatus {
-                            fill: forestgreen;
-                            stroke: #000;
-                            stroke-width: 1px;
-                        }
-                        .gap {
-                            fill:forestgreen;
-                            fill-opacity:0.3;
-                            stroke:#000;
-                            stroke-width:0.5px;
-                        }
-                        .clamp {
-                            fill:royalblue;
-                            stroke:#000;
-                            stroke-width:1px;
-                        }
-                        .support {
-                            fill:firebrick;
-                            stroke:#000;
-                            stroke-width:1px;
-                        }
-                        .vacuum {
-                            fill:none;
-                            stroke:#000;
-                            stroke-width:5px;
-                            border-radius:2px;
-                        }
-                        #heater_txt_vac {
-                            font-family:"Myriad-Roman";
-                            font-size:20px;
-                            font-weight:100;
-                            text-anchor:middle;
-                            position:absolute;
-                            left:292.5px;
-                            top:31.25px;
-                        }
-                        #heater_txt_vact {
-                            font-family:"Myriad-Roman";
-                            font-size:6px;
-                            font-weight:100;
-                            text-anchor:middle;
-                            position:absolute;
-                            left:95px;
-                            top:18.75px;
-                        }
-                        #vacuum_txt_vac {
-                            font-family:"Myriad-Roman";
-                            font-size:20px;
-                            font-weight:100;
-                            text-anchor:middle;
-                            position:absolute;
-                            left:286.25px;
-                            top:225px;
-                        }
-                        #vacuum_txt_vact {
-                            font-family:"Myriad-Roman";
-                            font-size:6px;
-                            font-weight:100;
-                            text-anchor:middle;
-                            position:absolute;
-                            left:94px;
-                            top:70px;
-                        }
-                    </style>
                     <svg id="vacuum">
                         <g class="heater">
                             <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/>
