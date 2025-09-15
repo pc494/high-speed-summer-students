@@ -673,16 +673,13 @@
                         .to("#heater_drp", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 4.25)
                         .to("#sheet_drp_morph", {duration:0, autoAlpha:1}, 4.75)
                         .to("#sheet_drp, #sheet_drp_morf", {duration:0, autoAlpha:0}, 4.75)
-                        // .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 4.25)
-                        // .to("#heater_vac", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
-                        // .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
-                        // .to("#port1_vac, #port2_vac", {duration:1, y:20, ease:"none"}, 4.25)
-                        // .to("#aparatus_vac", {duration:1, y:0, ease:"none"}, 5.25)
-                        // .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.25)
-                        // .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
-                        // .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 6.25)
-                        // .to("#sheet_vac", {duration:2, x:445, ease:"power1.in"}, 7)
-                        // .to("#sheet_new_vac", {duration:2, x:445, ease:"power1.out"}, 8)
+                        .to("#aparatus_drp3, #gap_drp, #port1_drp, #port2_drp", {duration:1, y:0, ease:"none"}, 5)
+                        .to("#aparatus_drp1", {duration:1, y:0, ease:"none"}, 5.5)
+                        .to("#clamp_drp1", {duration:1, morphSVG:"#clamp_drp1", ease:"none"}, 5.5)
+                        .to("#clamp_drp2", {duration:1, morphSVG:"#clamp_drp2", ease:"none"}, 5.5)
+                        .to("#sheet_drp_morph", {duration:0.25, y:-3, ease:"none"}, 6.5)
+                        .to("#sheet_drp_morph", {duration:2, x:445, ease:"power1.in"}, 6.75)
+                        .to("#sheet_new_drp", {duration:2, x:445, ease:"power1.out"}, 7.75)
                     </script>
                     <div class="nav">
                         <p class="dbutton" id="back3" onClick="gotoPage(1)"></p >
