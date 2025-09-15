@@ -563,6 +563,15 @@
                         .to("#heater_vac", {duration:0, x:0, y:0, ease:"none"}, 2)
                         .to("#port1_vac, #port2_vac", {duration:1, y:0, ease:"none"}, 2)
                         .to("#sheet_vac", {duration:1.25, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3)
+                        .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 4.25)
+                        .to("#heater_vac", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
+                        .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
+                        .to("#port1_vac, #port2_vac", {duration:1, y:20, ease:"none"}, 4.25)
+                        .to("#aparatus_vac", {duration:1, y:0, ease:"none"}, 5.25)
+                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.25)
+                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
+                        .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 6.25)
+                        .to("#sheet_vac", {duration:2, x:445, ease:"power1.in"}, 7)
                     </script>
                     <div class="nav"> 
 						
