@@ -465,13 +465,14 @@
                     <script>
                         var tl = gsap.timeline({paused:true, repeat:0})
                         tl.timeScale(1)
+                        tl.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
+                        .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
                     </script>
                     <div class="nav"> 
 						
                         <p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
-                        <p class="dbutton" id="next2" onClick="gotoPage(3)"></p >
-                        <p class="dbutton" id="continue" onClick="gotoPage(1)"></p >
-                        <p class="dbutton" id="pause" onClick="gotoPage(3)"></p >
+                        <p class="dbutton" id="start" onClick="tl.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tl.pause()"></p >
                 
                     </div>
             
