@@ -235,6 +235,14 @@
             height:480px;
             transform:scale(1);
           }
+          #fudge {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:115px;
+            transform:scale(1);
+          }
     
           /* elements in title page and animation page */
           #bulk_extrudate,
@@ -604,13 +612,13 @@
                         <g class="aparatus">
                             <path id="aparatus_drp1" d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
                             <path id="aparatus_drp2" d="M175,115h50v25h-50z M465,115h-50v25h50z"/>    
-                            <path id="aparatus_drp3" d="M225,190v-50c0,-10 25,-24 50,-25v75z
-                                                        M285,115c25,1 35,10 60,11v64h-60z
-                                                        M355,126s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34v50h-60z"/>
+                            <path id="aparatus_drp3" d="M225,200v-50c0,-10 25,-24 50,-25v75z
+                                                        M285,125c25,1 35,10 60,11v64h-60z
+                                                        M355,136s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34v50h-60z"/>
                         </g>
                         <g class="gap">
-                            <path id="gap_vac" d="M275,115s5,-0.2 10,0v75h-10z
-                                                  M345,146s8.333,0.333 10,0v44h-10z"/>
+                            <path id="gap_drp" d="M275,125s5,-0.2 10,0v75h-10z
+                                                  M345,136s8.333,0.333 10,0v64h-10z"/>
                         </g>
                         <g class="clamp">
                             <path id="clamp_drp1" d="M200,140h-25v10s-10,20 -20,0v-110s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v130s20,40 40,0v-10h15z"/>
@@ -620,32 +628,66 @@
                         </g>
                         <g class="support">
                             <!-- <path id="support_vac" d="M200,120h20l25,75h15.34v20h-60.34zM269,195h102v20h-102zM440,120h-20l-25,75h-15.34v20h60.34z"/> -->
-                            <path id="support_drp" d="M200,140h25v50h-25zM440,140h-25v50h25z"/>
+                            <path id="support_drp"   d="M200,140h25v60h-25z
+                                                        M440,140h-25v60h25z"/>
                         </g>
                         <g class="vacuum">
-                            <path id="port1_vac" d="M273,202.5v-10h-10v5l10,5v50
-                                                    M287,202.25v-10h10v5l-10,5v50"/>
-                            <path id="port2_drp" d="M343,202.5v-10h-10v5l10,5v50
-                                                    M357,202.25v-10h10v5l-10,5v50"/>
+                            <path id="port1_drp" d="M273,212.5v-10h-10v5l10,5v50
+                                                    M287,212.25v-10h10v5l-10,5v50"/>
+                            <path id="port2_drp" d="M343,212.5v-10h-10v5l10,5v50
+                                                    M357,212.25v-10h10v5l-10,5v50"/>
                             <!-- <path id="port2_vac" d="M358.9,217.5h33.66a2.5,2.5 0 0 1 2.5,2.5v2.5a2.5,2.5 0 0 1 -2.5,2.5h-33.66a2.5,2.5 0 0 1 -2.5,-2.5v-2.5a2.5,2.5 0 0 1 2.5,-2.5
                                                     M394.33,223.54l-12.5,12.5a2.5,2.5 0 0 0 -0.73,1.77v60
                                                     M357.13,223.54l12.5,12.5a2.5,2.5 0 0 1 0.73,1.77v60"/> -->
                         </g>
                         <g class="sheet">
-                            <path id="sheet_drp" d="M200,95h25h5h20h19h102h19h20h5h25"/>
+                            <path id="sheet_drp" d="M200,95h240"/>
                             <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
-                            <path id="sheet_drp_morph" d="M200,95h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25"/>
+                            <path id="sheet_drp_morph" d="M200,115h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25z"/>
                             <path id="sheet_new_drp" d="M-245,95h240"/>
+                        </g>
+                    </svg>
+                    <svg id="fudge">
+                        <g class="sheet">
+                            <path id="sheet_drp_morf" d="M200,150h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25"/>
                         </g>
                     </svg>
                     <div id="heater_txt_drp"><p>Heater</p></div>
                     <div id="vacuum_txt_drp"><p>Vacuum</p></div>
                     <script>
-                        gsap.to("#clamp_drp3, #clamp_drp4", {duration:0, autoAlpha:0})
+                        gsap.to("#clamp_drp3, #clamp_drp4, #sheet_drp_morph", {duration:0, autoAlpha:0})
+
+                        var tld = gsap.timeline({paused:true, repeat:0})
+                        tld.timeScale(1)
+
+                        tld.to("#aparatus_drp1", {duration:1, y:40, ease:"none"}, 0)
+                        .to("#clamp_drp1", {duration:1, morphSVG:"#clamp_drp3", ease:"none"}, 0)
+                        .to("#clamp_drp2", {duration:1, morphSVG:"#clamp_drp4", ease:"none"}, 0)
+                        .to("#sheet_drp", {duration:0.5, y:20, ease:"none"}, 0.5)
+                        .to("#heater_drp", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1.25)
+                        .to("#heater_drp", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1.25)
+                        .to("#heater_drp_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2.25)
+                        .to("#heater_drp", {duration:0, x:0, y:0, ease:"none"}, 2.25)
+                        .to("#sheet_drp_morf, #aparatus_drp3, #gap_drp, #port1_drp, #port2_drp", {duration:1.25, y:-35, ease:"none"}, 3.5)
+                        .to("#heater_drp", {duration:1, attr:{fill:"#777"}, ease:"none"}, 4.25)
+                        .to("#heater_drp", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 4.25)
+                        .to("#sheet_drp_morph", {duration:0, autoAlpha:1}, 4.75)
+                        .to("#sheet_drp, #sheet_drp_morf", {duration:0, autoAlpha:0}, 4.75)
+                        // .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 4.25)
+                        // .to("#heater_vac", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
+                        // .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
+                        // .to("#port1_vac, #port2_vac", {duration:1, y:20, ease:"none"}, 4.25)
+                        // .to("#aparatus_vac", {duration:1, y:0, ease:"none"}, 5.25)
+                        // .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.25)
+                        // .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
+                        // .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 6.25)
+                        // .to("#sheet_vac", {duration:2, x:445, ease:"power1.in"}, 7)
+                        // .to("#sheet_new_vac", {duration:2, x:445, ease:"power1.out"}, 8)
                     </script>
-                    <div class="nav"> 
-                        <p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
-                        <p class="dbutton" id="next3" onClick="gotoPage(4)"></p >    
+                    <div class="nav">
+                        <p class="dbutton" id="back3" onClick="gotoPage(1)"></p >
+                        <p class="dbutton" id="start" onClick="tld.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tld.pause()"></p >    
                     </div>
 				</div>
 				<!-- end payj - p3 -->
