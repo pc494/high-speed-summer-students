@@ -233,21 +233,16 @@
 								<stop offset="0%" stop-color="darkorange" stop-opacity="0"></stop>
 								<stop offset="30%" stop-color="darkorange" stop-opacity="1"></stop>
 							</linearGradient>
+
+							<linearGradient id="blocker_fill" x1="0%" y1="0%" x2="0%" y2="100%">
+								<stop offset="70%" stop-color="white" stop-opacity="1"></stop>
+								<stop offset="100%" stop-color="white" stop-opacity="0"></stop>
+							</linearGradient>
 						</defs>
 
 						<g>
 							<path class="motion_paths" id="pour_path" style="fill:none; stroke-width:8px; stroke-linecap:round" d=""></path>
 							<path class="motion_paths" id="neg_path" style="fill:none; stroke:white; stroke-width:10px; stroke-linecap:square" d=""></path>
-						</g>
-
-						<g id="bin">
-							<path id="bin_guts" style="fill:url(#hot_air_fill)" d="M85,220 l100,0 l0,70 l-100,0 Z"></path>
-							<path class="bin" d="M80,220 a120,80 0 0 1 120,0 l0,70 l-15,0 l0,-60 a120,80 0 0 0 -90,0 l0,60 l-15,0 Z"></path>
-
-							<rect class="bin" id="bin_left" x="80" y="290" width="60" height="10"></rect>
-							<rect class="bin" id="bin_right" x="140" y="290" width="60" height="10"></rect>
-
-							<path class="pipe" marker-end="url(#flange)" d="M200,240 l15,0"></path>
 						</g>
 
 						<g id="furnace">
@@ -265,12 +260,22 @@
 
 							<g id="furnace_lid">
 								<path class="furnace" d="M360,145 l0,15 l15,0 l0,-5 l15,0 l0,-10 Z m40,0 l0,10 l15,0 l0,-10 Z m25,0 l0,10 l15,0 l0,-10 Z m25,0 l0,10 l15,0 l0,5 l15,0 l0,-15 Z"></path>
-								<path class="pipe" marker-end="url(#flange)" d="M380,145 l0,-10 l-60,0"></path>
+								<path class="pipe" marker-end="url(#flange)" d="M380,145 l0,-10 l-25,0"></path>
 								<g id="electrodes">
-									<line class="electrode" x1="395" y1="120" x2="395" y2="240"></line>
-									<line class="electrode" x1="420" y1="120" x2="420" y2="240"></line>
-									<line class="electrode" x1="445" y1="120" x2="445" y2="240"></line>
+									<line class="electrode" x1="395" y1="70" x2="395" y2="240"></line>
+									<line class="electrode" x1="420" y1="70" x2="420" y2="240"></line>
+									<line class="electrode" x1="445" y1="70" x2="445" y2="240"></line>
 								</g>
+								<rect id="blocker" style="fill:url(#blocker_fill); stroke:none" x="380" y="0" width="80" height="120"></rect>
+							</g>
+
+							<g id="arcs">
+								<path class="arc_shadow" d="M395,240 q13,10 25,0"></path>
+								<path class="arc_shadow" d="M420,240 q12,10 25,0"></path>
+								<path class="arc_shadow" d="M395,240 q25,20 50,0"></path>
+								<path class="arc" d="M395,240 q13,10 25,0"></path>
+								<path class="arc" d="M420,240 q12,10 25,0"></path>
+								<path class="arc" d="M395,240 q25,20 50,0"></path>
 							</g>
 
 							<g id="furnace_plugs">
@@ -279,12 +284,22 @@
 							</g>
 						</g>
 
-						<g>
-							<rect class="content" id="charge" style="fill:slategrey" x="95" y="250" width="90" height="40"></rect>
-							<rect class="content" id="iron" style="fill:gold" x="345" y="270" width="150" height="5"></rect>
+						<g id="bin">
+							<path id="bin_guts" style="fill:url(#hot_air_fill)" d="M85,220 l100,0 l0,70 l-100,0 Z"></path>
+							<path class="bin" d="M80,220 a120,80 0 0 1 120,0 l0,70 l-15,0 l0,-60 a120,80 0 0 0 -90,0 l0,60 l-15,0 Z"></path>
+
+							<rect class="bin" id="bin_left" x="80" y="290" width="60" height="10"></rect>
+							<rect class="bin" id="bin_right" x="140" y="290" width="60" height="10"></rect>
+
+							<path class="pipe" marker-end="url(#flange)" d="M200,240 l15,0"></path>
 						</g>
 
-						<path class="pipe" id="fixed_pipe" marker-start="url(#flange)" marker-end="url(#flange)" d="M235,240 l40,0 l0,-105 l25,0"></path>
+						<g>
+							<rect class="content" id="charge" style="fill:slategrey" x="95" y="250" width="90" height="40"></rect>
+							<rect class="content" id="iron" style="fill:rosybrown" x="345" y="270" width="150" height="5"></rect>
+						</g>
+
+						<path class="pipe" id="fixed_pipe" marker-start="url(#flange)" marker-end="url(#flange)" d="M235,240 l40,0 l0,-105 l60,0"></path>
 						<path id="piped_gas" style="fill:none; stroke:indianred; stroke-width:4px" d="M380,145 l0,-10 l-105,0 l0,105 l-75,0"></path>
 
 						<g id="guidelines">
@@ -321,11 +336,24 @@
 
 						.electrode {
 							fill: none;
-							stroke: url(#electrode_fill);
+							stroke: darkorange;
 							stroke-width: 10px;
 						}
 
-						.motion_paths, #bin, #fixed_pipe, #charge, #piped_gas {
+						.arc {
+							fill: none;
+							stroke: lightgoldenrodyellow;
+							stroke-width: 2px;
+						}
+
+						.arc_shadow {
+							fill: none;
+							stroke: yellow;
+							stroke-width: 2px;
+							filter: blur(5px);
+						}
+
+						.motion_paths, #bin, #fixed_pipe, #charge, #piped_gas, .fire, #arcs {
 							visibility: hidden;
 							opacity: 0;
 						}
@@ -394,7 +422,7 @@
 						.set("#furnace_guts", {opacity:0})
 
 						t.addLabel("t1", ">")
-						.set("#caption", {innerHTML: "The starting materials (<strong>sponge iron, scrap, and fluxes</strong>) are loaded into a large bucket."})
+						.set("#caption", {innerHTML: "The mix of starting materials (<strong>sponge iron, scrap, and fluxes</strong>) is known as the <strong>charge</strong>, and is loaded into a large bucket."})
 						.set("#bin, #charge", {visibility:"visible"})
 						.set("#bin_guts", {opacity:0})
 						.set("#bin, #charge", {x:-100})
@@ -405,21 +433,62 @@
 						var phantom_gas = {length:0, totalLength:piped_gas.getTotalLength()}
 						function gasflowupdate() {piped_gas.style.strokeDasharray = [phantom_gas.length, phantom_gas.totalLength].join(" ")}
 						t.addLabel("t2", ">")
-						.set("#caption", {innerHTML: "The cold content is sometimes pre-heated using waste gases from the furnace, to improve overall energy efficiency."})
+						.set("#caption", {innerHTML: "The cold charge is sometimes <strong>pre-heated using waste gases</strong> from the furnace, to improve overall energy efficiency."})
 						.set("#fixed_pipe, #piped_gas", {visibility:"visible"})
+						.set("#charge", {fill:"#708090"})
 						.to("#fixed_pipe", 1, {opacity:1})
 						.to("#furnace_guts", 0.5, {opacity:1})
 						.to(piped_gas, 0.5, {opacity:1})
 						.to(phantom_gas, 1, {length:phantom_gas.totalLength, onUpdate:gasflowupdate}, "<")
 						.to("#bin_guts", 0.5, {opacity:1}, ">")
-						.to("#charge", 0.5, {opacity:0.8}, ">")
+						.to("#charge", 0.5, {fill:"#bc8f8f", duration:0.5}, ">")
 
 						t.addLabel("t3", ">")
-						.set("#caption", {innerHTML: "The furnace lid is removed for loading. Depends on the furnace design, the electrodes are either lifted part-way or removed completely."})
+						.set("#caption", {innerHTML: "The furnace lid is removed for loading. <br> The electrodes are either partially lifted or completely removed, depending on the exact furnace design."})
 						.to("#piped_gas, #furnace_guts", 2, {opacity:0})
 						.to("#electrodes", 1, {y:-80}, "<")
+						.to("#furnace_lid", 1, {x:140})
+
+						t.addLabel("t4", ">")
+						.set("#caption", {innerHTML: "The bucket is lifted above the furnace, and doors at the bottom of the bucket open to release the charge."})
+						.to("#furnace_lid", 1, {opacity:0})
+						.to("#bin, #charge", 1, {y:-190}, "<")
+						.to("#bin, #charge", 1, {x:280})
+						.to("#bin, #charge", 0.5, {y:-142})
+						.to("#bin_guts", 0.5, {opacity:0})
+						.to("#bin_left", 0.5, {attr:{width:15}}, "<")
+						.to("#bin_right", 0.5, {x:45, attr:{width:15}}, "<")
+						.to("#charge", 0.5, {x:0, y:0, attr:{x:375, y:235, width:90, height:40}}, ">")
+						.to("#charge", 0.1, {x:0, y:0, attr:{x:345, y:250, width:150, height:25}}, ">")
+
+						t.addLabel("t5", ">")
+						.set("#caption", {innerHTML: "The lid is set back in place and electrodes are lowered."})
+						.to("#bin_left, #bin_right", 0.5, {x:0, attr:{width:60}}, "<")
+						.to("#bin", 0.5, {y:-190})
+						.to("#bin", 1, {x:0})
+						.to("#furnace_lid", 1, {opacity:1, x:0}, "<")
+						.to("#bin", 1, {y:0})
+						.to("#electrodes", 1, {y:0}, "<")
+
+						t.addLabel("t6", ">")
+						.set("#caption", {innerHTML: "Electric arcs are generated between the graphite electrodes by applying large voltages, generating heat which melts the charge. <br> Arc temperature may reach roughly 3000&#x00B0;C."})
+						
 
 
+						t.addLabel("t7", ">")
+						.set("#caption", {innerHTML: "Additional heat is directed at cold spots around the edge of the furnace. This may be done using burners in the furnace wall, which inject burning natural gas."})
+
+						t.addLabel("t8", ">")
+						.set("#caption", {innerHTML: "Once the charge is completely melted, O$#x2082; is inject (via the burners or otherwise) to react with impurites and remove them to a slag phase."})
+
+						t.addLabel("t9", ">")
+						.set("#caption", {innerHTML: "C present in the mixture also react wiht O$#x2082; to form CO, which reduces any oxdised iron in the slag. It also foams the slag, improving thermal efficiency."})
+
+						t.addLabel("t10", ">")
+						.set("#caption", {innerHTML: "Once ideal composition is reached, the slag and steel are tapped off separately. The molten steel is often casted immediately after the EAF process."})
+
+						t.addLabel("t11", ">")
+						.set("#caption", {innerHTML: "A few tonnes of steel and slag is often left in the furnace to preheat the next charge."})
 
 						function restart(){
 							gotoPage(1)
@@ -467,7 +536,7 @@
 							return curr;
 						}
 
-						move(0, 1);
+						move(5,6);
 
 					</script>
 					
