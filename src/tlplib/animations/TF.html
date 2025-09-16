@@ -853,7 +853,7 @@
                         gsap.to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0, y:20})
                         gsap.to("#sheet_plu_morph", {duration:0, y:10})
 
-                        var tlpl = gsap.timeline({paused:true, repeat:0})
+                        var tlpl = gsap.timeline({paused:true, repeat:-1})
                         tlpl.timeScale(1)
 
                         tlpl.to("#aparatus_plu1", {duration:1, y:20, ease:"none"}, 0)
