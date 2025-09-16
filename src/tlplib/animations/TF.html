@@ -244,15 +244,15 @@
           #vacuum, #drape, #pressure, #plug {
             position: absolute;
             left:0px;
-            top:0px;
+            top:50px;
             width:640px;
-            height:480px;
+            height:430px;
             transform:scale(1);
           }
           #fudge {
             position: absolute;
             left:0px;
-            top:0px;
+            top:50px;
             width:640px;
             height:115.5px;
             transform:scale(1);
@@ -260,7 +260,7 @@
           #fuj {
             position: absolute;
             left:0px;
-            top:94.5px;
+            top:144.5px;
             width:640px;
             height:115px;
             transform:scale(1);
@@ -350,19 +350,49 @@
             stroke-width: 1px;
           }
     
-          #title {
+          .title {
             text-align: center;
             font-family: "Myriad-Roman";
-            font-size: 18px;
             text-decoration: underline;
           }
+          .title_hover {
+            font-family:"Myriad-Roman";
+            font-size:12px;
+            text-align:center;
+            font-weight: bold;
+            position:absolute;
+            left:50%;
+            transform: translateX(-50%);
+            bottom:0;
+            display:none;
+          }
+          .aa:hover .title_hover {
+            display:block;
+          }
+          .aa:hover svg{
+            opacity:1;
+            transform:scale(1.1);
+          }
+          .aa {
+            position:relative;
+          }
+            #page1 {
+                font-size:25px;
+                position:relative;
+                top:0%;
+            }
+            #page2, #page3, #page4, #page5 {
+                font-size:25px;
+                position:relative;
+                top:0%;
+            }
             #titlea, #titleb, #titlec, #titled {
                 opacity:0.5;
             }
-            #titlea:hover, #titleb:hover, #titlec:hover, #titled:hover, #titlea:focus-visible, #titleb:focus-visible, #titlec:focus-visible, #titled:focus-visible {
+            /* #titlea:hover, #titleb:hover, #titlec:hover, #titled:hover, #titlea:focus-visible, #titleb:focus-visible, #titlec:focus-visible, #titled:focus-visible {
                 opacity:1;
                 transform:scale(1.1);
-            }
+            } */
             .container>div>svg {
                 border:#000 2px solid;
                 margin: 8px;
@@ -436,13 +466,6 @@
                 stroke-width: 1px;
             }
             
-            .title_txt {
-                font-family:"Myriad-Roman";
-                font-size:6px;
-                font-weight:100;
-                text-anchor:middle;
-                position:absolute;
-            }
             .page_txt {
                 font-family:"Myriad-Roman";
                 font-size:20px;
@@ -453,35 +476,36 @@
 
             #heater_txt_vac {
                 left:292.5px;
-                top:31.25px;
+                top:81.25px;
             }
             #heater_txt_drp {
                 left:292.5px;
-                top:31.25px;
+                top:81.25px;
             }
             #heater_txt_pre {
                 left:292.5px;
-                top:31.25px;
+                top:81.25px;
             }
             #plug_txt_plu {
                 left:297.5px;
-                top:31.25px;
+                top:81.25px;
             }
             #pump_txt_pre {
                 left:292.5px;
-                top:0px;
+                top:50px;
             }
             #vacuum_txt_vac {
                 left:286.25px;
-                top:225px;
+                top:275px;
             }
             #vacuum_txt_drp {
                 left:282.75px;
-                top:245px;
+                top:295px;
             }
             #vacuum_txt_plu {
                 left:286.25px;
-                top:255px;
+                top:30
+                5px;
             }
         </style>
     </head>
@@ -516,8 +540,9 @@
 				<!-- divs for storyline -->
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
-					<div class="container">
-                        <div>
+					<div class="title" id="page1"><p>Thermoforming</p></div>
+                    <div class="container">
+                        <div class="aa">
                             <svg id="titlea" viewbox="0 0 640 480" onclick="gotoPage(2)">
                                 <g class="heater_hot">
                                     <path id="heater_vact" d="M230,50h180v25h-180z"/>
@@ -544,8 +569,9 @@
                                     <path id="port2_vact" d="M368.97,227.5v-10h-10v5l10,5v50M381.77,227.25v-10h10v5l-10,5v50"/>
                                 </g>
                             </svg>
+                            <div class="title_hover"><p>Vacuum<br/>Thermoforming</p></div>
                         </div>
-                        <div> 
+                        <div class="aa"> 
                             <svg id="titleb" viewbox="0 0 640 480" onclick="gotoPage(3)">
                                 <g class="heater_hot">
                                     <path id="heater_drp_dummyt" d="M230,50h180v25h-180z"/>
@@ -581,7 +607,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <div> 
+                        <div class="aa"> 
                             <svg id="titlec" viewbox="0 0 640 480" onclick="gotoPage(4)">
                                 <g class="heater">
                                     <path id="heater_pre_dummyt" d="M225,70h42.5v25h-42.5zM277.5,70h85v25h-85zM372.5,70h42.5v25h-42.5z"/>
@@ -616,7 +642,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <div>
+                        <div class="aa">
                             <svg id="titled" viewbox="0 0 640 480" onclick="gotoPage(5)">
                                 
                             </svg>
