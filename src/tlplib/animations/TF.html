@@ -862,10 +862,30 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p5" > 
                     <svg id="plug">
-                        
+                        <g class="gap">
+                            <path id="gap_plu" d="M175,95h50l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h50v25h-45l-25,75h-150l-25,-75h-45z"/>
+                        </g>
+                        <g class="aparatus">
+                            <path id="aparatus_plu1"  d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
+                            <path id="aparatus_plu2" d="M175,95h50l28.25,84.75h10v15.25h-18.75l-25,-75h-45zM273.25,179.75h17.5v-5h24.25v20.25h-41.75zM325,174.75h24.25v5h17.5v15.25h-41.75zM376.25,179.75h10.5l28.25,-84.75h50v25h-45l-25,75h-18.75z"/>
+                        </g>
+                        <g class="clamp">
+                            <path id="clamp_plu1" d="M200,120h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
+                            <path id="clamp_plu2" d="M440,120h25v10s10,20 20,0v-90s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v110s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_plu3" d="M200,120h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                            <path id="clamp_plu4" d="M440,120h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                        </g>
+                        <g class="support">
+                            <path id="support_plu" d="M200,120h20l25,75h18.25v20h-63.25zM273.25,195h41.75v20h-41.75zM325,195h41.75v20h-41.75zM440,120h-20l-25,75h-18.25v20h63.25z"/>
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_plu" d="M200,85h25h5h20h19h102h19h20h5h25"/>
+                            <path id="sheet_plu_morph" d="M200,85h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                            <path id="sheet_new_plu" d="M-245,85h240"/>
+                        </g>
                     </svg>
                     <script>
-
+                         gsap.to("#clamp_plu3, #clamp_plu4, #sheet_plu_morph", {duration:0, autoAlpha:0})
                     </script>
                     <div class="nav"> 
                         <p class="dbutton" id="back3" onClick="fudge()"></p >
