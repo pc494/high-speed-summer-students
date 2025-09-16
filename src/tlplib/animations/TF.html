@@ -283,8 +283,10 @@
                 font-family: "Myriad-Roman";
                 text-decoration: underline;
                 font-size:30px;
-                position:relative;
-                top:0%;
+                position:absolute;
+                transform: translateX(-50%);
+                left:50%;
+                top:-4%;
             }
             #titlea, #titleb, #titlec, #titled {
                 opacity:0.5;
@@ -473,7 +475,7 @@
                                     <path id="port2_vact" d="M368.97,327.5v-10h-10v5l10,5v50M381.77,327.25v-10h10v5l-10,5v50"/>
                                 </g>
                             </svg>
-                            <div class="title_hover"><p>Vacuum&nbsp;Thermoforming</p></div>
+                            <div class="title_hover"><p>Vacuum<br/>Thermoforming</p></div>
                         </div>
                         <div class="aa"> 
                             <svg id="titleb" viewbox="0 0 640 480" onclick="gotoPage(3)">
@@ -510,7 +512,7 @@
                                     <path id="sheet_drp_morpht" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25z"/>
                                 </g>
                             </svg>
-                            <div class="title_hover"><p>Drape&nbsp;Thermoforming</p></div>
+                            <div class="title_hover"><p>Drape<br/>Thermoforming</p></div>
                         </div>
                         <div class="aa"> 
                             <svg id="titlec" viewbox="0 0 640 480" onclick="gotoPage(4)">
@@ -546,7 +548,7 @@
                                     <path id="sheet_pre_morpht" d="M200,195h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                                 </g>
                             </svg>
-                            <div class="title_hover"><p>Pressure&nbsp;Thermoforming</p></div>
+                            <div class="title_hover"><p>Pressure<br/>Thermoforming</p></div>
                         </div>
                         <div class="aa">
                             <svg id="titled" viewbox="0 0 640 480" onclick="gotoPage(5)">
@@ -579,7 +581,7 @@
                                     <path id="sheet_plu_morpht" d="M200,195h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25zz"/>
                                 </g>
                             </svg>
-                            <div class="title_hover"><p>Plug&nbsp;-&nbsp;Assisted<br/>Thermoforming</p></div>
+                            <div class="title_hover"><p>Plug&#8209;Assisted<br/>Thermoforming</p></div>
                         </div>
                     </div>
 					
@@ -592,6 +594,7 @@
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p2" > 
+                    <div class="title" id="page2"><p>Vacuum Thermoforming</p></div>
                     <svg id="vacuum">
                         <g class="heater">
                             <path id="heater_vac_dummy" d="M230,150h180v25h-180z"/>
@@ -671,7 +674,7 @@
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p3" > 
-					
+					<div class="title" id="page3"><p>Drape Thermoforming</p></div>
                     <svg id="drape">
                         <g class="heater">
                             <path id="heater_drp_dummy" d="M230,150h180v25h-180z"/>
@@ -753,7 +756,8 @@
 				<!-- end payj - p3 -->
 				
 				<!--  new page starts here    -->
-				<div class="payj" id="p4" > 
+				<div class="payj" id="p4">
+                    <div class="title" id="page4"><p>Pressure Thermoforming</p></div> 
                     <svg id="pressure">
                         <g class="heater">
                             <!-- <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/> -->
@@ -834,7 +838,8 @@
 				<!-- end payj - p4 -->
 				
 				<!--  new page starts here    -->
-				<div class="payj" id="p5" > 
+				<div class="payj" id="p5">
+                    <div class="title" id="page5"><p>Plug&#8209;Assisted&nbsp;Thermoforming</p></div>
                     <svg id="plug">
                         <g class="gap">
                             <path id="gap_plu" d="M175,195h50l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h50v25h-45l-25,75h-150l-25,-75h-45z"/>
