@@ -916,6 +916,9 @@
                     </svg>
                     <script>
                         gsap.to("#clamp_plu3, #clamp_plu4, #sheet_plu, #sheet_plu_morph, #sheet_plu_morf2", {duration:0, autoAlpha:0})
+
+                        var tlpl = gsap.timeline({paused:true, repeat:0})
+                        tlpl.timeScale(1)
                     </script>
                     <div class="nav"> 
                         <p class="dbutton" id="back3" onClick="fudge()"></p >
