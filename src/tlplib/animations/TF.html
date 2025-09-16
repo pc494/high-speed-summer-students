@@ -435,6 +435,7 @@
                 stroke: #000;
                 stroke-width: 1px;
             }
+            
             .title_txt {
                 font-family:"Myriad-Roman";
                 font-size:6px;
@@ -448,8 +449,8 @@
                 font-weight:100;
                 text-anchor:middle;
                 position:absolute;
-                
             }
+
             #heater_txt_vac {
                 left:292.5px;
                 top:31.25px;
@@ -460,6 +461,10 @@
             }
             #heater_txt_pre {
                 left:292.5px;
+                top:31.25px;
+            }
+            #plug_txt_plu {
+                left:297.5px;
                 top:31.25px;
             }
             #pump_txt_pre {
@@ -474,7 +479,10 @@
                 left:282.75px;
                 top:245px;
             }
-
+            #vacuum_txt_plu {
+                left:286.25px;
+                top:255px;
+            }
         </style>
     </head>
 
@@ -904,22 +912,20 @@
                         </g>
                         <g class="sheet">
                             <path id="sheet_plu" d="M200,85h25h5h20h19h102h19h20h5h25"/>
-                            <path id="sheet_plu_morph" d="Mz"/>
+                            <path id="sheet_plu_morph" d="M200,95h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25zz"/>
                             <path id="sheet_new_plu" d="M-245,85h240"/>
                         </g>
                     </svg>
                     <svg id="fuj">
                         <g class="sheet">
-                            <path id="sheet_plu_morf1" d="M200,-87h25h5l22.5,67.5a15,15 0,0,0 19,9.75q53.5,-30.010 97,0a15,15 0,0,0 19,-9.75l22.5,-67.5h5h25z"/>
-                            <path id="sheet_plu_morf2" d="M200,-87h25h5l22.5,67.5a15,15 0,0,0 19,9.75h97a15,15 0,0,0 19,-9.75l22.5,-67.5h5h25z"/>
-                            <path id="sheet_plu_morf3" d="M200,-87h25h5l22.5,67.5a15,15 0,0,0 19,9.75h97a15,15 0,0,0 19,-9.75l22.5,-67.5h5h25z"/>
-                            <path id="sheet_plu_morf4" d="M200,-87h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25z"/>
+                            <path id="sheet_plu_morf1" d="M200,-94.5h25h5l22.5,67.5a15,15 0,0,0 14.23,10.26h106.54a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5h25z"/>
+                            <path id="sheet_plu_morf2" d="M200,-94.5h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25z"/>
                         </g>
                     </svg>
                     <div class="page_txt" id="vacuum_txt_plu"><p>Vacuum</p></div>
                     <div class="page_txt" id="plug_txt_plu"><p>Plug</p></div>
                     <script>
-                        gsap.to("#clamp_plu3, #clamp_plu4, #sheet_plu_morph, #sheet_plu_morf1, #sheet_plu_morf2, #sheet_plu_morf3, #sheet_plu_morf4", {duration:0, autoAlpha:0})
+                        gsap.to("#clamp_plu3, #clamp_plu4, #sheet_plu_morph, #sheet_plu_morf1, #sheet_plu_morf2", {duration:0, autoAlpha:0})
 
                         var tlpl = gsap.timeline({paused:true, repeat:0})
                         tlpl.timeScale(1)
@@ -928,7 +934,7 @@
                         .to("#clamp_plu1", {duration:1, morphSVG:"#clamp_plu3", ease:"none"}, 0)
                         .to("#clamp_plu2", {duration:1, morphSVG:"#clamp_plu4", ease:"none"}, 0)
                         .to("#sheet_plu", {duration:0.5, y:10, ease:"none"}, 0.5)
-                        .to("#plug_plu", {duration:})
+                        .to("#plug_plu, #sheet_plu_morf1", {duration:4.75, y:95}, 1)
                         // .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:25, ease:"none"}, 1.5)
                     </script>
                     <div class="nav"> 
