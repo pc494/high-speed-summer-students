@@ -229,15 +229,15 @@
 								<stop offset="70%" stop-color="indianred" stop-opacity="0.3"></stop>
 							</linearGradient>
 
-							<linearGradient id="electrode_fill" x1="0%" y1="0%" x2="0%" y2="100%">
-								<stop offset="0%" stop-color="darkorange" stop-opacity="0"></stop>
-								<stop offset="30%" stop-color="darkorange" stop-opacity="1"></stop>
-							</linearGradient>
-
 							<linearGradient id="blocker_fill" x1="0%" y1="0%" x2="0%" y2="100%">
 								<stop offset="70%" stop-color="white" stop-opacity="1"></stop>
 								<stop offset="100%" stop-color="white" stop-opacity="0"></stop>
 							</linearGradient>
+
+							<radialGradient id="iron_melt" cy="0" fy="0" gradientTransform="scale(1,4)">
+								<stop offset="50%" stop-color="gold"/>
+								<stop offset="100%" stop-color="rosybrown"/>
+							</radialGradient>
 						</defs>
 
 						<g>
@@ -269,15 +269,6 @@
 								<rect id="blocker" style="fill:url(#blocker_fill); stroke:none" x="380" y="0" width="80" height="120"></rect>
 							</g>
 
-							<g id="arcs">
-								<path class="arc_shadow" d="M395,240 q13,10 25,0"></path>
-								<path class="arc_shadow" d="M420,240 q12,10 25,0"></path>
-								<path class="arc_shadow" d="M395,240 q25,20 50,0"></path>
-								<path class="arc" d="M395,240 q13,10 25,0"></path>
-								<path class="arc" d="M420,240 q12,10 25,0"></path>
-								<path class="arc" d="M395,240 q25,20 50,0"></path>
-							</g>
-
 							<g id="furnace_plugs">
 								<rect class="furnace_plug" id="furnace_plug_left" x="320" y="230" width="25" height="10"></rect>
 								<rect class="furnace_plug" id="furnace_plug_right" x="495" y="260" width="25" height="10"></rect>
@@ -297,6 +288,15 @@
 						<g>
 							<rect class="content" id="charge" style="fill:slategrey" x="95" y="250" width="90" height="40"></rect>
 							<rect class="content" id="iron" style="fill:rosybrown" x="345" y="270" width="150" height="5"></rect>
+						</g>
+
+						<g id="arcs">
+							<path class="arc_shadow" d="M395,240 q13,10 25,0"></path>
+							<path class="arc_shadow" d="M420,240 q12,10 25,0"></path>
+							<path class="arc_shadow" d="M395,240 q25,10 50,0"></path>
+							<path class="arc" d="M395,240 q13,10 25,0"></path>
+							<path class="arc" d="M420,240 q12,10 25,0"></path>
+							<path class="arc" d="M395,240 q25,10 50,0"></path>
 						</g>
 
 						<path class="pipe" id="fixed_pipe" marker-start="url(#flange)" marker-end="url(#flange)" d="M235,240 l40,0 l0,-105 l60,0"></path>
@@ -342,14 +342,16 @@
 
 						.arc {
 							fill: none;
-							stroke: lightgoldenrodyellow;
+							stroke: white;
 							stroke-width: 2px;
+							stroke-linecap: round;
 						}
 
 						.arc_shadow {
 							fill: none;
 							stroke: yellow;
-							stroke-width: 2px;
+							stroke-width: 5px;
+							stroke-linecap: round;
 							filter: blur(5px);
 						}
 
@@ -469,14 +471,25 @@
 						.to("#furnace_lid", 1, {opacity:1, x:0}, "<")
 						.to("#bin", 1, {y:0})
 						.to("#electrodes", 1, {y:0}, "<")
+						.to("#bin, #fixed_pipe", 1, {opacity:0})
+						.to("svg > *", 1, {x:-100}, "<")
+						.set("#bin, #fixed_pipe", {visibility:"hidden", opacity:0})
 
 						t.addLabel("t6", ">")
 						.set("#caption", {innerHTML: "Electric arcs are generated between the graphite electrodes by applying large voltages, generating heat which melts the charge. <br> Arc temperature may reach roughly 3000&#x00B0;C."})
-						
-
+						.set("#arcs", {visibility:"visible"})
+						.set("#iron", {opacity:0, x:0, y:0, fill:"url(#iron_melt)", attr:{x:345, y:250, width:150, height:25}})
+						.to("#arcs", 0.1, {opacity:1})
+						.to("#iron", 1, {opacity:1}, "<")
+						.set("#charge", {fill:"gold"})
 
 						t.addLabel("t7", ">")
 						.set("#caption", {innerHTML: "Additional heat is directed at cold spots around the edge of the furnace. This may be done using burners in the furnace wall, which inject burning natural gas."})
+						.set(".fire", {visibility:"visible"})
+						.to(".fire", 0.5, {opacity:1})
+						.to("#iron", 1, {opacity:0})
+						.set("#iron", {fill:"gold", opacity:1})
+						.set("#charge", {visibility:"hidden", opacity:0, x:0, y:0, fill:"slategrey", attr:{x:"95", y:"250", width:"90", height:"40"}})
 
 						t.addLabel("t8", ">")
 						.set("#caption", {innerHTML: "Once the charge is completely melted, O$#x2082; is inject (via the burners or otherwise) to react with impurites and remove them to a slag phase."})
@@ -536,7 +549,7 @@
 							return curr;
 						}
 
-						move(5,6);
+						move(6,7);
 
 					</script>
 					
