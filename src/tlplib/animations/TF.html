@@ -254,13 +254,13 @@
             left:0px;
             top:0px;
             width:640px;
-            height:115px;
+            height:115.5px;
             transform:scale(1);
           }
           #fuj {
             position: absolute;
             left:0px;
-            top:85px;
+            top:94.5px;
             width:640px;
             height:115px;
             transform:scale(1);
@@ -900,22 +900,22 @@
                                                     M378.75,227.25v-10h10v5l-10,5v50"/>
                         </g>
                         <g class="plug">
-                            <path id="plug_plu" d="M"/>
+                            <path id="plug_plu" d="M225,95h5l22.5,67.5a15,15 0,0,0 19,9.75q53.5,-30.010 97,0a15,15 0,0,0 19,-9.75l22.5,-67.5h5v-25h25v-10h-240v10h25z"/>
                         </g>
                         <g class="sheet">
                             <path id="sheet_plu" d="M200,85h25h5h20h19h102h19h20h5h25"/>
-                            <path id="sheet_plu_morph" d="M200,85h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                            <path id="sheet_plu_morph" d="M200,95h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25z"/>
                             <path id="sheet_new_plu" d="M-245,85h240"/>
                         </g>
                     </svg>
                     <svg id="fuj">
                         <g class="sheet">
-                            <path id="sheet_plu_morf" d="M200,-87.5h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25z"/>
+                            <path id="sheet_plu_morf1" d="M200,0.5h25h5l22.5,67.5a15,15 0,0,0 19,9.75q53.5,-30.010 97,0a15,15 0,0,0 19,-9.75l22.5,-67.5h5h25z"/>
+                            <path id="sheet_plu_morf2" d="M200,0.5h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25z"/>
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#clamp_plu3, #clamp_plu4, #sheet_plu", {duration:0, autoAlpha:0})
-                        gsap.to("#sheet_plu_morph")
+                        gsap.to("#clamp_plu3, #clamp_plu4, #sheet_plu, #sheet_plu_morph, #sheet_plu_morf2", {duration:0, autoAlpha:0})
                     </script>
                     <div class="nav"> 
                         <p class="dbutton" id="back3" onClick="fudge()"></p >
