@@ -231,16 +231,6 @@
           }
     
           /*svg viewbox thingies */
-          #RIM_title_page {
-            position: absolute;
-            left: -209px;
-            top: -30px;
-            width: 1055px;
-            height: 500px;
-            transform: scale(0.6);
-            border: #000 2px solid;
-          }
-    
           #vacuum, #drape, #pressure, #plug {
             position: absolute;
             left:0px;
@@ -267,94 +257,6 @@
           }
     
           /* elements in title page and animation page */
-          #bulk_extrudate,
-          #bulk_extrudate2 {
-            stroke: none;
-            fill: #ee4;
-            fill-opacity: 0.75;
-          }
-    
-          #extruder {
-            position: absolute;
-          }
-    
-          #machinery,
-          #machinery2,
-          #machinery3 {
-            stroke-width: 1px;
-            fill: #eee;
-            stroke: #000;
-          }
-    
-          #block {
-            stroke: none;
-            fill: #fff;
-          }
-    
-          #dispenser,
-          #dispenser2 {
-            position: absolute;
-            fill: darkgreen;
-          }
-    
-          .pre_extrudate2 {
-            stroke: none;
-            fill: #ee4;
-            fill-opacity: 0.75;
-          }
-    
-          .pre_extrudate3 {
-            stroke: none;
-            fill: #e44;
-            fill-opacity: 0.75;
-          }
-    
-          #pre_dispensate2 {
-            fill: #ee4;
-          }
-    
-          #pre_dispensate3 {
-            fill: #e44;
-          }
-    
-          #injection_mould,
-          #injection_mould2 {
-            stroke: #000;
-            stroke-width: 1px;
-            fill: forestgreen;
-          }
-    
-          #reaction_mould,
-          #reaction_mould2 {
-            stroke: #000;
-            stroke-width: 0.5px;
-            fill: mediumslateblue;
-          }
-    
-          #reactants,
-          #reactants2 {
-            stroke:none;
-          }
-    
-          #parisons,
-          #parisons2 {
-            stroke: #e94;
-            stroke-width: 1px;
-            /*border-radius:2px;*/
-            fill: #e94;
-            fill-opacity: 1;
-          }
-    
-          #parison2 {
-            stroke: #000;
-            stroke-width: 1px;
-          }
-    
-          .title {
-            text-align: center;
-            font-family: "Myriad-Roman";
-            text-decoration: underline;
-          }
           .title_hover {
             font-family:"Myriad-Roman";
             font-size:12px;
@@ -376,13 +278,11 @@
           .aa {
             position:relative;
           }
-            #page1 {
-                font-size:25px;
-                position:relative;
-                top:0%;
-            }
-            #page2, #page3, #page4, #page5 {
-                font-size:25px;
+            #page1, #page2, #page3, #page4, #page5 {
+                text-align: center;
+                font-family: "Myriad-Roman";
+                text-decoration: underline;
+                font-size:30px;
                 position:relative;
                 top:0%;
             }
@@ -391,7 +291,6 @@
             }
             /* #titlea:hover, #titleb:hover, #titlec:hover, #titled:hover, #titlea:focus-visible, #titleb:focus-visible, #titlec:focus-visible, #titled:focus-visible {
                 opacity:1;
-                transform:scale(1.1);
             } */
             .container>div>svg {
                 border:#000 2px solid;
@@ -476,15 +375,15 @@
 
             #heater_txt_vac {
                 left:292.5px;
-                top:81.25px;
+                top:131.25px;
             }
             #heater_txt_drp {
                 left:292.5px;
-                top:81.25px;
+                top:131.25px;
             }
             #heater_txt_pre {
                 left:292.5px;
-                top:81.25px;
+                top:131.25px;
             }
             #plug_txt_plu {
                 left:297.5px;
@@ -492,20 +391,19 @@
             }
             #pump_txt_pre {
                 left:292.5px;
-                top:50px;
+                top:100px;
             }
             #vacuum_txt_vac {
                 left:286.25px;
-                top:275px;
+                top:325px;
             }
             #vacuum_txt_drp {
                 left:282.75px;
-                top:295px;
+                top:345px;
             }
             #vacuum_txt_plu {
                 left:286.25px;
-                top:30
-                5px;
+                top:305px;
             }
         </style>
     </head>
@@ -663,42 +561,39 @@
 				<div class="payj" id="p2" > 
                     <svg id="vacuum">
                         <g class="heater">
-                            <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/>
-                            <path id="heater_vac" d="M230,50h180v25h-180z"/>
+                            <path id="heater_vac_dummy" d="M230,100h180v25h-180z"/>
+                            <path id="heater_vac" d="M230,100h180v25h-180z"/>
                         </g>
                         <g class="aparatus">
-                            <path id="aparatus_vac"  d="M175,50h50v25h-50z M465,50h-50v25h50z"/>
-                            <path id="aparatus_vac2" d="M175,95h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z
-                                                        M269,179.75q56,-30.010 102,0v15.25h-102z
-                                                        M379.66,179.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                            <path id="aparatus_vac"  d="M175,100h50v25h-50z M465,100h-50v25h50z"/>
+                            <path id="aparatus_vac2" d="M175,145h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z
+                                                        M269,229.75q56,-30.010 102,0v15.25h-102z
+                                                        M379.66,229.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
                         </g>
                         <g class="gap">
-                            <path id="gap_vac" d="M260.34,179.75a15,15 0,0,0 8.66,0v15.25h-8.66z
-                                                  M371.40,179.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
+                            <path id="gap_vac" d="M260.34,229.75a15,15 0,0,0 8.66,0v15.25h-8.66z
+                                                  M371.40,229.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
                         </g>
                         <g class="clamp">
-                            <path id="clamp_vac1" d="M200,120h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
-                            <path id="clamp_vac2" d="M440,120h25v10s10,20 20,0v-90s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v110s-20,40 -40,0v-10h-15z"/>
-                            <path id="clamp_vac3" d="M200,120h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
-                            <path id="clamp_vac4" d="M440,120h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_vac1" d="M200,170h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
+                            <path id="clamp_vac2" d="M440,170h25v10s10,20 20,0v-90s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v110s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_vac3" d="M200,170h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                            <path id="clamp_vac4" d="M440,170h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
                         </g>
                         <g class="support">
-                            <path id="support_vac" d="M200,120h20l25,75h15.34v20h-60.34zM269,195h102v20h-102zM440,120h-20l-25,75h-15.34v20h60.34z"/>
+                            <path id="support_vac" d="M200,170h20l25,75h15.34v20h-60.34zM269,245h102v20h-102zM440,170h-20l-25,75h-15.34v20h60.34z"/>
                         </g>
                         <g class="vacuum">
-                            <path id="port1_vac" d="M258.35,227.5v-10h-10v5l10,5v50
-                                                    M271,227.25v-10h10v5l-10,5v50"/>
-                            <path id="port2_vac" d="M368.97,227.5v-10h-10v5l10,5v50
-                                                    M381.77,227.25v-10h10v5l-10,5v50"/>
-                            <!-- <path id="port2_vac" d="M358.9,217.5h33.66a2.5,2.5 0 0 1 2.5,2.5v2.5a2.5,2.5 0 0 1 -2.5,2.5h-33.66a2.5,2.5 0 0 1 -2.5,-2.5v-2.5a2.5,2.5 0 0 1 2.5,-2.5
-                                                    M394.33,223.54l-12.5,12.5a2.5,2.5 0 0 0 -0.73,1.77v60
-                                                    M357.13,223.54l12.5,12.5a2.5,2.5 0 0 1 0.73,1.77v60"/> -->
+                            <path id="port1_vac" d="M258.35,277.5v-10h-10v5l10,5v50
+                                                    M271,277.25v-10h10v5l-10,5v50"/>
+                            <path id="port2_vac" d="M368.97,277.5v-10h-10v5l10,5v50
+                                                    M381.77,277.25v-10h10v5l-10,5v50"/>
                         </g>
                         <g class="sheet">
-                            <path id="sheet_vac" d="M200,85h25h5h20h19h102h19h20h5h25"/>
+                            <path id="sheet_vac" d="M200,135h25h5h20h19h102h19h20h5h25"/>
                             <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
-                            <path id="sheet_vac_morph" d="M200,85h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
-                            <path id="sheet_new_vac" d="M-245,85h240"/>
+                            <path id="sheet_vac_morph" d="M200,135h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                            <path id="sheet_new_vac" d="M-245,135h240"/>
                         </g>
                     </svg>
                     <div class="page_txt" id="heater_txt_vac"><p>Heater</p></div>
