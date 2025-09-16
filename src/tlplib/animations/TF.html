@@ -77,6 +77,32 @@
             tlpl.pause()
             gotoPage(1)
           }
+          function fuj(n) {
+            if (n==1) {
+                gsap.to("#titlea", {duration:0, autoAlpha:1})
+            }
+            else if (n==2) {
+                gsap.to("#titlea", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==3) {
+                gsap.to("#titleb", {duration:0, autoAlpha:1})
+            }
+            else if (n==4) {
+                gsap.to("#titleb", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==5) {
+                gsap.to("#titlec", {duration:0, autoAlpha:1})
+            }
+            else if (n==6) {
+                gsap.to("#titlec", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==7) {
+                gsap.to("#titled", {duration:0, autoAlpha:1})
+            }
+            else if (n==8) {
+                gsap.to("#titled", {duration:0, autoAlpha:0.5})
+            }
+          }
         </script>
     
         <style>
@@ -257,6 +283,9 @@
           }
     
           /* elements in title page and animation page */
+          #titlea, #titleb, #titlec, #titled {
+                opacity:0.5;
+          }
           .title_hover {
             font-family:"Myriad-Roman";
             font-size:12px;
@@ -277,6 +306,7 @@
           }
           .aa {
             position:relative;
+            cursor:pointer;
           }
             #page1, #page2, #page3, #page4, #page5 {
                 text-align: center;
@@ -287,9 +317,6 @@
                 transform: translateX(-50%);
                 left:50%;
                 top:-4%;
-            }
-            #titlea, #titleb, #titlec, #titled {
-                opacity:0.5;
             }
             /* #titlea:hover, #titleb:hover, #titlec:hover, #titled:hover, #titlea:focus-visible, #titleb:focus-visible, #titlec:focus-visible, #titled:focus-visible {
                 opacity:1;
@@ -368,7 +395,7 @@
                 stroke-width:2px;
             }
             .plug {
-                fill:#0c0;
+                fill:#4b2;
                 stroke: #000;
                 stroke-width: 1px;
             }
@@ -377,40 +404,47 @@
                 font-family:"Myriad-Roman";
                 font-size:20px;
                 font-weight:100;
-                text-anchor:middle;
                 position:absolute;
             }
 
             #heater_txt_vac {
-                left:292.5px;
+                left:50%;
+                transform:translateX(-50%);
                 top:131.25px;
             }
             #heater_txt_drp {
-                left:292.5px;
+                left:50%;
+                transform:translateX(-50%);
                 top:131.25px;
             }
             #heater_txt_pre {
-                left:292.5px;
+                left:50%;
+                transform:translateX(-50%);
                 top:131.25px;
             }
             #plug_txt_plu {
-                left:297.5px;
-                top:131.25px;
-            }
-            #pump_txt_pre {
-                left:292.5px;
+                left:50%;
+                transform:translateX(-50%);
                 top:100px;
             }
+            #pump_txt_pre {
+                left:50%;
+                transform:translateX(-50%);
+                top:90px;
+            }
             #vacuum_txt_vac {
-                left:286.25px;
+                left:50%;
+                transform:translateX(-50%);
                 top:325px;
             }
             #vacuum_txt_drp {
-                left:282.75px;
+                left:50%;
+                transform:translateX(-50%);
                 top:345px;
             }
             #vacuum_txt_plu {
-                left:286.25px;
+                left:50%;
+                transform:translateX(-50%);
                 top:355px;
             }
         </style>
@@ -448,8 +482,8 @@
 				<div class="payj" id="p1"> 
 					<div class="title" id="page1"><p>Thermoforming</p></div>
                     <div class="container">
-                        <div class="aa">
-                            <svg id="titlea" viewbox="0 0 640 480" onclick="gotoPage(2)">
+                        <div class="aa" onclick="gotoPage(2)" onmouseover="fuj(1)" onmouseleave="fuj(2)">
+                            <svg id="titlea" viewbox="0 0 640 480">
                                 <g class="heater_hot">
                                     <path id="heater_vact" d="M230,150h180v25h-180z"/>
                                 </g>
@@ -477,8 +511,8 @@
                             </svg>
                             <div class="title_hover"><p>Vacuum<br/>Thermoforming</p></div>
                         </div>
-                        <div class="aa"> 
-                            <svg id="titleb" viewbox="0 0 640 480" onclick="gotoPage(3)">
+                        <div class="aa" onclick="gotoPage(3)"  onmouseover="fuj(3)" onmouseleave="fuj(4)">
+                            <svg id="titleb" viewbox="0 0 640 480">
                                 <g class="heater_hot">
                                     <path id="heater_drp_dummyt" d="M230,150h180v25h-180z"/>
                                     <path id="heater_drpt" d="M230,150h180v25h-180z"/>
@@ -514,8 +548,8 @@
                             </svg>
                             <div class="title_hover"><p>Drape<br/>Thermoforming</p></div>
                         </div>
-                        <div class="aa"> 
-                            <svg id="titlec" viewbox="0 0 640 480" onclick="gotoPage(4)">
+                        <div class="aa" onclick="gotoPage(4)" onmouseover="fuj(5)" onmouseleave="fuj(6)">
+                            <svg id="titlec" viewbox="0 0 640 480">
                                 <g class="heater_hot">
                                     <path id="heater_pre_dummyt" d="M225,170h42.5v25h-42.5zM277.5,170h85v25h-85zM372.5,170h42.5v25h-42.5z"/>
                                     <path id="heater_pret" d="M225,170h42.5v25h-42.5zM277.5,170h85v25h-85zM372.5,170h42.5v25h-42.5z"/>
@@ -550,8 +584,8 @@
                             </svg>
                             <div class="title_hover"><p>Pressure<br/>Thermoforming</p></div>
                         </div>
-                        <div class="aa">
-                            <svg id="titled" viewbox="0 0 640 480" onclick="gotoPage(5)">
+                        <div class="aa" onclick="gotoPage(5)" onmouseover="fuj(7)" onmouseleave="fuj(8)">
+                            <svg id="titled" viewbox="0 0 640 480">
                                 <g class="gap">
                                     <path id="gap_plut" d="M175,195h50l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h50v25h-45l-25,75h-150l-25,-75h-45z"/>
                                 </g>
@@ -584,11 +618,6 @@
                             <div class="title_hover"><p>Plug&#8209;Assisted<br/>Thermoforming</p></div>
                         </div>
                     </div>
-					
-					<div id="anim1">
-					</div>
-					<!-- end anim1 -->
-				
 				</div>
 				<!-- end payj - p1 -->
 				
@@ -709,7 +738,6 @@
                         </g>
                         <g class="sheet">
                             <path id="sheet_drp" d="M200,195h240"/>
-                            <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
                             <path id="sheet_drp_morph" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25z"/>
                             <path id="sheet_new_drp" d="M-245,195h240"/>
                         </g>
@@ -763,7 +791,6 @@
                             <!-- <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/> -->
                             <path id="heater_pre_dummy" d="M225,150h42.5v25h-42.5zM277.5,150h85v25h-85zM372.5,150h42.5v25h-42.5z"/>
                             <path id="heater_pre" d="M225,150h42.5v25h-42.5zM277.5,150h85v25h-85zM372.5,150h42.5v25h-42.5z"/>
-                            <!-- <path id="heater_vac" d="M230,50h180v25h-180z"/> -->
                         </g>
                         <g class="heater_gap">
                             <path id="heater_gap_pre" d="M267.5,150h10v25h-10zM362.5,150h10v25h-10z"/>
@@ -793,7 +820,6 @@
                         </g>
                         <g class="sheet">
                             <path id="sheet_pre" d="M200,185h25h5h20h19h102h19h20h5h25"/>
-                            <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
                             <path id="sheet_pre_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                             <path id="sheet_new_pre" d="M-245,185h240"/>
                         </g>
