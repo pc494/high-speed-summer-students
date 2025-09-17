@@ -217,7 +217,7 @@
           }
     
           /*svg viewbox thingies */
-          #vacuum, #drape, #pressure, #plug {
+          #page1 {
             position: absolute;
             left:0px;
             top:0px;
@@ -225,28 +225,62 @@
             height:480px;
             transform:scale(1);
           }
+
+
+
+
+
+          .cable {
+            stroke:#000;
+            stroke-width:2.5px;
+            stroke-dasharray: 7.5 10;
+          }
+          .block {
+            fill:#fff;
+            stroke:none;
+          }
+          .form {
+            fill:grey;
+            stroke:#000;
+            stroke-linecap:round;
+            stroke-width:1px;
+          }
+          .balloon {
+            stroke:#451671;
+            stroke-width:1px;
+            stroke-linecap:round;
+            fill:#8a2ce2;
+            fill-opacity:0.75;
+          }
+          .container {
+            stroke:#000;
+            stroke-linecap:square;
+            stroke-width:2px;
+            fill:forestgreen;
+          }
+          .latex {
+            fill:#8a2ce2;
+            stroke:#451671;
+          }
+          #latex_vat {
+            transform:scale(2);
+          }
         </style>
     </head>
     <body>
         <div id="container"> 
-			
 			<div id="kanvas"> 
-				
 				<!-- DoITPoMS  and CC logos -->
 				<div id="para"> Re-use of this resource is governed by a Creative Commons 
 					Attribution-<br />
 					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
 					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
-				</div>
-				<!-- end para -->
-				
+				</div><!-- end para -->
 				<div id="cc" > <img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
 				
 					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
 				
-				</div>
-				<!-- end cc -->
-				
+				</div><!-- end cc -->
 				<script>
 				
 					setAnimDimensions(640,480);
@@ -257,23 +291,60 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
 					<div class="" id=""><p></p></div>
-                    <svg id="">
-                        <g id="form">
-                            <g class="block">
-
+                    <svg id="page1">
+                        <g id="production_line">
+                            <g class="cable">
+                                <line x1="-1000" y1="75" x2="1640" y2="75"/>
                             </g>
-                            <g class="form">
-                                <path d="M50,50v-25h10v25"/>
-                                <path d="M50,50v-25c0,-5 -10,-7 -10,-12"/>
+                        </g>
+                        <g id="form">
+                            <g id="block1" class="block">
+                                <rect x="32.5" y="19.5" width="100" height="111"/>
+                            </g>
+                            <g id="form1" class="form">
+                                <path d="M32.5,70h100v10h-100z"/>
+                                <path d="M50,75v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M80,75v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M110,75v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g id="balloons" class="balloon">
+                                <path d="M49.5,65v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M79.5,65v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M109.5,65v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                            </g>
+                        </g>
+                        <g id="latex_vat">
+                            <g class="container">
+                                <path d="M82.5,100v100h150v-100h5v105h-160v-105z"/>
+                            </g>
+                            <g class="latex">
+                                <path id="latex" d="M82.5,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
+                                <path id="latexx" d="M82.5,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
                             </g>
                         </g>
                     </svg>
                     <script>
+                        gsap.to("#latexx", {duration:0, autoAlpha:0});
+
+                        var ang = 0;
+
+                        function flip() {
+                            gsap.to("#form", {duration:0, rotation:180+ang, transformOrigin:"50% 50%"});
+
+                            ang += 180;
+                        }
                         
-                    </script>
+                        var waves = gsap.timeline({paused:false, repeat:-1})
+                        waves.timeScale(1)
+                        waves.to("#latex", {duration:0.5, morphSVG:"#latexx", ease:"power1.inOut"})
+                        waves.to("#latex", {duration:0.5, morphSVG:"#latex", ease:"power1.inOut"})
+                        waves.play()
+                        
+                        
+                        </script>
                     <div class="nav"> 
-                        <p class="dbutton" id="back2" onClick=""></p >
-                        <p class="dbutton" id="start" onClick=""></p >
+                        <p class="dbutton" id="back2" onClick="flip()"></p >
+                        <p class="dbutton" id="start" onClick="waves.play()"></p >
                         <p class="dbutton" id="pause" onClick=""></p >
                     </div>
 				</div> <!-- end payj - p1 -->
