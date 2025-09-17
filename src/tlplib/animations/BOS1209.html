@@ -454,36 +454,8 @@
 							curr = move(prv,nxt, "c")
 						}
 
-						function move(prv, nxt, dir="f"){
-
-							if (dir=="f"){
-								t.tweenFromTo("t"+prv, "t"+nxt)
-							}
-							else if (dir=="c"){
-								t.seek("t"+nxt)
-							}
-
-							curr = nxt
-							console.log(prv, curr, nxt)
-							console.log("current label: "+t.currentLabel())
-
-							if(curr == 1){
-								document.getElementById("back").style.visibility = "hidden"
-							}
-							else if(curr == 10){
-								document.getElementById("next").style.visibility = "hidden"
-							}
-							else {
-								document.getElementById("back").style.visibility = "visible"
-								document.getElementById("next").style.visibility = "visible"
-							}
-
-							return(curr)
-
-						}
-
 						var maxstep = Object.keys(t.labels).length 
-						var speed = 3
+						var speed = 2.5
 						function move(prv, nxt, dir="f") {
 
 							gsap.set("#back, #next", {visibility: "hidden"})
