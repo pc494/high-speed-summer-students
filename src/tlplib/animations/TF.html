@@ -1,0 +1,949 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+    
+        <title>Thermoforming</title>
+    
+        <!-- Greensock library  -->
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(RoughEase);
+          });
+        </script>
+    
+        <script>
+          // hide and show CC licence words
+          function showTxt() {
+            document.getElementById("para").style.visibility = "visible";
+          } // end showTxt
+    
+          function hideTxt() {
+            document.getElementById("para").style.visibility = "hidden";
+          } // end hideTxt
+    
+          // page navigation
+          function gotoPage(p) {
+            // replace next fn gEBCN as fails in IE<9
+            var x = document.getElementsByClassName("payj");
+            var len = x.length;
+            for (var i = 1; i < len + 1; i++) {
+              var ppp = eval("p" + i);
+              document.getElementById("p" + i).style.display = "none";
+              if (i == p) {
+                document.getElementById("p" + i).style.display = "block";
+              }
+            }
+          }
+    
+          // sets the dimensions of kanvas and positions the bottom logos
+          function setAnimDimensions(w, h) {
+            //w = animation width
+            //h = animation height
+            document.getElementById("kanvas").style.height = String(h) + "px";
+            document.getElementById("kanvas").style.width = String(w) + "px";
+            document.getElementById("kanvas").style.margin = "0px auto";
+            document.getElementById("kanvas").style.border = "2px solid blue";
+            // position footers
+            var divcc = document.getElementById("cc");
+            var divpara = document.getElementById("para");
+            divcc.style.position = "absolute";
+            divpara.style.position = "absolute";
+            divcc.style.top = h - 40 + "px";
+            divpara.style.top = h - 85 + "px";
+          }
+          function fudge() {
+            tlv.restart()
+            tlv.pause()
+            gotoPage(1)
+            tld.restart()
+            tld.pause()
+            gotoPage(1)
+            tlp.restart()
+            tlp.pause()
+            gotoPage(1)
+            tlpl.restart()
+            tlpl.pause()
+            gotoPage(1)
+          }
+          function fuj(n) {
+            if (n==1) {
+                gsap.to("#titlea", {duration:0, autoAlpha:1})
+            }
+            else if (n==2) {
+                gsap.to("#titlea", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==3) {
+                gsap.to("#titleb", {duration:0, autoAlpha:1})
+            }
+            else if (n==4) {
+                gsap.to("#titleb", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==5) {
+                gsap.to("#titlec", {duration:0, autoAlpha:1})
+            }
+            else if (n==6) {
+                gsap.to("#titlec", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==7) {
+                gsap.to("#titled", {duration:0, autoAlpha:1})
+            }
+            else if (n==8) {
+                gsap.to("#titled", {duration:0, autoAlpha:0.5})
+            }
+          }
+        </script>
+    
+        <style>
+          #container {
+            position: relative;
+          }
+    
+          #kanvas {
+            position: relative;
+          }
+    
+          #cc {
+            position: absolute;
+            width: 100%;
+            /*background-color:#cc0000;  */
+          }
+    
+          #para {
+            position: absolute;
+            padding: 0px;
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 11px;
+            color: blue;
+            background-color: #fff;
+            border-style: solid;
+            border-color: #000000;
+            border-width: 1px;
+            visibility: hidden;
+            z-index: 200;
+          }
+    
+          /* DOiTPoMS buttons */
+          .dbutton {
+            cursor: pointer;
+            background-color: #603;
+            height: 25px;
+            margin: 0px;
+            background-position: bottom;
+            display: inline-block; /* allows on sameline */
+          }
+    
+          .dbutton:hover {
+            background-position: center;
+          }
+    
+          #back,
+          #back2,
+          #back3,
+          #back4,
+          #back5,
+          #back6,
+          #back7 {
+            width: 79px;
+            background-image: url("../../../images/back.png");
+          }
+    
+          #next,
+          #next2,
+          #next3,
+          #next4,
+          #next5,
+          #next6,
+          #next7 {
+            width: 75px;
+            background-image: url("../../../images/next.png");
+          }
+    
+          #restart,
+          #restart2,
+          #restart3,
+          #restart5,
+          #restart6,
+          #restart7 {
+            width: 99px;
+            background-image: url("../../../images/restart.png");
+          }
+    
+          #reset {
+            width: 84px;
+            background-image: url("../../../images/reset.png");
+          }
+    
+          #start {
+            width: 76px;
+            background-image: url("../../../images/start.png");
+          }
+    
+          #pause {
+            width: 83px;
+            background-image: url("../../../images/pause.png");
+          }
+    
+          #continue {
+            width: 118px;
+            background-image: url("../../../images/continue.png");
+          }
+    
+          /* page divs */
+          .leftText {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            padding: 7px;
+            width: 280px;
+            text-align: justify;
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #a6ba45;
+          }
+    
+          #anim1,
+          #anim2,
+          #anim3,
+          #anim4,
+          #anim5,
+          #anim6,
+          #anim7,
+          #anim8,
+          #anim9 {
+            position: absolute;
+            left: 200px;
+            top: 0px;
+            width: 300px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #dededf;
+            /*visibility: hidden;*/
+          }
+    
+          .nav {
+            position: absolute;
+            text-align: center;
+            left: 130px;
+            top: 445px;
+            width: 300px;
+          }
+    
+          /* page id */
+          #p1 {
+            display: block;
+          }
+    
+          #p2,
+          #p3,
+          #p4,
+          #p5,
+          #p6,
+          #p7,
+          #p8,
+          #p9 {
+            display: none;
+          }
+    
+          /*svg viewbox thingies */
+          #vacuum, #drape, #pressure, #plug {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:480px;
+            transform:scale(1);
+          }
+          #fudge {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:215.5px;
+            transform:scale(1);
+          }
+          #fuj {
+            position: absolute;
+            left:0px;
+            top:194.5px;
+            width:640px;
+            height:115px;
+            transform:scale(1);
+          }
+    
+          /* elements in title page and animation page */
+          #titlea, #titleb, #titlec, #titled {
+                opacity:0.5;
+          }
+          .title_hover {
+            font-family:"Myriad-Roman";
+            font-size:12px;
+            text-align:center;
+            font-weight: bold;
+            position:absolute;
+            left:50%;
+            transform: translateX(-50%);
+            top:-4%;
+            display:none;
+          }
+          .aa:hover .title_hover {
+            display:block;
+          }
+          .aa:hover svg{
+            opacity:1;
+            transform:scale(1.1);
+          }
+          .aa {
+            position:relative;
+            cursor:pointer;
+          }
+            #page1, #page2, #page3, #page4, #page5 {
+                text-align: center;
+                font-family: "Myriad-Roman";
+                text-decoration: underline;
+                font-size:30px;
+                position:absolute;
+                transform: translateX(-50%);
+                left:50%;
+                top:-4%;
+            }
+            /* #titlea:hover, #titleb:hover, #titlec:hover, #titled:hover, #titlea:focus-visible, #titleb:focus-visible, #titlec:focus-visible, #titled:focus-visible {
+                opacity:1;
+            } */
+            .container>div>svg {
+                border:#000 2px solid;
+                margin: 8px;
+                cursor:pointer;
+            }
+            .container {
+                display: grid;
+                width: 65%;
+                height: 65%;
+                position:absolute;
+                left:17.5%;
+                bottom:12.5%;
+                grid-template-columns: auto auto;
+            }
+            .heater {
+                fill:#777;
+                stroke:#000;
+                stroke-width: 1px;
+            }
+            .heater_hot {
+                fill: #ea0d01;
+                stroke: #f00;
+                stroke-width: 1px;
+            }
+            .heater_gap {
+                fill:#777;
+                fill-opacity:0.3;
+                stroke:#000;
+                stroke-width:0.5px;
+            }
+            .heater_gap_hot {
+                fill: #ea0d01;
+                fill-opacity:0.3;
+                stroke: #f00;
+                stroke-width: 1px;
+            }
+            .sheet {
+                fill: #ee4;
+                fill-opacity: 0.5;
+                stroke: #ee4;
+                stroke-width: 2px;
+            }
+            .aparatus {
+                fill: forestgreen;
+                stroke: #000;
+                stroke-width: 1px;
+            }
+            .gap {
+                fill:forestgreen;
+                fill-opacity:0.3;
+                stroke:#000;
+                stroke-width:0.5px;
+            }
+            .clamp {
+                fill:royalblue;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            .support {
+                fill:firebrick;
+                stroke:#000;
+                stroke-width:1px;
+            }
+            .vacuum {
+                fill:none;
+                stroke:#000;
+                stroke-width:5px;
+            }
+            .pump {
+                fill:none;
+                stroke:#000;
+                stroke-width:2px;
+            }
+            .plug {
+                fill:#4b2;
+                stroke: #000;
+                stroke-width: 1px;
+            }
+            
+            .page_txt {
+                font-family:"Myriad-Roman";
+                font-size:20px;
+                font-weight:100;
+                position:absolute;
+            }
+
+            #heater_txt_vac {
+                left:50%;
+                transform:translateX(-50%);
+                top:131.25px;
+            }
+            #heater_txt_drp {
+                left:50%;
+                transform:translateX(-50%);
+                top:131.25px;
+            }
+            #heater_txt_pre {
+                left:50%;
+                transform:translateX(-50%);
+                top:131.25px;
+            }
+            #plug_txt_plu {
+                left:50%;
+                transform:translateX(-50%);
+                top:100px;
+            }
+            #pump_txt_pre {
+                left:50%;
+                transform:translateX(-50%);
+                top:90px;
+            }
+            #vacuum_txt_vac {
+                left:50%;
+                transform:translateX(-50%);
+                top:325px;
+            }
+            #vacuum_txt_drp {
+                left:50%;
+                transform:translateX(-50%);
+                top:345px;
+            }
+            #vacuum_txt_plu {
+                left:50%;
+                transform:translateX(-50%);
+                top:355px;
+            }
+        </style>
+    </head>
+
+    <body>
+		
+		<div id="container"> 
+			
+			<div id="kanvas"> 
+				
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> Re-use of this resource is governed by a Creative Commons 
+					Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
+				</div>
+				<!-- end para -->
+				
+				<div id="cc" > <img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+				
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				
+				</div>
+				<!-- end cc -->
+				
+				<script>
+				
+					setAnimDimensions(640,480);
+				
+				</script>
+				
+				<!-- divs for storyline -->
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+					<div class="title" id="page1"><p>Thermoforming</p></div>
+                    <div class="container">
+                        <div class="aa" onclick="gotoPage(2)" onmouseover="fuj(1)" onmouseleave="fuj(2)">
+                            <svg id="titlea" viewbox="0 0 640 480">
+                                <g class="heater_hot">
+                                    <path id="heater_vact" d="M230,150h180v25h-180z"/>
+                                </g>
+                                <g class="sheet">
+                                    <path id="sheet_vac_morph2t" d="M200,195h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                                </g>
+                                <g class="aparatus">
+                                    <path id="aparatus_vact" d="M175,170h50v25h-50z M465,170h-50v25h50z"/>
+                                    <path id="aparatus_vac2t" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z  M269,279.75q56,-30.010 102,0v15.25h-102z  M379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                                </g>
+                                <g class="gap">
+                                    <path id="gap_vact" d="M260.34,279.75a15,15 0,0,0 8.66,0v15.25h-8.66zM371.40,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
+                                </g>
+                                <g class="clamp">
+                                    <path id="clamp_vac3t" d="M200,220h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                                    <path id="clamp_vac4t" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                                </g>
+                                <g class="support">
+                                    <path id="support_vact" d="M200,220h20l25,75h15.34v20h-60.34zM269,295h102v20h-102zM440,220h-20l-25,75h-15.34v20h60.34z"/>
+                                </g>
+                                <g class="vacuum">
+                                    <path id="port1_vact" d="M258.35,327.5v-10h-10v5l10,5v50M271,327.25v-10h10v5l-10,5v50"/>
+                                    <path id="port2_vact" d="M368.97,327.5v-10h-10v5l10,5v50M381.77,327.25v-10h10v5l-10,5v50"/>
+                                </g>
+                            </svg>
+                            <div class="title_hover"><p>Vacuum<br/>Thermoforming</p></div>
+                        </div>
+                        <div class="aa" onclick="gotoPage(3)"  onmouseover="fuj(3)" onmouseleave="fuj(4)">
+                            <svg id="titleb" viewbox="0 0 640 480">
+                                <g class="heater_hot">
+                                    <path id="heater_drp_dummyt" d="M230,150h180v25h-180z"/>
+                                    <path id="heater_drpt" d="M230,150h180v25h-180z"/>
+                                </g>
+                                <g class="aparatus">
+                                    <path id="aparatus_drp1t" d="M175,190h50v25h-50z M465,190h-50v25h50z"/>
+                                    <path id="aparatus_drp2t" d="M175,215h50v25h-50z M465,215h-50v25h50z"/>    
+                                    <path id="aparatus_drp3t" d="M225,265v-50c0,-10 25,-24 50,-25v75z
+                                                                M285,190c25,1 35,10 60,11v64h-60z
+                                                                M355,201s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34v50h-60z"/>
+                                </g>
+                                <g class="gap">
+                                    <path id="gap_drpt" d="M275,190s5,-0.2 10,0v75h-10z
+                                                           M345,201s8.333,0.333 10,0v64h-10z"/>
+                                </g>
+                                <g class="clamp">
+                                    <path id="clamp_drp3t" d="M200,240h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                                    <path id="clamp_drp4t" d="M440,240h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                                </g>
+                                <g class="support">
+                                    <path id="support_drpt"   d="M200,240h25v60h-25z
+                                                                M440,240h-25v60h25z"/>
+                                </g>
+                                <g class="vacuum">
+                                    <path id="port1_drpt" d="M273,277.5v-10h-10v5l10,5v50
+                                                            M287,277.25v-10h10v5l-10,5v50"/>
+                                    <path id="port2_drpt" d="M343,277.5v-10h-10v5l10,5v50
+                                                            M357,277.25v-10h10v5l-10,5v50"/>
+                                  </g>
+                                <g class="sheet">
+                                    <path id="sheet_drp_morpht" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25z"/>
+                                </g>
+                            </svg>
+                            <div class="title_hover"><p>Drape<br/>Thermoforming</p></div>
+                        </div>
+                        <div class="aa" onclick="gotoPage(4)" onmouseover="fuj(5)" onmouseleave="fuj(6)">
+                            <svg id="titlec" viewbox="0 0 640 480">
+                                <g class="heater_hot">
+                                    <path id="heater_pre_dummyt" d="M225,170h42.5v25h-42.5zM277.5,170h85v25h-85zM372.5,170h42.5v25h-42.5z"/>
+                                    <path id="heater_pret" d="M225,170h42.5v25h-42.5zM277.5,170h85v25h-85zM372.5,170h42.5v25h-42.5z"/>
+                                </g>
+                                <g class="heater_gap_hot">
+                                    <path id="heater_gap_pret" d="M267.5,170h10v25h-10zM362.5,170h10v25h-10z"/>
+                                </g>
+                                <g class="aparatus">
+                                    <path id="aparatus_pre1t"  d="M175,170h50v25h-50zM465,170h-50v25h50z"/>
+                                    <path id="aparatus_pre2t" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45zM269,279.75q56,-30.010 102,0v15.25h-102zM379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                                </g>
+                                <g class="gap">
+                                    <path id="gap_pret" d="M260.34,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z
+                                                          M371.40,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
+                                </g>
+                                <g class="clamp">
+                                    <path id="clamp_pre3t" d="M200,220h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                                    <path id="clamp_pre4t" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                                </g>
+                                <g class="support">
+                                    <path id="support_pret" d="M200,220h20l25,75h15.34v20h-60.34zM269,295h102v20h-102zM440,220h-20l-25,75h-15.34v20h60.34z"/>
+                                </g>
+                                <g class="pump">
+                                    <path id="pump1_pret" d="M277.5,165v-20a15,15 0 1 0 -15,15h5v5h-2.5v5h15v-5z
+                                                            M268.75,145a6.25,6.25 0 0 1 -12.5,0 6.25,6.25 0 0 1 12.5,0"/>
+                                    <path id="pump2_pret" d="M362.5,165v-20a15,15 0 1 1 15,15h-5v5h2.5v5h-15v-5z
+                                                            M371.25,145a6.25,6.25 0 0 1 12.5,0 6.25,6.25 0 0 1 -12.5,0"/>
+                                </g>
+                                <g class="sheet">
+                                    <path id="sheet_pre_morpht" d="M200,195h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                                </g>
+                            </svg>
+                            <div class="title_hover"><p>Pressure<br/>Thermoforming</p></div>
+                        </div>
+                        <div class="aa" onclick="gotoPage(5)" onmouseover="fuj(7)" onmouseleave="fuj(8)">
+                            <svg id="titled" viewbox="0 0 640 480">
+                                <g class="gap">
+                                    <path id="gap_plut" d="M175,195h50l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h50v25h-45l-25,75h-150l-25,-75h-45z"/>
+                                </g>
+                                <g class="aparatus">
+                                    <path id="aparatus_plu1t"  d="M175,170h50v25h-50z M465,170h-50v25h50z"/>
+                                    <path id="aparatus_plu2t" d="M175,195h50l28.25,84.75h10v15.25h-18.75l-25,-75h-45zM273.25,279.75h17.5v-5h24.25v20.25h-41.75zM325,274.75h24.25v5h17.5v15.25h-41.75zM376.25,279.75h10.5l28.25,-84.75h50v25h-45l-25,75h-18.75z"/>
+                                </g>
+                                <g class="clamp">
+                                    <path id="clamp_plu3t" d="M200,220h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                                    <path id="clamp_plu4t" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                                </g>
+                                <g class="support">
+                                    <path id="support_plut" d="M200,220h20l25,75h18.25v20h-63.25zM273.25,295h41.75v20h-41.75zM325,295h41.75v20h-41.75zM440,220h-20l-25,75h-18.25v20h63.25z"/>
+                                </g>
+                                <g class="vacuum">
+                                    <path id="port1_plut" d="M261.25,327.5v-10h-10v5l10,5v50
+                                                            M275.25,327.25v-10h10v5l-10,5v50"/>
+                                    <path id="port2_plut" d="M313,327.5v-10h-10v5l10,5v50
+                                                            M327,327.25v-10h10v5l-10,5v50"/>
+                                    <path id="port3_plut" d="M364.75,327.5v-10h-10v5l10,5v50
+                                                            M378.75,327.25v-10h10v5l-10,5v50"/>
+                                </g>
+                                <g class="plug">
+                                    <path id="plug_plut" d="M225,165h5l22.5,67.5a15,15 0,0,0 14.23,10.26h106.54a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5v-25h25v-10h-240v10h25z"/>
+                                </g>
+                                <g class="sheet">
+                                    <path id="sheet_plu_morpht" d="M200,195h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25zz"/>
+                                </g>
+                            </svg>
+                            <div class="title_hover"><p>Plug&#8209;Assisted<br/>Thermoforming</p></div>
+                        </div>
+                    </div>
+				</div>
+				<!-- end payj - p1 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p2" > 
+                    <div class="title" id="page2"><p>Vacuum Thermoforming</p></div>
+                    <svg id="vacuum">
+                        <g class="heater">
+                            <path id="heater_vac_dummy" d="M230,150h180v25h-180z"/>
+                            <path id="heater_vac" d="M230,150h180v25h-180z"/>
+                        </g>
+                        <g class="aparatus">
+                            <path id="aparatus_vac"  d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
+                            <path id="aparatus_vac2" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z
+                                                        M269,279.75q56,-30.010 102,0v15.25h-102z
+                                                        M379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                        </g>
+                        <g class="gap">
+                            <path id="gap_vac" d="M260.34,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z
+                                                  M371.40,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
+                        </g>
+                        <g class="clamp">
+                            <path id="clamp_vac1" d="M200,220h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
+                            <path id="clamp_vac2" d="M440,220h25v10s10,20 20,0v-90s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v110s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_vac3" d="M200,220h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                            <path id="clamp_vac4" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                        </g>
+                        <g class="support">
+                            <path id="support_vac" d="M200,220h20l25,75h15.34v20h-60.34zM269,295h102v20h-102zM440,220h-20l-25,75h-15.34v20h60.34z"/>
+                        </g>
+                        <g class="vacuum">
+                            <path id="port1_vac" d="M258.35,327.5v-10h-10v5l10,5v50
+                                                    M271,327.25v-10h10v5l-10,5v50"/>
+                            <path id="port2_vac" d="M368.97,327.5v-10h-10v5l10,5v50
+                                                    M381.77,327.25v-10h10v5l-10,5v50"/>
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_vac" d="M200,185h25h5h20h19h102h19h20h5h25"/>
+                            <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
+                            <path id="sheet_vac_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                            <path id="sheet_new_vac" d="M-245,185h240"/>
+                        </g>
+                    </svg>
+                    <div class="page_txt" id="heater_txt_vac"><p>Heater</p></div>
+                    <div class="page_txt" id="vacuum_txt_vac"><p>Vacuum</p></div>
+                    <script>
+                        gsap.to("#clamp_vac3, #clamp_vac4, #sheet_vac_morph", {duration:0, autoAlpha:0})
+                        gsap.to("#port1_vac, #port2_vac", {duration:0, y:20, ease:"none"})
+
+                        var tlv = gsap.timeline({paused:true, repeat:-1})
+                        tlv.timeScale(1)
+
+                        tlv.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
+                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
+                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
+                        .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
+                        .to("#heater_vac", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
+                        .to("#heater_vac", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
+                        .to("#port1_vac, #port2_vac", {duration:1, y:0, ease:"none"}, 1.5)
+                        .to("#vacuum_txt_vac", {duration:1, y:-20, ease:"none"}, 1.5)
+                        .to("#heater_vac_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
+                        .to("#heater_vac", {duration:0, x:0, y:0, ease:"none"}, 2)
+                        .to("#sheet_vac", {duration:1.25, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3)
+                        .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 4.25)
+                        .to("#heater_vac", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
+                        .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
+                        .to("#port1_vac, #port2_vac", {duration:1, y:20, ease:"none"}, 4.25)
+                        .to("#vacuum_txt_vac", {duration:1, y:0, ease:"none"}, 4.25)
+                        .to("#aparatus_vac", {duration:1, y:0, ease:"none"}, 5.25)
+                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.25)
+                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
+                        .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 6.25)
+                        .to("#sheet_vac", {duration:2, x:445, ease:"power1.in"}, 7)
+                        .to("#sheet_new_vac", {duration:2, x:445, ease:"power1.out"}, 8)
+                    </script>
+                    <div class="nav"> 
+                        <p class="dbutton" id="back2" onClick="fudge()"></p >
+                        <p class="dbutton" id="start" onClick="tlv.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tlv.pause()"></p >
+                    </div>
+				</div>
+				<!-- end payj - p2 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p3" > 
+					<div class="title" id="page3"><p>Drape Thermoforming</p></div>
+                    <svg id="drape">
+                        <g class="heater">
+                            <path id="heater_drp_dummy" d="M230,150h180v25h-180z"/>
+                            <path id="heater_drp" d="M230,150h180v25h-180z"/>
+                        </g>
+                        <g class="aparatus">
+                            <path id="aparatus_drp1" d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
+                            <path id="aparatus_drp2" d="M175,215h50v25h-50z M465,215h-50v25h50z"/>    
+                            <path id="aparatus_drp3" d="M225,300v-50c0,-10 25,-24 50,-25v75z
+                                                        M285,225c25,1 35,10 60,11v64h-60z
+                                                        M355,236s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34v50h-60z"/>
+                        </g>
+                        <g class="gap">
+                            <path id="gap_drp" d="M275,225s5,-0.2 10,0v75h-10z
+                                                  M345,236s8.333,0.333 10,0v64h-10z"/>
+                        </g>
+                        <g class="clamp">
+                            <path id="clamp_drp1" d="M200,240h-25v10s-10,20 -20,0v-110s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v130s20,40 40,0v-10h15z"/>
+                            <path id="clamp_drp2" d="M440,240h25v10s10,20 20,0v-110s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v130s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_drp3" d="M200,240h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                            <path id="clamp_drp4" d="M440,240h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                        </g>
+                        <g class="support">
+                           <path id="support_drp"   d="M200,240h25v60h-25z
+                                                        M440,240h-25v60h25z"/>
+                        </g>
+                        <g class="vacuum">
+                            <path id="port1_drp" d="M273,312.5v-10h-10v5l10,5v50
+                                                    M287,312.25v-10h10v5l-10,5v50"/>
+                            <path id="port2_drp" d="M343,312.5v-10h-10v5l10,5v50
+                                                    M357,312.25v-10h10v5l-10,5v50"/>
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_drp" d="M200,195h240"/>
+                            <path id="sheet_drp_morph" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25z"/>
+                            <path id="sheet_new_drp" d="M-245,195h240"/>
+                        </g>
+                    </svg>
+                    <svg id="fudge">
+                        <g class="sheet">
+                            <path id="sheet_drp_morf" d="M200,250h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25"/>
+                        </g>
+                    </svg>
+                    <div class="page_txt" id="heater_txt_drp"><p>Heater</p></div>
+                    <div class="page_txt" id="vacuum_txt_drp"><p>Vacuum</p></div>
+                    <script>
+                        gsap.to("#clamp_drp3, #clamp_drp4, #sheet_drp_morph", {duration:0, autoAlpha:0})
+
+                        var tld = gsap.timeline({paused:true, repeat:-1})
+                        tld.timeScale(1)
+                        tld.to("#aparatus_drp1", {duration:1, y:40, ease:"none"}, 0)
+                        .to("#clamp_drp1", {duration:1, morphSVG:"#clamp_drp3", ease:"none"}, 0)
+                        .to("#clamp_drp2", {duration:1, morphSVG:"#clamp_drp4", ease:"none"}, 0)
+                        .to("#sheet_drp", {duration:0.5, y:20, ease:"none"}, 0.5)
+                        .to("#heater_drp", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1.25)
+                        .to("#heater_drp", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1.25)
+                        .to("#heater_drp_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2.25)
+                        .to("#heater_drp", {duration:0, x:0, y:0, ease:"none"}, 2.25)
+                        .to("#sheet_drp_morf, #aparatus_drp3, #gap_drp, #port1_drp, #port2_drp, #vacuum_txt_drp", {duration:1.25, y:-35, ease:"none"}, 3.5)
+                        .to("#heater_drp", {duration:1, attr:{fill:"#777"}, ease:"none"}, 4.25)
+                        .to("#heater_drp", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 4.25)
+                        .to("#sheet_drp_morph", {duration:0, autoAlpha:1}, 4.75)
+                        .to("#sheet_drp, #sheet_drp_morf", {duration:0, autoAlpha:0}, 4.75)
+                        .to("#aparatus_drp3, #gap_drp, #port1_drp, #port2_drp, #vacuum_txt_drp", {duration:1, y:0, ease:"none"}, 5)
+                        .to("#aparatus_drp1", {duration:1, y:0, ease:"none"}, 5.5)
+                        .to("#clamp_drp1", {duration:1, morphSVG:"#clamp_drp1", ease:"none"}, 5.5)
+                        .to("#clamp_drp2", {duration:1, morphSVG:"#clamp_drp2", ease:"none"}, 5.5)
+                        .to("#sheet_drp_morph", {duration:0.25, y:-3, ease:"none"}, 6.5)
+                        .to("#sheet_drp_morph", {duration:2, x:445, ease:"power1.in"}, 6.75)
+                        .to("#sheet_new_drp", {duration:2, x:445, ease:"power1.out"}, 7.75)
+                    </script>
+                    <div class="nav">
+                        <p class="dbutton" id="back3" onClick="fudge()"></p >
+                        <p class="dbutton" id="start" onClick="tld.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tld.pause()"></p >    
+                    </div>
+				</div>
+				<!-- end payj - p3 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p4">
+                    <div class="title" id="page4"><p>Pressure Thermoforming</p></div> 
+                    <svg id="pressure">
+                        <g class="heater">
+                            <!-- <path id="heater_vac_dummy" d="M230,50h180v25h-180z"/> -->
+                            <path id="heater_pre_dummy" d="M225,150h42.5v25h-42.5zM277.5,150h85v25h-85zM372.5,150h42.5v25h-42.5z"/>
+                            <path id="heater_pre" d="M225,150h42.5v25h-42.5zM277.5,150h85v25h-85zM372.5,150h42.5v25h-42.5z"/>
+                        </g>
+                        <g class="heater_gap">
+                            <path id="heater_gap_pre" d="M267.5,150h10v25h-10zM362.5,150h10v25h-10z"/>
+                        </g>
+                        <g class="aparatus">
+                            <path id="aparatus_pre1"  d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
+                            <path id="aparatus_pre2" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45zM269,279.75q56,-30.010 102,0v15.25h-102zM379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                        </g>
+                        <g class="gap">
+                            <path id="gap_pre" d="M260.34,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z
+                                                  M371.40,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z"/>
+                        </g>
+                        <g class="clamp">
+                            <path id="clamp_pre1" d="M200,220h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
+                            <path id="clamp_pre2" d="M440,220h25v10s10,20 20,0v-90s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v110s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_pre3" d="M200,220h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                            <path id="clamp_pre4" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                        </g>
+                        <g class="support">
+                            <path id="support_pre" d="M200,220h20l25,75h15.34v20h-60.34zM269,295h102v20h-102zM440,220h-20l-25,75h-15.34v20h60.34z"/>
+                        </g>
+                        <g class="pump">
+                            <path id="pump1_pre" d="M277.5,140v-20a15,15 0 1 0 -15,15h5v5h-2.5v5h15v-5z
+                                                    M268.75,120a6.25,6.25 0 0 1 -12.5,0 6.25,6.25 0 0 1 12.5,0"/>
+                            <path id="pump2_pre" d="M362.5,140v-20a15,15 0 1 1 15,15h-5v5h2.5v5h-15v-5z
+                                                    M371.25,120a6.25,6.25 0 0 1 12.5,0 6.25,6.25 0 0 1 -12.5,0"/>
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_pre" d="M200,185h25h5h20h19h102h19h20h5h25"/>
+                            <path id="sheet_pre_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                            <path id="sheet_new_pre" d="M-245,185h240"/>
+                        </g>
+                    </svg>
+                    <div class="page_txt" id="heater_txt_pre"><p>Heater</p></div>
+                    <div class="page_txt" id="pump_txt_pre"><p>Pumps</p></div>
+                    <script>
+                        gsap.to("#clamp_pre3, #clamp_pre4, #sheet_pre_morph", {duration:0, autoAlpha:0})
+                        gsap.to("#heater_gap_pre", {duration:0, attr:{fill:"#777"}})
+                        gsap.to("#heater_gap_pre", {duration:0, attr:{stroke:"#000"}})
+
+                        var tlp = gsap.timeline({paused:true, repeat:-1})
+                        tlp.timeScale(1)
+
+                        tlp.to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:20, ease:"none"}, 0)
+                        .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre3", ease:"none"}, 0)
+                        .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre4", ease:"none"}, 0)
+                        .to("#sheet_pre", {duration:0.5, y:10, ease:"none"}, 0.5)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
+                        .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:25, ease:"none"}, 1.5)
+                        .to("#heater_pre_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
+                        .to("#heater_pre", {duration:0, x:0, y:20, ease:"none"}, 2)
+                        .to("#sheet_pre", {duration:1.25, morphSVG:"#sheet_pre_morph", ease:"power1.inOut"}, 3)
+                        .to("#heater_pre_dummy", {duration:0, autoAlpha:1}, 4.25)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
+                        .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:0, ease:"none"}, 4.25)
+                        .to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:0, ease:"none"}, 5.25)
+                        .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre1", ease:"none"}, 5.25)
+                        .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre2", ease:"none"}, 5.25)
+                        .to("#sheet_pre", {duration:0.5, y:0, ease:"none"}, 6.25)
+                        .to("#sheet_pre", {duration:2, x:445, ease:"power1.in"}, 7)
+                        .to("#sheet_new_pre", {duration:2, x:445, ease:"power1.out"}, 8)
+                    </script>
+                    <div class="nav"> 
+                        <p class="dbutton" id="back3" onClick="fudge()"></p >
+                        <p class="dbutton" id="start" onClick="tlp.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tlp.pause()"></p > 
+                    </div>
+				</div>
+				<!-- end payj - p4 -->
+				
+				<!--  new page starts here    -->
+				<div class="payj" id="p5">
+                    <div class="title" id="page5"><p>Plug&#8209;Assisted&nbsp;Thermoforming</p></div>
+                    <svg id="plug">
+                        <g class="gap">
+                            <path id="gap_plu" d="M175,195h50l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h50v25h-45l-25,75h-150l-25,-75h-45z"/>
+                        </g>
+                        <g class="aparatus">
+                            <path id="aparatus_plu1"  d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
+                            <path id="aparatus_plu2" d="M175,195h50l28.25,84.75h10v15.25h-18.75l-25,-75h-45zM273.25,279.75h17.5v-5h24.25v20.25h-41.75zM325,274.75h24.25v5h17.5v15.25h-41.75zM376.25,279.75h10.5l28.25,-84.75h50v25h-45l-25,75h-18.75z"/>
+                        </g>
+                        <g class="clamp">
+                            <path id="clamp_plu1" d="M200,220h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
+                            <path id="clamp_plu2" d="M440,220h25v10s10,20 20,0v-90s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v110s-20,40 -40,0v-10h-15z"/>
+                            <path id="clamp_plu3" d="M200,220h-25v10s-10,20 -20,0v-70s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v90s20,40 40,0v-10h15z"/>
+                            <path id="clamp_plu4" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
+                        </g>
+                        <g class="support">
+                            <path id="support_plu" d="M200,220h20l25,75h18.25v20h-63.25zM273.25,295h41.75v20h-41.75zM325,295h41.75v20h-41.75zM440,220h-20l-25,75h-18.25v20h63.25z"/>
+                        </g>
+                        <g class="vacuum">
+                            <path id="port1_plu" d="M261.25,327.5v-10h-10v5l10,5v50
+                                                    M275.25,327.25v-10h10v5l-10,5v50"/>
+                            <path id="port2_plu" d="M313,327.5v-10h-10v5l10,5v50
+                                                    M327,327.25v-10h10v5l-10,5v50"/>
+                            <path id="port3_plu" d="M364.75,327.5v-10h-10v5l10,5v50
+                                                    M378.75,327.25v-10h10v5l-10,5v50"/>
+                        </g>
+                        <g class="plug">
+                            <path id="plug_plu" d="M225,100h5l22.5,67.5a15,15 0,0,0 14.23,10.26h106.54a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5v-25h25v-10h-240v10h25z"/>
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_plu" d="M200,185h25h5h20h19h102h19h20h5h25"/>
+                            <path id="sheet_plu_morph" d="M200,185h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25zz"/>
+                            <path id="sheet_new_plu" d="M-245,185h240"/>
+                        </g>
+                    </svg>
+                    <svg id="fuj">
+                        <g class="sheet">
+                            <path id="sheet_plu_morf1" d="M200,-94.5h25h5l22.5,67.5a15,15 0,0,0 14.23,10.26h22.77h1h58.5h1h22.77a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5h25z"/>
+                            <path id="sheet_plu_morf2" d="M200,-94.5h25l3.25,9.75  25,75h14.23h23.27v-5h58.5v5h23.27h14.23l25,-75 3.25,-9.75h25z"/>
+                        </g>
+                    </svg>
+                    <div class="page_txt" id="vacuum_txt_plu"><p>Vacuum</p></div>
+                    <div class="page_txt" id="plug_txt_plu"><p>Plug</p></div>
+                    <script>
+                        gsap.to("#clamp_plu3, #clamp_plu4, #sheet_plu_morph, #sheet_plu_morf2", {duration:0, autoAlpha:0})
+                        gsap.to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0, y:20})
+                        gsap.to("#sheet_plu_morph", {duration:0, y:10})
+
+                        var tlpl = gsap.timeline({paused:true, repeat:-1})
+                        tlpl.timeScale(1)
+
+                        tlpl.to("#aparatus_plu1", {duration:1, y:20, ease:"none"}, 0)
+                        .to("#clamp_plu1", {duration:1, morphSVG:"#clamp_plu3", ease:"none"}, 0)
+                        .to("#clamp_plu2", {duration:1, morphSVG:"#clamp_plu4", ease:"none"}, 0)
+                        .to("#sheet_plu", {duration:0.5, y:10, ease:"none"}, 0.5)
+                        .to("#plug_plu, #plug_txt_plu, #sheet_plu_morf1", {duration:2, y:95, ease:"none"}, 1)
+                        .to("#plug_plu, #plug_txt_plu", {duration:1, y:0, ease:"none"}, 3.5)
+                        .to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0.5, y:0, ease:"none"}, 3.5)
+                        .to("#sheet_plu_morf1", {duration:1, morphSVG:"#sheet_plu_morf2", ease:"none"}, 4.25)
+                        .to("#sheet_plu_morph", {duration:0, autoAlpha:1}, 5.25)
+                        .to("#sheet_plu_morf1, #sheet_plu", {duration:0, autoAlpha:0}, 5.25)
+                        .to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0.5, y:20, ease:"none"}, 5.5)
+                        .to("#aparatus_plu1", {duration:1, y:0, ease:"none"}, 5.5)
+                        .to("#clamp_plu1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.5)
+                        .to("#clamp_plu2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.5)
+                        .to("#sheet_plu_morph", {duration:0.25, y:0, ease:"none"}, 6)
+                        .to("#sheet_plu_morph", {duration:2, x:445, ease:"power1.in"}, 6.25)
+                        .to("#sheet_new_plu", {duration:2, x:445, ease:"power1.out"}, 7.25)
+                    </script>
+                    <div class="nav"> 
+                        <p class="dbutton" id="back3" onClick="fudge()"></p >
+                        <p class="dbutton" id="start" onClick="tlpl.play()"></p >
+                        <p class="dbutton" id="pause" onClick="tlpl.pause()"></p > 
+                    </div>
+				</div>
+				<!-- end payj - p5 -->
+			</div>
+			<!-- kanvas -->
+		</div>
+		<!-- container -->
+	</body>
+</html>
