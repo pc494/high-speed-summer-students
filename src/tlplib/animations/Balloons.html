@@ -264,7 +264,7 @@
           }
     
           /*svg viewbox thingies */
-          #coagulant_dip, #latex_dip, #lipping, #soak {
+          #coagulant_dip, #latex_dip, #lipping, #soak, #talc_solution, #inflation, #washing {
             position: absolute;
             left:0px;
             top:0px;
@@ -336,6 +336,12 @@
             stroke-width:1px;
             stroke-linecap:round;
           }
+          .brush {
+            stroke:#000;
+            stroke-width:0px;
+            stroke-linecap:round;
+            transform:scale(1);
+          }
           .water {
             fill:#bdf;
             fill-opacity:0.2;
@@ -344,13 +350,13 @@
             stroke-width:1px;
             stroke-linecap:round;
           }
-          .brush {
-            stroke:#000;
-            stroke-width:0px;
+          .talc {
+            fill:#efefef;
+            stroke:#ddd;
             stroke-linecap:round;
-            transform:scale(1);
+            stroke-width:1px;
           }
-          #latex_vat, #coagulant_vat, #soaking_vat {
+          #latex_vat, #coagulant_vat, #soaking_vat, #talc_vat {
             transform:scale(2);
           }
         </style>
@@ -657,9 +663,9 @@
                                 <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
                             </g>
                             <g class="balloon_lipped">
-                                <path id="balloon_lippedaa" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
-                                <path id="balloon_lippedbb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
-                                <path id="balloon_lippedcc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
                             </g>
                             <g id="spinner5" class="spinner">
                                 <path id="spinner_a5" d="M12.5,75h15v5h-10v5h-5z"/>
@@ -718,16 +724,76 @@
                 <!--  new page starts here    -->
 				<div class="payj" id="p6">
                     <div class="" id=""><p></p></div>
-                    <svg id="talc">
-
+                    <svg id="talc_solution">
+                        <g id="production_line6">
+                            <g id="cable6" class="cable">
+                                <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                            </g>
+                            <g id="dummy6" class="spinner">
+                                <path d="M237.5,75h15v5h-10v5h-5z"/>
+                                <path d="M377.5,75h-15v5h10v5h5z"/>
+                                <path d="M252.5,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="form6">
+                            <g class="block">
+                                <rect x="7.5" y="39.5" width="150" height="111"/>
+                            </g>
+                            <g class="form">
+                                <path d="M32.5,90h100v10h-100z"/>
+                                <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g class="balloon_lipped">
+                                <path id="balloon_lippedaa" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedbb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedcc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                            </g>
+                            <g id="spinner6" class="spinner">
+                                <path id="spinner_a6" d="M12.5,75h15v5h-10v5h-5z"/>
+                                <path id="spinner_b6" d="M152.5,75h-15v5h10v5h5z"/>
+                                <path id="spinner_c6" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="talc_vat">
+                            <g class="talc">
+                                <path id="talc" d="M80,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
+                                <path id="talcc" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
+                            </g>
+                            <g class="container">
+                                <path d="M75,100h5v100h150v-100h5v105h-160z"/>
+                            </g>
+                        </g>
                     </svg>
                     <script>
+                        gsap.to("#talcc, #spinner6", {duration:0, autoAlpha:0});
+                        gsap.to("#cable6, #form6", {duration:0, x:-140});
 
+                        var wavest = gsap.timeline({paused:false, repeat:-1})
+                        wavest.timeScale(1)
+                        wavest.to("#talc", {duration:0.5, morphSVG:"#talcc", ease:"power1.inOut"}, 0)
+                        .to("#talc", {duration:0.5, morphSVG:"#talc", ease:"power1.inOut"}, 0.5
+                        )
+                        wavest.play()
+                        
+                        var tlc = gsap.timeline({paused:true,repeat:0})
+                        tlc.timeScale(1)
+                        .to("#cable6, #form6", {duration:2, x:225, ease:"none"}, 0)
+                        .set("#spinner6", {autoAlpha:1}, ">")
+                        .set("#dummy6", {autoAlpha:0}, ">")
+                        .call(rotate, ["1", "6", "180"], ">" + 0.25)
+                        .to("#form6", {duration:1.5, y:120, ease:"none"}, ">" + 2)
+                        .to("#form6", {duration:1.5, y:0, ease:"none"})
+                        .call(rotate, ["2", "6", "0"], ">" + 0.25)
+                        .set("#dummy6", {autoAlpha:1}, ">" + 2)
+                        .set("#spinner6", {autoAlpha:0}, ">")
+                        .to("#cable6, #form6", {duration:2, x:610, ease:"none"}, ">")
                     </script>
-                    <p class="dbutton" id="back3" onClick="gotoPage(4)"></p >
-                    <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
+                    <p class="dbutton" id="back6" onClick="gotoPage(5)"></p >
+                    <p class="dbutton" id="next6" onClick="gotoPage(7)"></p >
                     <div class="nav">
-                        <p class="dbutton" id="start" onClick="sk.restart()"></p > 
+                        <p class="dbutton" id="start" onClick="tlc.restart()"></p > 
                     </div>
 				</div>
 				<!-- end payj - p6 -->
