@@ -7,16 +7,17 @@
         <!-- Greensock library  -->
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathHelper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
         <script>
           document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(RoughEase);
@@ -69,20 +70,24 @@
             divpara.style.top = h - 85 + "px";
           }
 
-          function flip180(i, e) {
+          function rotate(i, n, r) {
 
             if (i==1) {
-              gsap.to("#spinner_a"+String(e), {duration:0.5, y:10, x:15, ease:"none"});
-              gsap.to("#spinner_b"+String(e), {duration:0.5, y:10, x:-15, ease:"none"});
-              gsap.to("#spinner_c"+String(e), {duration:0.5, y:-10, ease:"none"});
-              gsap.to("#form"+String(e), {duration:0.75, delay:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"});
+              gsap.to("#spinner_a"+String(n), {duration:0.5, y:10, x:15, ease:"none"});
+              gsap.to("#spinner_b"+String(n), {duration:0.5, y:10, x:-15, ease:"none"});
+              gsap.to("#spinner_c"+String(n), {duration:0.5, y:-10, x:0, ease:"none"});
+              gsap.to("#form"+String(n), {duration:0.75, delay:0.75, rotation:r, transformOrigin:"50% 50%", ease:"none"});
             }
 
             if (i==2) {
-              gsap.to("#form"+String(e), {duration:0.75, rotation:0, transformOrigin:"50% 50%", ease:"none"});
-              gsap.to("#spinner_a"+String(e), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
-              gsap.to("#spinner_b"+String(e), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
-              gsap.to("#spinner_c"+String(e), {duration:0.5, delay:1, y:0, ease:"none"});
+              gsap.to("#form"+String(n), {duration:0.75, delay:0, rotation:r, transformOrigin:"50% 50%", ease:"none"});
+              gsap.to("#spinner_a"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
+              gsap.to("#spinner_b"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
+              gsap.to("#spinner_c"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
+            }
+
+            if (i==3) {
+              gsap.to("#form"+String(n), {duration:0.75, delay:0, rotation:r, transformOrigin:"50% 50%", ease:"none"});
             }
 
           }
@@ -156,7 +161,8 @@
           #back4,
           #back5,
           #back6,
-          #back7 {
+          #back7,
+          #back8 {
             width: 79px;
             background-image: url("../../../images/back.png");
             position:absolute;
@@ -170,7 +176,8 @@
           #next4,
           #next5,
           #next6,
-          #next7 {
+          #next7,
+          #next8 {
             width: 75px;
             background-image: url("../../../images/next.png");
             position:absolute;
@@ -183,7 +190,8 @@
           #restart3,
           #restart5,
           #restart6,
-          #restart7 {
+          #restart7,
+          #restart8 {
             width: 99px;
             background-image: url("../../../images/restart.png");
           }
@@ -256,7 +264,7 @@
           }
     
           /*svg viewbox thingies */
-          #coagulant_dip, #latex_dip, #lipping {
+          #coagulant_dip, #latex_dip, #lipping, #soak {
             position: absolute;
             left:0px;
             top:0px;
@@ -276,6 +284,10 @@
           }
           .block {
             fill:none;
+            stroke:none;
+          }
+          .block_filled {
+            fill:#fff;
             stroke:none;
           }
           .form {
@@ -321,6 +333,15 @@
           .latex {
             fill:#8a2ce2;
             stroke:#451671;
+            stroke-width:1px;
+            stroke-linecap:round;
+          }
+          .water {
+            fill:#bdf;
+            fill-opacity:0.2;
+            stroke:#7af;
+            stroke-opacity:0.5;
+            stroke-width:1px;
             stroke-linecap:round;
           }
           .brush {
@@ -329,7 +350,7 @@
             stroke-linecap:round;
             transform:scale(1);
           }
-          #latex_vat, #coagulant_vat {
+          #latex_vat, #coagulant_vat, #soaking_vat {
             transform:scale(2);
           }
         </style>
@@ -424,10 +445,10 @@
                         .to("#cable2, #form2", {duration:2, x:225, ease:"none"}, 0)
                         .set("#spinner2", {autoAlpha:1}, ">")
                         .set("#dummy2", {autoAlpha:0}, ">")
-                        .call(flip180, ["1", "2"], ">" + 0.25)
+                        .call(rotate, ["1", "2", "180"], ">" + 0.25)
                         .to("#form2", {duration:1.5, y:120, ease:"none"}, ">" + 2)
                         .to("#form2", {duration:1.5, y:0, ease:"none"})
-                        .call(flip180, ["2", "2"], ">" + 0.25)
+                        .call(rotate, ["2", "2", "0"], ">" + 0.25)
                         .set("#dummy2", {autoAlpha:1}, ">" + 2)
                         .set("#spinner2", {autoAlpha:0}, ">")
                         .to("#cable2, #form2", {duration:2, x:610, ease:"none"}, ">")
@@ -502,11 +523,11 @@
                         .to("#cable3, #form3", {duration:2, x:225, ease:"none"}, 0)
                         .set("#spinner3", {autoAlpha:1}, ">")
                         .set("#dummy3", {autoAlpha:0}, ">")
-                        .call(flip180, ["1", "3"], ">+=0.25")
+                        .call(rotate, ["1", "3", "180"], ">+=0.25")
                         .to("#latex_vat", {duration:1.5, y:-10, ease:"none"}, ">+=2")
                         .to("#balloons", {duration:1.5, autoAlpha:1})
                         .to("#latex_vat", {duration:1.5, y:100, ease:"none"})
-                        .call(flip180, ["2", "3"], ">+=0.25")
+                        .call(rotate, ["2", "3", "0"], ">+=0.25")
                         .set("#dummy3", {autoAlpha:1}, ">+=2")
                         .set("#spinner3", {autoAlpha:0}, ">")
                         .to("#cable3, #form3", {duration:2, x:610, ease:"none"}, ">")
@@ -587,7 +608,117 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p5">
                     <div class="" id=""><p></p></div>
-                    <svg id="">
+                    <svg id="soak">
+                        <g id="production_line5">
+                            <g id="step1">
+                                <g class="cable">
+                                    <line id="cable5" x1="-1563.5" y1="95" x2="350" y2="95"/>
+                                </g>
+                                <g class="block_filled">
+                                    <rect x="210" y="90" width="430" height="10"/>
+                                </g>
+                            </g>
+                            <g id="step2">
+                                <g class="cable">
+                                    <line id="cable55" x1="210" y1="-1360" x2="210" y2="210"/>
+                                </g>
+                                <g class="block_filled">
+                                    <rect x="205" y="0" width="10" height="93.5"/>
+                                    <rect x="205" y="206.5" width="10" height="272.75"/>
+                                </g>
+                            </g>
+                            <g id="step3">
+                                <g class="cable">
+                                    <line id="cable555" x1="-1284" y1="205" x2="640" y2="205"/>
+                                </g>
+                                <g class="block_filled">
+                                    <rect x="0" y="200" width="208.75" height="10"/>
+                                </g>
+                            </g>
+                            <g id="dummy5" class="spinner">
+                                <path d="M140,75h15v5h-10v5h-5z"/>
+                                <path d="M280,75h-15v5h10v5h5z"/>
+                                <path d="M155,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                            <g id="dummy55" class="spinner">
+                                <path d="M140,180h15v5h-10v5h-5z"/>
+                                <path d="M280,180h-15v5h10v5h5z"/>
+                                <path d="M155,225v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="form5">
+                            <g class="block">
+                                <rect x="7.5" y="39.5" width="150" height="121"/>
+                            </g>
+                            <g class="form">
+                                <path d="M32.5,90h100v10h-100z"/>
+                                <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g class="balloon_lipped">
+                                <path id="balloon_lippedaa" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedbb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedcc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                            </g>
+                            <g id="spinner5" class="spinner">
+                                <path id="spinner_a5" d="M12.5,75h15v5h-10v5h-5z"/>
+                                <path id="spinner_b5" d="M152.5,75h-15v5h10v5h5z"/>
+                                <path id="spinner_c5" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="soaking_vat">
+                            <g class="water">
+                                <path id="water"  d="M55,110 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 v90h-300z"/>
+                                <path id="waterr" d="M55,110 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 v90h-300z"/>
+                            </g>
+                            <g class="container">
+                                <path d="M50,100h5v100h300v-100h5v105h-310z"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <script>
+                        gsap.to("#cable5, #form5", {duration:0, x:-140});
+                        gsap.to("#spinner5, #dummy55, #waterr", {duration:0, autoAlpha:0});
+                        gsap.to("#dummy55", {duration:0, rotate:180, transformOrigin:"50%, 50%"});
+
+                        var wavesw = gsap.timeline({paused:false, repeat:-1})
+                        wavesw.timeScale(1)
+                        wavesw.to("#water", {duration:0.5, morphSVG:"#waterr", ease:"power1.inOut"})
+                        .to("#water", {duration:0.5, morphSVG:"#water", ease:"power1.inOut"})
+                        wavesw.play()
+
+                        var sk = gsap.timeline({paused:true, repeat:0})
+                        .to("#form5", {duration:107/60, x:127.5, ease:"none"}, 0)
+                        .to("#cable5", {duration:107/60, x:127.5, ease:"none"}, "<")
+                        .to("#cable55", {duration:107/60, y:267.5, ease:"none"}, "<")
+                        .to("#cable555", {duration:107/60, x:267.5, ease:"none"}, "<")
+                        .set("#spinner5", {autoAlpha:1})
+                        .set("#dummy5", {autoAlpha:0})
+                        .call(rotate, ["1", "5", "90"], ">+=0.25")
+                        .to("#form5", {duration:2/3, y:100, ease:"none"}, ">+=2")
+                        .to("#cable5", {duration:2/3, x:227.5, ease:"none"}, "<")
+                        .to("#cable55", {duration:2/3, y:367.5, ease:"none"}, "<")
+                        .to("#cable555", {duration:2/3, x:367.5, ease:"none"}, "<")
+                        .call(rotate, ["3", "5", "180"], ">+=0.25")
+                        .to("#form5", {duration:10/3, x:617.5, ease:"none"}, "<+=1.5")
+                        .to("#cable5", {duration:10/3, x:727.5, ease:"none"}, "<")
+                        .to("#cable55", {duration:10/3, y:757.5, ease:"none"}, "<")
+                        .to("#cable555", {duration:10/3, x:757.5, ease:"none"}, "<")
+
+                    </script>
+                    <p class="dbutton" id="back3" onClick="gotoPage(4)"></p >
+                    <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
+                    <div class="nav">
+                        <p class="dbutton" id="start" onClick="sk.restart()"></p > 
+                    </div>
+				</div>
+				<!-- end payj - p5 -->
+
+                <!--  new page starts here    -->
+				<div class="payj" id="p6">
+                    <div class="" id=""><p></p></div>
+                    <svg id="talc">
 
                     </svg>
                     <script>
@@ -599,7 +730,41 @@
                         <p class="dbutton" id="start" onClick="sk.restart()"></p > 
                     </div>
 				</div>
-				<!-- end payj - p5 -->
+				<!-- end payj - p6 -->
+
+                <!--  new page starts here    -->
+				<div class="payj" id="p7">
+                    <div class="" id=""><p></p></div>
+                    <svg id="inflation">
+
+                    </svg>
+                    <script>
+
+                    </script>
+                    <p class="dbutton" id="back3" onClick="gotoPage(4)"></p >
+                    <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
+                    <div class="nav">
+                        <p class="dbutton" id="start" onClick="sk.restart()"></p > 
+                    </div>
+				</div>
+				<!-- end payj - p7 -->
+
+                <!--  new page starts here    -->
+				<div class="payj" id="p8">
+                    <div class="" id=""><p></p></div>
+                    <svg id="washing">
+
+                    </svg>
+                    <script>
+
+                    </script>
+                    <p class="dbutton" id="back3" onClick="gotoPage(4)"></p >
+                    <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
+                    <div class="nav">
+                        <p class="dbutton" id="start" onClick="sk.restart()"></p > 
+                    </div>
+				</div>
+				<!-- end payj - p8 -->
 			</div>
 			<!-- kanvas -->
 		</div>
