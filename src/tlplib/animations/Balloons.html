@@ -63,6 +63,23 @@
             divcc.style.top = h - 40 + "px";
             divpara.style.top = h - 85 + "px";
           }
+          function flip180(i, e) {
+
+            if (i==1) {
+              gsap.to("#spinner_a"+String(e), {duration:0.5, y:10, x:15, ease:"none"});
+              gsap.to("#spinner_b"+String(e), {duration:0.5, y:10, x:-15, ease:"none"});
+              gsap.to("#spinner_c"+String(e), {duration:0.5, y:-10, ease:"none"});
+              gsap.to("#form"+String(e), {duration:0.75, delay:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"});
+            }
+
+            if (i==2) {
+              gsap.to("#form"+String(e), {duration:0.75, rotation:0, transformOrigin:"50% 50%", ease:"none"});
+              gsap.to("#spinner_a"+String(e), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
+              gsap.to("#spinner_b"+String(e), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
+              gsap.to("#spinner_c"+String(e), {duration:0.5, delay:1, y:0, ease:"none"});
+            }
+
+          }
         </script>
     
         <style>
@@ -96,6 +113,14 @@
           }
     
           /* DOiTPoMS buttons */
+          .nav {
+            position: absolute;
+            text-align: center;
+            left: 130px;
+            top: 445px;
+            width: 300px;
+          }
+
           .dbutton {
             cursor: pointer;
             background-color: #603;
@@ -118,6 +143,9 @@
           #back7 {
             width: 79px;
             background-image: url("../../../images/back.png");
+            position:absolute;
+            left:2%;
+            top:1%;
           }
     
           #next,
@@ -129,6 +157,9 @@
           #next7 {
             width: 75px;
             background-image: url("../../../images/next.png");
+            position:absolute;
+            right:2%;
+            top:1%;
           }
     
           #restart,
@@ -192,14 +223,6 @@
             /*visibility: hidden;*/
           }
     
-          .nav {
-            position: absolute;
-            text-align: center;
-            left: 130px;
-            top: 445px;
-            width: 300px;
-          }
-    
           /* page id */
           #p1 {
             display: block;
@@ -217,7 +240,7 @@
           }
     
           /*svg viewbox thingies */
-          #page1 {
+          #coagulant_dip, #latex_dip, #brush {
             position: absolute;
             left:0px;
             top:0px;
@@ -236,7 +259,7 @@
             stroke-dasharray: 7.5 10;
           }
           .block {
-            fill:#fff;
+            fill:none;
             stroke:none;
           }
           .form {
@@ -251,18 +274,38 @@
             stroke-linecap:round;
             fill:#8a2ce2;
             fill-opacity:0.75;
+            visibility:hidden;
+          }
+          .spinner {
+            stroke:#000;
+            stroke-width:1px;
+            stroke-linecap:round;
+            fill:#555;
           }
           .container {
             stroke:#000;
             stroke-linecap:square;
-            stroke-width:2px;
+            stroke-width:1px;
             fill:forestgreen;
+          }
+          .coagulant {
+            fill:#ccc;
+            stroke:#666;
+            stroke-linecap:round;
+            stroke-width:1px;
           }
           .latex {
             fill:#8a2ce2;
             stroke:#451671;
+            stroke-linecap:round;
           }
-          #latex_vat {
+          .brush {
+            stroke:#000;
+            stroke-width:0px;
+            stroke-linecap:round;
+            transform:scale(1.5);
+          }
+          #latex_vat, #coagulant_vat {
             transform:scale(2);
           }
         </style>
@@ -292,108 +335,211 @@
 				<div class="payj" id="p1"> 
 					<div class="" id=""><p></p></div>
                     <svg id="page1">
-                        <g id="production_line">
-                            <g class="cable">
-                                <line x1="-1000" y1="75" x2="1640" y2="75"/>
-                            </g>
-                        </g>
-                        <g id="form">
-                            <g id="block1" class="block">
-                                <rect x="32.5" y="19.5" width="100" height="111"/>
-                            </g>
-                            <g id="form1" class="form">
-                                <path d="M32.5,70h100v10h-100z"/>
-                                <path d="M50,75v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
-                                <path d="M80,75v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
-                                <path d="M110,75v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
-                            </g>
-                            <g id="balloons" class="balloon">
-                                <path d="M49.5,65v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
-                                <path d="M79.5,65v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
-                                <path d="M109.5,65v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
-                            </g>
-                        </g>
-                        <g id="latex_vat">
-                            <g class="container">
-                                <path d="M82.5,100v100h150v-100h5v105h-160v-105z"/>
-                            </g>
-                            <g class="latex">
-                                <path id="latex" d="M82.5,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
-                                <path id="latexx" d="M82.5,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
-                            </g>
-                        </g>
+                        
                     </svg>
                     <script>
-                        gsap.to("#latexx", {duration:0, autoAlpha:0});
-
-                        var ang = 0;
-
-                        function flip() {
-                            gsap.to("#form", {duration:0, rotation:180+ang, transformOrigin:"50% 50%"});
-
-                            ang += 180;
-                        }
                         
-                        var waves = gsap.timeline({paused:false, repeat:-1})
-                        waves.timeScale(1)
-                        waves.to("#latex", {duration:0.5, morphSVG:"#latexx", ease:"power1.inOut"})
-                        waves.to("#latex", {duration:0.5, morphSVG:"#latex", ease:"power1.inOut"})
-                        waves.play()
-                        
-                        
-                        </script>
-                    <div class="nav"> 
-                        <p class="dbutton" id="back2" onClick="flip()"></p >
-                        <p class="dbutton" id="start" onClick="waves.play()"></p >
-                        <p class="dbutton" id="pause" onClick=""></p >
+                    </script>
+                    <div class="nav">
+                        <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
                     </div>
 				</div> <!-- end payj - p1 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p2" > 
                     <div class="" id=""><p></p></div>
-                    <svg id="">
-                        
+                    <svg id="coagulant_dip">
+                        <g id="production_line2">
+                            <g id="cable2" class="cable">
+                                <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                            </g>
+                            <g id="dummy2" class="spinner">
+                                <path d="M237.5,75h15v5h-10v5h-5z"/>
+                                <path d="M377.5,75h-15v5h10v5h5z"/>
+                                <path d="M252.5,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="form2">
+                            <g class="block">
+                                <rect x="7.5" y="39.5" width="150" height="111"/>
+                            </g>
+                            <g class="form">
+                                <path d="M32.5,90h100v10h-100z"/>
+                                <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g id="spinner2" class="spinner">
+                                <path id="spinner_a2" d="M12.5,75h15v5h-10v5h-5z"/>
+                                <path id="spinner_b2" d="M152.5,75h-15v5h10v5h5z"/>
+                                <path id="spinner_c2" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="coagulant_vat">
+                            <g class="coagulant">
+                                <path id="coagulant" d="M80,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
+                                <path id="coagulantt" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
+                            </g>
+                            <g class="container">
+                                <path d="M75,100h5v100h150v-100h5v105h-160z"/>
+                            </g>
+                        </g>
                     </svg>
                     <script>
+                        gsap.to("#coagulantt, #spinner2", {duration:0, autoAlpha:0});
+                        gsap.to("#cable2, #form2", {duration:0, x:-140});
+
+                        var wavesc = gsap.timeline({paused:false, repeat:-1})
+                        wavesc.timeScale(1)
+                        wavesc.to("#coagulant", {duration:0.5, morphSVG:"#coagulantt", ease:"power1.inOut"})
+                        .to("#coagulant", {duration:0.5, morphSVG:"#coagulant", ease:"power1.inOut"})
+                        wavesc.play()
                         
+                        var cglnt = gsap.timeline({paused:true,repeat:0})
+                        cglnt.timeScale(1)
+                        .to("#cable2, #form2", {duration:2, x:225, ease:"none"}, 0)
+                        .set("#spinner2", {autoAlpha:1}, ">")
+                        .set("#dummy2", {autoAlpha:0}, ">")
+                        .call(flip180, ["1", "2"], ">" + 0.25)
+                        .to("#form2", {duration:1.5, y:120, ease:"none"}, ">" + 2)
+                        .to("#form2", {duration:1.5, y:0, ease:"none"})
+                        .call(flip180, ["2", "2"], ">" + 0.25)
+                        .set("#dummy2", {autoAlpha:1}, ">" + 2)
+                        .set("#spinner2", {autoAlpha:0}, ">")
+                        .to("#cable2, #form2", {duration:2, x:610, ease:"none"}, ">")
                     </script>
-                    <div class="nav"> 
-                        <p class="dbutton" id="back2" onClick=""></p >
-                        <p class="dbutton" id="start" onClick=""></p >
-                        <p class="dbutton" id="pause" onClick=""></p >
+
+                    <p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
+                    <p class="dbutton" id="next2" onClick="gotoPage(3)"></p >                    
+                    <div class="nav">
+                        <p class="dbutton" id="start" onClick="cglnt.restart()"></p >
                     </div>
+
 				</div> <!-- end payj - p2 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p3" > 
 					<div class="" id=""><p></p></div>
-                    <svg id="">
-                    
+                    <svg id="latex_dip">
+                        <g id="production_line3">
+                            <g id="cable3" class="cable">
+                                <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                            </g>
+                            <g id="dummy3" class="spinner">
+                                <path d="M237.5,75h15v5h-10v5h-5z"/>
+                                <path d="M377.5,75h-15v5h10v5h5z"/>
+                                <path d="M252.5,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="form3">
+                            <g class="block">
+                                <rect x="7.5" y="39.5" width="150" height="111"/>
+                            </g>
+                            <g class="form">
+                                <path d="M32.5,90h100v10h-100z"/>
+                                <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g id="balloons" class="balloon">
+                                <path d="M49.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M79.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M109.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                            </g>
+                            <g id="spinner3" class="spinner">
+                                <path id="spinner_a3" d="M12.5,75h15v5h-10v5h-5z"/>
+                                <path id="spinner_b3" d="M152.5,75h-15v5h10v5h5z"/>
+                                <path id="spinner_c3" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                            </g>
+                        </g>
+                        <g id="latex_vat">
+                            <g class="latex">
+                                <path id="latex" d="M80,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
+                                <path id="latexx" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
+                            </g>
+                            <g class="container">
+                                <path d="M75,100h5v100h150v-100h5v105h-160z"/>
+                            </g>
+                        </g>
                     </svg>
                     <script>
+                        gsap.to("#latexx, #spinner3", {duration:0, autoAlpha:0});
+                        gsap.to("#cable3, #form3", {duration:0, x:-140});
 
+                        var wavesl = gsap.timeline({paused:false, repeat:-1})
+                        wavesl.timeScale(1)
+                        wavesl.to("#latex", {duration:0.5, morphSVG:"#latexx", ease:"power1.inOut"})
+                        .to("#latex", {duration:0.5, morphSVG:"#latex", ease:"power1.inOut"})
+                        wavesl.play()
+                        
+                        var ltx = gsap.timeline({paused:true,repeat:0})
+                        ltx.timeScale(1)
+                        .to("#cable3, #form3", {duration:2, x:225, ease:"none"}, 0)
+                        .set("#spinner3", {autoAlpha:1}, ">")
+                        .set("#dummy3", {autoAlpha:0}, ">")
+                        .call(flip180, ["1", "3"], ">" + 0.25)
+                        .to("#latex_vat", {duration:1.5, y:-10, ease:"none"}, ">" + 2)
+                        .to("#balloons", {duration:1.5, autoAlpha:1})
+                        .to("#latex_vat", {duration:1.5, y:100, ease:"none"})
+                        .call(flip180, ["2", "3"], ">" + 0.25)
+                        .set("#dummy3", {autoAlpha:1}, ">" + 2)
+                        .set("#spinner3", {autoAlpha:0}, ">")
+                        .to("#cable3, #form3", {duration:2, x:610, ease:"none"}, ">")
                     </script>
+
+                    <p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
+                    <p class="dbutton" id="next3" onClick="gotoPage(4)"></p >
                     <div class="nav">
-                        <p class="dbutton" id="back3" onClick=""></p >
-                        <p class="dbutton" id="start" onClick=""></p >
-                        <p class="dbutton" id="pause" onClick=""></p >    
+                        <p class="dbutton" id="start" onClick="ltx.restart()"></p >    
                     </div>
 				</div><!-- end payj - p3 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p4">
                     <div class="" id=""><p></p></div> 
-                    <svg id="">
-
+                    <svg id="brush">
+                        <defs>
+                            <linearGradient id="brush1grad" x1="40%" x2="60%" y1="0%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(0, 0, 0, 0.5)" />
+                                <stop offset="50%" stop-color="rgba(0, 0, 0, 1)" />
+                                <stop offset="100%" stop-color="rgba(0, 0, 0, 0.5)" />
+                            </linearGradient>
+                        </defs>
+                        <g id="production_line4">
+                            <g id="cable4" class="cable">
+                                <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                            </g>
+                        </g>
+                        <g id="form4">
+                            <g class="block">
+                                <rect x="7.5" y="39.5" width="150" height="111"/>
+                            </g>
+                            <g class="form">
+                                <path d="M32.5,90h100v10h-100z"/>
+                                <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g class="balloon">
+                                <path id="balloon1" d="M49.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path id="balloon2" d="M79.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path id="balloon3" d="M109.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                            </g>
+                        </g>
+                        <g class="brush">
+                            <path id="brush1" fill="url(#brush1grad)" d="M282.5,90l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
+                        </g>
                     </svg>
                     <script>
+                        gsap.to("#cable4, #form4", {duration:0, x:-140, y:0});
+                        gsap.to("#brush1", {duration:0, x:0, y:0})
 
                     </script>
+
+                    <p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
+                    <p class="dbutton" id="next4" onClick="gotoPage(5)"></p > 
                     <div class="nav"> 
-                        <p class="dbutton" id="back3" onClick=""></p >
-                        <p class="dbutton" id="start" onClick=""></p >
-                        <p class="dbutton" id="pause" onClick=""></p > 
+                        <p class="dbutton" id="start" onClick="changeb()"></p >
                     </div>
 				</div>
 				<!-- end payj - p4 -->
