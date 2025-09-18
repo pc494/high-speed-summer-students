@@ -38,12 +38,15 @@
             // replace next fn gEBCN as fails in IE<9
             var x = document.getElementsByClassName("payj");
             var len = x.length;
+
             for (var i = 1; i < len + 1; i++) {
               var ppp = eval("p" + i);
               document.getElementById("p" + i).style.display = "none";
+              
               if (i == p) {
                 document.getElementById("p" + i).style.display = "block";
               }
+
             }
           }
     
@@ -51,10 +54,12 @@
           function setAnimDimensions(w, h) {
             //w = animation width
             //h = animation height
+
             document.getElementById("kanvas").style.height = String(h) + "px";
             document.getElementById("kanvas").style.width = String(w) + "px";
             document.getElementById("kanvas").style.margin = "0px auto";
             document.getElementById("kanvas").style.border = "2px solid blue";
+
             // position footers
             var divcc = document.getElementById("cc");
             var divpara = document.getElementById("para");
@@ -63,6 +68,7 @@
             divcc.style.top = h - 40 + "px";
             divpara.style.top = h - 85 + "px";
           }
+
           function flip180(i, e) {
 
             if (i==1) {
@@ -79,6 +85,16 @@
               gsap.to("#spinner_c"+String(e), {duration:0.5, delay:1, y:0, ease:"none"});
             }
 
+          }
+
+          function lipballoons(a) {
+            gsap.to("#cable4, #form4", {duration:0.91*a, x:282.5, ease:"none"});
+            gsap.to("#balloonc", {duration:a * 0.15, delay:a * 0.20, morphSVG:"#balloon_lippedc", ease:"none"});
+            gsap.to("#balloonc", {duration:0, delay:a * 0.35, morphSVG:"#balloon_lippedcc", ease:"none"});
+            gsap.to("#balloonb", {duration:a * 0.15, delay:a * 0.41, morphSVG:"#balloon_lippedb", ease:"none"});
+            gsap.to("#balloonb", {duration:0, delay:a * 0.56, morphSVG:"#balloon_lippedbb", ease:"none"});
+            gsap.to("#balloona", {duration:a * 0.15, delay:a * 0.62, morphSVG:"#balloon_lippeda", ease:"none"});
+            gsap.to("#balloona", {duration:0, delay:a * 0.77, morphSVG:"#balloon_lippedaa", ease:"none"});
           }
         </script>
     
@@ -240,7 +256,7 @@
           }
     
           /*svg viewbox thingies */
-          #coagulant_dip, #latex_dip, #brush {
+          #coagulant_dip, #latex_dip, #lipping {
             position: absolute;
             left:0px;
             top:0px;
@@ -274,7 +290,15 @@
             stroke-linecap:round;
             fill:#8a2ce2;
             fill-opacity:0.75;
-            visibility:hidden;
+            visibility:visible;
+          }
+          .balloon_lipped {
+            stroke:#451671;
+            stroke-width:1px;
+            stroke-linecap:round;
+            fill:#8a2ce2;
+            fill-opacity:0.75;
+            visibility:visible;
           }
           .spinner {
             stroke:#000;
@@ -303,7 +327,7 @@
             stroke:#000;
             stroke-width:0px;
             stroke-linecap:round;
-            transform:scale(1.5);
+            transform:scale(1);
           }
           #latex_vat, #coagulant_vat {
             transform:scale(2);
@@ -465,6 +489,7 @@
                     <script>
                         gsap.to("#latexx, #spinner3", {duration:0, autoAlpha:0});
                         gsap.to("#cable3, #form3", {duration:0, x:-140});
+                        gsap.to("#balloons", {duration:0, autoAlpha:0});
 
                         var wavesl = gsap.timeline({paused:false, repeat:-1})
                         wavesl.timeScale(1)
@@ -477,12 +502,12 @@
                         .to("#cable3, #form3", {duration:2, x:225, ease:"none"}, 0)
                         .set("#spinner3", {autoAlpha:1}, ">")
                         .set("#dummy3", {autoAlpha:0}, ">")
-                        .call(flip180, ["1", "3"], ">" + 0.25)
-                        .to("#latex_vat", {duration:1.5, y:-10, ease:"none"}, ">" + 2)
+                        .call(flip180, ["1", "3"], ">+=0.25")
+                        .to("#latex_vat", {duration:1.5, y:-10, ease:"none"}, ">+=2")
                         .to("#balloons", {duration:1.5, autoAlpha:1})
                         .to("#latex_vat", {duration:1.5, y:100, ease:"none"})
-                        .call(flip180, ["2", "3"], ">" + 0.25)
-                        .set("#dummy3", {autoAlpha:1}, ">" + 2)
+                        .call(flip180, ["2", "3"], ">+=0.25")
+                        .set("#dummy3", {autoAlpha:1}, ">+=2")
                         .set("#spinner3", {autoAlpha:0}, ">")
                         .to("#cable3, #form3", {duration:2, x:610, ease:"none"}, ">")
                     </script>
@@ -497,12 +522,12 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p4">
                     <div class="" id=""><p></p></div> 
-                    <svg id="brush">
+                    <svg id="lipping">
                         <defs>
                             <linearGradient id="brush1grad" x1="40%" x2="60%" y1="0%" y2="100%">
-                                <stop offset="0%" stop-color="rgba(0, 0, 0, 0.5)" />
+                                <stop offset="0%" stop-color="rgba(0, 0, 0, 0.7)" />
                                 <stop offset="50%" stop-color="rgba(0, 0, 0, 1)" />
-                                <stop offset="100%" stop-color="rgba(0, 0, 0, 0.5)" />
+                                <stop offset="100%" stop-color="rgba(0, 0, 0, 0.7)" />
                             </linearGradient>
                         </defs>
                         <g id="production_line4">
@@ -521,25 +546,50 @@
                                 <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
                             </g>
                             <g class="balloon">
-                                <path id="balloon1" d="M49.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
-                                <path id="balloon2" d="M79.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
-                                <path id="balloon3" d="M109.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path id="balloona" d="M49.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                <path id="balloonb" d="M79.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                <path id="balloonc" d="M109.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                            </g>
+                            <g class="balloon_lipped">
+                                <path id="balloon_lippeda" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                <path id="balloon_lippedb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                <path id="balloon_lippedc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                <path id="balloon_lippedaa" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedbb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedcc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
                             </g>
                         </g>
                         <g class="brush">
-                            <path id="brush1" fill="url(#brush1grad)" d="M282.5,90l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
+                            <path id="brush2" fill="url(#brush1grad)" d="M281,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
+                            <path id="brush1" fill="url(#brush1grad)" d="M284,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#cable4, #form4", {duration:0, x:-140, y:0});
-                        gsap.to("#brush1", {duration:0, x:0, y:0})
+                        gsap.to("#cable4, #form4", {duration:0, x:-140});
+                        gsap.to("#balloon_lippeda, #balloon_lippedb, #balloon_lippedc, #balloon_lippedaa, #balloon_lippedbb, #balloon_lippedcc", {duration:0, autoAlpha:0});             
 
+                        var lpp = gsap.timeline({paused:true,repeat:0})
+                        lpp.timeScale(1)
+                        .to("#cable4, #form4", {duration:2, x:150, ease:"none"}, 0)
+
+
+                        .call(lipballoons,["1"])
+                        // .to("#balloon_lippedc", {duration:0, autoAlpha:1})
+                        // .to("#balloonc", {duration:0, autoAlpha:0})
+
+                        // .to("#balloon_lippedb", {duration:0, autoAlpha:1})
+                        // .to("#balloonb", {duration:0, autoAlpha:0})
+
+                        // .to("#balloon_lippeda", {duration:0, autoAlpha:1})
+                        // .to("#balloona", {duration:0, autoAlpha:0})
+                      
+                        // .to("#cable4, #form4", {duration:2.26, x:610, ease:"none"}, ">")
                     </script>
 
                     <p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
                     <p class="dbutton" id="next4" onClick="gotoPage(5)"></p > 
                     <div class="nav"> 
-                        <p class="dbutton" id="start" onClick="changeb()"></p >
+                        <p class="dbutton" id="start" onClick="lpp.restart()"></p >
                     </div>
 				</div>
 				<!-- end payj - p4 -->
@@ -553,10 +603,10 @@
                     <script>
 
                     </script>
-                    <div class="nav"> 
-                        <p class="dbutton" id="back3" onClick=""></p >
-                        <p class="dbutton" id="start" onClick=""></p >
-                        <p class="dbutton" id="pause" onClick=""></p > 
+                    <p class="dbutton" id="back3" onClick="gotoPage(4)"></p >
+                    <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
+                    <div class="nav">
+                        <p class="dbutton" id="start" onClick="sk.restart()"></p > 
                     </div>
 				</div>
 				<!-- end payj - p5 -->
