@@ -667,10 +667,26 @@
                         wavesl.to("#latex", {duration:0.5, morphSVG:"#latexx", ease:"power1.inOut"})
                         .to("#latex", {duration:0.5, morphSVG:"#latex", ease:"power1.inOut"})
                         wavesl.play()
+
+                        var ccable3 = gsap.timeline({paused:false, repeat:-1})
+                        ccable3.timeScale(1)
+                        ccable3.to("#cable3", {duration:0, x:0, ease:"none"})
+                        .to("#cable3", {duration:7/6, x:175, ease:"none"})
+                        .to("#cable3", {duration:0, x:0, ease:"none"})
+                        ccable3.play()
+
+                        function ccable3_pausee() {
+                          ccable3.pause();
+                        }
+
+                        function ccable3_playy() {
+                          ccable3.play();
+                        }
                         
                         var ltx = gsap.timeline({paused:true,repeat:0})
                         ltx.timeScale(1)
-                        .to("#cable3, #form3", {duration:2, x:225, ease:"none"}, 0)
+                        .to("#form3", {duration:73/30, x:225, ease:"none"}, 0)
+                        .call(ccable3_pausee, [], ">")
                         .set("#spinner3", {autoAlpha:1}, ">")
                         .set("#dummy3", {autoAlpha:0}, ">")
                         .call(rotate, ["1", "3", "180"], ">+=0.25")
@@ -680,7 +696,8 @@
                         .call(rotate, ["2", "3", "0"], ">+=0.25")
                         .set("#dummy3", {autoAlpha:1}, ">+=2")
                         .set("#spinner3", {autoAlpha:0}, ">")
-                        .to("#cable3, #form3", {duration:2, x:610, ease:"none"}, ">")
+                        .call(ccable3_playy, [], ">")
+                        .to("#form3", {duration:77/30, x:610, ease:"none"}, ">")
                     </script>
 
                     <p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
