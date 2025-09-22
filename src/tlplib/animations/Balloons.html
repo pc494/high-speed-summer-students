@@ -105,6 +105,10 @@
             gsap.to("#balloonb", {duration:0, delay:c * 0.56, morphSVG:"#balloon_lippedbb", ease:"none"});
             gsap.to("#balloona", {duration:c * 0.15, delay:c * 0.62, morphSVG:"#balloon_lippeda", ease:"none"});
             gsap.to("#balloona", {duration:0, delay:c * 0.77, morphSVG:"#balloon_lippedaa", ease:"none"});
+
+            gsap.to("#balloonc", {duration:0, delay:c * 0.91 * 184/53, morphSVG:"#balloonc", ease:"none"});
+            gsap.to("#balloonb", {duration:0, delay:c * 0.91 * 184/53, morphSVG:"#balloonb", ease:"none"});
+            gsap.to("#balloona", {duration:0, delay:c * 0.91 * 184/53, morphSVG:"#balloona", ease:"none"});
           }
 
           function inflateballoons(a) {
@@ -589,10 +593,26 @@
                         wavesc.to("#coagulant", {duration:0.5, morphSVG:"#coagulantt", ease:"power1.inOut"})
                         .to("#coagulant", {duration:0.5, morphSVG:"#coagulant", ease:"power1.inOut"})
                         wavesc.play()
+
+                        var ccable2 = gsap.timeline({paused:false, repeat:-1})
+                        ccable2.timeScale(1)
+                        ccable2.to("#cable2", {duration:0, x:0, ease:"none"})
+                        .to("#cable2", {duration:7/6, x:175, ease:"none"})
+                        .to("#cable2", {duration:0, x:0, ease:"none"})
+                        ccable2.play()
+
+                        function ccable2_pausee() {
+                          ccable2.pause();
+                        }
+
+                        function ccable2_playy() {
+                          ccable2.play();
+                        }
                         
                         var cglnt = gsap.timeline({paused:true,repeat:0})
                         cglnt.timeScale(1)
-                        .to("#cable2, #form2", {duration:2, x:225, ease:"none"}, 0)
+                        .to("#form2", {duration:73/30, x:225, ease:"none"}, 0)
+                        .call(ccable2_pausee, [], ">")
                         .set("#spinner2", {autoAlpha:1}, ">")
                         .set("#dummy2", {autoAlpha:0}, ">")
                         .call(rotate, ["1", "2", "180"], ">" + 0.25)
@@ -601,7 +621,8 @@
                         .call(rotate, ["2", "2", "0"], ">" + 0.25)
                         .set("#dummy2", {autoAlpha:1}, ">" + 2)
                         .set("#spinner2", {autoAlpha:0}, ">")
-                        .to("#cable2, #form2", {duration:2, x:610, ease:"none"}, ">")
+                        .call(ccable2_playy, [], ">")
+                        .to("#form2", {duration:77/30, x:610, ease:"none"}, ">")
                     </script>
 
                     <p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
