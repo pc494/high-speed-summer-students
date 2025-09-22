@@ -739,6 +739,22 @@
                         gsap.to("#balloon_lippeda, #balloon_lippedb, #balloon_lippedc, #balloon_lippedaa, #balloon_lippedbb, #balloon_lippedcc", {duration:0, autoAlpha:0});             
 
                         var brushspeed = 1
+
+                        var ccable4 = gsap.timeline({paused:false, repeat:-1})
+                        ccable4.timeScale(1)
+                        ccable4.to("#cable4", {duration:0, x:0, ease:"none"})
+                        .to("#cable4", {duration:7/6, x:175, ease:"none"})
+                        .to("#cable4", {duration:0, x:0, ease:"none"})
+                        ccable4.play()
+
+                        function ccable4_pausee() {
+                          ccable4.pause();
+                        }
+
+                        function ccable4_playy() {
+                          ccable4.play();
+                        }
+
                         var lpp = gsap.timeline({paused:true,repeat:0})
                         lpp.timeScale(1)
                         .to("#cable4, #form4", {duration:2, x:150, ease:"none"}, 0)
