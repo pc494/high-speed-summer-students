@@ -97,13 +97,14 @@
           }
 
           function lipballoons(a) {
-            gsap.to("#cable4, #form4", {duration:0.91*a, x:282.5, ease:"none"});
-            gsap.to("#balloonc", {duration:a * 0.15, delay:a * 0.20, morphSVG:"#balloon_lippedc", ease:"none"});
-            gsap.to("#balloonc", {duration:0, delay:a * 0.35, morphSVG:"#balloon_lippedcc", ease:"none"});
-            gsap.to("#balloonb", {duration:a * 0.15, delay:a * 0.41, morphSVG:"#balloon_lippedb", ease:"none"});
-            gsap.to("#balloonb", {duration:0, delay:a * 0.56, morphSVG:"#balloon_lippedbb", ease:"none"});
-            gsap.to("#balloona", {duration:a * 0.15, delay:a * 0.62, morphSVG:"#balloon_lippeda", ease:"none"});
-            gsap.to("#balloona", {duration:0, delay:a * 0.77, morphSVG:"#balloon_lippedaa", ease:"none"});
+            var c = ((53/60) / 0.91) / a
+            gsap.to("#form4", {duration:0.91*c, x:282.5, ease:"none"});
+            gsap.to("#balloonc", {duration:c * 0.15, delay:c * 0.20, morphSVG:"#balloon_lippedc", ease:"none"});
+            gsap.to("#balloonc", {duration:0, delay:c * 0.35, morphSVG:"#balloon_lippedcc", ease:"none"});
+            gsap.to("#balloonb", {duration:c * 0.15, delay:c * 0.41, morphSVG:"#balloon_lippedb", ease:"none"});
+            gsap.to("#balloonb", {duration:0, delay:c * 0.56, morphSVG:"#balloon_lippedbb", ease:"none"});
+            gsap.to("#balloona", {duration:c * 0.15, delay:c * 0.62, morphSVG:"#balloon_lippeda", ease:"none"});
+            gsap.to("#balloona", {duration:0, delay:c * 0.77, morphSVG:"#balloon_lippedaa", ease:"none"});
           }
 
           function inflateballoons(a) {
@@ -743,23 +744,15 @@
                         var ccable4 = gsap.timeline({paused:false, repeat:-1})
                         ccable4.timeScale(1)
                         ccable4.to("#cable4", {duration:0, x:0, ease:"none"})
-                        .to("#cable4", {duration:7/6, x:175, ease:"none"})
+                        .to("#cable4", {duration:(7/6) / brushspeed, x:175, ease:"none"})
                         .to("#cable4", {duration:0, x:0, ease:"none"})
                         ccable4.play()
 
-                        function ccable4_pausee() {
-                          ccable4.pause();
-                        }
-
-                        function ccable4_playy() {
-                          ccable4.play();
-                        }
-
                         var lpp = gsap.timeline({paused:true,repeat:0})
                         lpp.timeScale(1)
-                        .to("#cable4, #form4", {duration:2, x:150, ease:"none"}, 0)
+                        .to("#form4", {duration:29/15, x:150, ease:"none"}, 0)
                         .call(lipballoons,[brushspeed])
-                        .to("#cable4, #form4", {duration:2.26, x:610, ease:"none"}, ">" + 0.91 * brushspeed)
+                        .to("#form4", {duration:131/60, x:610, ease:"none"}, ">" + (53/60) / brushspeed)
                     </script>
 
                     <p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
