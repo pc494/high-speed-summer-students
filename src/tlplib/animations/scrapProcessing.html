@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Electric arc Furnace</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		
+
+		<link rel="stylesheet" href="titlecard.css"/>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+		
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				background-color: pink;
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
+
+			/* page id */
+			#p1 {
+				display:block;				
+			}
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+
+			/*  Other */
+			* {
+				font-family: sans-serif;
+			}
+
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+
+					<p id="titlecard"> Separation, Sorting, and Pre-treatment </p>
+					<div class="nav" style="top:280px"> 
+						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					</div>
+					
+				</div>
+				<!-- end payj - p1 -->
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
+
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+					
+					<style> 
+						#p2>div, #p2>*>div {
+							position:absolute;
+						}
+
+						p {
+							margin: 0
+						}
+
+						.bar {
+							z-index: 100;
+						}
+
+						.bar .tab {
+							display: block;
+							border: grey 2px solid;
+						}
+
+						.bar.vertical .tab {
+							width: 30px;
+							height: 30px;
+							border-bottom-left-radius: 5px;
+							border-top-left-radius: 5px;
+							border-right: none
+						}
+
+						.bar.horizontal .tab {
+							padding: 10px 5px 2px;
+							border-top-right-radius: 5px;
+							border-top-left-radius: 5px;
+							border-bottom: none;
+						}
+
+					</style>
+
+					<div id="title" style="top:30px; left:20px; width:600px; background-color: rgb(250, 244, 244)">
+						<strong style="font-size: x-large">Scrap Yard</strong>
+						<button onclick="popup()" style="text-align: right;"><em>Instructions</em></button>
+					</div>
+
+					<div style="top:70px; left:20px; height:360px; width:210px">
+
+						<div class="bar vertical" id="bin_bar" style="display:grid; background-color: rgb(240,240,250);">
+							<div class="tab bin_tab">1</div>
+							<div class="tab bin_tab">2</div>
+							<div class="tab bin_tab">3</div>
+						</div>
+
+						<div id="bin_display" style="top:0px; left:30px; border: grey 2px solid; background-color: aliceblue;">
+
+							<div id="bin_picture" style="height:180px; width:180px; background-color: rgb(251, 240, 255);">
+								<svg></svg>
+								<svg></svg>
+								<svg></svg>
+							</div>
+
+							<div id="bin_infobar" style="height:180px; width:180px; background-color: rgb(240, 255, 241);">
+								<div id="bin_mass">Mass</div>
+								<div id="bin_content">Content</div>
+								<div id="bin_notes">Notes</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div id="process" style="top:70px; left:240px; height:360px; width:210px">
+
+						<div class="bar horizontal" id="process_bar" style="display:grid; grid-auto-flow:column; background-color: rgb(240,240,250);">
+							<div class="tab">Separation</div>
+							<div class="tab">Sorting</div>
+							<div class="tab">Delivery</div>
+							<div class="tab">Summary</div>
+						</div>
+
+						<div id="bin_display" style="top:30px; height:330px; width:380px; border: grey 2px solid; background-color: aliceblue;">
+
+						</div>
+
+					</div>
+
+
+					
+
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>
