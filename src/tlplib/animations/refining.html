@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Secondary Steelmaking</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+		
+		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
+
+		<link rel="stylesheet" href="titlecard.css"/>
+		<link rel="stylesheet" href="blastFurnace.css"/>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+			
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+			
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+		
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+			
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+			
+			/* DOiTPoMS buttons */
+			.dbutton {
+				background-color: pink;
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+			
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+			
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
+
+			/* page id */
+			/* CAHNGE THIS!!! */
+			#p1 {
+				display:block;				
+			}
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+
+			/*  Other */
+			p,text {
+				font-family: sans-serif;
+			}
+
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+
+			.laser {
+    fill:red; 
+    stroke:black
+}
+
+.laser:hover, .laser:focus-visible {
+    stroke:red;
+    stroke-width: 3px;
+}
+
+.laser:active {
+    stroke-width: 1px;
+}
+
+.line {
+    stroke:black;
+}
+
+#reaction_pointer text {
+    font-size: 0.7em;
+}
+
+#reaction_pointer .pointer {
+    visibility: hidden;
+}
+
+#reaction_pointer .line, #reaction_pointer .label {
+    visibility: hidden;
+}
+
+#reaction_pointer .pointer:hover .laser, #reaction_pointer .pointer:focus-visible .laser {
+    stroke: none;
+}
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+
+					<p id="titlecard">Secondary Steelmaking</p>
+					<div class="nav" style="top:280px"> 
+						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					</div>
+					
+				</div>
+				<!-- end payj - p1 -->
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
+
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+
+					
+					<svg width="640" height="350">
+
+						<g id="ladle">
+							
+							<path class="vacuum" id="vacuum_chamber" style="fill:none; stroke:darkgrey; stroke-width:10px" d="M300,90 l0,-20 l-240,0 l0,260 l240,0 l0,-200"></path>
+
+							<mask id="furnace_guts">
+								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
+								<path class="LMF" style="fill:white" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
+							</mask>
+
+							<g class="content" mask="url(#furnace_guts)">
+								<path class="steel" style="fill:gold; stroke:darkorange; stroke-width:4px; stroke-linejoin:round" d="M70,210 c20,-5 80,10 100,0 c20,-10 30,5 80,0 l0,120 l-180,0 Z"></path>
+								<circle class="LMF nozzle nozzle_gas" style="fill: lightblue; stroke:white; stroke-width: 4px; filter:blur(5px)" cx="180" cy="290" r="0"></circle>
+								<g class="B"></g>
+							</g>
+							
+							<path class="LMF" id="LMF_body" style="fill:darkgrey; stroke:none" d="M110,120 l-30,30 l0,120 l40,40 l80,0 l40,-40 l0,-120 l-30,-30 l-10,0 l0,10 l25,25 l0,110 l-30,30 l-70,0 l-30,-30 l0,-110 l25,-25 l0,-10 l-10,0"></path>
+							<path class="LMF" id="LMF_lining" style="fill:none; stroke:dimgrey; stroke-width:8px" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
+
+							<path class="LMF nozzle" id="LMF_nozzle" style="fill:none; stroke:lightblue; stroke-width:8px" d="M180,320 l0,-30"></path>
+							<line class="LMF nozzle nozzle_tube" style="fill:none; stroke:white; stroke-width:4px" x1="180" y1="320" x2="180" y2="320"></line>
+							
+							<path class="LMF" id="LMF_adder" style="fill:dimgrey; stroke:dimgrey; stroke-width:8px;" d="M135,80 l0,160"></path>
+				
+						</g>
+
+						<g id="microscope">
+							<mask id="microscope_FOV">
+								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
+								<circle id="lens" style="fill:white" cx="170" cy="210" r="12"></circle>
+							</mask>
+						</g>
+					
+					</svg>
+
+					<style>
+						.bubble{
+							fill: white;
+							stroke: white;
+							stroke-width: 1px;
+							fill-opacity: 0.4;
+						}
+
+						path {
+							fill: none;
+							stroke: red;
+						}
+					</style>
+					
+					<p id="caption"> <em>Click on red pointers to start</em> </p>
+					
+					<div class="nav"> 
+						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
+					</div>
+
+					<script>
+						document.querySelector("svg").addEventListener("click", e => {
+							var rect = document.querySelector("svg").getBoundingClientRect()
+							var x = e.clientX - rect.left
+							var y = e.clientY - rect.top
+							console.log(x,y)
+							updateScope()
+						})
+
+						function updateScope(){
+							var env = document.getElementById("microscope")
+							env.removeChild(env.lastChild)
+
+							const viewbox = {x:470, y:200, r:120}
+							var focusPoint = {x:190, y:215}
+							var scale = 30
+							var Transform = `scale(${scale}) translate(${- focusPoint.x + (viewbox.x/scale)}px, ${- focusPoint.y + (viewbox.y/scale)}px)`
+
+							var zoomed = document.querySelector(".content").cloneNode(true)
+							document.getElementById("lens").setAttribute("cx", focusPoint.x)
+							document.getElementById("lens").setAttribute("cy", focusPoint.y)
+							document.getElementById("lens").setAttribute("r", viewbox.r/scale)
+							zoomed.setAttribute("mask", "url(#microscope_FOV)")
+							zoomed.style.transform = Transform
+							env.appendChild(zoomed)
+
+						}
+
+						var bg = gsap.timeline({repeat:-1, default:{}})
+						bg.to(".steel", 1, {ease:"none", attr:{d:"M70,210 c20,5 80,-10 100,0 c40,10 60,-10 80,-5 l0,120 l-180,0 Z"}})
+						bg.to(".steel", 1, {ease:"none", attr:{d:"M70,210 c20,-5 80,10 100,0 c20,-10 30,5 80,0 l0,120 l-180,0 Z"}})
+
+						function bubblies(N){
+							var Bubbles = new Array()
+							var r0 = 4
+							for (let n=0; n<N; n++){
+								var bubble = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+								var motionPath = document.createElementNS("http://www.w3.org/2000/svg", "path")
+								bubble.classList.add("bubble")
+								bubble.setAttribute("cx", 180)
+								bubble.setAttribute("cy", 295)
+								var init = Math.random()
+								bubble.setAttribute("r", 0)
+								motionPath.setAttribute("d", `M180,295 C${220 - 120*Math.random()},${280-70*Math.random()}, ${220 - 120*Math.random()},${280-70*Math.random()}, ${220 - 120*Math.random()},210`)
+								document.querySelector("#ladle .content .B").appendChild(bubble)
+								Bubbles[n] = {B: bubble, MP: motionPath, I: init}
+							}
+							function bubbleFloat(){
+								Bubbles.forEach((el, n) => {
+									var pathTotalLength = el.MP.getTotalLength()
+									var bubbleLoc = el.MP.getPointAtLength(pathTotalLength*2*Math.min(0.5, Math.max(phantom.progress-0.5*n/N, 0)))
+									el.B.setAttribute("cx", bubbleLoc.x)
+									el.B.setAttribute("cy", bubbleLoc.y)
+									el.B.setAttribute("r", r0*el.I*(370-bubbleLoc.y)/80)
+									el.B.style.opacity = (0.3+0.7*el.I)*(bubbleLoc.y-210)/80*(1-phantom.progress**(n/N))
+								})
+							}
+							var phantom = {progress:0}
+							gsap.to(phantom, 5, {progress:1, onUpdate:bubbleFloat})
+						}
+						refine = gsap.timeline({paused:true})
+						refine.to("#LMF_nozzle_tube", 1, {attr:{y2:"290"}}).to("#LMF_nozzle_tube", 1, {opacity:0}).to(".nozzle_gas", 2, {attr:{r:70}, opacity:0}, "<")
+
+					</script>
+					
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>
