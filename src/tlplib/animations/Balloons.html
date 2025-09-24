@@ -70,36 +70,6 @@
             divpara.style.top = h - 85 + "px";
           }
 
-          function rotate(i, n, r) {
-
-            if (i==1) {
-              gsap.to("#spinner_a"+String(n), {duration:0.5, y:10, x:15, ease:"none"});
-              gsap.to("#spinner_b"+String(n), {duration:0.5, y:10, x:-15, ease:"none"});
-              gsap.to("#spinner_c"+String(n), {duration:0.5, y:-10, x:0, ease:"none"});
-              gsap.to("#form"+String(n), {duration:0.75, delay:0.75, rotation:r, transformOrigin:"50% 50%", ease:"none"});
-            }
-
-            if (i==2) {
-              gsap.to("#form"+String(n), {duration:0.75, delay:0, rotation:r, transformOrigin:"50% 50%", ease:"none"});
-              gsap.to("#spinner_a"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
-              gsap.to("#spinner_b"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
-              gsap.to("#spinner_c"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
-            }
-
-            if (i==3) {
-              gsap.to("#form"+String(n), {duration:0.75, delay:0, rotation:r, transformOrigin:"50% 50%", ease:"none"});
-            }
-
-            if (i==4) {
-              gsap.to("#form"+String(n), {duration:0, delay:0, rotation:r, transformOrigin:"50% 50%", ease:"none"});
-            }
-
-            if (i==5) {
-              gsap.to("#form"+String(n), {duration:0, delay:0, rotation:r, x:-140, y:0, transformOrigin:"50% 50%", ease:"none"});
-            }
-
-          }
-
           function inflateballoons(a) {
             var b = 1/a;
             gsap.to("#form7", {duration:b*550, delay:0, x:675, ease:"none"});
@@ -209,6 +179,116 @@
             }
           }
 
+          
+          function rand1a() {
+            cglnt.restart();
+            gotoPage(2);
+          }
+          function rand1b() {
+            ltxx.restart();
+            gotoPage(3);
+          }
+          function rand1c() {
+            lpp.restart();
+            gotoPage(4);
+          }
+          function rand1d() {
+            sk.restart();
+            gotoPage(5);
+          }
+          function rand1e() {
+            tlc.restart();
+            gotoPage(6);
+          }
+          function rand1f() {
+            inf.restart();
+            gotoPage(7);
+          }
+          function rand1g() {
+            wsh.restart();
+            gotoPage(8);
+          }
+
+
+          function rand1n() {
+            cglnt.restart();
+            gotoPage(2);
+          }
+          function rand2b() {
+            cglnt.seek(0, false);
+            cglnt.restart();
+            ltxx.seek(0, false);
+            ltxx.restart();
+            lpp.seek(0, false);
+            lpp.restart();
+            sk.seek(0, false);
+            sk.restart();
+            tlc.seek(0, false);
+            tlc.restart();
+            inf.seek(0, false);
+            inf.restart();
+            wsh.seek(0, false);
+            wsh.restart();
+            gotoPage(1);
+          }
+          function rand2n() {
+            ltxx.restart();
+            gotoPage(3);
+          }
+          function rand3b() {
+            cglnt.restart();
+            gotoPage(2);
+          }
+          function rand3n() {
+            lpp.restart();
+            gotoPage(4);
+          }
+          function rand4b() {
+            ltxx.restart();
+            gotoPage(3);
+          }
+          function rand4n() {
+            sk.restart();
+            gotoPage(5);
+          }
+          function rand5b() {
+            lpp.restart();
+            gotoPage(4);
+          }
+          function rand5n() {
+            tlc.restart();
+            gotoPage(6);
+          }
+          function rand6b() {
+            sk.restart();
+            gotoPage(5);
+          }
+          function rand6n() {
+            inf.restart();
+            gotoPage(7);
+          }
+          function rand7b() {
+            tlc.restart();
+            gotoPage(6);
+          }
+          function rand7n() {
+            wsh.restart();
+            gotoPage(8);
+          }
+          function rand8b() {
+            inf.restart();
+            gotoPage(7);
+          }
+          function rand8n() {
+            cglnt.restart();
+            ltxx.restart();
+            lpp.restart();
+            sk.restart();
+            tlc.restart();
+            inf.restart();
+            wsh.restart();
+            gotoPage(1);
+          }
         </script>
     
         <style>
@@ -818,7 +898,7 @@
 				<div class="payj" id="p1"> 
 					<div class="title_page"><p>Creating Latex Products: Balloons</p></div>
                     
-                    <div id="first" class="biz" onclick="gotoPage(2)" onmouseover="fuj(1)" onmouseleave="fuj(2)">
+                    <div id="first" class="biz" onclick="rand1a()" onmouseover="fuj(1)" onmouseleave="fuj(2)">
                         <div class="page_titlet"><p>Dunking in Coagulant</p></div>
                         <svg id="coagulant_dipt">
                             <g id="production_line2">
@@ -858,7 +938,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div id="second" class="biz" onclick="gotoPage(3)" onmouseover="fuj(3)" onmouseleave="fuj(4)">
+                    <div id="second" class="biz" onclick="rand1b()" onmouseover="fuj(3)" onmouseleave="fuj(4)">
                         <div class="page_titlet"><p>Dunking in Latex</p></div>
                         <svg id="latex_dipt">
                             <g id="production_line3">
@@ -936,7 +1016,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div id="third" class="biz" onclick="gotoPage(4)" onmouseover="fuj(5)" onmouseleave="fuj(6)">
+                    <div id="third" class="biz" onclick="rand1c()" onmouseover="fuj(5)" onmouseleave="fuj(6)">
                         <div class="page_titlet"><p>Rolling the Ends into a Lip</p></div> 
                         <svg id="lippingt">
                             <g id="overlord">
@@ -978,7 +1058,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div id="fourth" class="biz" onclick="gotoPage(5)" onmouseover="fuj(7)" onmouseleave="fuj(8)">
+                    <div id="fourth" class="biz" onclick="rand1d()" onmouseover="fuj(7)" onmouseleave="fuj(8)">
                         <div class="page_titlet"><p>Hot Water Soak</p></div>
                         <svg id="soakt">
                             <g id="production_line5">
@@ -1050,7 +1130,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div id="fifth" class="biz" onclick="gotoPage(6)" onmouseover="fuj(9)" onmouseleave="fuj(10)">
+                    <div id="fifth" class="biz" onclick="rand1e()" onmouseover="fuj(9)" onmouseleave="fuj(10)">
                         <div class="page_titlet"><p>Dunking in Talc-Water</p></div>
                         <svg id="talc_solutiont">
                             <g id="production_line6">
@@ -1074,9 +1154,9 @@
                                     <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
                                 </g>
                                 <g class="balloon_lipped">
-                                    <path id="balloon_lippedaa" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
-                                    <path id="balloon_lippedbb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
-                                    <path id="balloon_lippedcc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippeda" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
                                 </g>
                                 <g id="spinner6" class="spinner">
                                     <path id="spinner_a6" d="M12.5,75h15v5h-10v5h-5z"/>
@@ -1095,7 +1175,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div id="sixth" class="biz" onclick="gotoPage(7)" onmouseover="fuj(11)" onmouseleave="fuj(12)">
+                    <div id="sixth" class="biz" onclick="rand1f()" onmouseover="fuj(11)" onmouseleave="fuj(12)">
                         <div class="page_titlet"><p>Inflation and Release</p></div>
                         <svg id="inflation_phantomt"></svg>
                         <svg id="inflationt">
@@ -1187,7 +1267,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div id="seventh" class="biz" onclick="gotoPage(8)" onmouseover="fuj(13)" onmouseleave="fuj(14)">
+                    <div id="seventh" class="biz" onclick="rand1g()" onmouseover="fuj(13)" onmouseleave="fuj(14)">
                         <div class="page_titlet"><p>Hot Wash</p></div>
                         <svg id="washingt">
                             <defs>
@@ -1310,7 +1390,7 @@
                         </svg>
                     </div>
                     <div class="nav">
-                        <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+                        <p class="dbutton" id="start" onClick=""></p >
                     </div>
 				</div> <!-- end payj - p1 -->
 				
@@ -1387,18 +1467,24 @@
                         .call(ccable2_pausee, [], ">")
                         .set("#spinner2", {autoAlpha:1}, ">")
                         .set("#dummy2", {autoAlpha:0}, ">")
-                        .call(rotate, ["1", "2", "180"], ">" + 0.25)
-                        .to("#form2", {duration:1.5, y:120, ease:"none"}, ">" + 2)
+                        .to("#spinner_a2", {duration:0.5, y:10, x:15, ease:"none"}, ">" + 0.25)
+                        .to("#spinner_b2", {duration:0.5, y:10, x:-15, ease:"none"}, "<")
+                        .to("#spinner_c2", {duration:0.5, y:-10, x:0, ease:"none"}, "<")
+                        .to("#form2", {duration:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")
+                        .to("#form2", {duration:1.5, y:120, ease:"none"}, ">" + 0.25)
                         .to("#form2", {duration:1.5, y:0, ease:"none"})
-                        .call(rotate, ["2", "2", "0"], ">" + 0.25)
-                        .set("#dummy2", {autoAlpha:1}, ">" + 2)
+                        .to("#form2", {duration:0.75, rotation:0, transformOrigin:"50% 50%", ease:"none"}, ">" + 0.25)
+                        .to("#spinner_a2", {duration:0.5, y:0, x:0, ease:"none"}, ">+=0.25")
+                        .to("#spinner_b2", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .to("#spinner_c2", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .set("#dummy2", {autoAlpha:1}, ">" + 0.25)
                         .set("#spinner2", {autoAlpha:0}, ">")
                         .call(ccable2_playy, [], ">")
                         .to("#form2", {duration:77/30, x:610, ease:"none"}, ">")
                     </script>
 
-                    <p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
-                    <p class="dbutton" id="next2" onClick="gotoPage(3)"></p >
+                    <p class="dbutton" id="back2" onClick="rand2b()"></p >
+                    <p class="dbutton" id="next2" onClick="rand2n()"></p >
 				</div> <!-- end payj - p2 -->
 				
 				<!--  new page starts here    -->
@@ -1531,8 +1617,8 @@
 
                     </script>
 
-                    <p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
-                    <p class="dbutton" id="next3" onClick="gotoPage(4)"></p >
+                    <p class="dbutton" id="back3" onClick="rand3b()"></p >
+                    <p class="dbutton" id="next3" onClick="rand3n()"></p >
 				</div><!-- end payj - p3 -->
 				
 				<!--  new page starts here    -->
@@ -1608,20 +1694,10 @@
                         .to("#balloonb", {duration:0, morphSVG:"#balloon_lippedbb", ease:"none"}, 1.55)
                         .to("#balloona", {duration:0, morphSVG:"#balloon_lippedahalf", ease:"none"}, 1.8)
                         .to("#balloona", {duration:0, morphSVG:"#balloon_lippedaa", ease:"none"}, 1.85)
-                        
-                        // .to("#form4", {duration:29/15, x:150, ease:"none"}, 0)
-                        // .call(lipballoons,[brushspeed])
-                        // .to("#form4", {duration:131/60, x:610, ease:"none"}, ">" + (53/60) / brushspeed)
-
-                        // const c = ((53/60) / 0.91) / brushspeed
-
-                        // gsap.to("#balloonc", {duration:0, delay:c * 0.91 * 184/53, morphSVG:"#balloonc", ease:"none"});
-                        // gsap.to("#balloonb", {duration:0, delay:c * 0.91 * 184/53, morphSVG:"#balloonb", ease:"none"});
-                        // gsap.to("#balloona", {duration:0, delay:c * 0.91 * 184/53, morphSVG:"#balloona", ease:"none"});
                     </script>
 
-                    <p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
-                    <p class="dbutton" id="next4" onClick="gotoPage(5)"></p > 
+                    <p class="dbutton" id="back4" onClick="rand4b()"></p >
+                    <p class="dbutton" id="next4" onClick="rand4n()"></p > 
 				</div>
 				<!-- end payj - p4 -->
 				
@@ -1734,23 +1810,29 @@
                         .call(ccable5_pausee, [], ">")
                         .set("#spinner5", {autoAlpha:1})
                         .set("#dummy5", {autoAlpha:0})
-                        .call(rotate, ["1", "5", "90"], ">+=0.25")
-                        .to("#form5", {duration:2/3, y:100, ease:"none"}, ">+=2")
+                        .to("#spinner_a5", {duration:0.5, y:10, x:15, ease:"none"}, ">+=0.25")
+                        .to("#spinner_b5", {duration:0.5, y:10, x:-15, ease:"none"}, "<")
+                        .to("#spinner_c5", {duration:0.5, y:-10, x:0, ease:"none"}, "<")
+                        .to("#form5", {duration:0.75, rotation:90, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")                        
+                        .to("#form5", {duration:2/3, y:100, ease:"none"}, ">+=0.25")
                         .call(ccable5_playy, [], "<")
                         .call(ccable5_pausee, [], ">" + 2 / 3)
-                        .call(rotate, ["2", "5", "180"], ">+=0.25")
-                        .set("#dummy5", {y:105, rotate:180, transformOrigin:"50% 50%", autoAlpha:1}, "<" + 1.5)
+                        .to("#form5", {duration:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")
+                        .to("#spinner_a5", {duration:0.5, y:0, x:0, ease:"none"}, ">")
+                        .to("#spinner_b5", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .to("#spinner_c5", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .set("#dummy5", {y:105, rotate:180, transformOrigin:"50% 50%", autoAlpha:1}, ">")
                         .set("#spinner5", {autoAlpha:0}, ">")
                         .to("#form5", {duration:49/15, x:617.5, ease:"none"}, ">" + 0.5)
                         .call(ccable5_playy, [], "<")
-                        .to("#dummy5", {duration:1, delay:0.5, rotate:0, y:0, ease:"none"}, ">")
+                        .to("#dummy5", {duration:1, rotate:0, y:0, ease:"none"}, ">+=0.5")
                         .set("#form5", {x:-200, y:0}, ">" + 53 / 30)
-                        .call(rotate, ["4", "5", "0"], ">")
+                        .to("#form5", {duration:0, rotation:0, transformOrigin:"50% 50%", ease:"none"})
                         
 
                     </script>
-                    <p class="dbutton" id="back5" onClick="gotoPage(4)"></p >
-                    <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
+                    <p class="dbutton" id="back5" onClick="rand5b()"></p >
+                    <p class="dbutton" id="next5" onClick="rand5n()"></p >
 				</div>
 				<!-- end payj - p5 -->
 
@@ -1830,17 +1912,23 @@
                         .set("#spinner6", {autoAlpha:1}, ">")
                         .set("#dummy6", {autoAlpha:0}, ">")
                         .call(ccable6_pausee, [], ">")
-                        .call(rotate, ["1", "6", "180"], ">" + 0.25)
-                        .to("#form6", {duration:1.5, y:120, ease:"none"}, ">" + 2)
+                        .to("#spinner_a6", {duration:0.5, y:10, x:15, ease:"none"}, ">" + 0.25)
+                        .to("#spinner_b6", {duration:0.5, y:10, x:-15, ease:"none"}, "<")
+                        .to("#spinner_c6", {duration:0.5, y:-10, x:0, ease:"none"}, "<")
+                        .to("#form6", {duration:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")
+                        .to("#form6", {duration:1.5, y:120, ease:"none"}, ">" + 0.25)
                         .to("#form6", {duration:1.5, y:0, ease:"none"})
-                        .call(rotate, ["2", "6", "0"], ">" + 0.25)
-                        .set("#dummy6", {autoAlpha:1}, ">" + 2)
+                        .to("#form6", {duration:0.75, rotation:0, transformOrigin:"50% 50%", ease:"none"}, ">" + 0.25)
+                        .to("#spinner_a6", {duration:0.5, y:0, x:0, ease:"none"}, ">")
+                        .to("#spinner_b6", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .to("#spinner_c6", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .set("#dummy6", {autoAlpha:1}, ">" + 0.25)
                         .set("#spinner6", {autoAlpha:0}, ">")
                         .to("#form6", {duration:385/150, x:610, ease:"none"}, ">")
                         .call(ccable6_playy, [], "<")
                     </script>
-                    <p class="dbutton" id="back6" onClick="gotoPage(5)"></p >
-                    <p class="dbutton" id="next6" onClick="gotoPage(7)"></p >
+                    <p class="dbutton" id="back6" onClick="rand6b()"></p >
+                    <p class="dbutton" id="next6" onClick="rand6n()"></p >
 				</div>
 				<!-- end payj - p6 -->
 
@@ -2008,64 +2096,64 @@
 
 
 
-                        .to("#form7", {duration:b*550, delay:0, x:675, ease:"none"}, 53/30)
+                        .to("#form7", {duration:b*550, x:675, ease:"none"}, 53/30)
 
-                        .to("#balloon_lippedc7", {duration:b*83, delay:0, x:208, ease:"none"}, 53/30)
-                        .to("#balloon_lippedb7", {duration:b*113, delay:0, x:238, ease:"none"}, 53/30)
-                        .to("#balloon_lippeda7", {duration:b*143, delay:0, x:268, ease:"none"}, 53/30)
+                        .to("#balloon_lippedc7", {duration:b*83, x:208, ease:"none"}, 53/30)
+                        .to("#balloon_lippedb7", {duration:b*113, x:238, ease:"none"}, 53/30)
+                        .to("#balloon_lippeda7", {duration:b*143, x:268, ease:"none"}, 53/30)
 
-                        .to("#balloon_lippedc7", {duration:b*60, delay:0, morphSVG:"#balloon_inflatedc", ease:"power2.inOut"}, 53/30)
-                        .to("#balloon_lippedb7", {duration:b*60, delay:b*30, morphSVG:"#balloon_inflatedb", ease:"power2.inOut"}, 53/30)
-                        .to("#balloon_lippeda7", {duration:b*60, delay:b*60, morphSVG:"#balloon_inflateda", ease:"power2.inOut"}, 53/30)
+                        .to("#balloon_lippedc7", {duration:b*60, morphSVG:"#balloon_inflatedc", ease:"power2.inOut"}, b*30 + 53/30)
+                        .to("#balloon_lippedb7", {duration:b*60, morphSVG:"#balloon_inflatedb", ease:"power2.inOut"}, b*60 + 53/30)
+                        .to("#balloon_lippeda7", {duration:b*60, morphSVG:"#balloon_inflateda", ease:"power2.inOut"}, b*90 + 53/30)
 
 
 
-                        .to("#balloon_lippedc7", {duration:b*10, delay:b*73, morphSVG:"#balloon_pinchedc", ease:"none"}, 53/30)//getting pinched by rollers
-                        .to("#balloon_lippedc7", {duration:b*20, delay:b*83, morphSVG:"#balloon_thinc", ease:"expo.out"}, 53/30)//getting thinner bc of rollers
-                        .to("#balloon_lippedc7", {duration:b*22.5, delay:b*83, y:-75, ease:"none"}, 53/30)//going through rollers uniform speed of 500 px s^{-1}
+                        .to("#balloon_lippedc7", {duration:b*10, morphSVG:"#balloon_pinchedc", ease:"none"},b*73 +  53/30)//getting pinched by rollers
+                        .to("#balloon_lippedc7", {duration:b*20, morphSVG:"#balloon_thinc", ease:"expo.out"},b*83 +  53/30)//getting thinner bc of rollers
+                        .to("#balloon_lippedc7", {duration:b*22.5, y:-75, ease:"none"}, b*83 + 53/30)//going through rollers uniform speed of 500 px s^{-1}
                         
-                        .to("#balloon_lippedc7", {duration:b*144.25, delay:b*94.25, rotation:90, x:317.5, transformOrigin:"50% 50%", ease:"none"}, 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
+                        .to("#balloon_lippedc7", {duration:b*144.25, rotation:90, x:317.5, transformOrigin:"50% 50%", ease:"none"}, b*94.25 + 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
                         
-                        .to("#balloon_lippedc7", {duration:b*75, delay:b*105.5, y:-200, ease:"power2.out"}, 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this - quartic (power3.out), quintic (power4.out), or some other ease (expo.[]; expoScale.[];bounce.[];elastic.[];back.[]) may work better - expoScale.[] could do the whole fall under gravity, i.e. the first fling fromy=-75 to -187.5 and then returning on an opposite gradient back to y=-125)
-                        .to("#balloon_lippedc7", {duration:b*10, delay:b*105.5, morphSVG:"#balloon_lippedc7demo", ease:"none"}, 53/30)//morph back to lipped balloon
-                        .to("#balloon_lippedc7", {duration:b*58, delay:b*180.5, y:-125, ease:"power1.in"}, 53/30)//falling onto conveyor belt under gravity
+                        .to("#balloon_lippedc7", {duration:b*75, y:-200, ease:"power2.out"}, b*105.5 + 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this - quartic (power3.out), quintic (power4.out), or some other ease (expo.[]; expoScale.[];bounce.[];elastic.[];back.[]) may work better - expoScale.[] could do the whole fall under gravity, i.e. the first fling fromy=-75 to -187.5 and then returning on an opposite gradient back to y=-125)
+                        .to("#balloon_lippedc7", {duration:b*10, morphSVG:"#balloon_lippedc7demo", ease:"none"}, b*105.5 + 53/30)//morph back to lipped balloon
+                        .to("#balloon_lippedc7", {duration:b*58, y:-125, ease:"power1.in"}, b*180.5 + 53/30)//falling onto conveyor belt under gravity
 
-                        .to("#balloon_lippedc7", {duration:b*256.875, delay:b*241, x:660, ease:"none"}, 53/30)//moves along conveyor belt at 200 px s^{-1}
+                        .to("#balloon_lippedc7", {duration:b*256.875, x:660, ease:"none"}, b*241 + 53/30)//moves along conveyor belt at 200 px s^{-1}
 
 
 
-                        .to("#balloon_lippedb7", {duration:b*10, delay:b*103, morphSVG:"#balloon_pinchedb", ease:"none"}, 53/30)//getting pinched by rollers
-                        .to("#balloon_lippedb7", {duration:b*20, delay:b*113, morphSVG:"#balloon_thinb", ease:"expo.out"}, 53/30)//getting thinner bc of rollers
-                        .to("#balloon_lippedb7", {duration:b*22.5, delay:b*113, y:-75, ease:"none"}, 53/30)//going through rollers
+                        .to("#balloon_lippedb7", {duration:b*10, morphSVG:"#balloon_pinchedb", ease:"none"}, b*103 + 53/30)//getting pinched by rollers
+                        .to("#balloon_lippedb7", {duration:b*20, morphSVG:"#balloon_thinb", ease:"expo.out"}, b*113 + 53/30)//getting thinner bc of rollers
+                        .to("#balloon_lippedb7", {duration:b*22.5, y:-75, ease:"none"}, b*113 + 53/30)//going through rollers
                         
-                        .to("#balloon_lippedb7", {duration:b*144.25, delay:b*124.25, rotation:90, x:347.5, transformOrigin:"50% 50%", ease:"none"}, 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
+                        .to("#balloon_lippedb7", {duration:b*144.25, rotation:90, x:347.5, transformOrigin:"50% 50%", ease:"none"}, b*124.25 + 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
                         
-                        .to("#balloon_lippedb7", {duration:b*75, delay:b*135.5, y:-187.5, ease:"power2.out"}, 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
-                        .to("#balloon_lippedb7", {duration:b*10, delay:b*135.5, morphSVG:"#balloon_lippedb7demo", ease:"none"}, 53/30)//morph back to lipped balloon
-                        .to("#balloon_lippedb7", {duration:b*58, delay:b*210.5, y:-125, ease:"power1.in"}, 53/30)//falling onto conveyor belt under gravity
+                        .to("#balloon_lippedb7", {duration:b*75, y:-187.5, ease:"power2.out"}, b*135.5 + 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
+                        .to("#balloon_lippedb7", {duration:b*10, morphSVG:"#balloon_lippedb7demo", ease:"none"}, b*135.5 + 53/30)//morph back to lipped balloon
+                        .to("#balloon_lippedb7", {duration:b*58, y:-125, ease:"power1.in"}, b*210.5 + 53/30)//falling onto conveyor belt under gravity
 
-                        .to("#balloon_lippedb7", {duration:b*234.375, delay:b*271, x:660, ease:"none"}, 53/30)//moves along conveyor belt at 200 px s^{-1}
+                        .to("#balloon_lippedb7", {duration:b*234.375, x:660, ease:"none"}, b*271 + 53/30)//moves along conveyor belt at 200 px s^{-1}
 
 
 
-                        .to("#balloon_lippeda7", {duration:b*10, delay:b*133, morphSVG:"#balloon_pincheda", ease:"none"}, 53/30)//getting pinched by rollers
-                        .to("#balloon_lippeda7", {duration:b*20, delay:b*143, morphSVG:"#balloon_thina", ease:"expo.out"}, 53/30)//getting thinner bc of rollers
-                        .to("#balloon_lippeda7", {duration:b*22.5, delay:b*143, y:-75, ease:"none"}, 53/30)//going through rollers
+                        .to("#balloon_lippeda7", {duration:b*10, morphSVG:"#balloon_pincheda", ease:"none"}, b*133 + 53/30)//getting pinched by rollers
+                        .to("#balloon_lippeda7", {duration:b*20, morphSVG:"#balloon_thina", ease:"expo.out"}, b*143 + 53/30)//getting thinner bc of rollers
+                        .to("#balloon_lippeda7", {duration:b*22.5, y:-75, ease:"none"}, b*143 + 53/30)//going through rollers
                         
-                        .to("#balloon_lippeda7", {duration:b*144.25, delay:b*154.25, rotation:90, x:377.5, transformOrigin:"50% 50%", ease:"none"}, 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
+                        .to("#balloon_lippeda7", {duration:b*144.25, rotation:90, x:377.5, transformOrigin:"50% 50%", ease:"none"}, b*154.25 + 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
                         
-                        .to("#balloon_lippeda7", {duration:b*75, delay:b*165.5, y:-187.5, ease:"power2.out"}, 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
-                        .to("#balloon_lippeda7", {duration:b*10, delay:b*165.5, morphSVG:"#balloon_lippeda7demo", ease:"none"}, 53/30)//morph back to lipped balloon
-                        .to("#balloon_lippeda7", {duration:b*58, delay:b*240, y:-125, ease:"power1.in"}, 53/30)//falling onto conveyor belt under gravity
+                        .to("#balloon_lippeda7", {duration:b*75, y:-187.5, ease:"power2.out"}, b*165.5 + 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
+                        .to("#balloon_lippeda7", {duration:b*10, morphSVG:"#balloon_lippeda7demo", ease:"none"}, b*165.5 + 53/30)//morph back to lipped balloon
+                        .to("#balloon_lippeda7", {duration:b*58, y:-125, ease:"power1.in"}, b*240 + 53/30)//falling onto conveyor belt under gravity
 
-                        .to("#balloon_lippeda7", {duration:b*211.875, delay:b*301, x:660, ease:"none"}, 53/30)//moves along conveyor belt at 200 px s^{-1}
+                        .to("#balloon_lippeda7", {duration:b*211.875, x:660, ease:"none"}, b*301 + 53/30)//moves along conveyor belt at 200 px s^{-1}
 
 
 
                         .to("#form7, #balloon_lippeda7, #balloon_lippedb7, #balloon_lippedc7", {duration:0, x:-140, y:0, rotation:0, transformOrigin:"50% 0%"}, ">")
                     </script>
-                    <p class="dbutton" id="back7" onClick="gotoPage(6)"></p >
-                    <p class="dbutton" id="next7" onClick="gotoPage(8)"></p >
+                    <p class="dbutton" id="back7" onClick="rand7b()"></p >
+                    <p class="dbutton" id="next7" onClick="rand7n()"></p >
 				</div>
 				<!-- end payj - p7 -->
 
@@ -2310,8 +2398,8 @@
                         .set("#washing_drum", {rotate:225}, "<")
                         .to("#washing_drum", {duration:2, rotate:0, transformOrigin:"50% 50%", ease:"power1.inOut"}, ">+=0.5")
                     </script>
-                    <p class="dbutton" id="back8" onClick="gotoPage(7)"></p >
-                    <p class="dbutton" id="reset" onClick="gotoPage(1)"></p >
+                    <p class="dbutton" id="back8" onClick="rand8b()"></p >
+                    <p class="dbutton" id="reset" onClick="rand8n()"></p >
 				</div>
 				<!-- end payj - p8 -->
 
