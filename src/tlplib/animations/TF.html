@@ -406,7 +406,7 @@
                 font-weight:100;
                 position:absolute;
             }
-            #gas_paths {
+            .gas_paths {
                 stroke-linecap:round;
                 stroke:#777;
                 fill:none;
@@ -667,7 +667,7 @@
                             <path id="sheet_vac_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                             <path id="sheet_new_vac" d="M-245,185h240"/>
                         </g>
-                        <g id="gas_paths">
+                        <g id="gas_paths_vac" class="gas_paths">
                             <path id="vac_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 97.5 q-6.0 12.5 -16.0 10"/>
                             <path id="vac_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 97.5 q-2.5 15.0 -7.50 20"/>
                             <path id="vac_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 97.5 q 1.5 23.00 2.98 25"/>    
@@ -687,7 +687,7 @@
                         gsap.to("#clamp_vac3, #clamp_vac4, #sheet_vac_morph", {duration:0, autoAlpha:0})
                         gsap.to("#port1_vac, #port2_vac", {duration:0, y:20, ease:"none"})
                         
-                        document.querySelectorAll("#gas_paths path").forEach((path) => {
+                        document.querySelectorAll("#gas_paths_vac path").forEach((path) => {
                             path.setAttribute("stroke-width", "3px");
                             path.setAttribute("opacity", 0)
                         })
@@ -695,7 +695,7 @@
                             progress:0
                         };
                         function updateDasharray() {
-                            document.querySelectorAll("#gas_paths path").forEach((path) => {
+                            document.querySelectorAll("#gas_paths_vac path").forEach((path) => {
                                 var totalLength = path.getTotalLength()
                                 path.setAttribute("stroke-width", "2px");
                                 path.setAttribute("opacity", 0); 
@@ -717,8 +717,8 @@
                         .to("#heater_vac", {duration:0, x:0, y:0, ease:"none"}, 2)
                         
                         .to(phantomPath, 1.25, {progress:1, onUpdate: updateDasharray, ease:"sine.out"}, 3)
-                        .set("#gas_paths path", {opacity:1}, "<")
-                        .to("#gas_paths path", 1.25, {opacity:0, ease:"none"}, "<")
+                        .set("#gas_paths_vac path", {opacity:1}, "<")
+                        .to("#gas_paths_vac path", 1.25, {opacity:0, ease:"none"}, "<")
 
                         .to("#sheet_vac", {duration:1.75, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3.25)
                         .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 5.25)
