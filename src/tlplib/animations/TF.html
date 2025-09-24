@@ -893,19 +893,19 @@
                             <path id="port3_plu" d="M364.75,327.5v-10h-10v5l10,5v50
                                                     M378.75,327.25v-10h10v5l-10,5v50"/>
                         </g>
-                        <g class="plug">
-                            <path id="plug_plu" d="M225,100h5l22.5,67.5a15,15 0,0,0 14.23,10.26h106.54a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5v-25h25v-10h-240v10h25z"/>
-                        </g>
                         <g class="sheet">
                             <path id="sheet_plu" d="M200,185h25h5h20h19h102h19h20h5h25"/>
-                            <path id="sheet_plu_morph" d="M200,185h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25zz"/>
+                            <path id="sheet_plu_morph" d="M200,185h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25"/>
                             <path id="sheet_new_plu" d="M-245,185h240"/>
+                        </g>
+                        <g class="plug">
+                            <path id="plug_plu" d="M225,100h5l22.5,67.5a15,15 0,0,0 14.23,10.26h106.54a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5v-25h25v-10h-240v10h25z"/>
                         </g>
                     </svg>
                     <svg id="fuj">
                         <g class="sheet">
-                            <path id="sheet_plu_morf1" d="M200,-94.5h25h5l22.5,67.5a15,15 0,0,0 14.23,10.26h22.77h1h58.5h1h22.77a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5h25z"/>
-                            <path id="sheet_plu_morf2" d="M200,-94.5h25l3.25,9.75  25,75h14.23h23.27v-5h58.5v5h23.27h14.23l25,-75 3.25,-9.75h25z"/>
+                            <path id="sheet_plu_morf1" d="M200,-94.5h25h5l22.5,67.5a15,15 0,0,0 14.23,10.26h22.77h1h58.5h1h22.77a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5h25"/>
+                            <path id="sheet_plu_morf2" d="M200,-94.5h25l3.25,9.75  25,75h14.23h23.27v-5h58.5v5h23.27h14.23l25,-75 3.25,-9.75h25"/>
                         </g>
                     </svg>
                     <div class="page_txt" id="vacuum_txt_plu"><p>Vacuum</p></div>
@@ -923,11 +923,12 @@
                         .to("#clamp_plu2", {duration:1, morphSVG:"#clamp_plu4", ease:"none"}, 0)
                         .to("#sheet_plu", {duration:0.5, y:10, ease:"none"}, 0.5)
                         .to("#plug_plu, #plug_txt_plu, #sheet_plu_morf1", {duration:2, y:95, ease:"none"}, 1)
+                        .to("#sheet_plu", {duration:0, autoAlpha:0}, 3)
                         .to("#plug_plu, #plug_txt_plu", {duration:1, y:0, ease:"none"}, 3.5)
                         .to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0.5, y:0, ease:"none"}, 3.5)
                         .to("#sheet_plu_morf1", {duration:1, morphSVG:"#sheet_plu_morf2", ease:"none"}, 4.25)
                         .to("#sheet_plu_morph", {duration:0, autoAlpha:1}, 5.25)
-                        .to("#sheet_plu_morf1, #sheet_plu", {duration:0, autoAlpha:0}, 5.25)
+                        .to("#sheet_plu_morf1", {duration:0, autoAlpha:0}, 5.25)
                         .to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0.5, y:20, ease:"none"}, 5.5)
                         .to("#aparatus_plu1", {duration:1, y:0, ease:"none"}, 5.5)
                         .to("#clamp_plu1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.5)
