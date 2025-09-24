@@ -406,6 +406,11 @@
                 font-weight:100;
                 position:absolute;
             }
+            #gas_paths {
+                stroke-linecap:round;
+                stroke:#777;
+                fill:none;
+            }
 
             #heater_txt_vac {
                 left:50%;
@@ -663,64 +668,29 @@
                             <path id="sheet_new_vac" d="M-245,185h240"/>
                         </g>
                         <g id="gas_paths">
-                            <path id="vac_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 77.5 q-6.0 12.5 -16.0 10"/>
-                            <path id="vac_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 77.5 q-2.5 15.0 -7.50 20"/>
-                            <path id="vac_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 77.5 q 1.5 23.00 2.98 25"/>    
-                            <path id="vac_path_l4" d="M305.00,215.00 q-22.0 16.0 -39.15 64.75 v 77.5 q 2.5 15.00 7.50 20"/>
-                            <path id="vac_path_l5" d="M300.00,250.00 q-16.0 7.50 -32.65 29.75 v 77.5 q 6.0 12.50 16.0 10"/>
+                            <path id="vac_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 97.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="vac_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 97.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="vac_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 97.5 q 1.5 23.00 2.98 25"/>    
+                            <path id="vac_path_l4" d="M305.00,215.00 q-22.0 16.0 -39.15 64.75 v 97.5 q 2.5 15.00 7.50 20"/>
+                            <path id="vac_path_l5" d="M300.00,250.00 q-16.0 7.50 -32.65 29.75 v 97.5 q 6.0 12.50 16.0 10"/>
 
-                            <path id="vac_path_r1" d="M389.15,264.75 q-5.00 2.00 -11.00 15.00 v 77.5 q 6.0 12.50 16.0 10"/>
-                            <path id="vac_path_r2" d="M404.65,210.00 q-14.0 17.0 -28.00 69.75 v 77.5 q 2.5 15.00 7.50 20"/>
-                            <path id="vac_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 77.5 q-1.5 23.0 -2.98 25"/>     
-                            <path id="vac_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 77.5 q-2.5 15.0 -7.50 20"/>
-                            <path id="vac_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 77.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="vac_path_r1" d="M389.15,264.75 q-5.00 2.00 -11.00 15.00 v 97.5 q 6.0 12.50 16.0 10"/>
+                            <path id="vac_path_r2" d="M404.65,210.00 q-14.0 17.0 -28.00 69.75 v 97.5 q 2.5 15.00 7.50 20"/>
+                            <path id="vac_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 97.5 q-1.5 23.0 -2.98 25"/>     
+                            <path id="vac_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 97.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="vac_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 97.5 q-6.0 12.5 -16.0 10"/>
                         </g>
                     </svg>
-                    <style>
-                        #gas_paths {
-                            stroke-linecap:round;
-                            stroke:#777;
-                            fill:none;
-                        }
-                    </style>
                     <div class="page_txt" id="heater_txt_vac"><p>Heater</p></div>
                     <div class="page_txt" id="vacuum_txt_vac"><p>Vacuum</p></div>
                     <script>
-                        document.querySelectorAll("#gas_paths path").forEach((path) => {
-                            path.setAttribute("stroke-width", "3px");
-                            path.setAttribute("opacity", 0);
-                            
-                            })
-                            // gsap
-                            //     .timeline({ repeat: -1, delay: d })
-                            //     .to(phantomPath, 2.5, {
-                            //     length: phantomPath.totalPathLength,
-                            //     onUpdate: updateDasharray,
-                            //     })
-                            //     .set(path, { opacity: 1 }, "<")
-                            //     .to(path, 2.5, { opacity: 0 }, "<");
-                            // });
-
-
-
-
                         gsap.to("#clamp_vac3, #clamp_vac4, #sheet_vac_morph", {duration:0, autoAlpha:0})
                         gsap.to("#port1_vac, #port2_vac", {duration:0, y:20, ease:"none"})
-
-                        var tlv = gsap.timeline({paused:true, repeat:-1})
-                        tlv.timeScale(1)
-
-                        tlv.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
-                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
-                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
-                        .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
-                        .to("#heater_vac", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
-                        .to("#heater_vac", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
-                        .to("#port1_vac, #port2_vac", {duration:1, y:0, ease:"none"}, 1.5)
-                        .to("#vacuum_txt_vac", {duration:1, y:-20, ease:"none"}, 1.5)
-                        .to("#heater_vac_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
-                        .to("#heater_vac", {duration:0, x:0, y:0, ease:"none"}, 2)
                         
+                        document.querySelectorAll("#gas_paths path").forEach((path) => {
+                            path.setAttribute("stroke-width", "3px");
+                            path.setAttribute("opacity", 0)
+                        })
                         var phantomPath = {
                             progress:0
                         };
@@ -733,11 +703,24 @@
                             })                           
                         }
 
-                        tlv.to(phantomPath, 1.25, {progress:1, onUpdate: updateDasharray, ease:"power1.in"}, 3)
-                        .set("#gas_paths path", {opacity:1}, "<")
-                        .to("#gas_paths path", 1.25, {opacity:0, ease:"power1.in"}, "<")
+                        var tlv = gsap.timeline({paused:true, repeat:-1})
+                        tlv.timeScale(1)
+                        .to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
+                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
+                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
+                        .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
+                        .to("#heater_vac", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
+                        .to("#heater_vac", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
+                        .to("#port1_vac, #port2_vac", {duration:1, y:0, ease:"none"}, 1.5)
+                        .to("#vacuum_txt_vac", {duration:1, y:-20, ease:"none"}, 1.5)
+                        .to("#heater_vac_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
+                        .to("#heater_vac", {duration:0, x:0, y:0, ease:"none"}, 2)
                         
-                        .to("#sheet_vac", {duration:1.75, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3.5)
+                        .to(phantomPath, 1.25, {progress:1, onUpdate: updateDasharray, ease:"sine.out"}, 3)
+                        .set("#gas_paths path", {opacity:1}, "<")
+                        .to("#gas_paths path", 1.25, {opacity:0, ease:"none"}, "<")
+
+                        .to("#sheet_vac", {duration:1.75, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3.25)
                         .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 5.25)
                         .to("#heater_vac", {duration:1, attr:{fill:"#aaa"}, ease:"none"}, 4.75)
                         .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 4.75)
