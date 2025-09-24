@@ -336,7 +336,7 @@
                 grid-template-columns: auto auto;
             }
             .heater {
-                fill:#777;
+                fill:#aaa;
                 stroke:#000;
                 stroke-width: 1px;
             }
@@ -346,7 +346,7 @@
                 stroke-width: 1px;
             }
             .heater_gap {
-                fill:#777;
+                fill:#aaa;
                 fill-opacity:0.3;
                 stroke:#000;
                 stroke-width:0.5px;
@@ -358,19 +358,25 @@
                 stroke-width: 1px;
             }
             .sheet {
-                fill: #ee4;
-                fill-opacity: 0.5;
+                fill: none;
+                fill-opacity: 0;
+                stroke: #ee4;
+                stroke-width: 2px;
+            }
+            .sheet_filled {
+                fill: #fff;
+                fill-opacity: 1;
                 stroke: #ee4;
                 stroke-width: 2px;
             }
             .aparatus {
-                fill: forestgreen;
+                fill: #282;
                 stroke: #000;
                 stroke-width: 1px;
             }
             .gap {
-                fill:forestgreen;
-                fill-opacity:0.3;
+                fill:#186618;
+                fill-opacity:1;
                 stroke:#000;
                 stroke-width:0.5px;
             }
@@ -405,6 +411,11 @@
                 font-size:20px;
                 font-weight:100;
                 position:absolute;
+            }
+            .gas_paths {
+                stroke-linecap:round;
+                stroke:#777;
+                fill:none;
             }
 
             #heater_txt_vac {
@@ -487,9 +498,6 @@
                                 <g class="heater_hot">
                                     <path id="heater_vact" d="M230,150h180v25h-180z"/>
                                 </g>
-                                <g class="sheet">
-                                    <path id="sheet_vac_morph2t" d="M200,195h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
-                                </g>
                                 <g class="aparatus">
                                     <path id="aparatus_vact" d="M175,170h50v25h-50z M465,170h-50v25h50z"/>
                                     <path id="aparatus_vac2t" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z  M269,279.75q56,-30.010 102,0v15.25h-102z  M379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
@@ -507,6 +515,9 @@
                                 <g class="vacuum">
                                     <path id="port1_vact" d="M258.35,327.5v-10h-10v5l10,5v50M271,327.25v-10h10v5l-10,5v50"/>
                                     <path id="port2_vact" d="M368.97,327.5v-10h-10v5l10,5v50M381.77,327.25v-10h10v5l-10,5v50"/>
+                                </g>
+                                <g class="sheet">
+                                    <path id="sheet_vac_morpht" d="M200,195h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                                 </g>
                             </svg>
                             <div class="title_hover"><p>Vacuum<br/>Thermoforming</p></div>
@@ -543,7 +554,7 @@
                                                             M357,277.25v-10h10v5l-10,5v50"/>
                                   </g>
                                 <g class="sheet">
-                                    <path id="sheet_drp_morpht" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25z"/>
+                                    <path id="sheet_drp_morpht" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25"/>
                                 </g>
                             </svg>
                             <div class="title_hover"><p>Drape<br/>Thermoforming</p></div>
@@ -612,7 +623,7 @@
                                     <path id="plug_plut" d="M225,165h5l22.5,67.5a15,15 0,0,0 14.23,10.26h106.54a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5v-25h25v-10h-240v10h25z"/>
                                 </g>
                                 <g class="sheet">
-                                    <path id="sheet_plu_morpht" d="M200,195h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25zz"/>
+                                    <path id="sheet_plu_morpht" d="M200,195h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25"/>
                                 </g>
                             </svg>
                             <div class="title_hover"><p>Plug&#8209;Assisted<br/>Thermoforming</p></div>
@@ -630,7 +641,8 @@
                             <path id="heater_vac" d="M230,150h180v25h-180z"/>
                         </g>
                         <g class="aparatus">
-                            <path id="aparatus_vac"  d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
+                            <path id="aparatus_vac"  d="M175,150h50v25h-50z
+                                                        M465,150h-50v25h50z"/>
                             <path id="aparatus_vac2" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z
                                                         M269,279.75q56,-30.010 102,0v15.25h-102z
                                                         M379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
@@ -646,7 +658,9 @@
                             <path id="clamp_vac4" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
                         </g>
                         <g class="support">
-                            <path id="support_vac" d="M200,220h20l25,75h15.34v20h-60.34zM269,295h102v20h-102zM440,220h-20l-25,75h-15.34v20h60.34z"/>
+                            <path id="support_vac" d="M200,220h20l25,75h15.34v20h-60.34z
+                                                      M269,295h102v20h-102z
+                                                      M440,220h-20l-25,75h-15.34v20h60.34z"/>
                         </g>
                         <g class="vacuum">
                             <path id="port1_vac" d="M258.35,327.5v-10h-10v5l10,5v50
@@ -654,9 +668,21 @@
                             <path id="port2_vac" d="M368.97,327.5v-10h-10v5l10,5v50
                                                     M381.77,327.25v-10h10v5l-10,5v50"/>
                         </g>
+                        <g id="gas_paths_vac" class="gas_paths">
+                            <path id="vac_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 97.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="vac_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 97.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="vac_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 97.5 q 1.5 23.00 2.98 25"/>    
+                            <path id="vac_path_l4" d="M305.00,215.00 q-22.0 16.0 -39.15 64.75 v 97.5 q 2.5 15.00 7.50 20"/>
+                            <path id="vac_path_l5" d="M300.00,250.00 q-16.0 7.50 -32.65 29.75 v 97.5 q 6.0 12.50 16.0 10"/>
+
+                            <path id="vac_path_r1" d="M389.15,264.75 q-5.00 2.00 -11.00 15.00 v 97.5 q 6.0 12.50 16.0 10"/>
+                            <path id="vac_path_r2" d="M404.65,210.00 q-14.0 17.0 -28.00 69.75 v 97.5 q 2.5 15.00 7.50 20"/>
+                            <path id="vac_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 97.5 q-1.5 23.0 -2.98 25"/>     
+                            <path id="vac_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 97.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="vac_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 97.5 q-6.0 12.5 -16.0 10"/>
+                        </g>
                         <g class="sheet">
                             <path id="sheet_vac" d="M200,185h25h5h20h19h102h19h20h5h25"/>
-                            <!-- <path id="sheet_vac_morph1" d="M200,85h25s20,0 45,34.875q50,69.75 100,0 s25,-34.875 45,-34.875h25"/> -->
                             <path id="sheet_vac_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                             <path id="sheet_new_vac" d="M-245,185h240"/>
                         </g>
@@ -666,11 +692,26 @@
                     <script>
                         gsap.to("#clamp_vac3, #clamp_vac4, #sheet_vac_morph", {duration:0, autoAlpha:0})
                         gsap.to("#port1_vac, #port2_vac", {duration:0, y:20, ease:"none"})
+                        
+                        document.querySelectorAll("#gas_paths_vac path").forEach((path) => {
+                            path.setAttribute("stroke-width", "2px");
+                            path.setAttribute("opacity", 0)
+                        })
+                        var phantomPathVacuum = {
+                            progress:0
+                        };
+                        function updateDasharray() {
+                            document.querySelectorAll("#gas_paths_vac path").forEach((path) => {
+                                var totalLength = path.getTotalLength()
+                                path.setAttribute("stroke-width", "2px");
+                                path.setAttribute("opacity", 0); 
+                                path.style.strokeDasharray = phantomPathVacuum.progress*totalLength+" "+totalLength;
+                            })                           
+                        }
 
                         var tlv = gsap.timeline({paused:true, repeat:-1})
                         tlv.timeScale(1)
-
-                        tlv.to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
+                        .to("#aparatus_vac", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac3", ease:"none"}, 0)
                         .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac4", ease:"none"}, 0)
                         .to("#sheet_vac", {duration:0.5, y:10, ease:"none"}, 0.5)
@@ -680,18 +721,23 @@
                         .to("#vacuum_txt_vac", {duration:1, y:-20, ease:"none"}, 1.5)
                         .to("#heater_vac_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
                         .to("#heater_vac", {duration:0, x:0, y:0, ease:"none"}, 2)
-                        .to("#sheet_vac", {duration:1.25, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3)
-                        .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 4.25)
-                        .to("#heater_vac", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
-                        .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
-                        .to("#port1_vac, #port2_vac", {duration:1, y:20, ease:"none"}, 4.25)
-                        .to("#vacuum_txt_vac", {duration:1, y:0, ease:"none"}, 4.25)
-                        .to("#aparatus_vac", {duration:1, y:0, ease:"none"}, 5.25)
-                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.25)
-                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 5.25)
-                        .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 6.25)
-                        .to("#sheet_vac", {duration:2, x:445, ease:"power1.in"}, 7)
-                        .to("#sheet_new_vac", {duration:2, x:445, ease:"power1.out"}, 8)
+                        
+                        .to(phantomPathVacuum, 1.25, {progress:1, onUpdate: updateDasharray, ease:"sine.out"}, 3)
+                        .set("#gas_paths_vac path", {opacity:1}, "<")
+                        .to("#gas_paths_vac path", 1.25, {opacity:0, ease:"none"}, "<")
+
+                        .to("#sheet_vac", {duration:1.75, morphSVG:"#sheet_vac_morph", ease:"power1.inOut"}, 3.25)
+                        .to("#heater_vac_dummy", {duration:0, autoAlpha:1}, 5.25)
+                        .to("#heater_vac", {duration:1, attr:{fill:"#aaa"}, ease:"none"}, 4.75)
+                        .to("#heater_vac", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 4.75)
+                        .to("#port1_vac, #port2_vac", {duration:1, y:20, ease:"none"}, 5.25)
+                        .to("#vacuum_txt_vac", {duration:1, y:0, ease:"none"}, 5.25)
+                        .to("#aparatus_vac", {duration:1, y:0, ease:"none"}, 6.25)
+                        .to("#clamp_vac1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 6.25)
+                        .to("#clamp_vac2", {duration:1, morphSVG:"#clamp_vac2", ease:"none"}, 6.25)
+                        .to("#sheet_vac", {duration:0.5, y:0, ease:"none"}, 7.25)
+                        .to("#sheet_vac", {duration:2, x:445, ease:"power1.in"}, 8)
+                        .to("#sheet_new_vac", {duration:2, x:445, ease:"power1.out"}, 9)
                     </script>
                     <div class="nav"> 
                         <p class="dbutton" id="back2" onClick="fudge()"></p >
@@ -712,13 +758,6 @@
                         <g class="aparatus">
                             <path id="aparatus_drp1" d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
                             <path id="aparatus_drp2" d="M175,215h50v25h-50z M465,215h-50v25h50z"/>    
-                            <path id="aparatus_drp3" d="M225,300v-50c0,-10 25,-24 50,-25v75z
-                                                        M285,225c25,1 35,10 60,11v64h-60z
-                                                        M355,236s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34v50h-60z"/>
-                        </g>
-                        <g class="gap">
-                            <path id="gap_drp" d="M275,225s5,-0.2 10,0v75h-10z
-                                                  M345,236s8.333,0.333 10,0v64h-10z"/>
                         </g>
                         <g class="clamp">
                             <path id="clamp_drp1" d="M200,240h-25v10s-10,20 -20,0v-110s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v130s20,40 40,0v-10h15z"/>
@@ -738,8 +777,17 @@
                         </g>
                         <g class="sheet">
                             <path id="sheet_drp" d="M200,195h240"/>
-                            <path id="sheet_drp_morph" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25z"/>
+                            <path id="sheet_drp_morph" d="M200,215h25c0,-10 25,-24 50,-25h10c25,1 35,10 60,11h10s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34h25"/>
                             <path id="sheet_new_drp" d="M-245,195h240"/>
+                        </g>
+                        <g class="aparatus">
+                            <path id="aparatus_drp3" d="M225,300v-50c0,-10 25,-24 50,-25v75z
+                                                        M285,225c25,1 35,10 60,11v64h-60z
+                                                        M355,236s10,-2 20,-10s7.5,-6 20,-10c10,0 20,20 20,34v50h-60z"/>
+                        </g>
+                        <g class="gap">
+                            <path id="gap_drp" d="M275,225s5,-0.2 10,0v75h-10z
+                                                  M345,236s8.333,0.333 10,0v64h-10z"/>
                         </g>
                     </svg>
                     <svg id="fudge">
@@ -763,7 +811,7 @@
                         .to("#heater_drp_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2.25)
                         .to("#heater_drp", {duration:0, x:0, y:0, ease:"none"}, 2.25)
                         .to("#sheet_drp_morf, #aparatus_drp3, #gap_drp, #port1_drp, #port2_drp, #vacuum_txt_drp", {duration:1.25, y:-35, ease:"none"}, 3.5)
-                        .to("#heater_drp", {duration:1, attr:{fill:"#777"}, ease:"none"}, 4.25)
+                        .to("#heater_drp", {duration:1, attr:{fill:"#aaa"}, ease:"none"}, 4.25)
                         .to("#heater_drp", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 4.25)
                         .to("#sheet_drp_morph", {duration:0, autoAlpha:1}, 4.75)
                         .to("#sheet_drp, #sheet_drp_morf", {duration:0, autoAlpha:0}, 4.75)
@@ -793,11 +841,14 @@
                             <path id="heater_pre" d="M225,150h42.5v25h-42.5zM277.5,150h85v25h-85zM372.5,150h42.5v25h-42.5z"/>
                         </g>
                         <g class="heater_gap">
-                            <path id="heater_gap_pre" d="M267.5,150h10v25h-10zM362.5,150h10v25h-10z"/>
+                            <path id="heater_gap_pre" d="M267.5,150h10v25h-10z
+                                                         M362.5,150h10v25h-10z"/>
                         </g>
                         <g class="aparatus">
                             <path id="aparatus_pre1"  d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
-                            <path id="aparatus_pre2" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45zM269,279.75q56,-30.010 102,0v15.25h-102zM379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                            <path id="aparatus_pre2" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z
+                                                        M269,279.75q56,-30.010 102,0v15.25h-102z
+                                                        M379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
                         </g>
                         <g class="gap">
                             <path id="gap_pre" d="M260.34,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z
@@ -818,18 +869,78 @@
                             <path id="pump2_pre" d="M362.5,140v-20a15,15 0 1 1 15,15h-5v5h2.5v5h-15v-5z
                                                     M371.25,120a6.25,6.25 0 0 1 12.5,0 6.25,6.25 0 0 1 -12.5,0"/>
                         </g>
+                        <g id="gas_paths_out_pre" class="gas_paths">
+                            <path id="pre_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 35.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="pre_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 35.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="pre_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 35.5 q 1.5 23.00 2.98 25"/>    
+                            <path id="pre_path_l4" d="M305.00,215.00 q-22.0 16.0 -39.15 64.75 v 35.5 q 2.5 15.00 7.50 20"/>
+                            <path id="pre_path_l5" d="M300.00,250.00 q-16.0 7.50 -32.65 29.75 v 35.5 q 6.0 12.50 16.0 10"/>
+
+                            <path id="pre_path_r1" d="M389.15,264.75 q-5.00 2.00 -11.00 15.00 v 35.5 q 6.0 12.50 16.0 10"/>
+                            <path id="pre_path_r2" d="M404.65,210.00 q-14.0 17.0 -28.00 69.75 v 35.5 q 2.5 15.00 7.50 20"/>
+                            <path id="pre_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 35.5 q-1.5 23.0 -2.98 25"/>     
+                            <path id="pre_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 35.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="pre_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 35.5 q-6.0 12.5 -16.0 10"/>
+                        </g>
                         <g class="sheet">
-                            <path id="sheet_pre" d="M200,185h25h5h20h19h102h19h20h5h25"/>
                             <path id="sheet_pre_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                             <path id="sheet_new_pre" d="M-245,185h240"/>
+                        </g>
+                        <g class="sheet_filled">
+                            <path id="sheet_pre"d="M200,185h25h5h20h19h102h19h20h5h25"/>
+                        </g>
+                        <g id="gas_paths_in_pre" class="gas_paths">
+                            <path id="pre_path_l1" d="M270.5,145 a8.00,8.00 0 1 1 -16,0 a8.00,8.00 0 1 1 16,0l-2 50q 0 8.00 -35 16"/>
+                            <path id="pre_path_l2" d="M271.0,145 a8.50,8.50 0 1 1 -17,0 a8.50,8.50 0 1 1 17,0 v 50 q 0 32.5 -15 65"/>
+                            <path id="pre_path_l3" d="M272.5,145 a10.0,10.0 0 1 1 -20,0 a10.0,10.0 0 1 1 20,0 v 50 q 0 30.00 10 60"/>    
+                            <path id="pre_path_l4" d="M274.0,145 a11.5,11.5 0 1 1 -23,0 a11.5,11.5 0 1 1 23,0 v 50 q 0 22.00 17 44 "/>
+                            <path id="pre_path_l5" d="M276.5,145 a14.0,14.0 0 1 1 -28,0 a14.0,14.0 0 1 1 28,0 v 50 q 0 11.00 26 22"/>
+
+                            <path id="pre_path_r1" d="M371.5,145 a8.00,8.00 0 1 0 16,0 a8.00,8.00 0 1 0 -16,0l-2,50q 0 8.000 35 16"/>
+                            <path id="pre_path_r2" d="M369.0,145 a8.50,8.50 0 1 0 17,0 a8.00,8.00 0 1 0 -17,0 v 50 q 0 32.50 15 65"/>
+                            <path id="pre_path_r3" d="M367.5,145 a10.0,10.0 0 1 0 20,0 a10.0,10.0 0 1 0 -20,0 v 50 q 0 30.0 -10 60"/>     
+                            <path id="pre_path_r4" d="M366.0,145 a11.5,11.5 0 1 0 23,0 a11.5,11.5 0 1 0 -23,0 v 50 q 0 22.0 -17 44 "/>
+                            <path id="pre_path_r5" d="M363.5,145 a14.0,14.0 0 1 0 28,0 a14.0,14.0 0 1 0 -28,0 v 50 q 0 11.0 -26 22"/>
                         </g>
                     </svg>
                     <div class="page_txt" id="heater_txt_pre"><p>Heater</p></div>
                     <div class="page_txt" id="pump_txt_pre"><p>Pumps</p></div>
                     <script>
                         gsap.to("#clamp_pre3, #clamp_pre4, #sheet_pre_morph", {duration:0, autoAlpha:0})
-                        gsap.to("#heater_gap_pre", {duration:0, attr:{fill:"#777"}})
+                        gsap.to("#heater_gap_pre", {duration:0, attr:{fill:"#aaa"}})
                         gsap.to("#heater_gap_pre", {duration:0, attr:{stroke:"#000"}})
+
+                        document.querySelectorAll("#gas_paths_in_pre path").forEach((path) => {
+                            path.setAttribute("stroke-width", "2px");
+                            path.setAttribute("opacity", 0)
+                        })
+                        var phantomPathInPressure = {
+                            progress:0
+                        };
+                        function updateDasharrayInPre() {
+                            document.querySelectorAll("#gas_paths_in_pre path").forEach((path) => {
+                                var totalLength = path.getTotalLength()
+                                path.setAttribute("stroke-width", "2px");
+                                path.setAttribute("opacity", 0); 
+                                path.style.strokeDasharray = phantomPathInPressure.progress*totalLength+" "+totalLength;
+                            })                           
+                        }
+
+                        document.querySelectorAll("#gas_paths_out_pre path").forEach((path) => {
+                            path.setAttribute("stroke-width", "2px");
+                            path.setAttribute("opacity", 0)
+                        })
+                        var phantomPathOutPressure = {
+                            progress:0
+                        };
+                        function updateDasharrayOutPre() {
+                            document.querySelectorAll("#gas_paths_out_pre path").forEach((path) => {
+                                var totalLength = path.getTotalLength()
+                                path.setAttribute("stroke-width", "2px");
+                                path.setAttribute("opacity", 0); 
+                                path.style.strokeDasharray = phantomPathOutPressure.progress*totalLength+" "+totalLength;
+                            })                           
+                        }
 
                         var tlp = gsap.timeline({paused:true, repeat:-1})
                         tlp.timeScale(1)
@@ -837,23 +948,35 @@
                         tlp.to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre3", ease:"none"}, 0)
                         .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre4", ease:"none"}, 0)
-                        .to("#sheet_pre", {duration:0.5, y:10, ease:"none"}, 0.5)
+                        .to("#sheet_pre, #sheet_pre_morph", {duration:0.5, y:10, ease:"none"}, 0.5)
                         .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
                         .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
                         .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:25, ease:"none"}, 1.5)
                         .to("#heater_pre_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
                         .to("#heater_pre", {duration:0, x:0, y:20, ease:"none"}, 2)
+
+                        .to(phantomPathInPressure, {duration:1.25, progress:1, onUpdate: updateDasharrayInPre, ease:"power1.in"}, 2.75)
+                        .set("#gas_paths_in_pre path", {opacity:1}, "<")
+                        .to("#gas_paths_in_pre path", {duration:2, opacity:0, ease:"sine.out"}, "<")
+
                         .to("#sheet_pre", {duration:1.25, morphSVG:"#sheet_pre_morph", ease:"power1.inOut"}, 3)
+
+                        .to(phantomPathOutPressure, 1, {progress:1, onUpdate: updateDasharrayOutPre, ease:"power1.inOut"}, 3)
+                        .set("#gas_paths_out_pre path", {opacity:1}, "<")
+                        .to("#gas_paths_out_pre path", 1, {opacity:0, ease:"power1.inOut"}, "<+=0.25")
+
+                        .set("#sheet_pre_morph", {autoAlpha:1}, 4.25)
+                        .set("#sheet_pre", {autoAlpha:0}, 4.25)
                         .to("#heater_pre_dummy", {duration:0, autoAlpha:1}, 4.25)
-                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#777"}, ease:"none"}, 3.75)
+                        .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#aaa"}, ease:"none"}, 3.75)
                         .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
-                        .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:0, ease:"none"}, 4.25)
-                        .to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:0, ease:"none"}, 5.25)
-                        .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre1", ease:"none"}, 5.25)
-                        .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre2", ease:"none"}, 5.25)
-                        .to("#sheet_pre", {duration:0.5, y:0, ease:"none"}, 6.25)
-                        .to("#sheet_pre", {duration:2, x:445, ease:"power1.in"}, 7)
-                        .to("#sheet_new_pre", {duration:2, x:445, ease:"power1.out"}, 8)
+                        .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:0, ease:"none"}, 4.75)
+                        .to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:0, ease:"none"}, 5.75)
+                        .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre1", ease:"none"}, 5.75)
+                        .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre2", ease:"none"}, 5.75)
+                        .to("#sheet_pre_morph", {duration:0.5, y:0, ease:"none"}, 6.75)
+                        .to("#sheet_pre_morph", {duration:2, x:445, ease:"power1.in"}, 7.5)
+                        .to("#sheet_new_pre", {duration:2, x:445, ease:"power1.out"}, 8.5)
                     </script>
                     <div class="nav"> 
                         <p class="dbutton" id="back3" onClick="fudge()"></p >
@@ -872,7 +995,10 @@
                         </g>
                         <g class="aparatus">
                             <path id="aparatus_plu1"  d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
-                            <path id="aparatus_plu2" d="M175,195h50l28.25,84.75h10v15.25h-18.75l-25,-75h-45zM273.25,279.75h17.5v-5h24.25v20.25h-41.75zM325,274.75h24.25v5h17.5v15.25h-41.75zM376.25,279.75h10.5l28.25,-84.75h50v25h-45l-25,75h-18.75z"/>
+                            <path id="aparatus_plu2" d="M175,195h50l28.25,84.75h10v15.25h-18.75l-25,-75h-45z
+                                                        M273.25,279.75h17.5v-5h24.25v20.25h-41.75z
+                                                        M325,274.75h24.25v5h17.5v15.25h-41.75z
+                                                        M376.25,279.75h10.5l28.25,-84.75h50v25h-45l-25,75h-18.75z"/>
                         </g>
                         <g class="clamp">
                             <path id="clamp_plu1" d="M200,220h-25v10s-10,20 -20,0v-90s10,-20 20,0v10h25v-10h-15v-10s-20,-40 -40,0v110s20,40 40,0v-10h15z"/>
@@ -881,29 +1007,64 @@
                             <path id="clamp_plu4" d="M440,220h25v10s10,20 20,0v-70s-10,-20 -20,0v10h-25v-10h15v-10s20,-40 40,0v90s-20,40 -40,0v-10h-15z"/>
                         </g>
                         <g class="support">
-                            <path id="support_plu" d="M200,220h20l25,75h18.25v20h-63.25zM273.25,295h41.75v20h-41.75zM325,295h41.75v20h-41.75zM440,220h-20l-25,75h-18.25v20h63.25z"/>
+                            <path id="support_plu" d="M200,220h20l25,75h18.25v20h-63.25z
+                                                      M273.25,295h41.75v20h-41.75z
+                                                      M325,295h41.75v20h-41.75z
+                                                      M440,220h-20l-25,75h-18.25v20h63.25z"/>
                         </g>
                         <g class="vacuum">
                             <path id="port1_plu" d="M261.25,327.5v-10h-10v5l10,5v50
-                                                    M275.25,327.25v-10h10v5l-10,5v50"/>
+                                                    M275.25,327.5v-10h10v5l-10,5v50"/>
                             <path id="port2_plu" d="M313,327.5v-10h-10v5l10,5v50
-                                                    M327,327.25v-10h10v5l-10,5v50"/>
+                                                    M327,327.5v-10h10v5l-10,5v50"/>
                             <path id="port3_plu" d="M364.75,327.5v-10h-10v5l10,5v50
-                                                    M378.75,327.25v-10h10v5l-10,5v50"/>
+                                                    M378.75,327.5v-10h10v5l-10,5v50"/>
+                        </g>
+                        <g id="gas_paths_out_plu" class="gas_paths">
+                            <path id="plu_path_l1" d="M254.25,264.75 q 5.00 2.000 11.00 15.00 v 35.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="plu_path_l2" d="M239.25,210.00 q 14.0 17.00 28.00 69.75 v 35.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="plu_path_l3" d="M279.25,200.00 q -5.5 20.0 -10.85 79.75 v 35.5 q 1.5 23.00 2.98 25"/>
+                            <path id="plu_path_l4" d="M309.00,215.00 q-22.0 16.0 -39.15 64.75 v 35.5 q 2.5 15.00 7.50 20"/>
+                            <path id="plu_path_l5" d="M304.00,250.00 q-16.0 7.50 -32.65 29.75 v 35.5 q 6.0 12.50 16.0 10"/>
+
+                            <path id="plu_path_m1" d="M305,259.75 q 5.00 2.000 11.00 15.00 v 40.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="plu_path_m2" d="M303,226.25 q 7.5 12.00 15 48.5 v 40.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="plu_path_m3" d="M320,210.00 v 130.25"/>
+                            <path id="plu_path_m4" d="M337,226.25 q-7.5 12 -15 48.5 v 40.5 q 2.5 15.00 7.50 20"/>
+                            <path id="plu_path_m5" d="M335,259.75 q-5.00 2.00 -11.00 15.00 v 40.5 q 6.0 12.50 16.0 10"/>
+
+                            <path id="plu_path_r1" d="M385.75,264.75 q-5.00 2.00 -11.00 15.00 v 35.5 q 6.0 12.50 16.0 10"/>
+                            <path id="plu_path_r2" d="M400.75,210.00 q-14.0 17.0 -28.00 69.75 v 35.5 q 2.5 15.00 7.50 20"/>
+                            <path id="plu_path_r3" d="M360.75,200.00 q 5.50 20.00 10.85 79.75 v 35.5 q-1.5 23.0 -2.98 25"/>
+                            <path id="plu_path_r4" d="M331.00,215.00 q 22.0 16.00 39.15 64.75 v 35.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="plu_path_r5" d="M336.00,250.00 q 16.0 7.500 32.65 29.75 v 35.5 q-6.0 12.5 -16.0 10"/>
+                        </g>
+                        <g id="gas_paths_vac_plu" class="gas_paths">
+                            <path id="plu_path_bl1" d="M265.75,279.75 v 97.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="plu_path_bl2" d="M268.25,279.75 v 117.5"/>
+                            <path id="plu_path_bl3" d="M270.75,279.75 v 97.5 q 6.0 12.5 16.0 10"/>
+
+                            <path id="plu_path_bm1" d="M317.5,274.75 v 102.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="plu_path_bm2" d="M320,274.75 v 122.5"/>
+                            <path id="plu_path_bm3" d="M322.5,274.75 v 102.5 q 6.0 12.5 16.0 10"/>
+
+                            <path id="plu_path_br1" d="M369.25,279.75 v 97.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="plu_path_br2" d="M371.75,279.75 v 117.5"/>
+                            <path id="plu_path_br3" d="M374.25,279.75 v 97.5 q 6.0 12.5 16.0 10"/>
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_plu" d="M200,185h25h5h20h19h102h19h20h5h25"/>
+                            <path id="sheet_plu_morph" d="M200,185h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25"/>
+                            <path id="sheet_new_plu" d="M-245,185h240"/>
                         </g>
                         <g class="plug">
                             <path id="plug_plu" d="M225,100h5l22.5,67.5a15,15 0,0,0 14.23,10.26h106.54a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5v-25h25v-10h-240v10h25z"/>
                         </g>
-                        <g class="sheet">
-                            <path id="sheet_plu" d="M200,185h25h5h20h19h102h19h20h5h25"/>
-                            <path id="sheet_plu_morph" d="M200,185h25l28.25,84.75h37.5v-5h58.5v5h37.5l28.25,-84.75h25zz"/>
-                            <path id="sheet_new_plu" d="M-245,185h240"/>
-                        </g>
                     </svg>
                     <svg id="fuj">
                         <g class="sheet">
-                            <path id="sheet_plu_morf1" d="M200,-94.5h25h5l22.5,67.5a15,15 0,0,0 14.23,10.26h22.77h1h58.5h1h22.77a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5h25z"/>
-                            <path id="sheet_plu_morf2" d="M200,-94.5h25l3.25,9.75  25,75h14.23h23.27v-5h58.5v5h23.27h14.23l25,-75 3.25,-9.75h25z"/>
+                            <path id="sheet_plu_morf1" d="M200,-94.5h25h5l22.5,67.5a15,15 0,0,0 14.23,10.26h22.77h1h58.5h1h22.77a15,15 0,0,0 14.23,-10.26l22.5,-67.5h5h25"/>
+                            <path id="sheet_plu_morf2" d="M200,-94.5h25l3.25,9.75  25,75h14.23h23.27v-5h58.5v5h23.27h14.23l25,-75 3.25,-9.75h25"/>
                         </g>
                     </svg>
                     <div class="page_txt" id="vacuum_txt_plu"><p>Vacuum</p></div>
@@ -913,6 +1074,38 @@
                         gsap.to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0, y:20})
                         gsap.to("#sheet_plu_morph", {duration:0, y:10})
 
+                        document.querySelectorAll("#gas_paths_out_plu path").forEach((path) => {
+                            path.setAttribute("stroke-width", "2px");
+                            path.setAttribute("opacity", 0)
+                        })
+                        var phantomPathOutPlug = {
+                            progress:0
+                        };
+                        function updateDasharrayOutPlu() {
+                            document.querySelectorAll("#gas_paths_out_plu path").forEach((path) => {
+                                var totalLength = path.getTotalLength()
+                                path.setAttribute("stroke-width", "2px");
+                                path.setAttribute("opacity", 0); 
+                                path.style.strokeDasharray = phantomPathOutPlug.progress*totalLength+" "+totalLength;
+                            })                           
+                        }
+
+                        document.querySelectorAll("#gas_paths_vac_plu path").forEach((path) => {
+                            path.setAttribute("stroke-width", "2px");
+                            path.setAttribute("opacity", 0)
+                        })
+                        var phantomPathVacPlug = {
+                            progress:0
+                        };
+                        function updateDasharrayVacPlu() {
+                            document.querySelectorAll("#gas_paths_vac_plu path").forEach((path) => {
+                                var totalLength = path.getTotalLength()
+                                path.setAttribute("stroke-width", "2px");
+                                path.setAttribute("opacity", 0); 
+                                path.style.strokeDasharray = phantomPathVacPlug.progress*totalLength+" "+totalLength;
+                            })                           
+                        }
+
                         var tlpl = gsap.timeline({paused:true, repeat:-1})
                         tlpl.timeScale(1)
 
@@ -921,11 +1114,22 @@
                         .to("#clamp_plu2", {duration:1, morphSVG:"#clamp_plu4", ease:"none"}, 0)
                         .to("#sheet_plu", {duration:0.5, y:10, ease:"none"}, 0.5)
                         .to("#plug_plu, #plug_txt_plu, #sheet_plu_morf1", {duration:2, y:95, ease:"none"}, 1)
+
+                        .to(phantomPathOutPlug, {duration:2, progress:1, onUpdate: updateDasharrayOutPlu, ease:"none"}, 1.5)
+                        .set("#gas_paths_out_plu path", {opacity:1}, "<")
+                        .to("#gas_paths_out_plu path", {duration:2, opacity:0, ease:"sine.out"}, "<+=0.5")
+
+                        .to("#sheet_plu", {duration:0, autoAlpha:0}, 3)
                         .to("#plug_plu, #plug_txt_plu", {duration:1, y:0, ease:"none"}, 3.5)
                         .to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0.5, y:0, ease:"none"}, 3.5)
+
+                        .to(phantomPathVacPlug, {duration:1, progress:1, onUpdate: updateDasharrayVacPlu, ease:"power1.in"}, 4)
+                        .set("#gas_paths_vac_plu path", {opacity:1}, "<")
+                        .to("#gas_paths_vac_plu path", {duration:1, opacity:0, ease:"sine.out"}, "<+=0.5")
+                        
                         .to("#sheet_plu_morf1", {duration:1, morphSVG:"#sheet_plu_morf2", ease:"none"}, 4.25)
                         .to("#sheet_plu_morph", {duration:0, autoAlpha:1}, 5.25)
-                        .to("#sheet_plu_morf1, #sheet_plu", {duration:0, autoAlpha:0}, 5.25)
+                        .to("#sheet_plu_morf1", {duration:0, autoAlpha:0}, 5.25)
                         .to("#port1_plu, #port2_plu, #port3_plu, #vacuum_txt_plu", {duration:0.5, y:20, ease:"none"}, 5.5)
                         .to("#aparatus_plu1", {duration:1, y:0, ease:"none"}, 5.5)
                         .to("#clamp_plu1", {duration:1, morphSVG:"#clamp_vac1", ease:"none"}, 5.5)
