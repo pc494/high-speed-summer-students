@@ -272,14 +272,22 @@
 						
 							<line class="LMF" id="LMF_adder" style="fill:dimgrey; stroke:dimgrey; stroke-width:8px;" x1="135" y1="80" x2="135" y2="230"></line>
 							<line class="LMF" id="LMF_adder_tube" style="fill:dimgrey; stroke:white; stroke-width:2px;" x1="135" y1="80" x2="135" y2="80"></line>
-						
+							
+							<circle class="lens" style="fill:lime; stroke:white; stroke-width:2px; filter:blur(0.5px)"></circle>
+							
 						</g>
 
 						<g id="microscope">
 							<mask id="microscope_FOV">
 								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
-								<circle id="lens" style="fill:white; filter:blur(0.3px)" cx="170" cy="210" r="12"></circle>
+								<circle class="lens" style="fill:white; filter:blur(0.3px)"></circle>
 							</mask>
+							<g id="directions">
+								<path class="direction" id="up" d="M470,80 l-10,10 l20,0 Z"></path>
+								<path class="direction" id="up" d="M470,340 l-10,-10 l20,0 Z"></path>
+								<path class="direction" id="up" d="M340,210 l10,10 l0,-20 Z"></path>
+								<path class="direction" id="up" d="M600,210 l-10,10 l0,-20 Z"></path>
+							</g>
 						</g>
 					
 					</svg>
@@ -288,7 +296,7 @@
 						.bubble{
 							fill: white;
 							stroke: white;
-							stroke-width: 1px;
+							stroke-width: 0.5px;
 							fill-opacity: 0.4;
 						}
 
@@ -314,23 +322,23 @@
 							console.log(x,y)
 						})
 
-						function updateScope(){
-							var env = document.getElementById("microscope")
-							env.removeChild(env.lastChild)
+						// microscope
 
-							const viewbox = {x:470, y:200, r:120}
-							var focusPoint = {x:190, y:215}
-							var scale = 30
-							var Transform = `scale(${scale}) translate(${- focusPoint.x + (viewbox.x/scale)}px, ${- focusPoint.y + (viewbox.y/scale)}px)`
+						const viewbox = {x:470, y:210, r:100}
+						const scale = 40
+						const bigDolly = document.querySelector(".content").cloneNode(true)
+						bigDolly.setAttribute("mask", "url(#microscope_FOV)")
+						document.getElementById("microscope").appendChild(bigDolly)
+						updateScope(190,215)
 
-							var zoomed = document.querySelector(".content").cloneNode(true)
-							document.getElementById("lens").setAttribute("cx", focusPoint.x)
-							document.getElementById("lens").setAttribute("cy", focusPoint.y)
-							document.getElementById("lens").setAttribute("r", viewbox.r/scale)
-							zoomed.setAttribute("mask", "url(#microscope_FOV)")
-							zoomed.style.transform = Transform
-							env.appendChild(zoomed)
-
+						function updateScope(x,y){							
+							var lensMask = document.querySelectorAll("circle.lens")
+							bigDolly.style.transform = `scale(${scale}) translate(${- x + (viewbox.x/scale)}px, ${- y + (viewbox.y/scale)}px)`
+							lensMask.forEach(c => {
+								c.setAttribute("cx", x)
+								c.setAttribute("cy", y)
+								c.setAttribute("r", viewbox.r/scale)
+							})
 						}
 
 						function bubblies(N, durr=2){
@@ -339,12 +347,12 @@
 							var bubbleGroup = document.createElementNS("http://www.w3.org/2000/svg", "g")
 							bubbleGroup.classList.add("bubblies")
 							for (let n=0; n<N; n++){
+								var init = Math.random()
 								var bubble = document.createElementNS("http://www.w3.org/2000/svg", "circle")
 								var motionPath = document.createElementNS("http://www.w3.org/2000/svg", "path")
 								bubble.classList.add("bubble")
 								bubble.setAttribute("cx", 180)
 								bubble.setAttribute("cy", 295)
-								var init = Math.random()
 								bubble.setAttribute("r", 0)
 								motionPath.setAttribute("d", `M180,295 C${220 - 120*Math.random()},${280-70*Math.random()}, ${220 - 120*Math.random()},${280-70*Math.random()}, ${220 - 120*Math.random()},210`)
 								bubbleGroup.appendChild(bubble)
@@ -361,7 +369,7 @@
 										var bubbleLoc = el.MP.getPointAtLength(pathTotalLength*2*Math.min(0.5, Math.max(phantom.progress-0.5*n/N, 0)))
 										bubble.setAttribute("cx", bubbleLoc.x)
 										bubble.setAttribute("cy", bubbleLoc.y)
-										bubble.setAttribute("r", r0*el.I*(370-bubbleLoc.y)/80)
+										bubble.setAttribute("r", r0*(el.I)*(370-bubbleLoc.y)/80)
 										bubble.style.opacity = (0.4+0.6*el.I)*(bubbleLoc.y-210)/80*(1-phantom.progress**(n))
 									})
 								})
@@ -384,72 +392,66 @@
 
 						function refineToGas(name, colour) {
 							
-							var groups = document.querySelectorAll("."+name)
+							var group = document.querySelector("."+name)
 							var rtg = gsap.timeline({defaults:{ease:"none"}})
 
 							// add removal reagent 
 							rtg.call(bubblies, [200, 3])
 
 							// react + become bubbles 
-							groups.forEach(group => {
-								group.querySelectorAll(".impurities").forEach(p => {
-									var reacted = p.cloneNode()
-									reacted.setAttribute("class", "reacted")
-									reacted.setAttribute("r", 1)
-									reacted.setAttribute("fill", colour)
-									reacted.setAttribute("stroke", colour)
-									reacted.setAttribute("stroke-width", "0.05px")
-									reacted.style.opacity = 0
-									group.appendChild(reacted)
-								})
+							group.querySelectorAll(".impurities").forEach(p => {
+								var reacted = p.cloneNode()
+								reacted.setAttribute("class", "reacted")
+								reacted.setAttribute("r", 1)
+								reacted.setAttribute("fill", colour)
+								reacted.setAttribute("stroke", colour)
+								reacted.setAttribute("stroke-width", "0.05px")
+								reacted.style.opacity = 0
+								group.appendChild(reacted)
 							})
 
 							function removeImpurity() {
-								groups.forEach(group => {
-									group.querySelectorAll(".impurities").forEach(p => p.remove())
-								})
+								group.querySelectorAll(".impurities").forEach(p => p.remove())
 							}
 
 							rtg.to(".reacted", 1, {opacity:1, attr:{r:0.2}, onComplete:removeImpurity}, 1.5)
 								
 							// go up and leave 
 							function removeImpurityGroups() {
-								groups.forEach(group => group.remove())
+								group.remove()
 							}
-							rtg.to(".reacted", 2, {fillOpacity:0.4, attr:{cy:210}})
+							rtg.to(".reacted", 2, {fillOpacity:0.4, attr:{cy:210}}, ">-0.5")
 							rtg.to(".reacted", 0.5, {opacity:0, onComplete:removeImpurityGroups}, ">-0.5")
 
 						}
 
 						function refineToSlag(name, colour) {
 							
-							var groups = document.querySelectorAll("."+name)
-							var rtg = gsap.timeline({defaults:{ease:"none"}})
+							var group = document.querySelector("."+name)
+							var rts = gsap.timeline({defaults:{ease:"none"}})
 
 							// add removal reagent 
-							addThroughAdders(rtg, colour)
+							addThroughAdders(rts, colour)
 
-							// react + become bubbles 
-							groups.forEach(group => {
-								group.querySelectorAll(".impurities").forEach(p => {
-									var inclusion = p.cloneNode()
-									inclusion.setAttribute("class", "inclusion")
-									inclusion.setAttribute("r", 1)
-									inclusion.setAttribute("fill", colour)
-									inclusion.setAttribute("stroke", colour)
-									inclusion.setAttribute("stroke-width", "0.05px")
-									inclusion.style.opacity = 0
-									group.appendChild(inclusion)
-								})
+							// react + become bubbles 							
+							group.querySelectorAll(".impurities").forEach(p => {
+								var inclusion = p.cloneNode()
+								inclusion.setAttribute("class", "inclusion")
+								inclusion.setAttribute("r", 1)
+								inclusion.setAttribute("fill", colour)
+								inclusion.setAttribute("stroke", colour)
+								inclusion.setAttribute("stroke-width", "0.05px")
+								inclusion.style.opacity = 0
+								group.appendChild(inclusion)
 							})
+							
 
 							function removeImpurity() {
-								groups.forEach(group => {
-									group.querySelectorAll(".impurities").forEach(p => p.remove())
-									group.classList.add("inclusions")
-								})
+								group.querySelectorAll(".impurities").forEach(p => p.remove())
+								group.classList.add("inclusions")
+								
 							}
-							rtg.to(".inclusion", 1, {opacity:1, attr:{r:0.2}, onComplete:removeImpurity}, ">-0.5")
+							rts.to(".inclusion", 1, {opacity:1, attr:{r:0.2}, onComplete:removeImpurity}, ">-0.5")
 							
 						}
 						
@@ -488,8 +490,6 @@
 							},
 
 						}
-
-						updateScope()	
 
 						var furnaceSize = {width:120, height:70, top:210, left:100}
 						var gridSize = {w:4, h:4}
