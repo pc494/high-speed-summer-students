@@ -662,11 +662,6 @@
                             <path id="port2_vac" d="M368.97,327.5v-10h-10v5l10,5v50
                                                     M381.77,327.25v-10h10v5l-10,5v50"/>
                         </g>
-                        <g class="sheet">
-                            <path id="sheet_vac" d="M200,185h25h5h20h19h102h19h20h5h25"/>
-                            <path id="sheet_vac_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
-                            <path id="sheet_new_vac" d="M-245,185h240"/>
-                        </g>
                         <g id="gas_paths_vac" class="gas_paths">
                             <path id="vac_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 97.5 q-6.0 12.5 -16.0 10"/>
                             <path id="vac_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 97.5 q-2.5 15.0 -7.50 20"/>
@@ -679,6 +674,11 @@
                             <path id="vac_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 97.5 q-1.5 23.0 -2.98 25"/>     
                             <path id="vac_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 97.5 q-2.5 15.0 -7.50 20"/>
                             <path id="vac_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 97.5 q-6.0 12.5 -16.0 10"/>
+                        </g>
+                        <g class="sheet">
+                            <path id="sheet_vac" d="M200,185h25h5h20h19h102h19h20h5h25"/>
+                            <path id="sheet_vac_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
+                            <path id="sheet_new_vac" d="M-245,185h240"/>
                         </g>
                     </svg>
                     <div class="page_txt" id="heater_txt_vac"><p>Heater</p></div>
@@ -860,6 +860,19 @@
                             <path id="pump2_pre" d="M362.5,140v-20a15,15 0 1 1 15,15h-5v5h2.5v5h-15v-5z
                                                     M371.25,120a6.25,6.25 0 0 1 12.5,0 6.25,6.25 0 0 1 -12.5,0"/>
                         </g>
+                        <g id="gas_paths_pre" class="gas_paths">
+                            <path id="pre_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 97.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="pre_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 97.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="pre_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 97.5 q 1.5 23.00 2.98 25"/>    
+                            <path id="pre_path_l4" d="M305.00,215.00 q-22.0 16.0 -39.15 64.75 v 97.5 q 2.5 15.00 7.50 20"/>
+                            <path id="pre_path_l5" d="M300.00,250.00 q-16.0 7.50 -32.65 29.75 v 97.5 q 6.0 12.50 16.0 10"/>
+
+                            <path id="pre_path_r1" d="M389.15,264.75 q-5.00 2.00 -11.00 15.00 v 97.5 q 6.0 12.50 16.0 10"/>
+                            <path id="pre_path_r2" d="M404.65,210.00 q-14.0 17.0 -28.00 69.75 v 97.5 q 2.5 15.00 7.50 20"/>
+                            <path id="pre_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 97.5 q-1.5 23.0 -2.98 25"/>     
+                            <path id="pre_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 97.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="pre_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 97.5 q-6.0 12.5 -16.0 10"/>
+                        </g>
                         <g class="sheet">
                             <path id="sheet_pre" d="M200,185h25h5h20h19h102h19h20h5h25"/>
                             <path id="sheet_pre_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
@@ -872,6 +885,22 @@
                         gsap.to("#clamp_pre3, #clamp_pre4, #sheet_pre_morph", {duration:0, autoAlpha:0})
                         gsap.to("#heater_gap_pre", {duration:0, attr:{fill:"#aaa"}})
                         gsap.to("#heater_gap_pre", {duration:0, attr:{stroke:"#000"}})
+
+                        document.querySelectorAll("#gas_paths_pre path").forEach((path) => {
+                            path.setAttribute("stroke-width", "3px");
+                            path.setAttribute("opacity", 0)
+                        })
+                        var phantomPath = {
+                            progress:0
+                        };
+                        function updateDasharray() {
+                            document.querySelectorAll("#gas_paths_pre path").forEach((path) => {
+                                var totalLength = path.getTotalLength()
+                                path.setAttribute("stroke-width", "2px");
+                                path.setAttribute("opacity", 0); 
+                                path.style.strokeDasharray = phantomPath.progress*totalLength+" "+totalLength;
+                            })                           
+                        }
 
                         var tlp = gsap.timeline({paused:true, repeat:-1})
                         tlp.timeScale(1)
