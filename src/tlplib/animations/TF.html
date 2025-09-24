@@ -359,7 +359,13 @@
             }
             .sheet {
                 fill: none;
-                fill-opacity: 0.5;
+                fill-opacity: 0;
+                stroke: #ee4;
+                stroke-width: 2px;
+            }
+            .sheet_filled {
+                fill: #fff;
+                fill-opacity: 1;
                 stroke: #ee4;
                 stroke-width: 2px;
             }
@@ -688,10 +694,10 @@
                         gsap.to("#port1_vac, #port2_vac", {duration:0, y:20, ease:"none"})
                         
                         document.querySelectorAll("#gas_paths_vac path").forEach((path) => {
-                            path.setAttribute("stroke-width", "3px");
+                            path.setAttribute("stroke-width", "2px");
                             path.setAttribute("opacity", 0)
                         })
-                        var phantomPath = {
+                        var phantomPathVacuum = {
                             progress:0
                         };
                         function updateDasharray() {
@@ -699,7 +705,7 @@
                                 var totalLength = path.getTotalLength()
                                 path.setAttribute("stroke-width", "2px");
                                 path.setAttribute("opacity", 0); 
-                                path.style.strokeDasharray = phantomPath.progress*totalLength+" "+totalLength;
+                                path.style.strokeDasharray = phantomPathVacuum.progress*totalLength+" "+totalLength;
                             })                           
                         }
 
@@ -716,7 +722,7 @@
                         .to("#heater_vac_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
                         .to("#heater_vac", {duration:0, x:0, y:0, ease:"none"}, 2)
                         
-                        .to(phantomPath, 1.25, {progress:1, onUpdate: updateDasharray, ease:"sine.out"}, 3)
+                        .to(phantomPathVacuum, 1.25, {progress:1, onUpdate: updateDasharray, ease:"sine.out"}, 3)
                         .set("#gas_paths_vac path", {opacity:1}, "<")
                         .to("#gas_paths_vac path", 1.25, {opacity:0, ease:"none"}, "<")
 
@@ -835,11 +841,14 @@
                             <path id="heater_pre" d="M225,150h42.5v25h-42.5zM277.5,150h85v25h-85zM372.5,150h42.5v25h-42.5z"/>
                         </g>
                         <g class="heater_gap">
-                            <path id="heater_gap_pre" d="M267.5,150h10v25h-10zM362.5,150h10v25h-10z"/>
+                            <path id="heater_gap_pre" d="M267.5,150h10v25h-10z
+                                                         M362.5,150h10v25h-10z"/>
                         </g>
                         <g class="aparatus">
                             <path id="aparatus_pre1"  d="M175,150h50v25h-50z M465,150h-50v25h50z"/>
-                            <path id="aparatus_pre2" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45zM269,279.75q56,-30.010 102,0v15.25h-102zM379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
+                            <path id="aparatus_pre2" d="M175,195h50l25,75a15,15 0,0,0 10.34,9.75v15.25h-15.34l-25,-75h-45z
+                                                        M269,279.75q56,-30.010 102,0v15.25h-102z
+                                                        M379.66,279.75a15,15 0,0,0 10.34,-9.75l25,-75h50v25h-45l-25,75h-15.34z"/>
                         </g>
                         <g class="gap">
                             <path id="gap_pre" d="M260.34,279.75a15,15 0,0,0 8.66,0v15.25h-8.66z
@@ -860,23 +869,38 @@
                             <path id="pump2_pre" d="M362.5,140v-20a15,15 0 1 1 15,15h-5v5h2.5v5h-15v-5z
                                                     M371.25,120a6.25,6.25 0 0 1 12.5,0 6.25,6.25 0 0 1 -12.5,0"/>
                         </g>
-                        <g id="gas_paths_pre" class="gas_paths">
-                            <path id="pre_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 97.5 q-6.0 12.5 -16.0 10"/>
-                            <path id="pre_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 97.5 q-2.5 15.0 -7.50 20"/>
-                            <path id="pre_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 97.5 q 1.5 23.00 2.98 25"/>    
-                            <path id="pre_path_l4" d="M305.00,215.00 q-22.0 16.0 -39.15 64.75 v 97.5 q 2.5 15.00 7.50 20"/>
-                            <path id="pre_path_l5" d="M300.00,250.00 q-16.0 7.50 -32.65 29.75 v 97.5 q 6.0 12.50 16.0 10"/>
+                        <g id="gas_paths_out_pre" class="gas_paths">
+                            <path id="pre_path_l1" d="M250.85,264.75 q 5.00 2.000 11.00 15.00 v 35.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="pre_path_l2" d="M235.35,210.00 q 14.0 17.00 28.00 69.75 v 35.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="pre_path_l3" d="M275.35,200.00 q -5.5 20.0 -10.85 79.75 v 35.5 q 1.5 23.00 2.98 25"/>    
+                            <path id="pre_path_l4" d="M305.00,215.00 q-22.0 16.0 -39.15 64.75 v 35.5 q 2.5 15.00 7.50 20"/>
+                            <path id="pre_path_l5" d="M300.00,250.00 q-16.0 7.50 -32.65 29.75 v 35.5 q 6.0 12.50 16.0 10"/>
 
-                            <path id="pre_path_r1" d="M389.15,264.75 q-5.00 2.00 -11.00 15.00 v 97.5 q 6.0 12.50 16.0 10"/>
-                            <path id="pre_path_r2" d="M404.65,210.00 q-14.0 17.0 -28.00 69.75 v 97.5 q 2.5 15.00 7.50 20"/>
-                            <path id="pre_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 97.5 q-1.5 23.0 -2.98 25"/>     
-                            <path id="pre_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 97.5 q-2.5 15.0 -7.50 20"/>
-                            <path id="pre_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 97.5 q-6.0 12.5 -16.0 10"/>
+                            <path id="pre_path_r1" d="M389.15,264.75 q-5.00 2.00 -11.00 15.00 v 35.5 q 6.0 12.50 16.0 10"/>
+                            <path id="pre_path_r2" d="M404.65,210.00 q-14.0 17.0 -28.00 69.75 v 35.5 q 2.5 15.00 7.50 20"/>
+                            <path id="pre_path_r3" d="M364.65,200.00 q 5.50 20.00 10.85 79.75 v 35.5 q-1.5 23.0 -2.98 25"/>     
+                            <path id="pre_path_r4" d="M335.00,215.00 q 22.0 16.00 39.15 64.75 v 35.5 q-2.5 15.0 -7.50 20"/>
+                            <path id="pre_path_r5" d="M340.00,250.00 q 16.0 7.500 32.65 29.75 v 35.5 q-6.0 12.5 -16.0 10"/>
                         </g>
                         <g class="sheet">
-                            <path id="sheet_pre" d="M200,185h25h5h20h19h102h19h20h5h25"/>
                             <path id="sheet_pre_morph" d="M200,185h25l25,75a15,15 0,0,0 19,9.75q56,-30.010 102,0a15,15 0,0,0 19,-9.75l25,-75h25"/>
                             <path id="sheet_new_pre" d="M-245,185h240"/>
+                        </g>
+                        <g class="sheet_filled">
+                            <path id="sheet_pre"d="M200,185h25h5h20h19h102h19h20h5h25"/>
+                        </g>
+                        <g id="gas_paths_in_pre" class="gas_paths">
+                            <path id="pre_path_l1" d="M270.5,145 a8.00,8.00 0 1 1 -16,0 a8.00,8.00 0 1 1 16,0l-2 50q 0 8.00 -35 16"/>
+                            <path id="pre_path_l2" d="M271.0,145 a8.50,8.50 0 1 1 -17,0 a8.50,8.50 0 1 1 17,0 v 50 q 0 32.5 -15 65"/>
+                            <path id="pre_path_l3" d="M272.5,145 a10.0,10.0 0 1 1 -20,0 a10.0,10.0 0 1 1 20,0 v 50 q 0 30.00 10 60"/>    
+                            <path id="pre_path_l4" d="M274.0,145 a11.5,11.5 0 1 1 -23,0 a11.5,11.5 0 1 1 23,0 v 50 q 0 22.00 17 44 "/>
+                            <path id="pre_path_l5" d="M276.5,145 a14.0,14.0 0 1 1 -28,0 a14.0,14.0 0 1 1 28,0 v 50 q 0 11.00 26 22"/>
+
+                            <path id="pre_path_r1" d="M371.5,145 a8.00,8.00 0 1 0 16,0 a8.00,8.00 0 1 1 -16,0l-2,50q 0 8.000 35 16"/>
+                            <path id="pre_path_r2" d="M369.0,145 a8.50,8.50 0 1 0 17,0 a8.00,8.00 0 1 1 -17,0 v 50 q 0 32.50 15 65"/>
+                            <path id="pre_path_r3" d="M367.5,145 a10.0,10.0 0 1 0 20,0 a10.0,10.0 0 1 1 -20,0 v 50 q 0 30.0 -10 60"/>     
+                            <path id="pre_path_r4" d="M366.0,145 a11.5,11.5 0 1 0 23,0 a11.5,11.5 0 1 1 -23,0 v 50 q 0 22.0 -17 44 "/>
+                            <path id="pre_path_r5" d="M363.5,145 a14.0,14.0 0 1 0 28,0 a14.0,14.0 0 1 1 -28,0 v 50 q 0 11.0 -26 22"/>
                         </g>
                     </svg>
                     <div class="page_txt" id="heater_txt_pre"><p>Heater</p></div>
@@ -886,19 +910,35 @@
                         gsap.to("#heater_gap_pre", {duration:0, attr:{fill:"#aaa"}})
                         gsap.to("#heater_gap_pre", {duration:0, attr:{stroke:"#000"}})
 
-                        document.querySelectorAll("#gas_paths_pre path").forEach((path) => {
-                            path.setAttribute("stroke-width", "3px");
+                        document.querySelectorAll("#gas_paths_in_pre path").forEach((path) => {
+                            path.setAttribute("stroke-width", "2px");
                             path.setAttribute("opacity", 0)
                         })
-                        var phantomPath = {
+                        var phantomPathInPressure = {
                             progress:0
                         };
-                        function updateDasharray() {
-                            document.querySelectorAll("#gas_paths_pre path").forEach((path) => {
+                        function updateDasharrayInPre() {
+                            document.querySelectorAll("#gas_paths_in_pre path").forEach((path) => {
                                 var totalLength = path.getTotalLength()
                                 path.setAttribute("stroke-width", "2px");
                                 path.setAttribute("opacity", 0); 
-                                path.style.strokeDasharray = phantomPath.progress*totalLength+" "+totalLength;
+                                path.style.strokeDasharray = phantomPathInPressure.progress*totalLength+" "+totalLength;
+                            })                           
+                        }
+
+                        document.querySelectorAll("#gas_paths_out_pre path").forEach((path) => {
+                            path.setAttribute("stroke-width", "2px");
+                            path.setAttribute("opacity", 0)
+                        })
+                        var phantomPathOutPressure = {
+                            progress:0
+                        };
+                        function updateDasharrayOutPre() {
+                            document.querySelectorAll("#gas_paths_out_pre path").forEach((path) => {
+                                var totalLength = path.getTotalLength()
+                                path.setAttribute("stroke-width", "2px");
+                                path.setAttribute("opacity", 0); 
+                                path.style.strokeDasharray = phantomPathOutPressure.progress*totalLength+" "+totalLength;
                             })                           
                         }
 
@@ -908,23 +948,35 @@
                         tlp.to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:20, ease:"none"}, 0)
                         .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre3", ease:"none"}, 0)
                         .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre4", ease:"none"}, 0)
-                        .to("#sheet_pre", {duration:0.5, y:10, ease:"none"}, 0.5)
+                        .to("#sheet_pre, #sheet_pre_morph", {duration:0.5, y:10, ease:"none"}, 0.5)
                         .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#ea0d01"}, ease:"none"}, 1)
                         .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#f00"}, ease:"none"}, 1)
                         .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:25, ease:"none"}, 1.5)
                         .to("#heater_pre_dummy", {duration:0, autoAlpha:0, ease:"none"}, 2)
                         .to("#heater_pre", {duration:0, x:0, y:20, ease:"none"}, 2)
+
+                        .to(phantomPathInPressure, {duration:1.25, progress:1, onUpdate: updateDasharrayInPre, ease:"power1.in"}, 2.75)
+                        .set("#gas_paths_in_pre path", {opacity:1}, "<")
+                        .to("#gas_paths_in_pre path", {duration:2, opacity:0, ease:"sine.out"}, "<")
+
                         .to("#sheet_pre", {duration:1.25, morphSVG:"#sheet_pre_morph", ease:"power1.inOut"}, 3)
+
+                        .to(phantomPathOutPressure, 1, {progress:1, onUpdate: updateDasharrayOutPre, ease:"power1.inOut"}, 3)
+                        .set("#gas_paths_out_pre path", {opacity:1}, "<")
+                        .to("#gas_paths_out_pre path", 1, {opacity:0, ease:"power1.inOut"}, "<+=0.25")
+
+                        .set("#sheet_pre_morph", {autoAlpha:1}, 4.25)
+                        .set("#sheet_pre", {autoAlpha:0}, 4.25)
                         .to("#heater_pre_dummy", {duration:0, autoAlpha:1}, 4.25)
                         .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{fill:"#aaa"}, ease:"none"}, 3.75)
                         .to("#heater_pre, #heater_gap_pre", {duration:1, attr:{stroke:"#000"}, ease:"none"}, 3.75)
-                        .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:0, ease:"none"}, 4.25)
-                        .to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:0, ease:"none"}, 5.25)
-                        .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre1", ease:"none"}, 5.25)
-                        .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre2", ease:"none"}, 5.25)
-                        .to("#sheet_pre", {duration:0.5, y:0, ease:"none"}, 6.25)
-                        .to("#sheet_pre", {duration:2, x:445, ease:"power1.in"}, 7)
-                        .to("#sheet_new_pre", {duration:2, x:445, ease:"power1.out"}, 8)
+                        .to("#pump1_pre, #pump2_pre, #pump_txt_pre", {duration:1, y:0, ease:"none"}, 4.75)
+                        .to("#aparatus_pre1, #heater_pre, #heater_pre_dummy, #heater_gap_pre, #heater_txt_pre", {duration:1, y:0, ease:"none"}, 5.75)
+                        .to("#clamp_pre1", {duration:1, morphSVG:"#clamp_pre1", ease:"none"}, 5.75)
+                        .to("#clamp_pre2", {duration:1, morphSVG:"#clamp_pre2", ease:"none"}, 5.75)
+                        .to("#sheet_pre_morph", {duration:0.5, y:0, ease:"none"}, 6.75)
+                        .to("#sheet_pre_morph", {duration:2, x:445, ease:"power1.in"}, 7.5)
+                        .to("#sheet_new_pre", {duration:2, x:445, ease:"power1.out"}, 8.5)
                     </script>
                     <div class="nav"> 
                         <p class="dbutton" id="back3" onClick="fudge()"></p >
