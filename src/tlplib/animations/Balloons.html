@@ -69,71 +69,7 @@
             divcc.style.top = h - 40 + "px";
             divpara.style.top = h - 85 + "px";
           }
-
-          function inflateballoons(a) {
-            var b = 1/a;
-            gsap.to("#form7", {duration:b*550, delay:0, x:675, ease:"none"});
-
-            gsap.to("#balloon_lippedc7", {duration:b*83, delay:0, x:208, ease:"none"});
-            gsap.to("#balloon_lippedb7", {duration:b*113, delay:0, x:238, ease:"none"});
-            gsap.to("#balloon_lippeda7", {duration:b*143, delay:0, x:268, ease:"none"});
-            
-            gsap.to("#balloon_lippedc7", {duration:b*60, delay:0, morphSVG:"#balloon_inflatedc", ease:"power2.inOut"});
-            gsap.to("#balloon_lippedb7", {duration:b*60, delay:b*30, morphSVG:"#balloon_inflatedb", ease:"power2.inOut"});
-            gsap.to("#balloon_lippeda7", {duration:b*60, delay:b*60, morphSVG:"#balloon_inflateda", ease:"power2.inOut"});
-          }
-
-          function rollballoons(a) {
-            var b =1/a; //units of s*px^{-1}
-            //a is the movement speed of the production line
-            //which is 150 px s^{-1} (at the time of writing)
-            //therefore b is a pace, giving time to move one pixel and acts as a proxy for time
-            //e.g: 10*b is the time for an object to move 10px (horizontally): =10*(1/150)=1/15 s (~0.0667 s) ;
-            //150
-            //all the delays and durations from the first fling onwards were calculated using a uniform acceleration due to gravity of 400 px s^{-2}
-            //e.g: the time to move 400px (vertically) is sqrt(2) s, given by s = u*t + (1/2)*a*t^{2} taking s=400px, u=0, a=400px s^{-2}, =>t=sqrt(2*(s-ut)/a)=sqrt(2*400/400)=sqrt(2)
-            //changing acceleration due to gravity from 400 px s^{-2} to 1000 px s^{-2} and radial speed of the rollers to 500 px s^{-1}
-            gsap.to("#balloon_lippedc7", {duration:b*10, delay:b*73, morphSVG:"#balloon_pinchedc", ease:"none"});//getting pinched by rollers
-            gsap.to("#balloon_lippedc7", {duration:b*20, delay:b*83, morphSVG:"#balloon_thinc", ease:"expo.out"});//getting thinner bc of rollers
-            gsap.to("#balloon_lippedc7", {duration:b*22.5, delay:b*83, y:-75, ease:"none"});//going through rollers uniform speed of 500 px s^{-1}
-            
-            gsap.to("#balloon_lippedc7", {duration:b*144.25, delay:b*94.25, rotation:90, x:317.5, transformOrigin:"50% 50%", ease:"none"});//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
-            
-            gsap.to("#balloon_lippedc7", {duration:b*75, delay:b*105.5, y:-200, ease:"power2.out"});//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this - quartic (power3.out), quintic (power4.out), or some other ease (expo.[]; expoScale.[];bounce.[];elastic.[];back.[]) may work better - expoScale.[] could do the whole fall under gravity, i.e. the first fling fromy=-75 to -187.5 and then returning on an opposite gradient back to y=-125)
-            gsap.to("#balloon_lippedc7", {duration:b*10, delay:b*105.5, morphSVG:"#balloon_lippedc7", ease:"none"});//morph back to lipped balloon
-            gsap.to("#balloon_lippedc7", {duration:b*58, delay:b*180.5, y:-125, ease:"power1.in"});//falling onto conveyor belt under gravity
-
-            gsap.to("#balloon_lippedc7", {duration:b*256.875, delay:b*241, x:660, ease:"none"});//moves along conveyor belt at 200 px s^{-1}
-
-
-
-            gsap.to("#balloon_lippedb7", {duration:b*10, delay:b*103, morphSVG:"#balloon_pinchedb", ease:"none"});//getting pinched by rollers
-            gsap.to("#balloon_lippedb7", {duration:b*20, delay:b*113, morphSVG:"#balloon_thinb", ease:"expo.out"});//getting thinner bc of rollers
-            gsap.to("#balloon_lippedb7", {duration:b*22.5, delay:b*113, y:-75, ease:"none"});//going through rollers
-            
-            gsap.to("#balloon_lippedb7", {duration:b*144.25, delay:b*124.25, rotation:90, x:347.5, transformOrigin:"50% 50%", ease:"none"});//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
-            
-            gsap.to("#balloon_lippedb7", {duration:b*75, delay:b*135.5, y:-187.5, ease:"power2.out"});//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
-            gsap.to("#balloon_lippedb7", {duration:b*10, delay:b*135.5, morphSVG:"#balloon_lippedb7", ease:"none"});//morph back to lipped balloon
-            gsap.to("#balloon_lippedb7", {duration:b*58, delay:b*210.5, y:-125, ease:"power1.in"});//falling onto conveyor belt under gravity
-
-            gsap.to("#balloon_lippedb7", {duration:b*234.375, delay:b*271, x:660, ease:"none"});//moves along conveyor belt at 200 px s^{-1}
-
-
-
-            gsap.to("#balloon_lippeda7", {duration:b*10, delay:b*133, morphSVG:"#balloon_pincheda", ease:"none"});//getting pinched by rollers
-            gsap.to("#balloon_lippeda7", {duration:b*20, delay:b*143, morphSVG:"#balloon_thina", ease:"expo.out"});//getting thinner bc of rollers
-            gsap.to("#balloon_lippeda7", {duration:b*22.5, delay:b*143, y:-75, ease:"none"});//going through rollers
-            
-            gsap.to("#balloon_lippeda7", {duration:b*144.25, delay:b*154.25, rotation:90, x:377.5, transformOrigin:"50% 50%", ease:"none"});//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
-            
-            gsap.to("#balloon_lippeda7", {duration:b*75, delay:b*165.5, y:-187.5, ease:"power2.out"});//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
-            gsap.to("#balloon_lippeda7", {duration:b*10, delay:b*165.5, morphSVG:"#balloon_lippeda7", ease:"none"});//morph back to lipped balloon
-            gsap.to("#balloon_lippeda7", {duration:b*58, delay:b*240, y:-125, ease:"power1.in"});//falling onto conveyor belt under gravity
-
-            gsap.to("#balloon_lippeda7", {duration:b*211.875, delay:b*301, x:660, ease:"none"});//moves along conveyor belt at 200 px s^{-1}
-          }
-          
+     
           function fuj(n) {
             if (n==1) {
                 gsap.to("#first", {duration:0, autoAlpha:1})
