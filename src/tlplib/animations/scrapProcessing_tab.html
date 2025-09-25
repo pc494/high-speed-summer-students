@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Scrap Processing</title>
+
+		<!-- Greensock library  -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
+
+
+		<link rel="stylesheet" href="titlecard.css"/>
+
+		<script>
+		// hide and show CC licence words
+			function showTxt() {   
+				document.getElementById("para").style.visibility = 'visible';
+			}  // end showTxt
+
+			function hideTxt() { 
+				document.getElementById("para").style.visibility = 'hidden';
+			}  // end hideTxt
+
+			// page navigation
+			function gotoPage(p) {
+				// replace next fn gEBCN as fails in IE<9
+				var x = document.getElementsByClassName("payj");
+				var len = x.length;
+				for (var i=1; i<(len+1); i++) {
+					var ppp = eval('p'+i);
+					document.getElementById('p'+i).style.display = 'none';
+					if (i == p) {
+						document.getElementById('p'+i).style.display = 'block';
+					}
+				}	
+			}
+
+			// sets the dimensions of kanvas and positions the bottom logos			
+			function setAnimDimensions(w,h)  {
+				//w = animation width
+				//h = animation height
+				document.getElementById("kanvas").style.height = String(h) + "px";
+				document.getElementById("kanvas").style.width = String(w) + "px";
+				document.getElementById("kanvas").style.margin = "0px auto";
+				document.getElementById("kanvas").style.border = "2px solid blue";
+				// position footers
+				var divcc = document.getElementById("cc");
+				var divpara = document.getElementById("para");
+				divcc.style.position = 'absolute';
+				divpara.style.position = 'absolute';
+				divcc.style.top = (h - 40) + "px";
+				divpara.style.top = (h - 85) + "px";						
+			}
+		</script>
+
+		<style>
+
+			#container {
+				position:relative;
+			}
+			#kanvas { 
+				position:relative;
+			}
+
+			/* cc information banner & pop-up */
+			#cc {
+				position: absolute; 
+				width:100%; 
+				/*background-color:#cc0000;  */
+			}
+
+			#para {
+				position: absolute;  
+				padding:0px;
+				font-family:Arial;
+				font-weight: bold;
+				font-size: 11px;
+				color:blue; 
+				border-style: solid;
+				border-color: #000000;
+				border-width:1px;
+				visibility: hidden;
+				z-index: 200;
+				background-color: white;
+			}
+
+			/* DOiTPoMS buttons */
+			.dbutton {
+				background-color: pink;
+				cursor: pointer;
+				height: 25px;
+				margin: 5px;
+				background-position: bottom;
+				display: inline-block;  /* allows on sameline */
+			}
+
+			.dbutton:hover {
+				background-position: center; 
+			}
+
+			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
+				width: 79px;
+				background-image: url('../../../images/back.png');
+			}
+
+			#next, #next2, #next3, #next4, #next5, #next6, #next7 {
+				width: 75px;
+				background-image: url('../../../images/next.png');
+			}
+
+			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
+				width: 99px;
+				background-image: url('../../../images/restart.png');
+			}
+			#reset {
+				width: 84px;
+				background-image: url('../../../images/reset.png');
+			}
+			#start { 
+				width: 76px;
+				background-image: url('../../../images/start.png');
+			}
+			#pause {
+				width: 83px;
+				background-image: url('../../../images/pause.png');
+			}
+			#continue {
+				width: 118px;
+				background-image: url('../../../images/continue.png');
+			}
+
+			.nav {
+				position:absolute;
+				left:170px;
+				top:420px;
+				width:300px;
+				text-align: center;
+			}
+
+			/* page id */
+			#p1 {
+				display:block;				
+			}
+			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
+				display:none;				
+			}
+
+			/*  Other */
+			* {
+				font-family: sans-serif;
+			}
+
+			#caption {
+				position: absolute;
+				top: 365px;
+				height: 45px;
+				left: 20px;
+				width: 600px;
+				margin: auto auto;
+				text-align: center;
+				vertical-align: middle;
+				text-overflow: hidden;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="container"> 
+			<div id="kanvas"> 
+
+				<!-- DoITPoMS  and CC logos -->
+				<div id="para"> 
+					Re-use of this resource is governed by a Creative Commons Attribution-<br />
+					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+				</div>
+				<!-- end para -->
+				<div id="cc" > 
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				</div>
+				<!-- end cc -->
+
+				<script>
+					setAnimDimensions(640,480);
+				</script>
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p1"> 
+
+					<p>
+						things to fix: <br>
+						some sellers are buggy <br/>
+						reset button - update with dev<br/>
+						copy over rest of the text <br/>
+						bin info bar colours <br/>
+						make buttons prettier <br/>
+						remove bg colours <br/>
+						shredding is buggy - make new bin? <br/>
+						sort particles alphabetically? 
+					</p>
+
+					<p id="titlecard"> Separation, Sorting, and Pre-treatment </p>
+					<div class="nav" style="top:280px"> 
+						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+					</div>
+
+				</div>
+				<!-- end payj - p1 -->
+
+				<!--  new page starts here    -->
+				<div class="payj" id="p2"> 
+
+					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
+
+					<style> 
+						#p2>div, #p2>*>div {
+							position:absolute;
+						}
+
+						p {
+							margin: 0
+						}
+
+						.bar {
+							z-index: 100;
+						}
+
+						.bar .tab {
+							display: block;
+							border: grey 2px solid;
+							-webkit-box-sizing: border-box;
+							-moz-box-sizing: border-box;
+							box-sizing: border-box;
+						}
+
+						.bar.vertical .tab {
+							width: 30px;
+							height: 30px;
+							border-bottom-left-radius: 5px;
+							border-top-left-radius: 5px;
+						}
+
+						.bar.horizontal .tab {
+							padding: 5px 5px;
+                            width: max-content;
+							border-top-right-radius: 5px;
+							border-top-left-radius: 5px;
+                            overflow: hidden;
+						}
+
+                        #process_display .page {
+                            position:absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 100%
+                        }
+
+                        #process_display .page>div {
+                            padding: 5px;
+                            position: relative
+                        }
+
+					</style>
+
+					<div id="title" style="top:35px; left:20px; width:600px; background-color: rgb(250, 244, 244)">
+						<strong style="font-size: x-large">Scrap Yard</strong>
+						<button style="text-align: right;"><em>Instructions</em></button>
+					</div>
+
+					<div style="top:70px; left:20px; height:360px; width:210px">
+
+						<div class="bar vertical" id="bin_bar" style="display:grid; background-color:rgb(240,240,250);">
+							<div class="tab bin_tab" style="display: none;">
+                                <svg height="30" width="26">
+                                    <path class="bin_pile" d="M5,12 Q13,3 21,12 Z"></path>
+                                    <path class="bin_body" d="M3,12 l3,10 l14,0 l3,-10 Z"></path>
+                                </svg>
+                            </div>
+						</div>
+
+						<div id="bin_display" style="top:0px; left:28px; height:360px; width:180px; border: grey 2px solid; background-color: aliceblue;">
+
+							<div>
+								<p style="font-size:small; padding:7px; margin:5px; border-radius: 5px;">
+									<strong><span class="particle_name">Various</span></strong> <br/>
+									<span class="particle_mass"></span> t <span class="particle_size"></span>
+								</p>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div id="process" style="top:70px; left:240px; height:360px; width:210px">
+
+						<div class="bar horizontal" id="process_bar" style="display:grid; grid-auto-flow:column; background-color: rgb(240,240,250);">
+							<div class="tab separation">Separation</div> 
+							<div class="tab sorting">Sorting</div>
+							<div class="tab delivery">Delivery</div>                           
+							<div class="tab summary">Summary</div>
+						</div>
+
+						<div id="process_display" style="top:30px; height:330px; width:380px; border: grey 2px solid; background-color: aliceblue;">
+                            
+                            <div class="page instructions">
+                                <p>
+                                    15 tonnes of scrap <br/>
+                                </p>
+                            </div>
+                            <div class="page menu separation">
+                                <div>
+                                    <button class="menu_button shredding">Shredding</button>
+									<button class="menu_button granulating">Granulator</button>
+                                </div>
+                                <div>
+									<p class="explanation granulating">
+										The granulator further breaks down small pieces of scrap into fine granules.
+									</p> 
+                                </div>
+                            </div>
+
+                            <div class="page menu sorting" id="sorting_menu">
+                                <div>
+                                    <p>Electromagnetic</p>
+                                    <button class="menu_button magnetic">Magnetic</button>
+                                    <button class="menu_button eddy">Eddy current</button>
+                                </div>
+                                <div>
+                                    <p>Sensor-based</p>
+                                    <button class="menu_button colour">Colour</button>
+                                    <button class="menu_button NIR">NIR</button>
+                                    <button class="menu_button XRF">XRF</button>
+                                </div>
+                                <div>
+                                    <p>Other</p>
+                                    <button class="menu_button manual">Manual</button>
+                                    <button class="menu_button size">Size</button>
+                                </div>
+
+                                <div>
+                                    <p class="explanation magnetic">
+                                        Sorting by magnetic properties <br/>
+                                        Magnetic particles are separated out from the rest.
+                                    </p>
+                                    <!-- <p class="explanation eddy">
+                                        A changing magnetic field is applied to induce eddy currents in the particles. <br/>
+                                        Conductive and non-conductive particles are separated.
+                                    </p>
+                                    <p class="explanation colour">
+                                        Radiation in the visible spectrum is detected (commonly RGB). <br/>
+                                        Used to sort particles by their appearance.
+                                    </p>
+                                    <p class="explanation NIR">
+                                        Radiation in the near infra-red (NIR) region. <br/>
+                                        Used to sort different polymers. 
+                                    </p>
+                                    <p class="explanation XRF">
+                                        X-ray fluorescence (XRF), characteristic to specific element. <br/>
+                                        Used to identify elements present in local region, effective for heavier elements. 
+                                    </p> -->
+                                </div>
+                                
+                            </div>
+
+                            <div class="page menu delivery" id="delivery_menu">
+
+                            </div>
+
+                            <div class="page summary">
+
+                            </div>
+
+                            <button id="execute" style="position:absolute; right:5px; bottom:5px" disabled="true" onclick="execute()">Go</button>
+                        </div>
+
+					</div>
+
+                    <script>
+
+                        // materials library
+                        const Stainless = {
+                            tree: ["mix", "metal", "steel", "stainless steel"],
+                            density: 8,
+                            colour: "cadetblue"
+                        }
+                        const Plain = {
+                            tree: ["mix", "metal", "steel", "low alloy steel"],
+                            density: 8,
+                            colour: "steelblue"
+                        }
+                        const Iron = {
+                            tree: ["mix", "metal", "steel", "cast iron"],
+                            density: 8,
+                            colour: "darkslategrey"
+                        }
+                        const Copper = {
+                            tree: ["mix", "metal", "copper", "copper"],
+                            density: 9,
+                            colour: "chocolate"
+                        }
+                        const Aluminium = {
+                            tree: ["mix", "metal", "aluminium", "aluminium"],
+                            density: 3,
+                            colour: "blueviolet"
+                        }
+                        const Tin = {
+                            tree: ["mix", "metal", "tin", "tin"],
+                            density: 7,
+                            colour: "silver"
+                        }
+                        const Plastic = {
+                            tree: ["mix", "plastic", "plastic", "plastic"],
+                            density: 1,
+                            colour: "red"
+                        }
+                        const Wood = {
+                            tree: ["mix", "wood", "wood", "wood"],
+                            density: 0.5, 
+                            colour: "darkolivegreen"
+                        }
+						const Paint = {
+                            tree: ["mix", "", "", ""], 
+                            density: 0, 
+                            colour: "deeppink"
+                        }
+                        const Other = {
+                            tree: ["mix", "", "", ""], 
+                            density: 0, 
+                            colour: "none"
+                        }
+
+                        // particles 
+                        function Particle(material, contaminant, frac, size, mass) {
+
+							this.name = material.tree[3]
+                            this.material = material
+                            this.density = Number(material.density)
+                            this.size = Number(size)
+                            this.mass = Number(mass)
+                            this.contaminant = contaminant
+                            this.frac = frac
+
+							if (contaminant == Other){
+								this.outer = material
+							} else {
+								this.outer = contaminant
+							}
+							
+                        }
+						
+						function checkPartName(part) {
+							if (part.contaminant == Paint){
+								part.name = part.name + " (painted)"
+							} else if (part.contaminant == Tin){
+								part.name = part.name + " (tin-plated)"
+							} else if (part.contaminant == Plastic){
+								part.name = part.name + " (plastic-wrapped)"
+							} else if (part.contaminant == Copper){
+								part.name = part.name + " (copper-wrapped)"
+							}
+							return part.name
+						}
+                        
+                        const stainless = new Particle(Stainless, Other, 0.1, 1000, 5)
+                        const plain = new Particle(Plain, Paint, 0.5, 1000, 3)
+                        const iron = new Particle(Iron, Paint, 0.5, 1000, 3)
+                        const motor = new Particle(Iron, Copper, 10, 10, 0.05)
+                        const cans = new Particle(Plain, Tin, 5, 100, 0.3)
+                        const wire = new Particle(Copper, Plastic, 10, 100, 0.05)
+                        const Cu = new Particle(Copper, Other, 0.1, 1000, 0.6)
+                        const Al = new Particle(Aluminium, Other, 0.1, 1000, 1)
+                        const plastic = new Particle(Plastic, Other, 0.1, 100, 1)
+                        const wood = new Particle(Wood, Other, 0.1, 1000, 1)
+
+                        // bins
+                        function Bin(particles) {
+
+							this.particles = []
+                            const log = {material: [], contaminant: [], frac: [], size: []}
+							var masses = []
+							particles.forEach( p => {
+								var isNew = true
+								log_loop: for(let j=0; j<log.material.length; j++){
+									if (Object.keys(log).every(key => log[key][j] == p[key])){
+										masses[j] += p.mass
+										isNew = false
+										break log_loop
+									}
+								}
+								if (isNew){
+									Object.keys(log).forEach(key => {log[key].push(p[key])})
+									masses.push(p.mass)
+								}
+							})
+							
+							for (let k=0; k<log.material.length; k++){
+								this.particles[this.particles.length] = new Particle(log.material[k], log.contaminant[k], log.frac[k], log.size[k], masses[k])	
+							}
+							
+                            this.mass = masses.reduce((sum, m) => sum+m, 0)
+
+							this.particles.forEach(p => checkPartName(p))
+
+							if (this.particles.length != 0){
+								let L = 0
+								while (L<4 && this.particles.every((p, ind, arr) => p.material.tree[L] == arr[0].material.tree[L])){
+									L ++
+								}
+								this.L = L
+								this.HCF = this.particles[0].material.tree[L-1]
+							}
+							
+
+							this.contaminants = []
+							this.particles.forEach(p => {
+								if (p.contaminant.tree[3]){
+									this.contaminants.push(p.contaminant.tree[3])
+								}
+							})								
+							
+							this.totalFrac = this.particles.reduce((sum, curr) => sum + curr.frac*curr.mass, 0) / this.particles.reduce((sum, curr) => sum + curr.mass, 0)
+							this.aveSize = this.particles.reduce((sum, curr) => sum + curr.size*curr.mass/curr.density, 0)/this.particles.reduce((sum, curr) => sum + curr.mass/curr.density, 0)
+							this.stdSize = Math.sqrt(this.particles.reduce((sum, curr) => sum + ((curr.size)**2)*curr.mass/curr.density, 0)/this.particles.reduce((sum, curr) => sum + curr.mass/curr.density, 0) - (this.aveSize)^2)
+
+							this.evenSizes = 0
+							if (this.particles.every((p,ind,arr) => p.size == arr[0].size)){this.evenSizes = 1}
+						}
+
+						// techniques
+						function sort(i, conditions) {
+                            var remainder = bins[i].particles
+                            let j=0
+                            conditions.forEach((condition, index) => {
+                                var aye = []
+								var nay = []
+                                remainder.forEach((particle) => {
+                                    if (condition(particle)){
+                                        aye.push(particle)
+										console.log("aye", particle.name)
+                                    } else {
+										nay.push(particle)
+										console.log("nay", particle.name)
+									}
+                                })
+								remainder = nay
+                                bins[bins.length] = new Bin(aye)
+                            })        
+                            bins[bins.length] = new Bin(remainder)
+                            delete bins[i]
+                            bins = bins.filter(Boolean).filter(bin => bin.particles.length !== 0)
+                        }
+
+						const shredding = {
+							button: document.querySelector(".menu_button.shredding"),
+							explanation: {
+								def: "Shredders help break down pieces of scrap, ideally into sufficiently small particles such that each only contain one type of material (fully liberated).",
+								warning: "Different materials also have different responses to the applied force.",
+								preReq: ""
+							},
+							preReq: function(i) {return true},
+							action: function(i) {
+								bins[i].particles.forEach(particle => {
+									type = particle.material.tree[1]
+									if (type == "metal") {
+										particle.size = Math.min(particle.size, 200)
+									} else if (type == "plastic") {
+										particle.size = Math.min(particle.size, 10)
+									} else if (type == "wood") {
+										particle.size = Math.min(particle.size, 100)
+									}    
+								})
+							}
+						}
+
+						const granulating = {
+							button: document.querySelector(".menu_button.granulating"),
+							explanation: {preReq: "Cannot process large pieces of scrap."},
+							preReq: function(i) {
+								return bins[i].particles.every(p => {return p.size <= 200})
+							},
+							action: function(i) {
+								var granules = []
+								bins[i].particles.forEach(particle => {
+									if (particle.contaminant == Plastic || particle.contaminant == Copper){
+										var inner = new Particle(particle.material, Other, 0.1, 2, particle.mass*(100-particle.frac)/100)
+										var outer = new Particle(particle.contaminant, Other, 0.1, 2, particle.mass*particle.frac/100)
+										granules.push(inner, outer)
+									} else {
+										var g = new Particle(particle.material, particle.contaminant, particle.frac, 2, particle.mass)
+										granules.push(g)
+									}
+								})
+								bins[i] = new Bin(granules)
+							}
+						}
+						
+						const magnetic = {
+							button: document.querySelector(".menu_button.magnetic"),
+							explanation: {preReq: ""},
+							preReq: function(i) {return true},
+							action: function(i) {
+								function check(p){return p.material.tree[2] == "steel"}
+                            	sort(i, [check])
+							}
+						}
+
+						const eddy = {
+							button: document.querySelector(".menu_button.eddy"),
+							explanation: {preReq:""},
+							preReq: function(i) {return true},
+							action: function(i) {
+								function check(p){return p.material.tree[1] == "metal"}
+                            	sort(i, [check])
+							}
+						}
+
+						const colour = {
+							button: document.querySelector(".menu_button.colour"),
+							explanation: {preReq:"Cannot process large pieces of scrap."},
+							preReq: function(i) {
+								return bins[i].particles.every(p => {return p.size <= 200})
+							},
+							action: function(i) {
+								function checkColourful(p){return (p.outer == Plastic || p.outer == Paint)}
+								sort(i, [checkColourful])
+							}
+						}
+
+						const NIR = {
+							button: document.querySelector(".menu_button.NIR"),
+							explanation: {preReq:"Cannot process large pieces of scrap."},
+							preReq: function(i) {
+								return bins[i].particles.every(p => {return p.size <= 200})
+							},
+							action: function(i) {
+								function checkPlastic(p){
+									return (p.outer == Plastic)
+								}
+								function checkWood(p){
+									return (p.outer == Wood)
+								}
+								function checkPaint(p){
+									return (p.outer == Paint)
+								}
+								sort(i, [checkPaint, checkPlastic, checkWood])
+							}
+						}
+
+						const XRF = {
+							button: document.querySelector(".menu_button.XRF"),
+							explanation: {preReq:"Cannot process large pieces of scrap."},
+							preReq: function(i) {
+								return bins[i].particles.every(p => {return p.size <= 200})
+							},
+							action: function(i) {
+								function checkMetal(p){
+									return(p.material.tree[1] !== "metal")
+								}
+								function checkCoatings(p){
+									return(p.material !== p.outer && p.outer !== Paint)
+								}
+								function checkStainless(p){
+									return (p.material == Stainless)
+								}
+								function checkCastIron(p){
+									return (p.material == Iron)
+								}
+								function checkPlain(p){
+									return (p.material == Plain)
+								}
+								function checkAl(p){
+									return (p.material == Aluminium)
+								}
+								function checkCu(p){
+									return (p.material == Copper)
+								}
+								sort(i, [checkMetal, checkCoatings, checkStainless, checkCastIron, checkPlain, checkCu, checkAl])
+							}
+						}
+					
+						const manual = {
+							button: document.querySelector(".menu_button.manual"),
+							explanation: {preReq:"Cannot process large pieces of scrap."},
+							preReq: function(i) {
+								return bins[i].particles.every(p => {return p.size <= 200})
+							},
+							action: function(i) {
+								function checkMotor(p){
+									return(p.contaminant == Copper)
+								}
+								function checkWire(p){
+									return(p.contaminant == Plastic)
+								}
+								function checkCans(p){
+									return(p.contaminant == Tin)
+								}
+								function checkPlastic(p){
+									return(p.material.tree[1] == "plastic")
+								}
+								function checkWood(p){
+									return(p.material == Wood)
+								}
+								sort(i, [checkMotor, checkWire, checkCans, checkPlastic, checkWood])
+							}
+						}
+						
+						const size = {
+							button: document.querySelector(".menu_button.size"),
+							explanation: {preReq:""},
+							preReq: function(i) {return true},
+							action: function(i) {
+								function isSmall(p){return p.size <= 100}
+								sort(i, [isSmall])
+							}
+						}
+
+						const techniques = [shredding, granulating, magnetic, eddy, colour, NIR, XRF, manual, size]
+						
+						// sellers
+						const Sellers = {
+
+							wires: {
+								name: "Specialty (wires)",
+								deets: "",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Copper && p.contaminant == Plastic)})},
+								pricePer: 2
+							}, 
+
+							cans: {
+								name: "Specialty (tin-plated cans)",
+								deets: "",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Plain && p.contaminant == Tin && p.size > 2)})},
+								pricePer: function(i){return 2}
+							}, 
+
+							motors: {
+								name: "Specialty (motors)",
+								deets: "",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Plain && p.contaminant == Copper)})},
+								pricePer: function(i){return 2}
+							}, 
+
+							Incineration: {
+								name: "Incineration",
+								deets: "Collection price varies with level of contamination, particle size, and size variations.",
+								criteria: function(i){return true},
+								pricePer: function(i){return Math.max(0.1, (1 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500))}
+							},
+
+							plastic: {
+								name: "Plastic",
+								deets: "",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Plastic)})},
+								pricePer: function(i){return 2}
+							}, 
+
+							wood: {
+								name: "Wood",
+								deets: "Collection price varies with level of contamination, particle size, and size variations.",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Wood)})},
+								pricePer: function(i){return (3 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500)}
+							}, 
+
+							metals: {
+								name: "Metals",
+								deets: "Collection price varies with level of contamination, particle size, and size variations.",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material.tree[1] == "metal")})},
+								pricePer: function(i){return (3 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500)}
+							}, 
+
+							nonFerrous: {
+								name: "Non-ferrous metals",
+								deets: "Collection price varies with level of contamination, particle size, and size variations.",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Aluminium || p.material == Copper)})},
+								pricePer: function(i){return (3 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500)}
+							},
+
+							Al: {
+								name: "Aluminium",
+								deets: "Collection price varies with level of contamination, particle size, and size variations.",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Aluminium)})},
+								pricePer: function(i){return (3 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500)}
+							}, 
+
+							Cu: {
+								name: "Copper",
+								deets: "Collection price varies with level of contamination, particle size, and size variations.",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material == Copper)})},
+								pricePer: function(i){return (3 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500)}
+							}, 
+
+							ferrous: {
+								name: "Ferrous metals",
+								deets: "Collection price varies with level of contamination, particle size, and size variations; No Cu impurity allowed.",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material.tree[2] == "Fe" && p.contaminant != Copper)})},
+								pricePer: function(i){return (3 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500)}
+							},
+
+							FeAlloy: {
+								name: "Ferrous metal (specific alloy)",
+								deets: "Collection price varies with level of contamination, particle size, and size variations; No Cu impurity allowed.",
+								criteria: function(i){return bins[i].particles.every(p => {return (p.material.tree[2] == "Fe" && p.contaminant != Copper)}) && bins[i].L == 4},
+								pricePer: function(i){return (5 - 2*bins[i].totalFrac + (bins[i].aveSize/2000) + bins[i].evenSizes - bins[i].stdSize/500)}
+							}
+
+						}
+
+						// actual operational stuff
+						const Global = {chosenBinInd:0, cuedAction:function(){true}}
+						var bins = new Array()
+
+						// process bar select
+						document.querySelectorAll("#process_bar .tab").forEach((el, i, arr) => {
+							el.style.display = "block"
+							el.addEventListener("click", e => {
+								arr.forEach(elem => {elem.style.borderBottom = "grey 2px solid"; elem.style.backgroundColor = "lightgrey"})
+								el.style.borderBottom = "none"
+								el.style.backgroundColor = "white"
+								document.querySelectorAll(".page").forEach(page => page.style.display = "none")
+								document.querySelector(".page."+el.className.split(" ")[1]).style.display = "block"
+							})
+						})					
+
+						// check if technique is possible and add to cue
+						techniques.forEach((tech,i) => {
+							tech.button.addEventListener("click", function(e) {
+
+								document.querySelectorAll("button.menu_button").forEach(elem => {elem.style.backgroundColor = "lightgrey"})
+								this.style.backgroundColor = "white"
+
+								this.parentElement.parentElement.querySelector("p.explanation").innerHTML = Object.values(tech.explanation).join("<br/>")
+								
+								if (tech.preReq(Global.chosenBinInd)){
+									document.getElementById("execute").disabled = false
+									Global.cuedAction = function(i){tech.action(i)}
+									console.log("ready")
+								} else {
+									document.getElementById("execute").disabled = true
+								}
+
+							})
+						})
+
+						// update bins display content
+						function updateSVGs(){
+							document.querySelectorAll(".temp").forEach(el => el.remove())
+							var tabs = []
+							var contents = []
+							bins.forEach((bin, i) => {
+								tabs[i] = document.querySelector(".tab.bin_tab").cloneNode(true)
+								tabs[i].classList.add("temp")
+								var svg = tabs[i].querySelector("svg")
+								svg.querySelector(".bin_body").setAttribute("stroke", "darkgreen")
+								svg.querySelector(".bin_body").setAttribute("stroke-width", "1px")
+								svg.querySelector(".bin_body").setAttribute("fill", "green")
+								svg.querySelector(".bin_body").setAttribute("fill-opacity", bin.L/4)
+								svg.querySelector(".bin_pile").setAttribute("fill", "grey")
+								document.getElementById("bin_bar").appendChild(tabs[i])
+
+								var exampleEntry = document.querySelector("#bin_display div p")
+								var entries = []
+								contents[i] = document.createElement("div")
+								contents[i].classList.add("temp")
+								bin.particles.forEach((p,j) => {
+									entries[j] = exampleEntry.cloneNode(true)
+									entries[j].querySelector("span.particle_name").innerHTML = String(p.name).charAt(0).toUpperCase() + String(p.name).slice(1) 
+									entries[j].querySelector("span.particle_mass").innerHTML = p.mass
+									entries[j].querySelector("span.particle_size").innerHTML = "&#x007C; "+p.size+" mm"
+									entries[j].style.fillOpacity = 0.4
+									entries[j].style.backgroundColor = p.material.colour
+									entries[j].style.border = `${p.contaminant.colour} solid 3px`
+									contents[i].appendChild(entries[j])
+								})
+								document.querySelector("#bin_display").appendChild(contents[i])
+							})						
+						}
+						
+						// choose which bin to display content of
+						function chooseBin(i) {
+							console.log(i)
+							Global.chosenBinInd = i
+							var selectedBin = bins[i]
+							
+							var binTab = document.querySelectorAll(".tab.bin_tab.temp")[i]
+							document.querySelectorAll(".tab.bin_tab").forEach(el => {el.style.borderRight = "grey 2px solid"; el.style.backgroundColor = "lightgrey"})
+							binTab.style.borderRight = "none"
+							binTab.style.backgroundColor = "white"
+							
+							var binContent = document.querySelectorAll("#bin_display div.temp")[i]
+							document.querySelectorAll("#bin_display div").forEach(el => el.style.display = "none")
+							if(selectedBin.particles.length > 6) {
+								document.querySelectorAll("#bin_display div")[0].querySelector("span.particle_mass").innerHTML = "approx. "+Math.round(selectedBin.mass)
+								document.querySelectorAll("#bin_display div")[0].querySelector("span.particle_size").innerHTML = `<br/> ave. ${Math.round(0.1*selectedBin.aveSize)} cm`
+								document.querySelectorAll("#bin_display div")[0].style.display = "block"
+							} else {
+								binContent.style.display = "block"
+							}
+
+							vetSellers(Global.chosenBinInd)
+						}
+
+						// display possible sellers 
+						function vetSellers(i) {
+							var bin = bins[i]
+							var page = document.querySelector(".page.delivery")
+							page.querySelectorAll("p").forEach(el => el.remove())
+							for (const [key, seller] of Object.entries(Sellers)) {
+								if (seller.criteria(i)){
+									var entry = document.createElement("p")
+									entry.classList.add("seller", String(key))
+									entry.innerHTML = `<strong>${seller.name}</strong> Price: ${Math.round(seller.pricePer(i)*bin.mass*100)/100} <br/> ${seller.deets}`
+									entry.style.margin = "5px"
+									entry.style.fontSize = "small"
+									page.appendChild(entry)
+								}
+							}
+						}
+
+						// go button
+						function execute(){
+							Global.cuedAction(Global.chosenBinInd)
+							updateSVGs()
+							document.querySelectorAll(".tab.bin_tab.temp").forEach((el,i) => {
+								el.style.display = "block"
+								el.addEventListener("click", e => {chooseBin(i)})						
+							})
+							chooseBin(bins.length - 1)
+							console.log("Updated")
+						}
+
+						// initialise - reset button
+						function restart(){
+							bins.length = 0
+							bins[0] = new Bin([stainless, plain, iron, motor, wire, cans, Cu, Al, plastic, wood])
+							Global.chosenBinInd = 0
+							Global.cuedAction = function(){true}
+							document.querySelector(".tab.separation").click()
+							document.querySelector(".menu_button.shredding").click()
+							execute()
+						}
+
+						restart()
+						
+					
+					</script>
+
+				</div>
+				<!-- end payj - p2 -->
+
+			</div> <!-- kanvas -->
+
+		</div> <!-- container -->
+
+	</body>
+</html>

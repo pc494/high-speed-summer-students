@@ -15,7 +15,7 @@
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script> -->
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
 		<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script> -->
-		
+
 		<script> gsap.registerPlugin(MotionPathPlugin)  </script>
 
 		<link rel="stylesheet" href="titlecard.css"/>
@@ -23,14 +23,14 @@
 
 		<script>
 		// hide and show CC licence words
-			function showTxt() {   
+			function showTxt() {
 				document.getElementById("para").style.visibility = 'visible';
 			}  // end showTxt
 
-			function hideTxt() { 
+			function hideTxt() {
 				document.getElementById("para").style.visibility = 'hidden';
 			}  // end hideTxt
-			
+
 			// page navigation
 			function gotoPage(p) {
 				// replace next fn gEBCN as fails in IE<9
@@ -42,10 +42,10 @@
 					if (i == p) {
 						document.getElementById('p'+i).style.display = 'block';
 					}
-				}	
+				}
 			}
-			
-			// sets the dimensions of kanvas and positions the bottom logos			
+
+			// sets the dimensions of kanvas and positions the bottom logos
 			function setAnimDimensions(w,h)  {
 				//w = animation width
 				//h = animation height
@@ -59,33 +59,33 @@
 				divcc.style.position = 'absolute';
 				divpara.style.position = 'absolute';
 				divcc.style.top = (h - 40) + "px";
-				divpara.style.top = (h - 85) + "px";						
+				divpara.style.top = (h - 85) + "px";
 			}
 		</script>
-		
+
 		<style>
 
 			#container {
 				position:relative;
 			}
-			#kanvas { 
+			#kanvas {
 				position:relative;
 			}
 
 			/* cc information banner & pop-up */
 			#cc {
-				position: absolute; 
-				width:100%; 
+				position: absolute;
+				width:100%;
 				/*background-color:#cc0000;  */
 			}
-			
+
 			#para {
-				position: absolute;  
+				position: absolute;
 				padding:0px;
 				font-family:Arial;
 				font-weight: bold;
 				font-size: 11px;
-				color:blue; 
+				color:blue;
 				border-style: solid;
 				border-color: #000000;
 				border-width:1px;
@@ -93,7 +93,7 @@
 				z-index: 200;
 				background-color: white;
 			}
-			
+
 			/* DOiTPoMS buttons */
 			.dbutton {
 				background-color: pink;
@@ -105,7 +105,7 @@
 			}
 
 			.dbutton:hover {
-				background-position: center; 
+				background-position: center;
 			}
 
 			#back, #back2, #back3, #back4, #back5, #back6, #back7 {
@@ -117,7 +117,7 @@
 				width: 75px;
 				background-image: url('../../../images/next.png');
 			}
-			
+
 			#restart, #restart2, #restart3,  #restart5, #restart6, #restart7 {
 				width: 99px;
 				background-image: url('../../../images/restart.png');
@@ -126,7 +126,7 @@
 				width: 84px;
 				background-image: url('../../../images/reset.png');
 			}
-			#start { 
+			#start {
 				width: 76px;
 				background-image: url('../../../images/start.png');
 			}
@@ -138,7 +138,7 @@
 				width: 118px;
 				background-image: url('../../../images/continue.png');
 			}
-			
+
 			.nav {
 				position:absolute;
 				left:170px;
@@ -150,14 +150,14 @@
 			/* page id */
 			/* CAHNGE THIS!!! */
 			#p1 {
-				display:block;				
+				display:block;
 			}
 			#p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9   {
-				display:none;				
+				display:none;
 			}
 
 			/*  Other */
-			p,text {
+			* {
 				font-family: sans-serif;
 			}
 
@@ -174,7 +174,7 @@
 			}
 
 			.laser {
-    fill:red; 
+    fill:red;
     stroke:black
 }
 
@@ -207,23 +207,23 @@
     stroke: none;
 }
 		</style>
-		
+
 	</head>
-	
+
 	<body>
-		<div id="container"> 
-			<div id="kanvas"> 
+		<div id="container">
+			<div id="kanvas">
 
 				<!-- DoITPoMS  and CC logos -->
-				<div id="para"> 
+				<div id="para">
 					Re-use of this resource is governed by a Creative Commons Attribution-<br />
 					Noncommercial-Share Alike 2.0 Licence UK: England & Wales<br />
-					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/ 
+					http://creativecommons.org/licenses/by-nc-sa/2.0/uk/
 				</div>
 				<!-- end para -->
-				<div id="cc" > 
-					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 /> 
-					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; /> 
+				<div id="cc" >
+					<img src = "../../../images/by-nc-sa.svg" alt="creative commons" onMouseOver="showTxt()" onMouseOut="hideTxt()" height=40 width=120 />
+					<img src = "../../../images/roo.png" alt="DoITPoMS logo" height=40 width=180 style="float:right"; />
 				</div>
 				<!-- end cc -->
 
@@ -232,67 +232,95 @@
 				</script>
 
 				<!--  new page starts here    -->
-				<div class="payj" id="p1"> 
+				<div class="payj" id="p1">
+					<div>
+						dynamic masking? <br/>
+						limit scrolling elemFromPoint(x,y) <br/>
+						inclusions float up with bubbles <br/>
+						background motions <br/>
+						text and eqs <br/>
+						parts of the furnace <br/>
+					</div>
 
 					<p id="titlecard">Secondary Steelmaking</p>
-					<div class="nav" style="top:280px"> 
+					<div class="nav" style="top:280px">
 						<p class="dbutton" id="start" onClick="gotoPage(2)"></p >
 					</div>
-					
+
 				</div>
 				<!-- end payj - p1 -->
 
 				<!--  new page starts here    -->
-				<div class="payj" id="p2"> 
+				<div class="payj" id="p2">
 
 					<p class="dbutton" id="restart" onclick="restart()" style="position:absolute"></p>
 
-					
+
 					<svg width="640" height="350">
 
 						<g id="ladle">
-							
-							<path class="vacuum" id="vacuum_chamber" style="fill:none; stroke:darkgrey; stroke-width:10px" d="M300,90 l0,-20 l-240,0 l0,260 l240,0 l0,-200"></path>
+
+							<path class="vacuum" id="vacuum_chamber" style="fill:none; stroke:darkgrey; stroke-width:10px; opacity: 0" d="M300,90 l0,-20 l-240,0 l0,260 l240,0 l0,-200"></path>
 
 							<mask id="furnace_guts">
 								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
 								<path class="LMF" style="fill:white" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
 							</mask>
 
+							<mask id="steel_level">
+								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
+								<path class="steel" style="fill:white; stroke:rgb(29, 29, 29); stroke-width:4px; stroke-linejoin:round;" d="M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"></path>
+							</mask>
+
 							<g class="content" mask="url(#furnace_guts)">
-								<path class="steel" style="fill:gold; stroke:darkorange; stroke-width:4px; stroke-linejoin:round" d="M70,210 c20,-5 80,10 100,0 c20,-10 30,5 80,0 l0,120 l-180,0 Z"></path>
-								<circle class="LMF LMF_adder_content" style="fill:white; stroke:none; filter:blur(5px)" cx="135" cy="230" r="0"></circle>
+								<path class="steel" style="fill:gold; stroke:darkorange; stroke-width:4px; stroke-linejoin:round" d="M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"></path>
+								<circle class="LMF LMF_adder_content" mask="url(#steel_level)" style="fill:white; stroke:none; filter:blur(5px)" cx="135" cy="230" r="0"></circle>
 								<g class="B"></g>
 							</g>
-							
+
 							<path class="LMF" id="LMF_body" style="fill:darkgrey; stroke:none" d="M110,120 l-30,30 l0,120 l40,40 l80,0 l40,-40 l0,-120 l-30,-30 l-10,0 l0,10 l25,25 l0,110 l-30,30 l-70,0 l-30,-30 l0,-110 l25,-25 l0,-10 l-10,0"></path>
 							<path class="LMF" id="LMF_lining" style="fill:none; stroke:dimgrey; stroke-width:8px" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
 
 							<path class="LMF nozzle" id="LMF_nozzle" style="fill:none; stroke:lightblue; stroke-width:8px" d="M180,320 l0,-30"></path>
-						
+
 							<line class="LMF" id="LMF_adder" style="fill:dimgrey; stroke:dimgrey; stroke-width:8px;" x1="135" y1="80" x2="135" y2="230"></line>
 							<line class="LMF" id="LMF_adder_tube" style="fill:dimgrey; stroke:white; stroke-width:2px;" x1="135" y1="80" x2="135" y2="80"></line>
-							
-							<circle class="lens" style="fill:lime; stroke:white; stroke-width:2px; filter:blur(0.5px)"></circle>
+
+							<circle class="lens" style="fill:white; stroke:white; stroke-width:7px; filter:blur(2px)"></circle>
+							<circle class="lens" style="fill:lime; stroke:none;"></circle>
 							
 						</g>
 
 						<g id="microscope">
 							<mask id="microscope_FOV">
 								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
-								<circle class="lens" style="fill:white; filter:blur(0.3px)"></circle>
+								<circle class="lens" style="fill:white; filter:blur(0.2px)"></circle>
 							</mask>
 							<g id="directions">
-								<path class="direction" id="up" d="M470,80 l-10,10 l20,0 Z"></path>
-								<path class="direction" id="up" d="M470,340 l-10,-10 l20,0 Z"></path>
-								<path class="direction" id="up" d="M340,210 l10,10 l0,-20 Z"></path>
-								<path class="direction" id="up" d="M600,210 l-10,10 l0,-20 Z"></path>
+								<path class="direction" id="up" d="M470,50 l-15,15 l30,0 Z"></path>
+								<path class="direction" id="left" d="M340,180 l15,15 l0,-30 Z"></path>
+								<path class="direction" id="down" d="M470,310 l-15,-15 l30,0 Z"></path>
+								<path class="direction" id="right" d="M600,180 l-15,15 l0,-30 Z"></path>
 							</g>
+							<text id="identifier" style="text-anchor:middle; font-weight:bold" x="470" y="330">Select impurity particle</text>
 						</g>
-					
+
 					</svg>
 
+					<button id="remove_button" style="position:absolute; top:335px; left:420px; width:100px; display: none;">Remove</button>
+
 					<style>
+						.impurities, .inclusion, .direction {
+							cursor: pointer
+						} 
+
+						.direction {
+							fill: white;
+							stroke:lime;
+							stroke-width: 4px;
+							stroke-linejoin: round;
+						}
+
 						.bubble{
 							fill: white;
 							stroke: white;
@@ -305,42 +333,64 @@
 							stroke: red;
 						}
 					</style>
-					
-					<p id="caption"> <em>Click on red pointers to start</em> </p>
-					
-					<div class="nav"> 
+
+					<p id="caption"> 
+						<em>Click on different parts of the furnace to start</em>
+					</p>
+
+					<div class="nav">
 						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
 					</div>
 
 					<script>
+						
+						var always = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
 
 						// position checker
 						document.querySelector("svg").addEventListener("click", e => {
-							var rect = document.querySelector("svg").getBoundingClientRect()
+						 	var rect = document.querySelector("svg").getBoundingClientRect()
 							var x = e.clientX - rect.left
 							var y = e.clientY - rect.top
 							console.log(x,y)
 						})
 
 						// microscope
-
-						const viewbox = {x:470, y:210, r:100}
-						const scale = 40
+						const currFocus = {x:160,y:250}
+						const viewbox = {x:470, y:180, r:120}
+						const scale = 30
 						const bigDolly = document.querySelector(".content").cloneNode(true)
 						bigDolly.setAttribute("mask", "url(#microscope_FOV)")
-						document.getElementById("microscope").appendChild(bigDolly)
-						updateScope(190,215)
+						document.getElementById("microscope").prepend(bigDolly)
+						updateScope(0,0)
 
-						function updateScope(x,y){							
-							var lensMask = document.querySelectorAll("circle.lens")
-							bigDolly.style.transform = `scale(${scale}) translate(${- x + (viewbox.x/scale)}px, ${- y + (viewbox.y/scale)}px)`
-							lensMask.forEach(c => {
-								c.setAttribute("cx", x)
-								c.setAttribute("cy", y)
-								c.setAttribute("r", viewbox.r/scale)
+						document.querySelectorAll("svg #microscope #directions .direction").forEach((btn,i) => {
+							btn.addEventListener("click", function(e){
+								var dx = - ( (-1)**i - 1)*(i-2)*(viewbox.r/scale)/2
+								var dy = ( (-1)**i + 1)*(i-1)*(viewbox.r/scale)/2
+								updateScope(dx, dy)
 							})
+							btn.addEventListener("mousedown", function(e){
+								var dx = - ( (-1)**i - 1)*(i-2)*(viewbox.r/scale)/2
+								var dy = ( (-1)**i + 1)*(i-1)*(viewbox.r/scale)/2
+								interval = setInterval(updateScope, 500, dx, dy)
+							})
+							btn.addEventListener("mouseup", function(e){
+								clearInterval(interval)
+							})
+						})
+
+						function updateScope(dx,dy){
+							var lensMask = document.querySelectorAll("circle.lens")
+							var x = Number(currFocus.x) + dx
+							var y = Number(currFocus.y) + dy
+							var Transform = `scale(${scale}) translate(${- x + (viewbox.x/scale)}px, ${- y + (viewbox.y/scale)}px)`
+							gsap.to(bigDolly, 0.5, {ease:"none", transformOrigin:"50% 100%", scale:scale, x: (viewbox.x-160)-scale*(x-160), y:(viewbox.y-330)-scale*(y-330)})
+							gsap.to(lensMask, 0.5, {ease:"none", attr:{cx:x, cy:y, r:viewbox.r/scale}})
+							currFocus.x = x
+							currFocus.y = y
 						}
 
+						// inside the steel
 						function bubblies(N, durr=2){
 							var Bubbles = new Array()
 							var r0 = 4
@@ -358,11 +408,13 @@
 								bubbleGroup.appendChild(bubble)
 								Bubbles[n] = {MP: motionPath, I: init}
 							}
+
 							document.querySelectorAll("svg .content")[0].appendChild(bubbleGroup)
-							document.querySelectorAll("svg .content")[1].appendChild(bubbleGroup.cloneNode(true))
+							var dollyBubbyG = bubbleGroup.cloneNode(true)
+							document.querySelectorAll("svg .content")[1].appendChild(dollyBubbyG)
 
 							function bubbleFloat(){
-								document.querySelectorAll("svg .content .bubblies").forEach(g => {
+								[bubbleGroup, dollyBubbyG].forEach(g => {
 									Bubbles.forEach((el, n) => {
 										var bubble = g.querySelectorAll(".bubble")[n]
 										var pathTotalLength = el.MP.getTotalLength()
@@ -376,12 +428,13 @@
 							}
 
 							function bubblePopper(){
-								document.querySelectorAll("svg .content .bubblies").forEach(g => g.remove())
+								bubbleGroup.remove()
+								dollyBubbyG.remove()
 							}
 							var phantom = {progress:0}
-							gsap.to(phantom, durr, {progress:1, onUpdate:bubbleFloat})
+							gsap.to(phantom, durr, {progress:1, onUpdate:bubbleFloat, onComplete:bubblePopper})
 						}
-						
+
 						function addThroughAdders(timeline, colour){
 							timeline.set("#LMF_adder_tube", {stroke:colour}).set(".LMF_adder_content", {fill:colour})
 							.to("#LMF_adder_tube", 1, {attr:{y2:230}})
@@ -391,15 +444,15 @@
 						}
 
 						function refineToGas(name, colour) {
-							
+
 							var group = document.querySelector("."+name)
 							var rtg = gsap.timeline({defaults:{ease:"none"}})
 
-							// add removal reagent 
-							rtg.call(bubblies, [200, 3])
+							// add removal reagent
+							rtg.call(bubblies, [200, 7])
 
-							// react + become bubbles 
-							group.querySelectorAll(".impurities").forEach(p => {
+							// react + become bubbles
+							group.querySelectorAll(".impurity").forEach(p => {
 								var reacted = p.cloneNode()
 								reacted.setAttribute("class", "reacted")
 								reacted.setAttribute("r", 1)
@@ -411,149 +464,172 @@
 							})
 
 							function removeImpurity() {
-								group.querySelectorAll(".impurities").forEach(p => p.remove())
+								group.querySelectorAll(".impurity").forEach(p => p.remove())
 							}
 
-							rtg.to(".reacted", 1, {opacity:1, attr:{r:0.2}, onComplete:removeImpurity}, 1.5)
-								
-							// go up and leave 
+							rtg.to(".reacted", 1, {opacity:1, attr:{r:0.2}, onComplete:removeImpurity}, 1)
+
+							// go up and leave
 							function removeImpurityGroups() {
 								group.remove()
 							}
-							rtg.to(".reacted", 2, {fillOpacity:0.4, attr:{cy:210}}, ">-0.5")
-							rtg.to(".reacted", 0.5, {opacity:0, onComplete:removeImpurityGroups}, ">-0.5")
+							rtg.to(".reacted", 1, {fillOpacity:0.4}, ">-0.5")
+							rtg.to(".reacted", 3, {attr:{cy:200}, opacity:0, onComplete:removeImpurityGroups}, ">-0.2")
 
 						}
 
 						function refineToSlag(name, colour) {
-							
+
 							var group = document.querySelector("."+name)
 							var rts = gsap.timeline({defaults:{ease:"none"}})
 
-							// add removal reagent 
+							// add removal reagent
 							addThroughAdders(rts, colour)
 
-							// react + become bubbles 							
-							group.querySelectorAll(".impurities").forEach(p => {
+							// react + become inclusions
+							group.querySelectorAll(".impurity").forEach(p => {
 								var inclusion = p.cloneNode()
-								inclusion.setAttribute("class", "inclusion")
+								inclusion.classList = ["inclusion"]
 								inclusion.setAttribute("r", 1)
 								inclusion.setAttribute("fill", colour)
 								inclusion.setAttribute("stroke", colour)
 								inclusion.setAttribute("stroke-width", "0.05px")
 								inclusion.style.opacity = 0
 								group.appendChild(inclusion)
+								console.log("a")
 							})
-							
 
+							rts.to("."+name+" .inclusion", 1, {opacity:1, attr:{r:2*R}, onComplete:removeImpurity}, ">-0.5")
 							function removeImpurity() {
 								group.querySelectorAll(".impurities").forEach(p => p.remove())
-								group.classList.add("inclusions")
-								
+								group.classList = ["Inclusions"]
+								updateParticleGroup(group)
 							}
-							rts.to(".inclusion", 1, {opacity:1, attr:{r:0.2}, onComplete:removeImpurity}, ">-0.5")
-							
 						}
 						
-						// starting up 
+						// impurities
 						const impuritiesLib = {
 
-							intermetallic: {
-								name: "intermetallic",
+							"Inclusions": {
 								colour: "steelblue",
 								type: "inclusion",
-								caption: "",
+								size: 2,
+								caption: "Inclusions are different phases which exist in the mixture (intermetallics, salts, etc.); <br/> these can be solid, liquid, or gaseous. <br/> They typically float segregate to the slag phase, or float up with bubbles.",
 							},
 
-							oxygen: {
-								name: "oxygen",
+							"Oxygen": {
 								colour: "aliceblue",
-								type: "dissolved", 
+								type: "dissolved",
+								size: 1,
 								caption: "Dissolved oxygen react with deoxidisers (Si, Al, etc.), forming inclusions (SiO&#x2082;, Al&#x2082;O&#x2083;, etc.) which move to the slag phase.",
-								removal() {refineToSlag(this.name, "lightgrey")}
+								crit: true,
+								removal() {refineToSlag("Oxygen", "lightgrey")}
 							},
 
-							sulfur: {
-								name: "sulfur",
+							"Sulfur": {
 								colour: "yellow",
 								type: "dissolved",
+								size: 1,
 								caption: "",
-								removal() {refineToSlag(this.name, "white")}
+								crit:true,
+								removal() {refineToSlag("Sulfur", "white")}
 							},
 
-							carbon: {
-								name: "carbon",
+							"Carbon": {
 								colour: "dimgrey",
 								type: "dissolved",
+								size: 1,
 								caption: "",
-								removal() {refineToGas(this.name, "aliceblue")}
+								crit: true,
+								removal() {refineToGas("Carbon", "aliceblue")}
 							},
 
 						}
 
-						var furnaceSize = {width:120, height:70, top:210, left:100}
+						var furnaceSize = {width:120, height:90, top:200, left:100}
 						var gridSize = {w:4, h:4}
-						var R = 0.1 //impurity particle base radius (in px)
+						var R = 0.15 //impurity particle base radius (in px)
 
 						Object.entries(impuritiesLib).forEach(([key,impurity]) => {
 							
-							if (impurity.type == "dissolved"){
-								
-								var group = document.createElementNS("http://www.w3.org/2000/svg", "g")
-								group.classList.add(impurity.name)
-								
-								for (let m=0; m<furnaceSize.width/gridSize.w; m++){
-									for (let n=0; n<furnaceSize.height/gridSize.h; n++){
-										
-										var p = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-										var pLoc = {
-											x: furnaceSize.left + (m + Math.random())*gridSize.w,
-											y: furnaceSize.top + (n + Math.random())*gridSize.h
-										}
-										p.classList.add("impurities")
-										p.setAttribute("cx", pLoc.x)
-										p.setAttribute("cy", pLoc.y)
-										p.setAttribute("r", R)
-										p.setAttribute("fill", impurity.colour)
-										group.appendChild(p)
-
-									}
-								}
-
-								document.querySelectorAll("svg .content")[1].appendChild(group)
-
-							} else if(impurity.type == "inclusion"){
-
-								var group = document.createElementNS("http://www.w3.org/2000/svg", "g")
-								group.classList.add(impurity.name)
-								
-								for (let m=0; m<furnaceSize.width/gridSize.w; m++){
-									for (let n=0; n<furnaceSize.height/gridSize.h; n++){
-										
-										var p = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-										var pLoc = {
-											x: furnaceSize.left + (m + Math.random())*gridSize.w,
-											y: furnaceSize.top + (n + Math.random())*gridSize.h
-										}
-										p.classList.add("impurities")
-										p.setAttribute("cx", pLoc.x)
-										p.setAttribute("cy", pLoc.y)
-										p.setAttribute("r", 2*R)
-										p.setAttribute("fill", impurity.colour)
-										group.appendChild(p)
-									}
-								}
-
-								document.querySelectorAll("svg .content")[1].appendChild(group)
-
+							// add imupurity group
+							var group = document.createElementNS("http://www.w3.org/2000/svg", "g")
+							group.classList.add(key)
+							if (key != "Inclusions") {
+								group.classList.add("impurities")
 							}
-							
+							// size
+							if (impurity.type == "dissolved"){ 
+								var type = 1 
+								var label = "impurity"
+							} else if (impurity.type == "inclusion") {
+								var type = 2
+								var label = "inclusion"
+							}
+							// grid of particles 
+							for (let m=0; m<furnaceSize.width/gridSize.w; m++){
+								for (let n=0; n<furnaceSize.height/gridSize.h; n++){
+
+									// make particle
+									var p = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+									var pLoc = {
+										x: furnaceSize.left + (m + Math.random())*gridSize.w,
+										y: furnaceSize.top + (n + Math.random())*gridSize.h
+									}
+									p.classList.add(label)
+									p.setAttribute("cx", pLoc.x)
+									p.setAttribute("cy", pLoc.y)
+									p.setAttribute("r", type*R)
+									p.setAttribute("fill", impurity.colour)
+
+									// add p to group 
+									group.appendChild(p)
+								}
+							}
+							// add group to bigDolly
+							document.querySelectorAll("svg .content")[1].appendChild(group)
+							group.setAttribute("mask", "url(#steel_level)")
+							// clickable 
+							updateParticleGroup(group)
 						})
 
-										
+						// add event listeners to group of inclusions/impurities
+						var removeButton = document.getElementById("remove_button")
+						function updateParticleGroup(group){
+							var groupName = group.classList[0]
+							var Impurity = impuritiesLib[groupName]
+							group.querySelectorAll("circle").forEach(p => {
+								p.addEventListener("click", function(e){
+									
+									document.getElementById("identifier").innerHTML = groupName
+									document.getElementById("caption").innerHTML = Impurity.caption
+									
+									if (Impurity.crit){
+										removeButton.style.display = "block"
+										removeButton.onclick = Impurity.removal
+									} else {
+										removeButton.style.display = "none"
+									}
+
+								})
+							})
+
+							always.to(group, 1, {x:1.5*(0.5-Math.random()), y:1.5*(0.5-Math.random())}, 0)
+							always.to(group, 1, {x:1.5*(0.5-Math.random()), y:1.5*(0.5-Math.random())}, 0.5)
+							always.to(group, 1, {x:1.5*(0.5-Math.random()), y:1.5*(0.5-Math.random())}, 1)
+							always.to(group, 0.6, {x:0, y:0}, 1.4)
+						}
+
+						
+						always.to(".steel", 0.7, {attr:{d:"M70,210 C80,215 120,208 140,200 S180,220 200,220 S240,195 250,210 l0,120 l-180,0 Z"}},0)
+						always.to(".steel", 0.5, {attr:{d:"M70,210 C80,212 120,218 140,195 S180,180 200,210 S240,215 250,210 l0,120 l-180,0 Z"}},">")
+						always.to(".steel", 0.3, {attr:{d:"M70,210 C80,205 120,200 140,215 S180,215 200,200 S240,180 250,210 l0,120 l-180,0 Z"}},">")
+						always.to(".steel", 0.5, {attr:{d:"M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"}},">")
+						
+						
 
 					</script>
-					
+
 				</div>
 				<!-- end payj - p2 -->
 
