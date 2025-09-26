@@ -6,6 +6,7 @@
 
     <!-- Greensock library  -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
@@ -19,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(CustomEase);
         gsap.registerPlugin(RoughEase);
       });
     </script>
@@ -235,10 +237,27 @@
         height: 275px;
         transform: scale(2.5);
       }
-
+      #IM_animationm {
+        position: absolute;
+        left: -625px;
+        top: -50px;
+        width: 722.5px;
+        height: 275px;
+        transform: scale(2.5);
+      }
+      .page_title {
+        text-align: center;
+        font-family: "Myriad-Roman";
+        text-decoration: underline;
+        font-size:30px;
+        position:absolute;
+        transform: translateX(-50%);
+        left:50%;
+        top:-4%;
+      }
       /* elements in title page and animation page */
       #bulk_extrudate,
-      #bulk_extrudate2 {
+      #bulk_extrudate2, #bulk_extrudate3 {
         stroke: none;
         fill: #ee4;
         fill-opacity: 0.75;
@@ -249,19 +268,19 @@
       }
 
       #machinery,
-      #machinery2 {
+      #machinery2, #machinery3 {
         stroke-width: 1px;
         fill: #eee;
         stroke: #000;
       }
 
-      #block {
+      #block, #block3 {
         stroke: none;
         fill: #fff;
       }
 
       #dispenser,
-      #dispenser2 {
+      #dispenser2, #dispenser3 {
         position: absolute;
         fill: darkgreen;
       }
@@ -273,7 +292,7 @@
         fill-opacity: 0.75;
       }
 
-      #pre_dispensate2 {
+      #pre_dispensate2, #pre_dispensate3 {
         fill: #ee4;
       }
 
@@ -284,16 +303,33 @@
         fill: forestgreen;
       }
 
+      .injection_mould3 {
+        stroke: #000;
+        stroke-width: 1px;
+        fill: forestgreen;
+      }
+      .injection_mould4 {
+        stroke: #000;
+        stroke-width: 1px;
+        fill: rgb(28,113,28);
+      }
+
       #parisons,
       #parisons2 {
-        stroke: #ee4;
-        stroke-width: 1px;
+        stroke: #ee0;
+        stroke-width: 2px;
         /*border-radius:2px;*/
         fill: #ee4;
         fill-opacity: 1;
       }
 
-      #parison2 {
+      .parisons3 {
+        stroke: #b4b433;
+        stroke-width: 0.5px;
+        fill:#ee4;
+      }
+
+      #parison2, #parison3 {
         stroke: #000;
         stroke-width: 1px;
       }
@@ -303,6 +339,11 @@
         font-family: "Myriad-Roman";
         font-size: 18px;
         text-decoration: underline;
+      }
+      .hot_knife {
+        stroke: #f00;
+        stroke-width: 0.4px;
+        fill: #ea0d01;
       }
     </style>
   </head>
@@ -644,71 +685,27 @@
             tl.timeScale(1.5);
 
             tl.to("#aa", { duration: 0.1, x: 5 }, t - 0.1)
-              .to(
-                "#screw_axis2",
-                { duration: 1, x: 7.5, ease: "none" },
-                t - 0.1,
-              )
-              .to(
-                "#bee",
-                { duration: 0.25, x: 0, ease: "expoScale(5,1.5,none)" },
-                0 + t,
-              )
-              .to(
-                "#bee",
-                { duration: 0.375, morphSVG: "#cee", ease: "none" },
-                0.25 + t,
-              )
+              .to("#screw_axis2",{ duration: 1, x: 7.5, ease: "none" }, t - 0.1)
+              .to("#bee",{ duration: 0.25, x: 0, ease: "expoScale(5,1.5,none)" }, 0 + t)
+              .to("#bee",{ duration: 0.375, morphSVG: "#cee", ease: "none" }, 0.25 + t)
               .to("#cee", { duration: 0, autoAlpha: 1 }, 0.625 + t)
-              .to(
-                "#bee",
-                { duration: 0.125, morphSVG: "#dee", ease: "none" },
-                0.625 + t,
-              )
+              .to("#bee",{ duration: 0.125, morphSVG: "#dee", ease: "none" }, 0.625 + t)
               .to("#dee", { duration: 0, autoAlpha: 1 }, 0.75 + t)
               .to("#cee", { duration: 0, autoAlpha: 0 }, 0.75 + t)
-              .to(
-                "#bee",
-                { duration: 0.25, morphSVG: "#parison2", ease: "none" },
-                0.75 + t,
-              )
+              .to("#bee",{ duration: 0.25, morphSVG: "#parison2", ease: "none" }, 0.75 + t)
               .to("#parison2", { duration: 0, autoAlpha: 1 }, 1 + t)
               .to("#bee, #dee", { duration: 0, autoAlpha: 0 }, 1 + t)
               .to("#aa, #screw_axis2", { duration: 1, x: 0 }, 1 + t)
 
-              .to(
-                "#parison2, #ejector2, #topl2, #topr2, #bottoml2, #bottomr2",
-                { duration: 0.4, x: 20, ease: "none" },
-                2 + t,
-              )
+              .to("#parison2, #ejector2, #topl2, #topr2, #bottoml2, #bottomr2",{ duration: 0.4, x: 20, ease: "none" },2 + t)
               .to("#topl2", { duration: 0.5, y: -10, ease: "none" }, 2.5 + t)
               .to("#bottoml2", { duration: 0.5, y: 10, ease: "none" }, 2.5 + t)
-              .to(
-                "#parison2, #ejector2, #topr2, #bottomr2",
-                { duration: 1.35, x: 87.5, ease: "none" },
-                2.75 + t,
-              )
-              .to(
-                "#topl2, #bottoml2",
-                { duration: 0.5, x: 0, y: 0, ease: "none" },
-                4.1 + t,
-              )
-              .to(
-                "#ejector2, #parison2",
-                { duration: 0.6, x: 57.5, ease: "none" },
-                4.1 + t,
-              )
-              .to(
-                "#ejector2",
-                { duration: 0.6, x: 87.5, ease: "none" },
-                4.9 + t,
-              )
+              .to("#parison2, #ejector2, #topr2, #bottomr2",{ duration: 1.35, x: 87.5, ease: "none" },2.75 + t)
+              .to("#topl2, #bottoml2",{ duration: 0.5, x: 0, y: 0, ease: "none" },4.1 + t)
+              .to("#ejector2, #parison2",{ duration: 0.6, x: 57.5, ease: "none" },4.1 + t)
+              .to("#ejector2", { duration: 0.6, x: 87.5, ease: "none" }, 4.9 + t)
               .to("#parison2", { duration: 2, y: 200, ease: "none" }, 5.5 + t)
-              .to(
-                "#ejector2, #topr2, #bottomr2",
-                { duration: 0.875, x: 0, ease: "none" },
-                6.5 + t,
-              );
+              .to("#ejector2, #topr2, #bottomr2", { duration: 0.875, x: 0, ease: "none" }, 6.5 + t);
 
             tl.pause();
           </script>
@@ -716,12 +713,176 @@
           <div class="nav">
             <p class="dbutton" id="start" onClick="tl.play()"></p>
             <p class="dbutton" id="pause" onClick="tl.pause()"></p>
+            <p class="dbutton" id="next" onClick="gotoPage(3)"></p>
           </div>
 
           <div id="anim2"></div>
           <!-- end anim2 -->
         </div>
         <!-- end payj - p2 -->
+
+        <!--  new page starts here    -->
+				<div class="payj" id="p3" > 
+          <svg id="IM_animationm">
+            <g class="injection_mould4">
+              <path id="bottom" d="M537.5,130h50v120h-50z"/>
+            </g>
+            <g class="parisons3">
+              <path id="base_semi" d="M537.5,185v-0.1v0.1v3v4v3v0.1v-0.1v-3v-4v-3z"/>
+              <path id="base_semii" d="M537.5,185v-15.5a15.5,15.5 0 0 1 15.5,15.5v3v4v3a15.5,15.5 0 0 1 -15.5,15.5v-15.5v-3v-4v-3z"/>
+              <g id="pac_man1_semis">
+                <path id="one_ones" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-7.5l2,1v6.5a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_two" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25h2v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_twos" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25 h0.5 h0.5 h0.5 h0.5 v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_three" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h2v2a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_threes" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h2 v1 v1 a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_four" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25v2h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_fours" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25 v0.4 v0.4 v0.4 v0.4 v0.4 h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_five" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25a15,15 0 0 1 7.5,-15a15,15 0 0 1 7.5,15v2a15,15 0 0 1 -7.5,15a15,15 0 0 1 -7.5,-15h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_fives" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25a15,15 0 0 1 7.5,-15a15,15 0 0 1 7.5,15v2a15,15 0 0 1 -7.5,15a15,15 0 0 1 -7.5,-15h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_six" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25a15,15 0 0 1 15,-15a15,15 0 0 1 15,15v2a15,15 0 0 1 -15,15a15,15 0 0 1 -15,-15h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+                <path id="one_seven" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25a15,15 0 0 1 26,-10l-11,11 l11,11a15,15 0 0 1 -26,-10h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25v-3z"/>
+              </g>
+              <g id="pac_man2_semis">
+                <path id="two_zero" d="M537.5,188v4v-4z"/>
+                <path id="two_one" d="M537.5,188l5.5,1h10v2h-10l-5.5,1v-4z"/>
+                <path id="two_ones" d="M537.5,188l5.5,1h10v2h-10l-5.5,1v-4z"/>
+                <path id="two_two" d="M537.5,188l5.5,1h10a15,15 0 0 1 7.5,-15a15,15 0 0 1 7.5,15v2a15,15 0 0 1 -7.5,15a15,15 0 0 1 -7.5,-15h-10l-5.5,1v-4z"/>
+                <path id="two_twos" d="M537.5,188l5.5,1h10a15,15 0 0 1 7.5,-15a15,15 0 0 1 7.5,15v2a15,15 0 0 1 -7.5,15a15,15 0 0 1 -7.5,-15h-10l-5.5,1v-4z"/>
+                <path id="two_three" d="M537.5,188l5.5,1h10a15,15 0 0 1 15,-15a15,15 0 0 1 15,15v2a15,15 0 0 1 -15,15a15,15 0 0 1 -15,-15h-10l-5.5,1v-4z"/>
+                <path id="two_threes" d="M537.5,188l5.5,1h10a15,15 0 0 1 15,-15a15,15 0 0 1 15,15v2a15,15 0 0 1 -15,15a15,15 0 0 1 -15,-15h-10l-5.5,1v-4z"/>
+                <path id="two_four" d="M537.5,188l5.5,1h10a15,15 0 0 1 26,-10l-11,11 l11,11a15,15 0 0 1 -26,-10h-10l-5.5,1v-4z"/>
+              </g>
+              <g id="pac_man3_semis">
+                <path id="three_zero" d="M537.5,195 v0.1 v-0.1 v-3 v-0.1 v0.1 v3z"/>
+                <path id="three_one" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v7.5l2,-1v-6.5a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_ones" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v7.5l2,-1v-6.5a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_two" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25h2v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_twos" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25 h0.5 h0.5 h0.5 h0.5 v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_three" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h2v-2a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_threes" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h2 v-1 v-1 a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_four" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h6.25v-2h-4.25a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_fours" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h6.25 v-0.4 v-0.4 v-0.4 v-0.4 v-0.4 h-4.25a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_five" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h6.25a15,15 0 0 0 7.5,15a15,15 0 0 0 7.5,-15v-2a15,15 0 0 0 -7.5,-15a15,15 0 0 0 -7.5,15h-4.25a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_fives" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h6.25a15,15 0 0 0 7.5,15a15,15 0 0 0 7.5,-15v-2a15,15 0 0 0 -7.5,-15a15,15 0 0 0 -7.5,15h-4.25a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_six" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h6.25a15,15 0 0 0 15,15a15,15 0 0 0 15,-15v-2a15,15 0 0 0 -15,-15a15,15 0 0 0 -15,15h-4.25a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+                <path id="three_seven" d="M537.5,195a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h6.25a15,15 0 0 0 26,10l-11,-11 l11,-11a15,15 0 0 0 -26,10h-4.25a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25v3z"/>
+              </g>
+            </g>
+            <g id="pre_dispensate3">
+              <path id="aaa" d="M482.5,185 l50,0 4,5 -4,5 -50,0"/>
+              <path id="ddd" d="M480,150 l10,0 17.5,35 25,0 4,5 -4,5 -25,0 -17.5,35 -10,0"/>
+            </g>
+            <g class="injection_mould3">              
+              <path id="ALL_OF_IT"d="M537.5,130h50v120h-50v-55a6.25,6.25 0 0 1 6.25,6.25v26.25a2.5,2.5 0 0 0 2.5,2.5h6.25a15,15 0 0 0 26,10l-11,-11 11,-11a15,15 0 0 0 -26,10h-4.25a2.5,2.5 0 0 1 -2.5,-2.5v-24.25a8.25,9.25 0 0 0 -8.25,-9.25l5.5,-1h10a15,15 0 0 0 26,10l-11,-11 11,-11a15,15 0 0 0 -26,10h-10l-5.5,-1a8.25,9.25 0 0 0 8.25,-9.25v-24.25a2.5,2.5 0 0 1 2.5,-2.5h4.25a15,15 0 0 0 26,10l-11,-11 11,-11a15,15 0 0 0 -26,10h-6.25a2.5,2.5 0 0 0 -2.5,2.5v26.25a6.25,6.25 0 0 1 -6.25,6.25z"/>
+            </g>
+            <g class="parisons3">
+              <path id="pac_man1" d="M537.5,185a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25
+                                     a15,15 0 0 1 26,-10l-11,11 11,11a15,15 0 0 1 -26,-10
+                                     h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25z"/>
+              <path id="pac_man2" d="M537.5,188l5.5,1h10
+                                     a15,15 0 0 1 26,-10l-11,11 11,11a15,15 0 0 1 -26,-10
+                                     h-10l-5.5,1z"/>
+              <path id="pac_man3" d="M537.5,192a8.25,9.25 0 0 1 8.25,9.25v24.25a2.5,2.5 0 0 0 2.5,2.5h4.25
+                                     a15,15 0 0 1 26,-10l-11,11 11,11a15,15 0 0 1 -26,-10
+                                     h-6.25a2.5,2.5 0 0 1 -2.5,-2.5v-26.25a6.25,6.25 0 0 0 -6.25,-6.25z"/>
+              <path id="pac_pac1" d="M641,130l-11,11 11,11a15,15 0 0 1 -26,-11a15,15 0 0 1 26,-11z"/>
+              <path id="pac_pac2" d="M641,179l-11,11 11,11a15,15 0 0 1 -26,-11a15,15 0 0 1 26,-11z"/>
+              <path id="pac_pac3" d="M641,228l-11,11 11,11a15,15 0 0 1 -26,-11a15,15 0 0 1 26,-11z"/>
+              <path id="man_man1" d="M600,175a6.25,6.25 0 0 0 6.25,-6.25v-26.25a2.5,2.5 0 0 1 2.5,-2.5h6.25v2h-4.25a2.5,2.5 0 0 0 -2.5,2.5v24.25a8.25,9.25 0 0 1 -8.25,9.25z"/>
+              <path id="man_man2" d="M600,188l5.5,1h10v2h-10l-5.5,1z"/>
+              <path id="man_man3" d="M600,202a8.25,9.25 0 0 1 8.25,9.25v24.25a2.5,2.5 0 0 0 2.5,2.5h4.25v2h-6.25a2.5,2.5 0 0 1 -2.5,-2.5v-26.25a6.25,6.25 0 0 0 -6.25,-6.25z"/>
+            </g>
+            <g class="hot_knife">
+              <path id="hot_knife" d="M615,120l-1,-10h2l-1,10"/>
+            </g>
+            <g class="injection_mould3">
+              <path id="top" d="M537.5,130h50v120h-50z"/>
+            </g>
+            <g id="machinery3">
+              <path id="segment2" d="M480,130 l10,0 0,20 -10,0"/>
+              <path id="segment3" d="M480,230 l10,0 0,20 -10,0"/>
+              <path id="segment4" d="M490,150 l17.5,35 l30,0 l0,-55 l-47.5,0 l0,20"/>
+              <path id="segment5" d="M490,230 l17.5,-35 l30,0 l0,55 l-47.5,0 l0,-20"/>
+              <path id="screw_axis3" d="M470,160 l15,0 15,30 -15,30 -15,0"/>
+            </g>
+            <path id="block3" d="M469,130 l11,0 0,120 -11,0 z"/>
+          </svg>
+          <script>
+            gsap.to("#base_semi, #base_semii, #one_ones, #one_two, #one_twos, #one_three, #one_threes, #one_four, #one_fours, #one_five, #one_fives, #one_six, #one_seven, #two_zero, #two_one, #two_ones, #two_two, #two_twos, #two_three, #two_threes, #two_four, #three_zero, #three_one, #three_ones, #three_two, #three_twos, #three_three, #three_threes, #three_four, #three_fours, #three_five, #three_fives, #three_six, #three_seven, #pac_man1, #pac_man2, #pac_man3, #pac_pac1, #pac_pac2, #pac_pac3, #man_man1, #man_man2, #man_man3", {duration:0, autoAlpha:0});
+            gsap.to("#top", {duration:0, x:100});
+
+            var tm = gsap.timeline({paused:true, repeat:-1})
+            tm.timeScale(1)
+            .to("#top", {duration:0.5, x:0})
+            .to("#top", {duration:0.5, autoAlpha:0.3, ease:"none"}, ">")
+            .to("#aaa", {duration: 0.5, x: 5 }, "<")
+            .to("#screw_axis3",{duration:2.75, x: 7.5, ease: "none" }, "<")
+            .set("#base_semi", {autoAlpha:1}, "<")
+            .to("#base_semi", {duration:1, morphSVG:"#base_semii", ease:"none"}, ">")
+            .set("#one_ones", {autoAlpha:1}, 1.5)
+            .to("#one_ones", {duration:0.45, morphSVG:"#one_two", ease:"none"}, 1.5)
+            .to("#one_ones", {duration:0, morphSVG:"#one_twos"}, 1.95)
+            .to("#one_ones", {duration:0.1, morphSVG:"#one_three", ease:"none"}, 1.95)
+            .to("#one_ones", {duration:0, morphSVG:"#one_threes"}, 2.05)
+            .to("#one_ones", {duration:0.25, morphSVG:"#one_four", ease:"none"}, 2.05)
+            .to("#one_ones", {duration:0, morphSVG:"#one_fours"}, 2.3)
+            .to("#one_ones", {duration:0.75, morphSVG:"#one_five", ease:"none"}, 2.3)
+            .to("#one_ones", {duration:0, morphSVG:"#one_fives"}, 3.05)
+            .to("#one_ones", {duration:0.95, morphSVG:"#one_six", ease:"none"}, 3.05)
+            .to("#one_ones", {duration:0, morphSVG:"#one_seven"}, 4)
+            .set("#two_ones", {autoAlpha:1}, 1.5)
+            .to("#two_ones", {duration:0.75, morphSVG:"#two_two", ease:"none"}, 1.5)
+            .to("#two_ones", {duration:0, morphSVG:"#two_twos"}, 2.25)
+            .to("#two_ones", {duration:0.95, morphSVG:"#two_three", ease:"none"}, 2.25)
+            .to("#two_ones", {duration:0, morphSVG:"#two_four"}, 3.2)
+            .set("#three_ones", {autoAlpha:1}, 1.5)
+            .to("#three_ones", {duration:0.45, morphSVG:"#three_two", ease:"none"}, 1.5)
+            .to("#three_ones", {duration:0, morphSVG:"#three_twos"}, 1.95)
+            .to("#three_ones", {duration:0.1, morphSVG:"#three_three", ease:"none"}, 1.95)
+            .to("#three_ones", {duration:0, morphSVG:"#three_threes"}, 2.05)
+            .to("#three_ones", {duration:0.25, morphSVG:"#three_four", ease:"none"}, 2.05)
+            .to("#three_ones", {duration:0, morphSVG:"#three_fours"}, 2.3)
+            .to("#three_ones", {duration:0.75, morphSVG:"#three_five", ease:"none"}, 2.3)
+            .to("#three_ones", {duration:0, morphSVG:"#three_fives"}, 3.05)
+            .to("#three_ones", {duration:0.95, morphSVG:"#three_six", ease:"none"}, 3.05)
+            .to("#three_ones", {duration:0, morphSVG:"#three_seven"}, 4)
+            .to("#aaa, #screw_axis3", {duration:1, x:0}, ">")
+            .to("#pac_man1, #pac_man2, #pac_man3", {duration:0, autoAlpha:1}, ">")
+            .to("#base_semi, #one_ones, #two_ones, #three_ones", {duration:0, autoAlpha:0}, ">")            
+            .to("#top", {duration:0.5, autoAlpha:1, ease:"none"})
+            .to("#top", {duration:0.5, x:125, ease:"sine.inOut"}, ">")
+            .to("#pac_man1, #pac_man2, #pac_man3", {duration:0.5, x:62.5, ease:"sine.inOut"}, "<")
+            .to("#pac_man1", {duration:0.5, y:-10, ease:"sine.inOut"}, "<")
+            .to("#pac_man3", {duration:0.5, y:10, ease:"sine.inOut"}, "<")
+            .to("#hot_knife", {duration:1.5, y:150, ease:"none"}, "knifeDown")
+            .set("#pac_pac1, #man_man1", {autoAlpha:1}, "knifeDown+=0.2")
+            .set("#pac_man1", {autoAlpha:0}, "<")
+            .to("#pac_pac1", {duration:0.49, x:5, ease:"power1.out"}, ">")
+            .to("#man_man1", {duration:0.49, x:-5, ease:"power1.out"}, "<")
+            .to("#man_man1", {duration:0.49, autoAlpha:0}, "<")
+            .set("#pac_pac2, #man_man2", {autoAlpha:1}, "knifeDown+=0.69")
+            .set("#pac_man2", {autoAlpha:0}, "<")
+            .to("#pac_pac2", {duration:0.49, x:5, ease:"power1.out"}, ">")
+            .to("#man_man2", {duration:0.49, x:-5, ease:"power1.out"}, "<")
+            .to("#man_man2", {duration:0.49, autoAlpha:0}, "<")
+            .set("#pac_pac3, #man_man3", {autoAlpha:1}, "knifeDown+=1.18")
+            .set("#pac_man3", {autoAlpha:0}, "<")
+            .to("#pac_pac3", {duration:0.49, x:5, ease:"power1.out"}, ">")
+            .to("#man_man3", {duration:0.49, x:-5, ease:"power1.out"}, "<")
+            .to("#man_man3", {duration:0.49, autoAlpha:0}, "<")
+            .to("#hot_knife", {duration:1.5, y:0, ease:"none"}, "knifeDown+=1.75")
+            .to("#top", {duration:0.5, x:100, ease:"sine.inOut"}, ">-=0.5")
+            .to("#pac_pac1, #pac_pac2, #pac_pac3", {duration:1.5, x:150}, "<")
+
+          </script>
+          <div class="nav">
+            <p class="dbutton" id="start" onClick="tm.play()"></p>
+            <p class="dbutton" id="pause" onClick="tm.pause()"></p>
+            <p class="dbutton" id="restart" onClick="gotoPage(1)"></p>
+          </div>
+				</div>
+				<!-- end payj - p3 -->
       </div>
       <!-- kanvas -->
     </div>

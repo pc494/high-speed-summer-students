@@ -69,70 +69,161 @@
             divcc.style.top = h - 40 + "px";
             divpara.style.top = h - 85 + "px";
           }
-
-          function rotate(i, n, r) {
-
-            if (i==1) {
-              gsap.to("#spinner_a"+String(n), {duration:0.5, y:10, x:15, ease:"none"});
-              gsap.to("#spinner_b"+String(n), {duration:0.5, y:10, x:-15, ease:"none"});
-              gsap.to("#spinner_c"+String(n), {duration:0.5, y:-10, x:0, ease:"none"});
-              gsap.to("#form"+String(n), {duration:0.75, delay:0.75, rotation:r, transformOrigin:"50% 50%", ease:"none"});
+     
+          function fuj(n) {
+            if (n==1) {
+                gsap.to("#first", {duration:0, autoAlpha:1})
             }
-
-            if (i==2) {
-              gsap.to("#form"+String(n), {duration:0.75, delay:0, rotation:r, transformOrigin:"50% 50%", ease:"none"});
-              gsap.to("#spinner_a"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
-              gsap.to("#spinner_b"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
-              gsap.to("#spinner_c"+String(n), {duration:0.5, delay:1, y:0, x:0, ease:"none"});
+            else if (n==2) {
+                gsap.to("#first", {duration:0, autoAlpha:0.5})
             }
-
-            if (i==3) {
-              gsap.to("#form"+String(n), {duration:0.75, delay:0, rotation:r, transformOrigin:"50% 50%", ease:"none"});
+            else if (n==3) {
+                gsap.to("#second", {duration:0, autoAlpha:1})
             }
-
+            else if (n==4) {
+                gsap.to("#second", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==5) {
+                gsap.to("#third", {duration:0, autoAlpha:1})
+            }
+            else if (n==6) {
+                gsap.to("#third", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==7) {
+                gsap.to("#fourth", {duration:0, autoAlpha:1})
+            }
+            else if (n==8) {
+                gsap.to("#fourth", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==9) {
+                gsap.to("#fifth", {duration:0, autoAlpha:1})
+            }
+            else if (n==10) {
+                gsap.to("#fifth", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==11) {
+                gsap.to("#sixth", {duration:0, autoAlpha:1})
+            }
+            else if (n==12) {
+                gsap.to("#sixth", {duration:0, autoAlpha:0.5})
+            }
+            else if (n==13) {
+                gsap.to("#seventh", {duration:0, autoAlpha:1})
+            }
+            else if (n==14) {
+                gsap.to("#seventh", {duration:0, autoAlpha:0.5})
+            }
           }
 
-          function lipballoons(a) {
-            gsap.to("#cable4, #form4", {duration:0.91*a, x:282.5, ease:"none"});
-            gsap.to("#balloonc", {duration:a * 0.15, delay:a * 0.20, morphSVG:"#balloon_lippedc", ease:"none"});
-            gsap.to("#balloonc", {duration:0, delay:a * 0.35, morphSVG:"#balloon_lippedcc", ease:"none"});
-            gsap.to("#balloonb", {duration:a * 0.15, delay:a * 0.41, morphSVG:"#balloon_lippedb", ease:"none"});
-            gsap.to("#balloonb", {duration:0, delay:a * 0.56, morphSVG:"#balloon_lippedbb", ease:"none"});
-            gsap.to("#balloona", {duration:a * 0.15, delay:a * 0.62, morphSVG:"#balloon_lippeda", ease:"none"});
-            gsap.to("#balloona", {duration:0, delay:a * 0.77, morphSVG:"#balloon_lippedaa", ease:"none"});
+          
+          function rand1a() {
+            cglnt.restart();
+            gotoPage(2);
+          }
+          function rand1b() {
+            ltxx.restart();
+            gotoPage(3);
+          }
+          function rand1c() {
+            lpp.restart();
+            gotoPage(4);
+          }
+          function rand1d() {
+            sk.restart();
+            gotoPage(5);
+          }
+          function rand1e() {
+            tlc.restart();
+            gotoPage(6);
+          }
+          function rand1f() {
+            inf.restart();
+            gotoPage(7);
+          }
+          function rand1g() {
+            wsh.restart();
+            gotoPage(8);
           }
 
-          function inflateballoons(a) {
-            var b = 1/a;
-            gsap.to("#cable7, #form7", {duration:b*175, delay:0, x:300, ease:"none"});
 
-            gsap.to("#balloon_lippedc7", {duration:b*83, delay:0, x:208, ease:"none"});
-            gsap.to("#balloon_lippedb7", {duration:b*113, delay:0, x:238, ease:"none"});
-            gsap.to("#balloon_lippeda7", {duration:b*143, delay:0, x:268, ease:"none"});
-            
-            gsap.to("#balloon_lippedc7", {duration:b*60, delay:0, morphSVG:"#balloon_inflatedc", ease:"power2.inOut"});
-            gsap.to("#balloon_lippedb7", {duration:b*60, delay:b*30, morphSVG:"#balloon_inflatedb", ease:"power2.inOut"});
-            gsap.to("#balloon_lippeda7", {duration:b*60, delay:b*60, morphSVG:"#balloon_inflateda", ease:"power2.inOut"});
-
-            // gsap.to("#balloon_lippedbb7", {duration:, delay:, morphSVG:"#balloon_inflatedb", ease:"none"});
-            // gsap.to("#balloonb", {duration:0, delay:a * 0.56, morphSVG:"#balloon_lippedbb", ease:"none"});
-            // gsap.to("#balloon_lippedaa7", {duration:, delay:, morphSVG:"#balloon_inflateda", ease:"none"});
-            // gsap.to("#balloona", {duration:0, delay:a * 0.77, morphSVG:"#balloon_lippedaa", ease:"none"});
+          function rand1n() {
+            cglnt.restart();
+            gotoPage(2);
           }
-
-          function rollballoons(a) {
-            var b =1/a
-            
-            gsap.to("#balloon_lippedc7", {duration:b*10, delay:b*73, morphSVG:"#balloon_pinchedc", ease:"none"});
-            gsap.to("#balloon_lippedc7", {duration:b*20, delay:b*83, morphSVG:"#balloon_thinc", ease:"expo.out"});
-            gsap.to("#balloon_lippedc7", {duration:b*37.5, delay:b*83, y:-75, ease:"none"});
-            gsap.to("#balloon_lippedc7", {duration:b*225, delay:b*120.5, y:-300, ease:"power1.out"});
-            gsap.to("#balloon_lippedc7", {duration:b*0.1, delay:b*120.5, morphSVG:"#balloon_lippedc7", ease:"none"});
-            gsap.to("#balloon_lippedc7", {duration:b*184, delay:b*345.5, y:-150, ease:"power1.in"});
-
-            gsap.to("#balloon_lippedb7", {duration:b*10, delay:b*103, morphSVG:"#balloon_pinchedb", ease:"none"});
-
-            gsap.to("#balloon_lippeda7", {duration:b*10, delay:b*133, morphSVG:"#balloon_pincheda", ease:"none"});
+          function rand2b() {
+            cglnt.seek(0, false);
+            cglnt.restart();
+            ltxx.seek(0, false);
+            ltxx.restart();
+            lpp.seek(0, false);
+            lpp.restart();
+            sk.seek(0, false);
+            sk.restart();
+            tlc.seek(0, false);
+            tlc.restart();
+            inf.seek(0, false);
+            inf.restart();
+            wsh.seek(0, false);
+            wsh.restart();
+            gotoPage(1);
+          }
+          function rand2n() {
+            ltxx.restart();
+            gotoPage(3);
+          }
+          function rand3b() {
+            cglnt.restart();
+            gotoPage(2);
+          }
+          function rand3n() {
+            lpp.restart();
+            gotoPage(4);
+          }
+          function rand4b() {
+            ltxx.restart();
+            gotoPage(3);
+          }
+          function rand4n() {
+            sk.restart();
+            gotoPage(5);
+          }
+          function rand5b() {
+            lpp.restart();
+            gotoPage(4);
+          }
+          function rand5n() {
+            tlc.restart();
+            gotoPage(6);
+          }
+          function rand6b() {
+            sk.restart();
+            gotoPage(5);
+          }
+          function rand6n() {
+            inf.restart();
+            gotoPage(7);
+          }
+          function rand7b() {
+            tlc.restart();
+            gotoPage(6);
+          }
+          function rand7n() {
+            wsh.restart();
+            gotoPage(8);
+          }
+          function rand8b() {
+            inf.restart();
+            gotoPage(7);
+          }
+          function rand8n() {
+            cglnt.restart();
+            ltxx.restart();
+            lpp.restart();
+            sk.restart();
+            tlc.restart();
+            inf.restart();
+            wsh.restart();
+            gotoPage(1);
           }
         </script>
     
@@ -232,6 +323,9 @@
           #reset {
             width: 84px;
             background-image: url("../../../images/reset.png");
+            position:absolute;
+            right:2%;
+            top:1%;
           }
     
           #start {
@@ -313,6 +407,58 @@
             height:440px;
             transform:scale(1);
           }
+          #coagulant_dipt, #latex_dipt, #lippingt, #soakt, #talc_solutiont, #washingt {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:480px;
+            transform:scale(1);
+            border:#000 4px solid;
+            border-radius:4px;
+          }
+          #inflationt {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:440px;
+            transform:scale(1);
+          }
+          #inflation_phantomt {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:480px;
+            transform:scale(1);
+            border:#000 4px solid;
+            border-radius:4px;
+          }
+          #inflation_fudget {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:480px;
+            transform:scale(1);
+          }
+          #inflation_fujt {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:480px;
+            transform:scale(1);
+          }
+          #inflation_phudget {
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:640px;
+            height:440px;
+            transform:scale(1);
+          }
           #inflation_fudge {
             position: absolute;
             left:0px;
@@ -337,13 +483,62 @@
             height:440px;
             transform:scale(1);
           }
+          #washing_fudge {
+            position: absolute;
+            left:100px;
+            top:0px;
+            width:52.5px;
+            height:480px;
+            transform:scale(1);
+          }
+          #washing_fudget {
+            position: absolute;
+            left:104px;
+            top:4px;
+            width:52.5px;
+            height:480px;
+            transform:scale(1);
+          }
 
+          .title_page {
+            text-align: center;
+            font-family: "Myriad-Roman";
+            text-decoration: underline;
+            font-size:30px;
+            position:absolute;
+            width:640px;
+            transform: translateX(-50%);
+            left:50%;
+            top:-4%;
+          }
+          .page_title {
+            text-align: center;
+            font-family: "Myriad-Roman";
+            text-decoration: underline;
+            font-size:20px;
+            position:absolute;
+            transform: translateX(-50%);
+            left:50%;
+            top:-4%;
+          }
+          .page_titlet {
+            text-align: center;
+            font-family: "Myriad-Roman";
+            text-decoration: underline;
+            font-size:60px;
+            position:absolute;
+            width:800px;
+            left:-80px;
+            top:-140px;
+          }
+          
 
 
           .cable {
             stroke:#000;
             stroke-width:2.5px;
             stroke-dasharray: 7.5 10;
+            fill:none;
           }
           .block {
             fill:none;
@@ -440,6 +635,12 @@
             stroke-width:1px;
             stroke-linecap:round;
           }
+          .spray {
+            stroke:#8af;
+            stroke-width:2.5px;
+            stroke-dasharray: 0px 500px;
+            fill:none;
+          }
           .talc {
             fill:#efefef;
             stroke:#ddd;
@@ -450,7 +651,7 @@
             stroke:#000;
             stroke-width: 1px;
             stroke-linecap:round;
-            fill:burlywood;
+            fill:steelblue;
           }
           .specks {
             stroke:#000;
@@ -466,6 +667,145 @@
           }
           #latex_vat, #coagulant_vat, #soaking_vat, #talc_vat {
             transform:scale(2);
+          }
+          #washing_drum_main {
+            stroke:#000;
+            stroke-width:1px;
+            stroke-linecap:round;
+            fill:url("#Patternnn");
+          }
+          #washing_drum_hatch {
+            stroke:#000;
+            stroke-width:1px;
+            stroke-linecap:round;
+            fill:url("#Patternnnn");
+          }
+          #washing_drum_maint {
+            stroke:#000;
+            stroke-width:1px;
+            stroke-linecap:round;
+            fill:url("#Pattern");
+          }
+          #washing_drum_hatcht {
+            stroke:#000;
+            stroke-width:1px;
+            stroke-linecap:round;
+            fill:url("#Patternn");
+          }
+          #nozzle, #nozzlet {
+            stroke:#000;
+            stroke-linecap:round;
+            stroke-width:1px;
+            fill:darkgoldenrod;
+          }
+          #hose {
+            stroke:#000;
+            stroke-linecap:round;
+            stroke-width:1px;
+            fill:#8af;
+          }
+          #ring {
+            stroke:#000;
+            stroke-linecap:round;
+            stroke-width:1px;
+            fill:#888;
+          }
+
+
+
+          .biz {
+            transform:scale(0.2);
+          }
+          #first {
+            position:absolute;
+            left:2.5%;
+            top:30%;
+            opacity:0.5;
+            cursor:pointer;
+          }
+          #first:hover{
+            transform-origin: 50% 50%;
+            transform:scale(0.22);
+            left:1.5%;
+            top:29%;
+          }
+          #second {
+            position:absolute;
+            left:27.5%;
+            top:30%;
+            opacity:0.5;
+            cursor:pointer;
+          }
+          #second:hover{
+            transform-origin: 50% 50%;
+            transform:scale(0.22);
+            left:26.5%;
+            top:29%;
+          }
+          #third {
+            position:absolute;
+            left:52.5%;
+            top:30%;
+            opacity:0.5;
+            cursor:pointer;
+          }
+          #third:hover{
+            transform-origin: 50% 50%;
+            transform:scale(0.22);
+            left:51.5%;
+            top:29%;
+          }
+          #fourth {
+            position:absolute;
+            left:77.5%;
+            top:30%;
+            opacity:0.5;
+            cursor:pointer;
+          }
+          #fourth:hover{
+            transform-origin: 50% 50%;
+            transform:scale(0.22);
+            left:76.5%;
+            top:29%;
+          }
+          #fifth {
+            position:absolute;
+            left:15%;
+            top:60%;
+            opacity:0.5;
+            cursor:pointer;
+          }
+          #fifth:hover{
+            transform-origin: 50% 50%;
+            transform:scale(0.22);
+            left:14%;
+            top:59%;
+          }
+          #sixth {
+            position:absolute;
+            left:40%;
+            top:60%;
+            opacity:0.5;
+            cursor:pointer;
+          }
+          #sixth:hover{
+            transform-origin: 50% 50%;
+            transform:scale(0.22);
+            left:39%;
+            top:59%;
+          }
+          #seventh {
+            position:absolute;
+            left:65%;
+            top:60%;
+            opacity:0.5;
+            cursor:pointer;
+          }
+          #seventh:hover{
+            transform-origin: 50% 50%;
+            transform:scale(0.22);
+            left:64%;
+            top:59%;
           }
         </style>
     </head>
@@ -484,29 +824,515 @@
 				
 				</div><!-- end cc -->
 				<script>
-				
 					setAnimDimensions(640,480);
-				
 				</script>
-				
+
 				<!-- divs for storyline -->
+
+
 				<!--  new page starts here    -->
 				<div class="payj" id="p1"> 
-					<div class="" id=""><p></p></div>
-                    <svg id="page1">
-                        
-                    </svg>
-                    <script>
-                        
-                    </script>
+					<div class="title_page"><p>Creating Latex Products: Balloons</p></div>
+                    
+                    <div id="first" class="biz" onclick="rand1a()" onmouseover="fuj(1)" onmouseleave="fuj(2)">
+                        <div class="page_titlet"><p>Dunking in Coagulant</p></div>
+                        <svg id="coagulant_dipt">
+                            <g id="production_line2">
+                                <g id="cable2" class="cable">
+                                    <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                                </g>
+                                <g id="dummy2" class="spinner">
+                                    <path d="M237.5,75h15v5h-10v5h-5z"/>
+                                    <path d="M377.5,75h-15v5h10v5h5z"/>
+                                    <path d="M252.5,120v-15h5v10h100v-10h5v15z"/>
+                                </g>
+                            </g>
+                            <g id="form2">
+                                <g class="block">
+                                    <rect x="7.5" y="39.5" width="150" height="111"/>
+                                </g>
+                                <g class="form">
+                                    <path d="M32.5,90h100v10h-100z"/>
+                                    <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                                <g id="spinner2" class="spinner">
+                                    <path id="spinner_a2" d="M12.5,75h15v5h-10v5h-5z"/>
+                                    <path id="spinner_b2" d="M152.5,75h-15v5h10v5h5z"/>
+                                    <path id="spinner_c2" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                                </g>
+                            </g>
+                            <g id="coagulant_vat">
+                                <g class="coagulant">
+                                    <path id="coagulantx" d="M80,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
+                                    <path id="coagulanttx" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
+                                </g>
+                                <g class="container">
+                                    <path d="M75,100h5v100h150v-100h5v105h-160z"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="second" class="biz" onclick="rand1b()" onmouseover="fuj(3)" onmouseleave="fuj(4)">
+                        <div class="page_titlet"><p>Dunking in Latex</p></div>
+                        <svg id="latex_dipt">
+                            <g id="production_line3">
+                                <g id="cable3" class="cable">
+                                    <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                                </g>
+                            </g>
+                            <g id="form3">
+                                <g class="block">
+                                    <rect x="7.5" y="34.5" width="150" height="121"/>
+                                </g>
+                                <g class="form">
+                                    <path d="M32.5,85h100v10h-100z"/>
+                                    <path d="M50,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M80,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M110,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                                <g id="balloons" class="balloon">
+                                    <path d="M49.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                    <path d="M79.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                    <path d="M109.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                </g>
+                            </g>
+                            <g id="form33">
+                                <g class="block">
+                                    <rect x="372.5" y="34.5" width="150" height="121"/>
+                                </g>
+                                <g class="form">
+                                    <path d="M397.5,85h100v10h-100z"/>
+                                    <path d="M415,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M445,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M475,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                                <g id="balloons33" class="balloon">
+                                    <path d="M414.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                    <path d="M444.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                    <path d="M474.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                </g>
+                            </g>
+                            <g id="form333">
+                                <g class="block">
+                                    <rect x="372.5" y="34.5" width="150" height="121"/>
+                                </g>
+                                <g class="form">
+                                    <path d="M397.5,85h100v10h-100z"/>
+                                    <path d="M415,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M445,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M475,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                                <g id="balloons333" class="balloon">
+                                    <path d="M414.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                    <path d="M444.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                    <path d="M474.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                </g>
+                            </g>
+                            <g id="spinner3" class="spinner">
+                                <g class="block">
+                                    <rect x="372.5" y="34.5" width="145" height="121"/>
+                                </g>
+                                <g>
+                                    <path id="spinner_a3" d="M237.5,75h15v5h-10v5h-5z"/>
+                                    <path id="spinner_b3" d="M377.5,75h-15v5h10v5h5z"/>
+                                    <path id="spinner_c3" d="M252.5,110h15v-5h-10v-5h-5z"/>
+                                    <path id="spinner_d3" d="M362.5,110h-15v-5h10v-5h5z"/>
+                                </g>
+                            </g>
+                            <g id="latex_vat">
+                                <g class="latex">
+                                    <path id="latext" d="M80,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
+                                    <path id="latexxt" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
+                                </g>
+                                <g class="container">
+                                    <path d="M75,100h5v100h150v-100h5v105h-160z"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="third" class="biz" onclick="rand1c()" onmouseover="fuj(5)" onmouseleave="fuj(6)">
+                        <div class="page_titlet"><p>Rolling the Ends into a Lip</p></div> 
+                        <svg id="lippingt">
+                            <g id="overlord">
+                                <g class="brush" id="dunnnnnn">
+                                    <path id="brush2" fill="#111" d="M278,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
+                                </g>
+                                <g id="production_line4">
+                                    <g id="cable4" class="cable">
+                                        <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                                    </g>
+                                </g>
+                                <g id="form4">
+                                    <g class="block">
+                                        <rect id="dun" x="7.5" y="39.5" width="150" height="111"/>
+                                    </g>
+                                    <g id="dunn" class="form">
+                                        <path d="M32.5,90h100v10h-100z"/>
+                                        <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                        <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                        <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    </g>
+                                    <g class="balloon" id="dunnn">
+                                        <path id="balloona" d="M49.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                        <path id="balloonb" d="M79.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                        <path id="balloonc" d="M109.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                    </g>
+                                    <g class="balloon_lipped" id="dunnnn">
+                                        <path id="balloon_lippedahalf" d="M49.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                        <path id="balloon_lippedbhalf" d="M79.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                        <path id="balloon_lippedchalf" d="M109.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                        <path id="balloon_lippedaa" d="M48.3,78.3v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                        <path id="balloon_lippedbb" d="M78.3,78.3v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                        <path id="balloon_lippedcc" d="M108.3,78.3v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    </g>
+                                </g>
+                                <g class="brush" id="dunnnnn">
+                                    <path id="brush1" fill="#444" d="M284,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="fourth" class="biz" onclick="rand1d()" onmouseover="fuj(7)" onmouseleave="fuj(8)">
+                        <div class="page_titlet"><p>Hot Water Soak</p></div>
+                        <svg id="soakt">
+                            <g id="production_line5">
+                                <g id="step1">
+                                    <g class="cable">
+                                        <line id="cable5" x1="-1563.5" y1="95" x2="350" y2="95"/>
+                                    </g>
+                                    <g class="block_filled">
+                                        <rect x="210" y="90" width="429" height="10"/>
+                                    </g>
+                                </g>
+                                <g id="step2">
+                                    <g class="cable">
+                                        <line id="cable55" x1="210" y1="-1360" x2="210" y2="210"/>
+                                    </g>
+                                    <g class="block_filled">
+                                        <rect x="205" y="0" width="10" height="93.5"/>
+                                        <rect x="205" y="206.5" width="10" height="272.75"/>
+                                    </g>
+                                </g>
+                                <g id="step3">
+                                    <g class="cable">
+                                        <line id="cable555" x1="-1284" y1="205" x2="640" y2="205"/>
+                                    </g>
+                                    <g class="block_filled">
+                                        <rect x="0" y="200" width="208.75" height="10"/>
+                                    </g>
+                                </g>
+                                <g id="dummy5" class="spinner">
+                                    <path d="M140,75h15v5h-10v5h-5z"/>
+                                    <path d="M280,75h-15v5h10v5h5z"/>
+                                    <path d="M155,120v-15h5v10h100v-10h5v15z"/>
+                                </g>
+                                <g id="dummy55" class="spinner">
+                                    <path d="M140,180h15v5h-10v5h-5z"/>
+                                    <path d="M280,180h-15v5h10v5h5z"/>
+                                    <path d="M155,225v-15h5v10h100v-10h5v15z"/>
+                                </g>
+                            </g>
+                            <g id="form5">
+                                <g class="block">
+                                    <rect x="7.5" y="39.5" width="150" height="121"/>
+                                </g>
+                                <g class="form">
+                                    <path d="M32.5,90h100v10h-100z"/>
+                                    <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                                <g class="balloon_lipped">
+                                    <path d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                </g>
+                                <g id="spinner5" class="spinner">
+                                    <path id="spinner_a5" d="M12.5,75h15v5h-10v5h-5z"/>
+                                    <path id="spinner_b5" d="M152.5,75h-15v5h10v5h5z"/>
+                                    <path id="spinner_c5" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                                </g>
+                            </g>
+                            <g id="soaking_vat">
+                                <g class="water">
+                                    <path id="water"  d="M55,110 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 v90h-300z"/>
+                                    <path id="waterr" d="M55,110 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 s3.75,-0.5 5,-0.5 s1.8125,0 5,0.5 s3.75,0.5 5,0.5 s1.8125,0 5,-0.5 v90h-300z"/>
+                                </g>
+                                <g class="container">
+                                    <path d="M50,100h5v100h300v-100h5v105h-310z"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="fifth" class="biz" onclick="rand1e()" onmouseover="fuj(9)" onmouseleave="fuj(10)">
+                        <div class="page_titlet"><p>Dunking in Talc-Water</p></div>
+                        <svg id="talc_solutiont">
+                            <g id="production_line6">
+                                <g id="cable6" class="cable">
+                                    <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                                </g>
+                                <g id="dummy6" class="spinner">
+                                    <path d="M237.5,75h15v5h-10v5h-5z"/>
+                                    <path d="M377.5,75h-15v5h10v5h5z"/>
+                                    <path d="M252.5,120v-15h5v10h100v-10h5v15z"/>
+                                </g>
+                            </g>
+                            <g id="form6">
+                                <g class="block">
+                                    <rect x="7.5" y="39.5" width="150" height="111"/>
+                                </g>
+                                <g class="form">
+                                    <path d="M32.5,90h100v10h-100z"/>
+                                    <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                                <g class="balloon_lipped">
+                                    <path id="balloon_lippeda" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                </g>
+                                <g id="spinner6" class="spinner">
+                                    <path id="spinner_a6" d="M12.5,75h15v5h-10v5h-5z"/>
+                                    <path id="spinner_b6" d="M152.5,75h-15v5h10v5h5z"/>
+                                    <path id="spinner_c6" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                                </g>
+                            </g>
+                            <g id="talc_vat">
+                                <g class="talc">
+                                    <path id="talc" d="M80,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
+                                    <path id="talcc" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
+                                </g>
+                                <g class="container">
+                                    <path d="M75,100h5v100h150v-100h5v105h-160z"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="sixth" class="biz" onclick="rand1f()" onmouseover="fuj(11)" onmouseleave="fuj(12)">
+                        <div class="page_titlet"><p>Inflation and Release</p></div>
+                        <svg id="inflation_phantomt"></svg>
+                        <svg id="inflationt">
+                            <g id="production_line7">
+                                <g class="block_filled">
+                                    <rect x="350" y="227.9" width="289" height="20"/>
+                                </g>
+                                <g class="cable">
+                                <g id="cable77" class="cable">
+                                    <line x1="-1000" y1="227.9" x2="1640" y2="227.9"/>
+                                </g>
+                                </g>
+
+                                <g id="cable7" class="cable">
+                                    <line x1="-1000" y1="400" x2="1640" y2="400"/>
+                                </g>
+                                <g id="left_roller">
+                                    <g class="roller">
+                                        <circle  cx="285" cy="292.1" r="32.5"/>
+                                    </g>
+                                    <g class="specks">
+                                        <path d="M313,292.1a28,28 0 0 0 -1,-5"/>
+                                        <path d="M257,292.1a28,28 0 0 1 2,-10"/>
+                                        <path d="M278,280l1,-0.9"/>
+                                        <path d="M280,310l1,-0.5"/>
+                                        <path d="M285,265l1,0.12"/>
+                                        <path d="M293,312.5l1,0.3"/>
+                                        <path d="M303,305l1,-0.4"/>
+                                        <path d="M268,270l1,0"/>
+                                        <path d="M266,300l1,-0.15"/>
+                                        <path d="M288,290a4,4 0 0 1 0,4.2"/>
+                                    </g>
+                                </g>
+                            </g>
+                            <g id="form7">
+                                <g class="block">
+                                    <rect x="7.5" y="444.5" width="150" height="111"/>
+                                </g>
+                                <g class="form">
+                                    <path d="M32.5,395h100v10h-100z"/>
+                                    <path d="M50,400v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M80,400v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M110,400v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                            </g>
+                            <g class="nozzle" id="nozzle">
+                                <path fill="#aaa" d="M312.5,185 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25"/>
+                                <path fill="#aaa" d="M327.5,185 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25"/>
+                                <path fill="#444" d="M305,185 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100"/>
+                            </g>
+                            <g class="nozzle" id="nozzle2">
+                                <path fill="#aaa" d="M312.5,185 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25"/>
+                                <path fill="#aaa" d="M327.5,185 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25"/>
+                                <path fill="#444" d="M305,185 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100"/>
+                            </g>
+                            <g class="nozzle" id="nozzle3">
+                                <path fill="#aaa" d="M312.5,185 l0,127.5 l3.75,3.75 l1.25,0 l0,-131.25"/>
+                                <path fill="#aaa" d="M327.5,185 l0,127.5 l-3.75,3.75 l-1.25,0 l0,-131.25"/>
+                                <path fill="#444" d="M305,185 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100"/>
+                            </g>
+                        </svg>
+                        <svg id="inflation_fudget"><!-- see note on next svg -->
+                            <g id="form77">
+                                <g class="balloon_lipped">
+                                    <path id="balloon_lippeda7" d="M48.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedb7" d="M78.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedc7" d="M108.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <svg id="inflation_phudget">
+                            <g id="production_line7"> 
+                                <g id="right_roller">
+                                    <g class="roller">
+                                        <circle cx="355" cy="292.1" r="32.5"/>
+                                    </g>
+                                    <g class="specks">
+                                        <path d="M383,292.1a28,28 0 0 1 -2,5"/>
+                                        <path d="M327,292.1a28,28 0 0 0 2,10"/>
+                                        <path d="M348,280l1,-0.9"/>
+                                        <path d="M350,315l1,-0.5"/>
+                                        <path d="M355,272l1,0.12"/>
+                                        <path d="M353,295.5l1,0.3"/>
+                                        <path d="M373,305l1,-0.4"/>
+                                        <path d="M378,270l-0.5,0"/>
+                                        <path d="M336,300l0.5,-0.15"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="seventh" class="biz" onclick="rand1g()" onmouseover="fuj(13)" onmouseleave="fuj(14)">
+                        <div class="page_titlet"><p>Hot Wash</p></div>
+                        <svg id="washingt">
+                            <defs>
+                                <pattern id="Pattern" x="0" y="0" width=".02" height=".02">
+                                    <rect x="0" y="0" width="4" height="4" fill="#999"/>
+                                    <circle cx="2" cy="2" r="1.5" fill="#fff" stroke="#444" stroke-width="1" stroke-linecap="round"/>
+                                </pattern>
+                                <pattern id="Patternn" x="0" y="0" width=".04" height=".04">
+                                    <rect x="0" y="0" width="8" height="8" fill="#999"/>
+                                    <circle cx="2" cy="2" r="1.5" fill="#fff" stroke="#444" stroke-width="1" stroke-linecap="round"/>
+                                </pattern>
+                            </defs>
+                            <g id="production_line8">
+                                <g id="cable8" class="cable">
+                                    <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                                </g>
+                                <g id="cable888" class="cable">
+                                    <line x1="-1010" y1="117.282" x2="1640" y2="117.282"/>
+                                </g>
+                                <g class="block_filled">
+                                    <rect x="100" y=90 width="539" height="32.282"/>
+                                </g>
+                                <g id="cablee8" class="cable">
+                                    <line x1="-1000" y1="400" x2="1640" y2="400"/>
+                                </g>
+                                <g id="cablee888" class="cable">
+                                    <line x1="-1010" y1="422.282" x2="1640" y2="422.282"/>
+                                </g>
+                                <g class="block_filled">
+                                    <rect x="0" y=395 width="152.5" height="32.282"/>
+                                </g>
+                            </g>
+                            <g id="form8">
+                                <g class="balloon_lipped">
+                                    <path id="balloon_lippedu8" d="M-226.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedv8" d="M-186.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedw8" d="M-146.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedx8" d="M-106.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedy8" d="M-66.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedz8" d="M-26.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippeda8" d="M13.3,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedb8" d="M53.3,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedc8" d="M93.3,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                </g>
+                            </g>
+                            <g id="production_line8">
+                                <g id="washing_drum">
+                                    <path id="washing_drum_maint"  d="M200,75a100,100 0 1 1 -100,100h10a90,90 0 1 0 90,-90z"/>
+                                    <path id="washing_drum_hatcht" d="M200,75a100,100 0 0 0 -100,100h10a90,90 0 0 1 90,-90z"/>
+                                </g>
+                            </g>
+                            <g id="sprayer">
+                                <g id="nozzlet">
+                                    <path d="M345,43l30,-6v15l-30,-6z"/>
+                                </g>
+                                <g id="hose">
+                                    <path d="M375,39h100a50,25 0 0 0 50,-25v-50h11v50a61,36 0 0 1 -61,36h-100"/>
+                                </g>
+                                <g id="ring">
+                                    <path d="M372.5,36h7.5v17h-7.5z"/>
+                                </g>
+                                <g id="one" class="spray">
+                                    <path d="M345,45q-55,0 -110,250"/>
+                                    <path d="M345,45q-57.5,0 -115,250"/>
+                                    <path d="M345,45q-60,0 -120,250"/>
+                                    <path d="M345,45q-62.5,0 -125,250"/>
+                                    <path d="M345,45q-65,0 -130,250"/>
+                                    <path d="M345,45q-67.5,0 -135,250"/>
+                                    <path d="M345,45q-70,0 -140,250"/>
+                                    <path d="M345,45q-72.5,0 -145,250"/>
+                                    <path d="M345,45q-75,0 -150,250"/>
+                                    <path d="M345,45q-77.5,0 -155,250"/>
+                                    <path d="M345,45q-80,0 -160,250"/>
+                                    <path d="M345,45q-82.5,0 -165,250"/>
+                                    <path d="M345,45q-85,0 -170,250"/>
+                                    <path d="M345,45q-87.5,0 -175,250"/>
+                                    <path d="M345,45q-90,0 -180,250"/>
+                                    <path d="M345,45q-92.5,0 -185,250"/>
+                                    <path d="M345,45q-95,0 -190,250"/>
+                                    <path d="M345,45q-97.5,0 -195,250"/>
+                                    <path d="M345,45q-100,0 -200,250"/>
+                                    <path d="M345,45q-102.5,0 -205,250"/>
+                                    <path d="M345,45q-105,0 -210,250"/>
+
+                                </g>
+                                <g id="two" class="spray">
+                                    <path d="M235,295q55,-250 110,-250"/>
+                                    <path d="M230,295q57.5,-250 115,-250"/>
+                                    <path d="M225,295q60,-250 120,-250"/>
+                                    <path d="M220,295q62.5,-250 125,-250"/>
+                                    <path d="M215,295q65,-250 130,-250"/>
+                                    <path d="M210,295q67.5,-250 135,-250"/>
+                                    <path d="M205,295q70,-250 140,-250"/>
+                                    <path d="M200,295q72.5,-250 145,-250"/>
+                                    <path d="M195,295q75,-250 150,-250"/>
+                                    <path d="M190,295q77.5,-250 155,-250"/>
+                                    <path d="M185,295q80,-250 160,-250"/>
+                                    <path d="M180,295q82.5,-250 165,-250"/>
+                                    <path d="M175,295q85,-250 170,-250"/>
+                                    <path d="M170,295q87.5,-250 175,-250"/>
+                                    <path d="M165,295q90,-250 180,-250"/>
+                                    <path d="M160,295q92.5,-250 185,-250"/>
+                                    <path d="M155,295q95,-250 190,-250"/>
+                                    <path d="M150,295q97.5,-250 195,-250"/>
+                                    <path d="M145,295q100,-250 200,-250"/>
+                                    <path d="M140,295q102.5,-250 205,-250"/>
+                                    <path d="M135,295q105,-250 210,-250"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <svg id="washing_fudget">
+                            <g id="production_line88">
+                                <g id="cable88" class="cable">
+                                    <circle cx="0" cy="106.141" r="11.141"/>
+                                </g>
+                                <g id="cablee88" class="cable">
+                                    <circle cx="52.5" cy="411.141" r="11.141"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
                     <div class="nav">
-                        <p class="dbutton" id="start" onClick="gotoPage(2)"></p >
+                        <p class="dbutton" id="start" onClick=""></p >
                     </div>
 				</div> <!-- end payj - p1 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p2" > 
-                    <div class="" id=""><p></p></div>
+                    <div class="page_title"><p>Dunking in Coagulant</p></div>
                     <svg id="coagulant_dip">
                         <g id="production_line2">
                             <g id="cable2" class="cable">
@@ -545,70 +1371,124 @@
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#coagulantt, #spinner2", {duration:0, autoAlpha:0});
+                        gsap.to("#coagulantt, #coagulanttx, #spinner2", {duration:0, autoAlpha:0});
                         gsap.to("#cable2, #form2", {duration:0, x:-140});
 
                         var wavesc = gsap.timeline({paused:false, repeat:-1})
                         wavesc.timeScale(1)
-                        wavesc.to("#coagulant", {duration:0.5, morphSVG:"#coagulantt", ease:"power1.inOut"})
-                        .to("#coagulant", {duration:0.5, morphSVG:"#coagulant", ease:"power1.inOut"})
+                        wavesc.to("#coagulant", {duration:0.5, morphSVG:"#coagulantt", ease:"sine.inOut"}, 0)
+                        .to("#coagulant", {duration:0.5, morphSVG:"#coagulant", ease:"sine.inOut"}, 0.5)
+                        wavesc.to("#coagulantx", {duration:0.5, morphSVG:"#coagulanttx", ease:"sine.inOut"}, 0)
+                        .to("#coagulantx", {duration:0.5, morphSVG:"#coagulantx", ease:"sine.inOut"}, 0.5)
                         wavesc.play()
+
+                        var ccable2 = gsap.timeline({paused:false, repeat:-1})
+                        ccable2.timeScale(1)
+                        ccable2.to("#cable2", {duration:0, x:0, ease:"none"})
+                        .to("#cable2", {duration:7/6, x:175, ease:"none"})
+                        .to("#cable2", {duration:0, x:0, ease:"none"})
+                        ccable2.play()
+
+                        function ccable2_pausee() {
+                          ccable2.pause();
+                        }
+
+                        function ccable2_playy() {
+                          ccable2.play();
+                        }
                         
-                        var cglnt = gsap.timeline({paused:true,repeat:0})
+                        var cglnt = gsap.timeline({paused:false,repeat:-1})
                         cglnt.timeScale(1)
-                        .to("#cable2, #form2", {duration:2, x:225, ease:"none"}, 0)
+                        .to("#form2", {duration:73/30, x:225, ease:"none"}, 0)
+                        .call(ccable2_pausee, [], ">")
                         .set("#spinner2", {autoAlpha:1}, ">")
                         .set("#dummy2", {autoAlpha:0}, ">")
-                        .call(rotate, ["1", "2", "180"], ">" + 0.25)
-                        .to("#form2", {duration:1.5, y:120, ease:"none"}, ">" + 2)
+                        .to("#spinner_a2", {duration:0.5, y:10, x:15, ease:"none"}, ">" + 0.25)
+                        .to("#spinner_b2", {duration:0.5, y:10, x:-15, ease:"none"}, "<")
+                        .to("#spinner_c2", {duration:0.5, y:-10, x:0, ease:"none"}, "<")
+                        .to("#form2", {duration:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")
+                        .to("#form2", {duration:1.5, y:120, ease:"none"}, ">" + 0.25)
                         .to("#form2", {duration:1.5, y:0, ease:"none"})
-                        .call(rotate, ["2", "2", "0"], ">" + 0.25)
-                        .set("#dummy2", {autoAlpha:1}, ">" + 2)
+                        .to("#form2", {duration:0.75, rotation:0, transformOrigin:"50% 50%", ease:"none"}, ">" + 0.25)
+                        .to("#spinner_a2", {duration:0.5, y:0, x:0, ease:"none"}, ">+=0.25")
+                        .to("#spinner_b2", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .to("#spinner_c2", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .set("#dummy2", {autoAlpha:1}, ">" + 0.25)
                         .set("#spinner2", {autoAlpha:0}, ">")
-                        .to("#cable2, #form2", {duration:2, x:610, ease:"none"}, ">")
+                        .call(ccable2_playy, [], ">")
+                        .to("#form2", {duration:77/30, x:610, ease:"none"}, ">")
                     </script>
 
-                    <p class="dbutton" id="back2" onClick="gotoPage(1)"></p >
-                    <p class="dbutton" id="next2" onClick="gotoPage(3)"></p >                    
-                    <div class="nav">
-                        <p class="dbutton" id="start" onClick="cglnt.restart()"></p >
-                    </div>
-
+                    <p class="dbutton" id="back2" onClick="rand2b()"></p >
+                    <p class="dbutton" id="next2" onClick="rand2n()"></p >
 				</div> <!-- end payj - p2 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p3" > 
-					<div class="" id=""><p></p></div>
+					<div class="page_title"><p>Dunking in Latex</p></div>
                     <svg id="latex_dip">
                         <g id="production_line3">
                             <g id="cable3" class="cable">
                                 <line x1="-1000" y1="95" x2="1640" y2="95"/>
                             </g>
-                            <g id="dummy3" class="spinner">
-                                <path d="M237.5,75h15v5h-10v5h-5z"/>
-                                <path d="M377.5,75h-15v5h10v5h5z"/>
-                                <path d="M252.5,120v-15h5v10h100v-10h5v15z"/>
-                            </g>
                         </g>
                         <g id="form3">
                             <g class="block">
-                                <rect x="7.5" y="39.5" width="150" height="111"/>
+                                <rect x="7.5" y="34.5" width="150" height="121"/>
                             </g>
                             <g class="form">
-                                <path d="M32.5,90h100v10h-100z"/>
-                                <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
-                                <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
-                                <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M32.5,85h100v10h-100z"/>
+                                <path d="M50,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M80,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M110,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
                             </g>
                             <g id="balloons" class="balloon">
-                                <path d="M49.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
-                                <path d="M79.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
-                                <path d="M109.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M49.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M79.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M109.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
                             </g>
-                            <g id="spinner3" class="spinner">
-                                <path id="spinner_a3" d="M12.5,75h15v5h-10v5h-5z"/>
-                                <path id="spinner_b3" d="M152.5,75h-15v5h10v5h5z"/>
-                                <path id="spinner_c3" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
+                        </g>
+                        <g id="form33">
+                            <g class="block">
+                                <rect x="372.5" y="34.5" width="150" height="121"/>
+                            </g>
+                            <g class="form">
+                                <path d="M397.5,85h100v10h-100z"/>
+                                <path d="M415,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M445,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M475,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g id="balloons33" class="balloon">
+                                <path d="M414.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M444.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M474.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                            </g>
+                        </g>
+                        <g id="form333">
+                            <g class="block">
+                                <rect x="372.5" y="34.5" width="150" height="121"/>
+                            </g>
+                            <g class="form">
+                                <path d="M397.5,85h100v10h-100z"/>
+                                <path d="M415,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M445,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                <path d="M475,90v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            </g>
+                            <g id="balloons333" class="balloon">
+                                <path d="M414.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M444.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M474.5,80v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                            </g>
+                        </g>
+                        <g id="spinner3" class="spinner">
+                            <g class="block">
+                                <rect x="372.5" y="34.5" width="145" height="121"/>
+                            </g>
+                            <g>
+                                <path id="spinner_a3" d="M237.5,75h15v5h-10v5h-5z"/>
+                                <path id="spinner_b3" d="M377.5,75h-15v5h10v5h5z"/>
+                                <path id="spinner_c3" d="M252.5,110h15v-5h-10v-5h-5z"/>
+                                <path id="spinner_d3" d="M362.5,110h-15v-5h10v-5h5z"/>
                             </g>
                         </g>
                         <g id="latex_vat">
@@ -622,41 +1502,64 @@
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#latexx, #spinner3", {duration:0, autoAlpha:0});
-                        gsap.to("#cable3, #form3", {duration:0, x:-140});
-                        gsap.to("#balloons", {duration:0, autoAlpha:0});
+
+                        gsap.to("#latexx, #latexxt", {duration:0, autoAlpha:0});
+                        gsap.to("#cable3, #form3, #form33, #form333", {duration:0, x:-140});
+                        gsap.to("#balloons, #balloons33", {duration:0, autoAlpha:0});
+                        gsap.to("#form33", {duration:0, rotate:180, transformOrigin:"50% 50%"});
+                        // gsap.to("#spinner3", {duration:0, rotate:180, transformOrigin:"25% 50%"});
+
+
 
                         var wavesl = gsap.timeline({paused:false, repeat:-1})
                         wavesl.timeScale(1)
-                        wavesl.to("#latex", {duration:0.5, morphSVG:"#latexx", ease:"power1.inOut"})
-                        .to("#latex", {duration:0.5, morphSVG:"#latex", ease:"power1.inOut"})
+                        wavesl.to("#latex", {duration:0.5, morphSVG:"#latexx", ease:"sine.inOut"}, 0)
+                        .to("#latex", {duration:0.5, morphSVG:"#latex", ease:"sine.inOut"}, 0.5)
+                        wavesl.to("#latext", {duration:0.5, morphSVG:"#latexxt", ease:"sine.inOut"}, 0)
+                        .to("#latext", {duration:0.5, morphSVG:"#latext", ease:"sine.inOut"}, 0.5)
                         wavesl.play()
+
+
+
+                        var ccable3 = gsap.timeline({paused:false, repeat:-1})
+                        ccable3.timeScale(1)
+                        ccable3.to("#cable3", {duration:0, x:0, ease:"none"})
+                        .to("#cable3", {duration:7/6, x:175, ease:"none"})
+                        .to("#cable3", {duration:0, x:0, ease:"none"})
+                        ccable3.play()
+                        function ccable3_pausee() {
+                          ccable3.pause();
+                        }
+                        function ccable3_playy() {
+                          ccable3.play();
+                        }
                         
-                        var ltx = gsap.timeline({paused:true,repeat:0})
-                        ltx.timeScale(1)
-                        .to("#cable3, #form3", {duration:2, x:225, ease:"none"}, 0)
-                        .set("#spinner3", {autoAlpha:1}, ">")
-                        .set("#dummy3", {autoAlpha:0}, ">")
-                        .call(rotate, ["1", "3", "180"], ">+=0.25")
-                        .to("#latex_vat", {duration:1.5, y:-10, ease:"none"}, ">+=2")
-                        .to("#balloons", {duration:1.5, autoAlpha:1})
-                        .to("#latex_vat", {duration:1.5, y:100, ease:"none"})
-                        .call(rotate, ["2", "3", "0"], ">+=0.25")
-                        .set("#dummy3", {autoAlpha:1}, ">+=2")
-                        .set("#spinner3", {autoAlpha:0}, ">")
-                        .to("#cable3, #form3", {duration:2, x:610, ease:"none"}, ">")
+
+
+                        var ltxx = gsap.timeline({paused:false, repeat:-1})
+                        ltxx.timeScale(1)
+                        .to("#latex_vat", {duration:1.5, y:-10, ease:"none"}, 0)
+                        .to("#balloons33", {duration:1.5, autoAlpha:1}, 1.5)
+                        .to("#latex_vat", {duration:1.5, y:100, ease:"none"}, 3)
+                        .to("#form3", {duration:73/30, x:225, ease:"none"}, 0)
+                        .to("#form333", {duration:83/30, x:275, ease:"none"}, 0)
+                        .to("#spinner_a3", {duration:0.5, x:15, y:5, ease:"none"}, 73/30)
+                        .to("#spinner_b3", {duration:0.5, ease:"none", x:-15, y:5}, 73/30)
+                        .to("#spinner3", {duration:0.75, rotate:180, transformOrigin:"20.625% 50%", ease:"none"}, 4.5)
+                        .to("#form3", {duration:0.75, rotate:180, transformOrigin:"50% 50%", ease:"none"}, 4.5)
+                        .to("#form33", {duration:0.75, rotate:360, ease:"none", transformOrigin:"50% 50%"}, 4.5)
+                        .to("#spinner_d3", {duration:0.5, ease:"none", x:15, y:5}, 5.25)
+                        .to("#spinner_c3", {duration:0.5, ease:"none", x:-15, y:5}, 5.25)
+
                     </script>
 
-                    <p class="dbutton" id="back3" onClick="gotoPage(2)"></p >
-                    <p class="dbutton" id="next3" onClick="gotoPage(4)"></p >
-                    <div class="nav">
-                        <p class="dbutton" id="start" onClick="ltx.restart()"></p >    
-                    </div>
+                    <p class="dbutton" id="back3" onClick="rand3b()"></p >
+                    <p class="dbutton" id="next3" onClick="rand3n()"></p >
 				</div><!-- end payj - p3 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p4">
-                    <div class="" id=""><p></p></div> 
+                    <div class="page_title"><p>Rolling the Ends into a Lip</p></div> 
                     <svg id="lipping">
                         <defs>
                             <linearGradient id="brush1grad" x1="40%" x2="60%" y1="0%" y2="100%">
@@ -665,63 +1568,78 @@
                                 <stop offset="100%" stop-color="rgba(0, 0, 0, 0.7)" />
                             </linearGradient>
                         </defs>
-                        <g id="production_line4">
-                            <g id="cable4" class="cable">
-                                <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                        <g id="overlord">
+                            <g class="brush" id="dunnnnnn">
+                                <path id="brush2" fill="#111" d="M278,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
                             </g>
-                        </g>
-                        <g id="form4">
-                            <g class="block">
-                                <rect x="7.5" y="39.5" width="150" height="111"/>
+                            <g id="production_line4">
+                                <g id="cable4" class="cable">
+                                    <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                                </g>
                             </g>
-                            <g class="form">
-                                <path d="M32.5,90h100v10h-100z"/>
-                                <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
-                                <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
-                                <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                            <g id="form4">
+                                <g class="block">
+                                    <rect id="dun" x="7.5" y="39.5" width="150" height="111"/>
+                                </g>
+                                <g id="dunn" class="form">
+                                    <path d="M32.5,90h100v10h-100z"/>
+                                    <path d="M50,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M80,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                    <path d="M110,95v-20c0,-8 -7.5,-16 -7.5,-20c0,-7.5 2.5,-15 10,-15 7.5,0 10,7.5 10,15c0,4 -7.5,12 -7.5,20v20"/>
+                                </g>
+                                <g class="balloon" id="dunnn">
+                                    <path id="balloona" d="M49.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                    <path id="balloonb" d="M79.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                    <path id="balloonc" d="M109.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                                </g>
+                                <g class="balloon_lipped" id="dunnnn">
+                                    <path id="balloon_lippedahalf" d="M49.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                    <path id="balloon_lippedbhalf" d="M79.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                    <path id="balloon_lippedchalf" d="M109.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
+                                    <path id="balloon_lippedaa" d="M48.3,78.3v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedbb" d="M78.3,78.3v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                    <path id="balloon_lippedcc" d="M108.3,78.3v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                </g>
                             </g>
-                            <g class="balloon">
-                                <path id="balloona" d="M49.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
-                                <path id="balloonb" d="M79.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
-                                <path id="balloonc" d="M109.5,85v-2 -2 -2 -2 -2c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2 2 2 2 2"/>
+                            <g class="brush" id="dunnnnn">
+                                <path id="brush1" fill="#444" d="M284,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
                             </g>
-                            <g class="balloon_lipped">
-                                <path id="balloon_lippeda" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
-                                <path id="balloon_lippedb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
-                                <path id="balloon_lippedc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4"/>
-                                <path id="balloon_lippedaa" d="M48.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
-                                <path id="balloon_lippedbb" d="M78.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
-                                <path id="balloon_lippedcc" d="M108.3,77.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
-                            </g>
-                        </g>
-                        <g class="brush">
-                            <path id="brush2" fill="url(#brush1grad)" d="M281,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
-                            <path id="brush1" fill="url(#brush1grad)" d="M284,85l30,-12.5 2.5,6 -30,12.5 -2.5,-6"/>
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#cable4, #form4", {duration:0, x:-140});
-                        gsap.to("#balloon_lippeda, #balloon_lippedb, #balloon_lippedc, #balloon_lippedaa, #balloon_lippedbb, #balloon_lippedcc", {duration:0, autoAlpha:0});             
+                        gsap.to("#overlord", {duration:0, x:-600})
+                        gsap.to("#form4", {duration:0});
+                        gsap.to("#balloon_lippedahalf, #balloon_lippedbhalf, #balloon_lippedchalf, #balloon_lippedaa, #balloon_lippedbb, #balloon_lippedcc", {duration:0, autoAlpha:0});             
+                        gsap.to("#cable4, #dun, #dunn, #dunnn, #dunnnn, #dunnnnn, #dunnnnnn", {duration:0, transform:"scale(3)"})
+                        gsap.to("#form4", {duration:0, x:200})
+                        // gsap.to("#form4", {duration:0, x:1145})
 
-                        var brushspeed = 1
-                        var lpp = gsap.timeline({paused:true,repeat:0})
+                        var ccable4 = gsap.timeline({paused:false, repeat:-1})
+                        ccable4.timeScale(1)
+                        ccable4.to("#cable4", {duration:0, x:0, ease:"none"})
+                        .to("#cable4", {duration:14/9, x:525, ease:"none"})
+                        .to("#cable4", {duration:0, x:0, ease:"none"})
+                        ccable4.play()
+
+                        var lpp = gsap.timeline({paused:false,repeat:-1})
                         lpp.timeScale(1)
-                        .to("#cable4, #form4", {duration:2, x:150, ease:"none"}, 0)
-                        .call(lipballoons,[brushspeed])
-                        .to("#cable4, #form4", {duration:2.26, x:610, ease:"none"}, ">" + 0.91 * brushspeed)
+                        .to("#form4", {duration:3.15, x:1145, ease:"none"}, 0) //i.e. 300 px/s but since zoomed in by 3x it is actually moving a third slower
+                        .to("#balloonc", {duration:0, morphSVG:"#balloon_lippedchalf", ease:"none"}, 1.2)
+                        .to("#balloonc", {duration:0, morphSVG:"#balloon_lippedcc", ease:"none"}, 1.25)
+                        .to("#balloonb", {duration:0, morphSVG:"#balloon_lippedbhalf", ease:"none"}, 1.5)
+                        .to("#balloonb", {duration:0, morphSVG:"#balloon_lippedbb", ease:"none"}, 1.55)
+                        .to("#balloona", {duration:0, morphSVG:"#balloon_lippedahalf", ease:"none"}, 1.8)
+                        .to("#balloona", {duration:0, morphSVG:"#balloon_lippedaa", ease:"none"}, 1.85)
                     </script>
 
-                    <p class="dbutton" id="back4" onClick="gotoPage(3)"></p >
-                    <p class="dbutton" id="next4" onClick="gotoPage(5)"></p > 
-                    <div class="nav"> 
-                        <p class="dbutton" id="start" onClick="lpp.restart()"></p >
-                    </div>
+                    <p class="dbutton" id="back4" onClick="rand4b()"></p >
+                    <p class="dbutton" id="next4" onClick="rand4n()"></p > 
 				</div>
 				<!-- end payj - p4 -->
 				
 				<!--  new page starts here    -->
 				<div class="payj" id="p5">
-                    <div class="" id=""><p></p></div>
+                    <div class="page_title"><p>Hot Water Soak</p></div>
                     <svg id="soak">
                         <g id="production_line5">
                             <g id="step1">
@@ -802,36 +1720,61 @@
                         .to("#water", {duration:0.5, morphSVG:"#water", ease:"power1.inOut"})
                         wavesw.play()
 
-                        var sk = gsap.timeline({paused:true, repeat:0})
+                        var ccable5 = gsap.timeline({paused:false, repeat:-1})
+                        ccable5.timeScale(1)
+                        ccable5.to("#cable5", {duration:0, x:-140, ease:"none"}, 0)
+                        .to("#cable5", {duration:7/6, x:35, ease:"none"}, 0)
+                        .to("#cable5", {duration:0, x:-140, ease:"none"}, 7/6)
+                        .to("#cable55", {duration:0, y:0, ease:"none"}, 0)
+                        .to("#cable55", {duration:7/6, y:175, ease:"none"}, 0)
+                        .to("#cable55", {duration:0, y:0, ease:"none"}, 7/6)
+                        .to("#cable555", {duration:0, x:0, ease:"none"}, 0)
+                        .to("#cable555", {duration:7/6, x:175, ease:"none"}, 0)
+                        .to("#cable555", {duration:0, x:0, ease:"none"}, 7/6)
+                        ccable5.play()
+
+                        function ccable5_pausee() {
+                          ccable5.pause();
+                        }
+
+                        function ccable5_playy() {
+                          ccable5.play();
+                        }
+
+                        var sk = gsap.timeline({paused:false, repeat:-1})
                         .to("#form5", {duration:107/60, x:127.5, ease:"none"}, 0)
-                        .to("#cable5", {duration:107/60, x:127.5, ease:"none"}, "<")
-                        .to("#cable55", {duration:107/60, y:267.5, ease:"none"}, "<")
-                        .to("#cable555", {duration:107/60, x:267.5, ease:"none"}, "<")
+                        .call(ccable5_pausee, [], ">")
                         .set("#spinner5", {autoAlpha:1})
                         .set("#dummy5", {autoAlpha:0})
-                        .call(rotate, ["1", "5", "90"], ">+=0.25")
-                        .to("#form5", {duration:2/3, y:100, ease:"none"}, ">+=2")
-                        .to("#cable5", {duration:2/3, x:227.5, ease:"none"}, "<")
-                        .to("#cable55", {duration:2/3, y:367.5, ease:"none"}, "<")
-                        .to("#cable555", {duration:2/3, x:367.5, ease:"none"}, "<")
-                        .call(rotate, ["3", "5", "180"], ">+=0.25")
-                        .to("#form5", {duration:10/3, x:617.5, ease:"none"}, "<+=1.5")
-                        .to("#cable5", {duration:10/3, x:727.5, ease:"none"}, "<")
-                        .to("#cable55", {duration:10/3, y:757.5, ease:"none"}, "<")
-                        .to("#cable555", {duration:10/3, x:757.5, ease:"none"}, "<")
+                        .to("#spinner_a5", {duration:0.5, y:10, x:15, ease:"none"}, ">+=0.25")
+                        .to("#spinner_b5", {duration:0.5, y:10, x:-15, ease:"none"}, "<")
+                        .to("#spinner_c5", {duration:0.5, y:-10, x:0, ease:"none"}, "<")
+                        .to("#form5", {duration:0.75, rotation:90, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")                        
+                        .to("#form5", {duration:2/3, y:100, ease:"none"}, ">+=0.25")
+                        .call(ccable5_playy, [], "<")
+                        .call(ccable5_pausee, [], ">" + 2 / 3)
+                        .to("#form5", {duration:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")
+                        .to("#spinner_a5", {duration:0.5, y:0, x:0, ease:"none"}, ">")
+                        .to("#spinner_b5", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .to("#spinner_c5", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .set("#dummy5", {y:105, rotate:180, transformOrigin:"50% 50%", autoAlpha:1}, ">")
+                        .set("#spinner5", {autoAlpha:0}, ">")
+                        .to("#form5", {duration:49/15, x:617.5, ease:"none"}, ">" + 0.5)
+                        .call(ccable5_playy, [], "<")
+                        .to("#dummy5", {duration:1, rotate:0, y:0, ease:"none"}, ">+=0.5")
+                        .set("#form5", {x:-200, y:0}, ">" + 53 / 30)
+                        .to("#form5", {duration:0, rotation:0, transformOrigin:"50% 50%", ease:"none"})
+                        
 
                     </script>
-                    <p class="dbutton" id="back5" onClick="gotoPage(4)"></p >
-                    <p class="dbutton" id="next5" onClick="gotoPage(6)"></p >
-                    <div class="nav">
-                        <p class="dbutton" id="start" onClick="sk.restart()"></p > 
-                    </div>
+                    <p class="dbutton" id="back5" onClick="rand5b()"></p >
+                    <p class="dbutton" id="next5" onClick="rand5n()"></p >
 				</div>
 				<!-- end payj - p5 -->
 
-                <!--  new page starts here    -->
+                 <!--  new page starts here    -->
 				<div class="payj" id="p6">
-                    <div class="" id=""><p></p></div>
+                    <div class="page_title"><p>Dunking in Talc-Water</p></div>
                     <svg id="talc_solution">
                         <g id="production_line6">
                             <g id="cable6" class="cable">
@@ -883,33 +1826,62 @@
                         wavest.to("#talc", {duration:0.5, morphSVG:"#talcc", ease:"power1.inOut"}, 0)
                         .to("#talc", {duration:0.5, morphSVG:"#talc", ease:"power1.inOut"}, 0.5)
                         wavest.play()
-                        
-                        var tlc = gsap.timeline({paused:true,repeat:0})
+
+                        var ccable6 = gsap.timeline({paused:false, repeat:-1})
+                        ccable6.timeScale(1)
+                        ccable6.to("#cable6", {duration:0, x:0, ease:"none"})
+                        .to("#cable6", {duration:7/6, x:175, ease:"none"})
+                        .to("#cable6", {duration:0, x:0, ease:"none"})
+                        ccable6.play()
+
+                        function ccable6_pausee() {
+                          ccable6.pause();
+                        }
+
+                        function ccable6_playy() {
+                          ccable6.play();
+                        }
+
+                        var tlc = gsap.timeline({paused:false,repeat:-1})
                         tlc.timeScale(1)
-                        .to("#cable6, #form6", {duration:2, x:225, ease:"none"}, 0)
+                        .to("#form6", {duration:365/150, x:225, ease:"none"}, 0)
                         .set("#spinner6", {autoAlpha:1}, ">")
                         .set("#dummy6", {autoAlpha:0}, ">")
-                        .call(rotate, ["1", "6", "180"], ">" + 0.25)
-                        .to("#form6", {duration:1.5, y:120, ease:"none"}, ">" + 2)
+                        .call(ccable6_pausee, [], ">")
+                        .to("#spinner_a6", {duration:0.5, y:10, x:15, ease:"none"}, ">" + 0.25)
+                        .to("#spinner_b6", {duration:0.5, y:10, x:-15, ease:"none"}, "<")
+                        .to("#spinner_c6", {duration:0.5, y:-10, x:0, ease:"none"}, "<")
+                        .to("#form6", {duration:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")
+                        .to("#form6", {duration:1.5, y:120, ease:"none"}, ">" + 0.25)
                         .to("#form6", {duration:1.5, y:0, ease:"none"})
-                        .call(rotate, ["2", "6", "0"], ">" + 0.25)
-                        .set("#dummy6", {autoAlpha:1}, ">" + 2)
+                        .to("#form6", {duration:0.75, rotation:0, transformOrigin:"50% 50%", ease:"none"}, ">" + 0.25)
+                        .to("#spinner_a6", {duration:0.5, y:0, x:0, ease:"none"}, ">")
+                        .to("#spinner_b6", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .to("#spinner_c6", {duration:0.5, y:0, x:0, ease:"none"}, "<")
+                        .set("#dummy6", {autoAlpha:1}, ">" + 0.25)
                         .set("#spinner6", {autoAlpha:0}, ">")
-                        .to("#cable6, #form6", {duration:2, x:610, ease:"none"}, ">")
+                        .to("#form6", {duration:385/150, x:610, ease:"none"}, ">")
+                        .call(ccable6_playy, [], "<")
                     </script>
-                    <p class="dbutton" id="back6" onClick="gotoPage(5)"></p >
-                    <p class="dbutton" id="next6" onClick="gotoPage(7)"></p >
-                    <div class="nav">
-                        <p class="dbutton" id="start" onClick="tlc.restart()"></p > 
-                    </div>
+                    <p class="dbutton" id="back6" onClick="rand6b()"></p >
+                    <p class="dbutton" id="next6" onClick="rand6n()"></p >
 				</div>
 				<!-- end payj - p6 -->
 
                 <!--  new page starts here    -->
 				<div class="payj" id="p7">
-                    <div class="" id=""><p></p></div>
+                    <div class="page_title"><p>Inflation and Release</p></div>
                     <svg id="inflation">
                         <g id="production_line7">
+                            <g class="block_filled">
+                                <rect x="350" y="227.9" width="1000" height="20"/>
+                            </g>
+                            <g class="cable">
+                              <g id="cable77" class="cable">
+                                <line x1="-1000" y1="227.9" x2="1640" y2="227.9"/>
+                              </g>
+                            </g>
+
                             <g id="cable7" class="cable">
                                 <line x1="-1000" y1="400" x2="1640" y2="400"/>
                             </g>
@@ -958,12 +1930,17 @@
                             <path fill="#444" d="M305,185 l0,100 c0,3.75 1.25,5 5,5 l20,0 c3.75,0 5,-1.25 5,-5 l0,-100"/>
                         </g>
                     </svg>
-                    <svg id="inflation_fudge">
+                    <svg id="inflation_fudge"><!-- see note on next svg -->
                         <g id="form77">
                             <g class="balloon_lipped">
                                 <path id="balloon_lippeda7" d="M48.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
                                 <path id="balloon_lippedb7" d="M78.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
                                 <path id="balloon_lippedc7" d="M108.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                            </g>
+                            <g class="balloon_lipped">
+                                <path id="balloon_lippeda7demo" d="M48.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedb7demo" d="M78.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedc7demo" d="M108.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
                             </g>
                             <g class="balloon_inflated">
                                 <path id="balloon_inflateda" d="M48.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5s0,-2.5 -2.5,-5l-1,-1s-1,-1 -3,-2a35,40 0 1 1 18,0s-2,1 -3,2l-1,1s-2.5,2.5 -2.5,5v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
@@ -972,7 +1949,7 @@
                             </g>
                         </g>
                     </svg>
-                    <svg id="inflation_fuj">
+                    <svg id="inflation_fuj"><!-- made this extra svg to help with the "inflated" baloon becoming the "pinched" balloons but Since the gsap morphSVG worked well enough as the morph duration was so low (1/15th of a second) that these svgs are now redundant but since it is all already coded in a works I'm not gonna touch it -->
                         <g id="form777">
                             <g class="balloon_pinched">
                                 <path id="balloon_pincheda" d="M48.3,382.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5s0,-2.5 -2.5,-5l-1,-1s-1,-1 -3,-2a35,40 0 0 1 -26,-47a32.5,32.5 0 0 0 32.5,-32.5a35,40 0 0 1 5,0a32.5,32.5 0 0 0 32.5,32.5a35,40 0 0 1 -26,47s-2,1 -3,2l-1,1s-2.5,2.5 -2.5,5v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
@@ -987,7 +1964,7 @@
                         </g>
                     </svg>
                     <svg id="inflation_phudge">
-                        <g id="production_line7">
+                        <g id="production_line7"> 
                             <g id="right_roller">
                                 <g class="roller">
                                     <circle cx="355" cy="292.1" r="32.5"/>
@@ -1007,17 +1984,26 @@
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#balloon_inflateda, #balloon_inflatedb, #balloon_inflatedc, #balloon_pincheda, #balloon_pinchedb, #balloon_pinchedc, #balloon_thina, #balloon_thinb, #balloon_thinc", {duration:0, autoAlpha:0});
-                        gsap.to("#cable7, #form7, #balloon_lippeda7, #balloon_lippedb7, #balloon_lippedc7, #balloon_inflateda, #balloon_inflatedb, #balloon_inflatedc, #balloon_pincheda, #balloon_pinchedb, #balloon_pinchedc, #balloon_thina, #balloon_thinb, #balloon_thinc", {duration:0, x:-140});
+                        gsap.to("#balloon_lippeda7demo, #balloon_lippedb7demo, #balloon_lippedc7demo, #balloon_inflateda, #balloon_inflatedb, #balloon_inflatedc, #balloon_pincheda, #balloon_pinchedb, #balloon_pinchedc, #balloon_thina, #balloon_thinb, #balloon_thinc", {duration:0, autoAlpha:0});
+                        gsap.to("#form7, #balloon_lippeda7, #balloon_lippedb7, #balloon_lippedc7", {duration:0, x:-140});
                         gsap.to("#nozzle", {duration:0, rotate:190, y:205, x:-90, transformOrigin:"50% 50%"});
                         gsap.to("#nozzle2", {duration:0, rotate:180, y:206.25, x:-45, transformOrigin:"50% 50%"});
                         gsap.to("#nozzle3", {duration:0, rotate:170, y:205, x:0, transformOrigin:"50% 50%"});
 
                         var cablespeed = 150;
-                        var balloonspeed = 300;
+                        var b = 1/cablespeed; //units of s*px^{-1}
+                        //cablespeed is the movement speed of the production line
+                        //which is 150 px s^{-1} (at the time of writing)
+                        //therefore b is a pace, giving time to move one pixel and acts as a proxy for time
+                        //e.g: 10*b is the time for an object to move 10px (horizontally): =10*(1/150)=1/15 s (~0.0667 s) ;
+                        //150
+                        //all the delays and durations from the first fling onwards were calculated using a uniform acceleration due to gravity of 400 px s^{-2}
+                        //e.g: the time to move 400px (vertically) is sqrt(2) s, given by s = u*t + (1/2)*a*t^{2} taking s=400px, u=0, a=400px s^{-2}, =>t=sqrt(2*(s-ut)/a)=sqrt(2*400/400)=sqrt(2)
+                        //changing acceleration due to gravity from 400 px s^{-2} to 1000 px s^{-2} and radial speed of the rollers to 500 px s^{-1}
+                        var balloonspeed = 500;
                         var rollspeed = Math.PI * 32.5;
                         var rolls = rollspeed / balloonspeed;
-                        //graphic gravity = 200px/s/s
+                        //graphic gravity = 1000px/s/s
 
                         var roll = gsap.timeline({paused:false, repeat:-1})
                         roll.timeScale(1)
@@ -1025,42 +2011,334 @@
                         .to("#right_roller", {duration:rolls, rotation:360, transformOrigin:"50% 50%", ease:"none"}, "<")
                         roll.play()
 
-                        
-                        var inf = gsap.timeline({paused:true, repeat:0})
+                        var ccable7 = gsap.timeline({paused:false, repeat:-1})
+                        ccable7.timeScale(1)
+                        ccable7.to("#cable7", {duration:0, x:0, ease:"none"})
+                        .to("#cable7", {duration:175/cablespeed, x:175, ease:"none"})
+                        .to("#cable7", {duration:0, x:0, ease:"none"})
+                        ccable7.play()
+
+                        var ccable77 = gsap.timeline({paused:false, repeat:-1})
+                        ccable77.timeScale(1)
+                        ccable77.to("#cable77", {duration:0, x:0, ease:"none"})
+                        .to("#cable77", {duration:131.25/cablespeed, x:175, ease:"none"})
+                        ccable77.play()
+
+
+                        var inf = gsap.timeline({paused:false, repeat:-1})
                         inf.timeScale(1)
-                        .to("#cable7, #form7, #balloon_lippeda7, #balloon_lippedb7, #balloon_lippedc7, #balloon_inflateda, #balloon_inflatedb, #balloon_inflatedc, #balloon_pincheda, #balloon_pinchedb, #balloon_pinchedc, #balloon_thina, #balloon_thinb, #balloon_thinc", {duration:53/30, x:125, ease:"none"}, 0)
-                        .call(inflateballoons, [cablespeed])
-                        .call(rollballoons, [cablespeed])
+                        inf.to("#form7, #balloon_lippeda7, #balloon_lippedb7, #balloon_lippedc7", {duration:0, x:-140, y:0, rotation:0, transformOrigin:"50% 0%"}, 0)
+                        .to("#form7, #balloon_lippeda7, #balloon_lippedb7, #balloon_lippedc7", {duration:53/30, x:125, ease:"none"}, 0)
 
 
 
+                        .to("#form7", {duration:b*550, x:675, ease:"none"}, 53/30)
+
+                        .to("#balloon_lippedc7", {duration:b*83, x:208, ease:"none"}, 53/30)
+                        .to("#balloon_lippedb7", {duration:b*113, x:238, ease:"none"}, 53/30)
+                        .to("#balloon_lippeda7", {duration:b*143, x:268, ease:"none"}, 53/30)
+
+                        .to("#balloon_lippedc7", {duration:b*60, morphSVG:"#balloon_inflatedc", ease:"power2.inOut"}, b*30 + 53/30)
+                        .to("#balloon_lippedb7", {duration:b*60, morphSVG:"#balloon_inflatedb", ease:"power2.inOut"}, b*60 + 53/30)
+                        .to("#balloon_lippeda7", {duration:b*60, morphSVG:"#balloon_inflateda", ease:"power2.inOut"}, b*90 + 53/30)
 
 
+
+                        .to("#balloon_lippedc7", {duration:b*10, morphSVG:"#balloon_pinchedc", ease:"none"},b*73 +  53/30)//getting pinched by rollers
+                        .to("#balloon_lippedc7", {duration:b*20, morphSVG:"#balloon_thinc", ease:"expo.out"},b*83 +  53/30)//getting thinner bc of rollers
+                        .to("#balloon_lippedc7", {duration:b*22.5, y:-75, ease:"none"}, b*83 + 53/30)//going through rollers uniform speed of 500 px s^{-1}
+                        
+                        .to("#balloon_lippedc7", {duration:b*144.25, rotation:90, x:317.5, transformOrigin:"50% 50%", ease:"none"}, b*94.25 + 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
+                        
+                        .to("#balloon_lippedc7", {duration:b*75, y:-200, ease:"power2.out"}, b*105.5 + 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this - quartic (power3.out), quintic (power4.out), or some other ease (expo.[]; expoScale.[];bounce.[];elastic.[];back.[]) may work better - expoScale.[] could do the whole fall under gravity, i.e. the first fling fromy=-75 to -187.5 and then returning on an opposite gradient back to y=-125)
+                        .to("#balloon_lippedc7", {duration:b*10, morphSVG:"#balloon_lippedc7demo", ease:"none"}, b*105.5 + 53/30)//morph back to lipped balloon
+                        .to("#balloon_lippedc7", {duration:b*58, y:-125, ease:"power1.in"}, b*180.5 + 53/30)//falling onto conveyor belt under gravity
+
+                        .to("#balloon_lippedc7", {duration:b*256.875, x:660, ease:"none"}, b*241 + 53/30)//moves along conveyor belt at 200 px s^{-1}
+
+
+
+                        .to("#balloon_lippedb7", {duration:b*10, morphSVG:"#balloon_pinchedb", ease:"none"}, b*103 + 53/30)//getting pinched by rollers
+                        .to("#balloon_lippedb7", {duration:b*20, morphSVG:"#balloon_thinb", ease:"expo.out"}, b*113 + 53/30)//getting thinner bc of rollers
+                        .to("#balloon_lippedb7", {duration:b*22.5, y:-75, ease:"none"}, b*113 + 53/30)//going through rollers
+                        
+                        .to("#balloon_lippedb7", {duration:b*144.25, rotation:90, x:347.5, transformOrigin:"50% 50%", ease:"none"}, b*124.25 + 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
+                        
+                        .to("#balloon_lippedb7", {duration:b*75, y:-187.5, ease:"power2.out"}, b*135.5 + 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
+                        .to("#balloon_lippedb7", {duration:b*10, morphSVG:"#balloon_lippedb7demo", ease:"none"}, b*135.5 + 53/30)//morph back to lipped balloon
+                        .to("#balloon_lippedb7", {duration:b*58, y:-125, ease:"power1.in"}, b*210.5 + 53/30)//falling onto conveyor belt under gravity
+
+                        .to("#balloon_lippedb7", {duration:b*234.375, x:660, ease:"none"}, b*271 + 53/30)//moves along conveyor belt at 200 px s^{-1}
+
+
+
+                        .to("#balloon_lippeda7", {duration:b*10, morphSVG:"#balloon_pincheda", ease:"none"}, b*133 + 53/30)//getting pinched by rollers
+                        .to("#balloon_lippeda7", {duration:b*20, morphSVG:"#balloon_thina", ease:"expo.out"}, b*143 + 53/30)//getting thinner bc of rollers
+                        .to("#balloon_lippeda7", {duration:b*22.5, y:-75, ease:"none"}, b*143 + 53/30)//going through rollers
+                        
+                        .to("#balloon_lippeda7", {duration:b*144.25, rotation:90, x:377.5, transformOrigin:"50% 50%", ease:"none"}, b*154.25 + 53/30)//starts half way through rollers; balloon spins and moves right slightly in the air and lands on conveyor belt
+                        
+                        .to("#balloon_lippeda7", {duration:b*75, y:-187.5, ease:"power2.out"}, b*165.5 + 53/30)//flung up and affected by gravity (ease would be power1.out for parabolic but morph on line below lowers height so hoping a cubic (power2.out) ease compensates for this)
+                        .to("#balloon_lippeda7", {duration:b*10, morphSVG:"#balloon_lippeda7demo", ease:"none"}, b*165.5 + 53/30)//morph back to lipped balloon
+                        .to("#balloon_lippeda7", {duration:b*58, y:-125, ease:"power1.in"}, b*240 + 53/30)//falling onto conveyor belt under gravity
+
+                        .to("#balloon_lippeda7", {duration:b*211.875, x:660, ease:"none"}, b*301 + 53/30)//moves along conveyor belt at 200 px s^{-1}
+
+
+
+                        .to("#form7, #balloon_lippeda7, #balloon_lippedb7, #balloon_lippedc7", {duration:0, x:-140, y:0, rotation:0, transformOrigin:"50% 0%"}, ">")
                     </script>
-                    <p class="dbutton" id="back7" onClick="gotoPage(6)"></p >
-                    <p class="dbutton" id="next7" onClick="gotoPage(8)"></p >
-                    <div class="nav">
-                        <p class="dbutton" id="start" onClick="inf.restart()"></p > 
-                    </div>
+                    <p class="dbutton" id="back7" onClick="rand7b()"></p >
+                    <p class="dbutton" id="next7" onClick="rand7n()"></p >
 				</div>
 				<!-- end payj - p7 -->
 
                 <!--  new page starts here    -->
 				<div class="payj" id="p8">
-                    <div class="" id=""><p></p></div>
+                    <div class="page_title"><p>Hot Wash</p></div>
                     <svg id="washing">
+                        <defs>
+                            <pattern id="Patternnn" x="0" y="0" width=".02" height=".02">
+                                <rect x="0" y="0" width="4" height="4" fill="#999"/>
+                                <circle cx="2" cy="2" r="1.5" fill="#fff" stroke="#444" stroke-width="1" stroke-linecap="round"/>
+                            </pattern>
+                            <pattern id="Patternnnn" x="0" y="0" width=".04" height=".04">
+                                <rect x="0" y="0" width="8" height="8" fill="#999"/>
+                                <circle cx="2" cy="2" r="1.5" fill="#fff" stroke="#444" stroke-width="1" stroke-linecap="round"/>
+                            </pattern>
+                        </defs>
+                        <g id="production_line8">
+                            <g id="cable8" class="cable">
+                                <line x1="-1000" y1="95" x2="1640" y2="95"/>
+                            </g>
+                            <g id="cable888" class="cable">
+                                <line x1="-1010" y1="117.282" x2="1640" y2="117.282"/>
+                            </g>
+                            <g class="block_filled">
+                                <rect x="100" y=90 width="539.5" height="32.282"/>
+                            </g>
+                            <g id="cablee8" class="cable">
+                                <line x1="-1000" y1="400" x2="1640" y2="400"/>
+                            </g>
+                            <g id="cablee888" class="cable">
+                                <line x1="-1010" y1="422.282" x2="1640" y2="422.282"/>
+                            </g>
+                            <g class="block_filled">
+                                <rect x="0" y=395 width="152.5" height="32.282"/>
+                            </g>
+                        </g>
+                        <g id="form8">
+                            <g class="balloon_lipped">
+                                <path id="balloon_lippedu8" d="M-226.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedv8" d="M-186.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedw8" d="M-146.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedx8" d="M-106.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedy8" d="M-66.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedz8" d="M-26.7,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippeda8" d="M13.3,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedb8" d="M53.3,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                                <path id="balloon_lippedc8" d="M93.3,102.9v-0.4a0.4,0.4 0 0 0 0,-0.8a0.8,0.8 0 0 0 0,1.6a1.2,1.2 0 0 0 1.2,-1.2v-2.5c0,-4 -3.75,-8 -3.75,-10c0,-3.875 1.375,-7.75 5.25,-7.75c3.875,0 5.25,3.875 5.25,7.75c0,2 -3.75,6 -3.75,10v2.5a1.2,1.2 0 0 0 1.2,1.2a0.8,0.8 0 0 0 0,-1.6a0.4,0.4 0 0 0 0,0.8v0.4z"/>
+                            </g>
+                        </g>
+                        <g id="production_line8">
+                            <g id="washing_drum">
+                                <path id="washing_drum_main"  d="M200,75a100,100 0 1 1 -100,100h10a90,90 0 1 0 90,-90z"/>
+                                <path id="washing_drum_hatch" d="M200,75a100,100 0 0 0 -100,100h10a90,90 0 0 1 90,-90z"/>
+                            </g>
+                        </g>
+                        <g id="sprayer">
+                            <g id="nozzle">
+                                <path d="M345,43l30,-6v15l-30,-6z"/>
+                            </g>
+                            <g id="hose">
+                                <path d="M375,39h100a50,25 0 0 0 50,-25v-50h11v50a61,36 0 0 1 -61,36h-100"/>
+                            </g>
+                            <g id="ring">
+                                <path d="M372.5,36h7.5v17h-7.5z"/>
+                            </g>
+                            <g id="one" class="spray">
+                                <path d="M345,45q-55,0 -110,250"/>
+                                <path d="M345,45q-57.5,0 -115,250"/>
+                                <path d="M345,45q-60,0 -120,250"/>
+                                <path d="M345,45q-62.5,0 -125,250"/>
+                                <path d="M345,45q-65,0 -130,250"/>
+                                <path d="M345,45q-67.5,0 -135,250"/>
+                                <path d="M345,45q-70,0 -140,250"/>
+                                <path d="M345,45q-72.5,0 -145,250"/>
+                                <path d="M345,45q-75,0 -150,250"/>
+                                <path d="M345,45q-77.5,0 -155,250"/>
+                                <path d="M345,45q-80,0 -160,250"/>
+                                <path d="M345,45q-82.5,0 -165,250"/>
+                                <path d="M345,45q-85,0 -170,250"/>
+                                <path d="M345,45q-87.5,0 -175,250"/>
+                                <path d="M345,45q-90,0 -180,250"/>
+                                <path d="M345,45q-92.5,0 -185,250"/>
+                                <path d="M345,45q-95,0 -190,250"/>
+                                <path d="M345,45q-97.5,0 -195,250"/>
+                                <path d="M345,45q-100,0 -200,250"/>
+                                <path d="M345,45q-102.5,0 -205,250"/>
+                                <path d="M345,45q-105,0 -210,250"/>
 
+                            </g>
+                            <g id="two" class="spray">
+                                <path d="M235,295q55,-250 110,-250"/>
+                                <path d="M230,295q57.5,-250 115,-250"/>
+                                <path d="M225,295q60,-250 120,-250"/>
+                                <path d="M220,295q62.5,-250 125,-250"/>
+                                <path d="M215,295q65,-250 130,-250"/>
+                                <path d="M210,295q67.5,-250 135,-250"/>
+                                <path d="M205,295q70,-250 140,-250"/>
+                                <path d="M200,295q72.5,-250 145,-250"/>
+                                <path d="M195,295q75,-250 150,-250"/>
+                                <path d="M190,295q77.5,-250 155,-250"/>
+                                <path d="M185,295q80,-250 160,-250"/>
+                                <path d="M180,295q82.5,-250 165,-250"/>
+                                <path d="M175,295q85,-250 170,-250"/>
+                                <path d="M170,295q87.5,-250 175,-250"/>
+                                <path d="M165,295q90,-250 180,-250"/>
+                                <path d="M160,295q92.5,-250 185,-250"/>
+                                <path d="M155,295q95,-250 190,-250"/>
+                                <path d="M150,295q97.5,-250 195,-250"/>
+                                <path d="M145,295q100,-250 200,-250"/>
+                                <path d="M140,295q102.5,-250 205,-250"/>
+                                <path d="M135,295q105,-250 210,-250"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <svg id="washing_fudge">
+                        <g id="production_line88">
+                            <g id="cable88" class="cable">
+                                <circle cx="0" cy="106.141" r="11.141"/>
+                            </g>
+                            <g id="cablee88" class="cable">
+                                <circle cx="52.5" cy="411.141" r="11.141"/>
+                            </g>
+                        </g>
                     </svg>
                     <script>
-                        var wsh = gsap.timeline({pasued:true, repeat:0})
+                        gsap.to("#two", {duration:0, autoAlpha:0})
+                        gsap.to("#balloon_lippedu8, #balloon_lippedv8, #balloon_lippedw8, #balloon_lippedx8, #balloon_lippedy8, #balloon_lippedz8, #balloon_lippeda8, #balloon_lippedb8, #balloon_lippedc8", {duration:0, rotate:90, x:-140, ease:"none"})
+
+                        var ccable8 = gsap.timeline({paused:false, repeat:-1})
+                        ccable8.timeScale(1)
+                        ccable8.to("#cable8", {duration:0, x:0, ease:"none"}, 0)
+                        .to("#cable8", {duration:175 / cablespeed, x:175, ease:"none"}, 0)
+                        .to("#cable8", {duration:0, x:0, ease:"none"}, 175 / cablespeed)
+                        .to("#cable88", {duration:0, rotate:0, transformOrigin:"50% 50%", ease:"none"}, 0)
+                        .to("#cable88", {duration:175 / cablespeed, rotate:900, transformOrigin:"50% 50%", ease:"none"}, 0)
+                        .to("#cable88", {duration:0, rotate:0, transformOrigin:"50% 50%", ease:"none"}, 175 / cablespeed)
+                        .to("#cable888", {duration:0, x:0, ease:"none"}, 0)
+                        .to("#cable888", {duration:175 / cablespeed, x:-175, ease:"none"}, 0)
+                        .to("#cable888", {duration:0, x:0, ease:"none"}, 175 / cablespeed)
+                        .to("#cablee8", {duration:0, x:0, ease:"none"}, 0)
+                        .to("#cablee8", {duration:175 / cablespeed, x:175, ease:"none"}, 0)
+                        .to("#cablee8", {duration:0, x:0, ease:"none"}, 175 / cablespeed)
+                        .to("#cablee88", {duration:0, rotate:0, transformOrigin:"50% 50%", ease:"none"}, 0)
+                        .to("#cablee88", {duration:175 / cablespeed, rotate:900, transformOrigin:"50% 50%", ease:"none"}, 0)
+                        .to("#cablee88", {duration:0, rotate:0, transformOrigin:"50% 50%", ease:"none"}, 175 / cablespeed)
+                        .to("#cablee888", {duration:0, x:0, ease:"none"}, 0)
+                        .to("#cablee888", {duration:175 / cablespeed, x:-175, ease:"none"}, 0)
+                        .to("#cablee888", {duration:0, x:0, ease:"none"}, 175 / cablespeed)
+                        ccable8.play()
+                        
+                        var wsh = gsap.timeline({paused:false, repeat:-1})
+                        wsh.timeScale(1)
+                        .set("#washing_drum", {rotate:0})
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:0.5, x:-5, y:-5, ease:"power1.out"})
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:1, rotate:90, transformOrigin:"105% 105%", ease:"none"})
+                        .to("#balloon_lippedc8", {duration:270/150, x:130, ease:"none"}, 1)
+                        .to("#balloon_lippedc8", {duration:Math.sqrt(170/500), y:170, ease:"power1.in"}, ">-=0.583")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedc8", {duration:Math.sqrt(170/500), rotate:270, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippedb8", {duration:330/150, x:190, ease:"none"}, 1)
+                        .to("#balloon_lippedb8", {duration:Math.sqrt(160/500), y:160, ease:"power1.in"}, ">-=0.666")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedb8", {duration:Math.sqrt(160/500), rotate:270, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippeda8", {duration:310/150, x:170, ease:"none"}, 1)
+                        .to("#balloon_lippeda8", {duration:Math.sqrt(165/500), y:165, ease:"power1.in"}, ">-=0.383")//gravity of 1000 px/s/s
+                        .to("#balloon_lippeda8", {duration:Math.sqrt(165/500), rotate:300, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippedz8", {duration:380/150, x:240, ease:"none"}, 1)
+                        .to("#balloon_lippedz8", {duration:Math.sqrt(165/500), y:165, ease:"power1.in"}, ">-=0.583")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedz8", {duration:Math.sqrt(165/500), rotate:450, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippedy8", {duration:400/150, x:260, ease:"none"}, 1)
+                        .to("#balloon_lippedy8", {duration:Math.sqrt(165/500), y:165, ease:"power1.in"}, ">-=0.583")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedy8", {duration:Math.sqrt(165/500), rotate:120, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippedx8", {duration:450/150, x:310, ease:"none"}, 1)
+                        .to("#balloon_lippedx8", {duration:Math.sqrt(160/500), y:160, ease:"power1.in"}, ">-=0.583")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedx8", {duration:Math.sqrt(160/500), rotate:240, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippedw8", {duration:515/150, x:375, ease:"none"}, 1)
+                        .to("#balloon_lippedw8", {duration:Math.sqrt(170/500), y:170, ease:"power1.in"}, ">-=0.583")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedw8", {duration:Math.sqrt(170/500), rotate:450, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippedv8", {duration:562.5/150, x:422.5, ease:"none"}, 1)
+                        .to("#balloon_lippedv8", {duration:Math.sqrt(165/500), y:165, ease:"power1.in"}, ">-=0.583")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedv8", {duration:Math.sqrt(165/500), rotate:450, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#balloon_lippedu8", {duration:590/150, x:450, ease:"none"}, 1)
+                        .to("#balloon_lippedu8", {duration:Math.sqrt(160/500), y:160, ease:"power1.in"}, ">-=0.583")//gravity of 1000 px/s/s
+                        .to("#balloon_lippedu8", {duration:Math.sqrt(160/500), rotate:450, transformOrigin:"50% 50%", ease:"power1.inOut"}, "<")
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:1, rotate:0, transformOrigin:"105% 105%", ease:"none"})
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:0.5, x:0, y:0, ease:"power1.in"})
+                        .to(".spray", {duration:2, strokeDasharray:"400 400", ease:"power1.in"})
+                        .to("#washing_drum", {duration:2, rotate:360, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedc8", {duration:2, rotate:1620+270, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedb8", {duration:2, rotate:1620+270, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippeda8", {duration:2, rotate:1620+300, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedz8", {duration:2, rotate:1620+450, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedy8", {duration:2, rotate:1620+120, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedx8", {duration:2, rotate:1620+240, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedw8", {duration:2, rotate:1620+450, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedv8", {duration:2, rotate:1620+450, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#balloon_lippedu8", {duration:2, rotate:1620+450, transformOrigin:"50% 50%", ease:"power1.in"}, "<")
+                        .to("#washing_drum", {duration:3, rotate:1440, transformOrigin:"50% 50%", ease:"none"})
+                        .to("#balloon_lippedc8", {duration:3, rotate:1620*4+270+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippedb8", {duration:3, rotate:1620*4+270+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippeda8", {duration:3, rotate:1620*4+300+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippedz8", {duration:3, rotate:1620*4+450+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippedy8", {duration:3, rotate:1620*4+120+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippedx8", {duration:3, rotate:1620*4+240+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippedw8", {duration:3, rotate:1620*4+450+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippedv8", {duration:3, rotate:1620*4+450+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#balloon_lippedu8", {duration:3, rotate:1620*4+450+90, transformOrigin:"50% 50%", ease:"none"}, "<")
+                        .to("#washing_drum", {duration:2, rotate:1800-135, transformOrigin:"50% 50%", ease:"power1.out"})
+                        .to("#balloon_lippedc8", {duration:2, rotate:1620*5+270+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippedb8", {duration:2, rotate:1620*5+270+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippeda8", {duration:2, rotate:1620*5+300+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippedz8", {duration:2, rotate:1620*5+450+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippedy8", {duration:2, rotate:1620*5+120+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippedx8", {duration:2, rotate:1620*5+240+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippedw8", {duration:2, rotate:1620*5+450+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippedv8", {duration:2, rotate:1620*5+450+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .to("#balloon_lippedu8", {duration:2, rotate:1620*5+450+180-135*4.5, transformOrigin:"50% 50%", ease:"power1.out"}, "<")
+                        .set("#two", {autoAlpha:1})
+                        .set("#one", {autoAlpha:0})
+                        .to(".spray", {duration:2, strokeDasharray:"0 500", ease:"power1.in"})
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:0.5, x:-5, y:-5, ease:"power1.out"})
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:2, rotate:90, transformOrigin:"105% 105%", ease:"none"})
+                        .to("#balloon_lippedc8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, ">-=0.26")
+                        .to("#balloon_lippedb8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippeda8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippedz8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippedy8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippedx8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippedw8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippedv8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippedu8", {duration:Math.sqrt(135/500), y:305, ease:"power1.in"}, "<")
+                        .to("#balloon_lippedc8", {duration:4, x:730, ease:"none"}, ">")
+                        .to("#balloon_lippedb8", {duration:4, x:790, ease:"none"}, "<")
+                        .to("#balloon_lippeda8", {duration:4, x:770, ease:"none"}, "<")
+                        .to("#balloon_lippedz8", {duration:4, x:840, ease:"none"}, "<")
+                        .to("#balloon_lippedy8", {duration:4, x:860, ease:"none"}, "<")
+                        .to("#balloon_lippedx8", {duration:4, x:910, ease:"none"}, "<")
+                        .to("#balloon_lippedw8", {duration:4, x:975, ease:"none"}, "<")
+                        .to("#balloon_lippedv8", {duration:4, x:1022.5, ease:"none"}, "<")
+                        .to("#balloon_lippedu8", {duration:4, x:1050, ease:"none"}, "<")
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:1, rotate:0, transformOrigin:"105% 105%", ease:"none"}, ">-=4")
+                        .to("#washing_drum_hatch, #washing_drum_hatcht", {duration:0.5, x:0, y:0, ease:"power1.in"}, "<")
+                        .set("#washing_drum", {rotate:225}, "<")
+                        .to("#washing_drum", {duration:2, rotate:0, transformOrigin:"50% 50%", ease:"power1.inOut"}, ">+=0.5")
                     </script>
-                    <p class="dbutton" id="back8" onClick="gotoPage(7)"></p >
-                    <p class="dbutton" id="reset" onClick="gotoPage(1)"></p >
-                    <div class="nav">
-                        <p class="dbutton" id="start" onClick="wsh.restart()"></p > 
-                    </div>
+                    <p class="dbutton" id="back8" onClick="rand8b()"></p >
+                    <p class="dbutton" id="reset" onClick="rand8n()"></p >
 				</div>
 				<!-- end payj - p8 -->
+
 			</div>
 			<!-- kanvas -->
 		</div>
