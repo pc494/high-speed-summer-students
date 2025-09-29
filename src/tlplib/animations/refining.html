@@ -172,40 +172,6 @@
 				vertical-align: middle;
 				text-overflow: hidden;
 			}
-
-			.laser {
-    fill:red;
-    stroke:black
-}
-
-.laser:hover, .laser:focus-visible {
-    stroke:red;
-    stroke-width: 3px;
-}
-
-.laser:active {
-    stroke-width: 1px;
-}
-
-.line {
-    stroke:black;
-}
-
-#reaction_pointer text {
-    font-size: 0.7em;
-}
-
-#reaction_pointer .pointer {
-    visibility: hidden;
-}
-
-#reaction_pointer .line, #reaction_pointer .label {
-    visibility: hidden;
-}
-
-#reaction_pointer .pointer:hover .laser, #reaction_pointer .pointer:focus-visible .laser {
-    stroke: none;
-}
 		</style>
 
 	</head>
@@ -234,9 +200,7 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p1">
 					<div>
-						restart button <br/>
-						alloying addition <br/>
-						lower conc of inclusions
+						pointer and mask steelInFurnace <br/>
 					</div>
 
 					<p id="titlecard">Secondary Steelmaking</p>
@@ -255,10 +219,12 @@
 
 					<svg width="640" height="350">
 
-						<g id="ladle">
+						<g id="vacuum">
+							<path class="vacuum clickable_parts" id="vacuum_chamber" style="fill:none; stroke:darkgrey; stroke-width:10px;" d="M300,90 l0,-20 l-240,0 l0,260 l240,0 l0,-200"></path>
+							<path class="vacuum" id="vacuum_gasline" style="fill:none; stroke:lightgrey; stroke-width:3px; stroke-linecap:round; filter:blur(1px);" d="M260,120 C280,90 320,140 340,90"></path>
+						</g>
 
-							<path class="vacuum clickable_parts" id="vacuum_chamber" style="fill:none; stroke:darkgrey; stroke-width:10px; opacity: 0; visibility:hidden" d="M300,90 l0,-20 l-240,0 l0,260 l240,0 l0,-200"></path>
-							<path class="vacuum" id="vacuum_gasline" style="fill:none; stroke:lightgrey; stroke-width:3px; stroke-linecap:round; filter:blur(1px); visibility:hidden; opacity:0" d="M260,120 C280,90 320,140 340,90"></path>
+						<g id="ladle">
 
 							<clipPath id="furnace_guts">
 								<path class="LMF" style="fill:white" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
@@ -284,7 +250,12 @@
 							<line class="LMF clickable_parts" id="LMF_adder" style="fill:dimgrey; stroke:dimgrey; stroke-width:8px;" x1="135" y1="80" x2="135" y2="230"></line>
 							<line class="LMF" id="LMF_adder_tube" style="fill:dimgrey; stroke:white; stroke-width:2px;" x1="135" y1="80" x2="135" y2="80"></line>
 
-							<path class="LMF" id="steel_in_furnace" clip-path="url(#steel_level)" style="fill:white; opacity:0.01; stroke:none; transform:scale(0.8); transform-origin:160px 210px;" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10 Z"></path>
+							<g class="clickable_parts" id="pointer">
+								<circle class="lens" style="fill:white; stroke:white; stroke-width:7px; filter:blur(2px)"></circle>
+								<circle class="lens" style="fill:mediumspringgreen; stroke:none;"></circle>
+							</g>
+
+							<path class="LMF" id="steel_in_furnace" style="fill:white; opacity:0; stroke:none; transform:scale(0.8); transform-origin:160px 225px;" d="M95,215 l0,50 l30,30 l70,0 l30,-30 l0,-50 Z"></path>
 							
 						</g>
 
@@ -299,26 +270,21 @@
 								<path class="direction" id="down" d="M470,310 l-15,-15 l30,0 Z"></path>
 								<path class="direction" id="right" d="M600,180 l-15,15 l0,-30 Z"></path>
 							</g>
-							<text id="identifier" style="text-anchor:middle; font-weight:bold" x="470" y="330">Select impurity particle</text>
-						</g>
-						
-						<g id="pointer">
-							<circle class="lens" style="fill:white; stroke:white; stroke-width:7px; filter:blur(2px)"></circle>
-							<circle class="lens" style="fill:mediumspringgreen; stroke:none;"></circle>
+							<text id="identifier" style="text-anchor:middle; font-weight:bold" x="470" y="330"></text>
 						</g>
 						
 					</svg>
 
-					<button id="remove_button" style="position:absolute; top:335px; left:420px; width:100px; display: none;">Remove</button>
+					<button id="remove_button" style="position:absolute; top:335px; left:420px; width:100px">Remove</button>
 
 					<style>
-						.impurities, .inclusion, .direction, .clickable_parts, #pointer {
+						.impurity, .inclusion, .alloy, .direction, .clickable_parts {
 							cursor: pointer;
 						} 
 
-						.clickable_parts:hover, .direction:hover {
+						/* .clickable_parts:hover, .direction:hover {
 							filter: drop-shadow(0px 0px 5px mediumspringgreen)
-						}
+						} */
 
 						.direction {
 							fill: white;
@@ -340,32 +306,25 @@
 						}
 					</style>
 
-					<p id="caption"> 
-						<em>Click on different parts of the furnace to start</em>
-					</p>
+					<p id="caption"></p>
 
 					<div class="nav">
 						<p class="dbutton" id="back" onclick="back()" style="visibility:hidden"></p>
 					</div>
 
 					<script>
-
-						var always = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
 						
-						// position checker
-						document.querySelector("svg").addEventListener("click", e => {
-						 	var rect = document.querySelector("svg").getBoundingClientRect()
-							var x = e.clientX - rect.left
-							var y = e.clientY - rect.top
-							console.log(x,y)
-						})
+						// keeper
+						var always = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
+						var brownian = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
+						const fakeClickSVG = new MouseEvent("click", {view:window, bubbles:true, cancelable:true})
+						const fakeHoverSVG = new MouseEvent("mouseover", {view:window, bubbles:true, cancelable:true})
 
 						// set points
 						const currFocus = {x:160,y:250}
 						const viewbox = {x:470, y:180, r:120}
 						const scale = 30
 						const furnaceSize = {width:120, height:90, top:200, left:100}
-						const gridSize = {w:4, h:4}
 						const R = 0.2 //impurity particle base radius (in px)
 
 						// microscope
@@ -373,11 +332,15 @@
 						bigDolly.setAttribute("clip-path", "url(#microscope_FOV)")
 						document.getElementById("microscope").prepend(bigDolly)
 						updateScope(0,0)
+						// magic masking
+						const steelInFurnace = document.getElementById("steel_in_furnace")
+						document.getElementById("ladle").addEventListener("mouseover", function(e){steelInFurnace.style.visibility="hidden"})
+						document.getElementById("ladle").addEventListener("mouseout", function(e){steelInFurnace.style.visibility="visible"})
 
 						document.querySelectorAll("svg #microscope #directions .direction").forEach((btn,i) => {
 							btn.addEventListener("click", function(e){
-								var dx = - ( (-1)**i - 1)*(i-2)*(viewbox.r/scale)
-								var dy = ( (-1)**i + 1)*(i-1)*(viewbox.r/scale)
+								var dx = - ( (-1)**i - 1)*(i-2)*(viewbox.r/scale)*0.7
+								var dy = ( (-1)**i + 1)*(i-1)*(viewbox.r/scale)*0.7
 								updateScope(dx, dy)																	
 							})
 						})
@@ -387,21 +350,21 @@
 							var x = Number(currFocus.x) + dx
 							var y = Number(currFocus.y) + dy
 							var Transform = `scale(${scale}) translate(${- x + (viewbox.x/scale)}px, ${- y + (viewbox.y/scale)}px)`
-							gsap.to(bigDolly, 0.5, {ease:"none", transformOrigin:"50% 100%", scale:scale, x: (viewbox.x-160)-scale*(x-160), y:(viewbox.y-330)-scale*(y-330)})
-							gsap.to(lensMask, 0.5, {ease:"none", attr:{cx:x, cy:y, r:viewbox.r/scale}})
+							gsap.to(bigDolly, 0.3, {ease:"none", transformOrigin:"50% 100%", scale:scale, x: (viewbox.x-160)-scale*(x-160), y:(viewbox.y-330)-scale*(y-330)})
+							gsap.to(lensMask, 0.3, {ease:"none", attr:{cx:x, cy:y, r:viewbox.r/scale}})
 							currFocus.x = x
 							currFocus.y = y
 							var dirButtons = document.querySelectorAll("svg #microscope #directions .direction")
 							dirButtons.forEach(btn => btn.style.visibility = "visible")
 							var svgRect = document.querySelector("svg").getBoundingClientRect()
-							var steelInFurnace = document.getElementById("steel_in_furnace")
 							var X = x + svgRect.left
 							var Y = y + svgRect.top
-							if (document.elementFromPoint(X,Y) != steelInFurnace){
+							if (document.elementFromPoint(X,Y) != document.getElementById("steel_in_furnace")){
+								console.log(X,Y)
 								if (y<210){ dirButtons[0].style.visibility = "hidden" }
 								if (x<130){ dirButtons[1].style.visibility = "hidden" }
 								if (y>260){ dirButtons[2].style.visibility = "hidden" }
-								if (x>190){ dirButtons[3].style.visibility = "hidden" }
+								if (x>210){ dirButtons[3].style.visibility = "hidden" }
 							}
 						}
 
@@ -454,11 +417,29 @@
 						}
 
 						function addThroughAdders(timeline, colour){
+							document.querySelectorAll(".LMF_adder_content, #LMF_adder_tube").forEach(elem => {
+								elem.style.visibility = "visible"
+								elem.style.opacity = 1
+							})
 							timeline.set("#LMF_adder_tube", {stroke:colour}).set(".LMF_adder_content", {fill:colour})
 							.to("#LMF_adder_tube", 1, {attr:{y2:230}})
 							.to(".LMF_adder_content", 2, {attr:{r:100}, opacity:0})
 							.to("#LMF_adder_tube", 1, {opacity:0}, 1)
 							.set("#LMF_adder_tube", {attr:{y2:80}, opacity:1}).set(".LMF_adder_content", {attr:{r:0}, opacity:1})
+						}
+
+						function addAlloyingElem(){
+
+							var group = document.querySelector(".Alloy")
+							var alloying = gsap.timeline({defaults:{ease:"none"}})
+
+							alloying.set(group, {opacity:0, visibility:"visible"})
+							addThroughAdders(alloying, impuritiesLib["Alloy"].colour)
+							alloying.to(group, 1.5, {opacity:1}, ">-1.5")
+
+							updateParticleGroup(group)
+							document.getElementById("alloying_addition").disabled = "true"
+
 						}
 
 						function refineToGas(name, colour) {
@@ -467,7 +448,7 @@
 							var rtg = gsap.timeline({defaults:{ease:"none"}})
 
 							// hide remove button
-							removeButton.style.display = "none"
+							removeButton.disabled = "none"
 
 							// add removal reagent
 							rtg.call(bubblies, [200, 7])
@@ -513,7 +494,7 @@
 							var rts = gsap.timeline({defaults:{ease:"none"}})
 
 							// hide remove button
-							removeButton.style.display = "none"
+							removeButton.disabled = "none"
 
 							// add removal reagent
 							addThroughAdders(rts, colour)
@@ -553,7 +534,7 @@
 						
 						function vacuumDegas(){
 
-							removeButton.style.display = "none"
+							removeButton.disabled = "none"
 							document.getElementById("caption").innerHTML = "Vacuum degassing is typically carried out as the final refining step. <br/> The ladle is placed inside a vacuum chamber, and the low-pressure environment helps remove gases bubbles through."
 
 							var vdg = gsap.timeline({defaults:{ease:"none"}})
@@ -580,9 +561,16 @@
 						// impurities
 						const impuritiesLib = {
 
+							"Alloy": {
+								colour: "darkturquoise",
+								type: "dissolved",
+								size: 1,
+								caption: "Alloying additions are added to achieve desired properties in the final steel.",
+								crit(){return false}
+							},
+
 							"Inclusions": {
 								colour: "steelblue",
-								type: "inclusion",
 								size: 2,
 								caption: "Inclusions are different phases which exist in the mixture (intermetallics, salts, etc.); <br/> these can be solid, liquid, or gaseous. <br/> They typically float and segregate to the slag phase, or float up with bubbles.",
 								crit(){return document.getElementById("vacuum_chamber").checkVisibility({opacityProperty:true})},
@@ -591,7 +579,6 @@
 
 							"Oxygen": {
 								colour: "aliceblue",
-								type: "dissolved",
 								size: 1,
 								caption: "Dissolved oxygen react with deoxidisers (Si, Al, etc.), forming inclusions (SiO&#x2082;, Al&#x2082;O&#x2083;, etc.) which prefers the slag phase.",
 								crit(){return true},
@@ -600,7 +587,6 @@
 
 							"Sulfur": {
 								colour: "yellow",
-								type: "dissolved",
 								size: 1,
 								caption: "Common desulfurising fluxes include CaO, which reacts with S in steel to form CaS and O&#x2082;. <br/> CaS preferentially partition to the slag phase.",
 								crit(){return true},
@@ -609,7 +595,6 @@
 
 							"Carbon": {
 								colour: "dimgrey",
-								type: "dissolved",
 								size: 1,
 								caption: "Dissolved C is oxidised by O&#x2082;, <br/> the resulting CO&#x2082; then bubbles through the steel.",
 								crit(){return true},
@@ -618,58 +603,63 @@
 
 						}
 
-						Object.entries(impuritiesLib).forEach(([key,impurity]) => {
+						const gridSize = {w:4, h:4}
+						function generateImpurities(){
+							Object.entries(impuritiesLib).forEach(([key,impurity]) => {
 							
-							// add imupurity group
-							var group = document.createElementNS("http://www.w3.org/2000/svg", "g")
-							group.classList.add(key)
-							if (key != "Inclusions") {
-								group.classList.add("impurities")
-							}
-							// size
-							if (impurity.type == "dissolved"){ 
-								var type = 1 
-								var label = "impurity"
-							} else if (impurity.type == "inclusion") {
-								var type = 2
-								var label = "inclusion"
-							}
-							// grid of particles 
-							for (let m=0; m<furnaceSize.width/gridSize.w; m++){
-								for (let n=0; n<furnaceSize.height/gridSize.h; n++){
+								// add imupurity group
+								var group = document.createElementNS("http://www.w3.org/2000/svg", "g")
+								group.classList.add(key)
 
-									// make particle
-									var p = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-									var pLoc = {
-										x: furnaceSize.left + (m + Math.random())*gridSize.w,
-										y: furnaceSize.top + (n + Math.random())*gridSize.h
-									}
-									p.classList.add(label)
-									p.setAttribute("cx", pLoc.x)
-									p.setAttribute("cy", pLoc.y)
-									p.setAttribute("r", type*R)
-									p.setAttribute("fill", impurity.colour)
-									p.setAttribute("stroke", impurity.colour)
-									p.setAttribute("stroke-width", 3*R)
-									p.setAttribute("stroke-opacity", 0)
-
-									// add p to group 
-									group.appendChild(p)
+								if (key == "Inclusions"){
+									var label = "inclusion"
+								} else if (key == "Alloy"){
+									var label = "alloy"
+								} else {
+									var label = "impurity"
+									group.classList.add("Impurities")
 								}
-							}
-							// add group to bigDolly
-							document.querySelectorAll("svg .content")[1].appendChild(group)
-							group.setAttribute("clip-path", "url(#steel_level)")
+								
+								// grid of particles 
+								for (let m=0; m<furnaceSize.width/(impurity.size*gridSize.w); m++){
+									for (let n=0; n<furnaceSize.height/(impurity.size*gridSize.h); n++){
 
-							// make particles move 
-							always.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 0)
-							always.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 0.5)
-							always.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 1)
-							always.to(group, 0.5, {x:0, y:0}, 1.5)
+										// make particle
+										var p = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+										var pLoc = {
+											x: furnaceSize.left + (m + Math.random())*(impurity.size*gridSize.w),
+											y: furnaceSize.top + (n + Math.random())*(impurity.size*gridSize.h)
+										}
+										p.classList.add(label)
+										p.setAttribute("cx", pLoc.x)
+										p.setAttribute("cy", pLoc.y)
+										p.setAttribute("r", impurity.size*R)
+										p.setAttribute("fill", impurity.colour)
+										p.setAttribute("stroke", impurity.colour)
+										p.setAttribute("stroke-width", 3*R)
+										p.setAttribute("stroke-opacity", 0)
 
-							// make the particles clickable
-							updateParticleGroup(group)
-						})
+										// add p to group 
+										group.appendChild(p)
+									}
+								}
+								// hide alloying additions 
+								if (key =="Alloy"){ group.style.visibility = "hidden"}
+
+								// add group to bigDolly
+								document.querySelectorAll("svg .content")[1].appendChild(group)
+								group.setAttribute("clip-path", "url(#steel_level)")
+
+								// make particles move 
+								brownian.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 0)
+								brownian.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 0.5)
+								brownian.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 1)
+								brownian.to(group, 0.5, {x:0, y:0}, 1.5)
+
+								// make the particles clickable
+								updateParticleGroup(group)
+							})
+						}
 
 						// add event listeners to group of inclusions/impurities
 						var removeButton = document.getElementById("remove_button")
@@ -683,10 +673,10 @@
 									document.getElementById("caption").innerHTML = Impurity.caption
 									
 									if (Impurity.crit()){
-										removeButton.style.display = "block"
+										removeButton.disabled = false
 										removeButton.onclick = Impurity.removal
 									} else {
-										removeButton.style.display = "none"
+										removeButton.disabled = true
 									}
 								})
 							})
@@ -700,27 +690,37 @@
 
 						// nozzle
 						document.getElementById("LMF_nozzle").addEventListener("click", function(e){
-							document.getElementById("caption").innerHTML = "<strong>O&#x2082; and Ar</strong> are injected at high flow rate to stir the mixture. <br/> Amount of O&#x2082; is adjusted to decarburise the steel without oxidising it. <br/> Modern ladles also use electromagenetic stirring."
+							document.getElementById("caption").innerHTML = "<strong>O&#x2082; and Ar</strong> are injected at high flow rate to stir the mixture. <br/> Amount of O&#x2082; is adjusted to decarburise the steel without oxidising it. <br/> Modern ladles also use electromagnetic stirring."
 						})
 
 						// adder
 						document.getElementById("LMF_adder").addEventListener("click", function(e){
-							document.getElementById("caption").innerHTML = "Alloying additions and refining reagents are added to the mixture through <strong>injection lances</strong>."
+							document.getElementById("identifier").innerHTML = "Select impurity particle"
+							document.getElementById("remove_button").disabled = true
+							document.getElementById("caption").innerHTML = "Alloying additions and refining reagents are added to the mixture. <br/> This is either done manually or through <strong>injection lances</strong>. <br/> <button id='alloying_addition'>Add alloying additions</button>"
+							var alloyButton = document.getElementById("alloying_addition")
+							if (document.querySelector(".Alloy").checkVisibility({opacityProperty:true, visibilityProperty:true})){
+								alloyButton.disabled = true
+							} else {
+								alloyButton.disabled = false
+								alloyButton.onclick = addAlloyingElem
+							}
 						})
 
 						// focus point
 						var pointer = document.querySelectorAll("#pointer circle")[1]
 						var lensCover = document.querySelector("#microscope .content")
+						var dirButtons = document.querySelectorAll(".direction")
 						var pointerTwinkle = gsap.timeline()
-						pointerTwinkle.to(pointer, 0.5, {filter:"blur(5px)"}, 0).to(lensCover, 0.5, {filter:"blur(0.3px)"}, 0).to([pointer, lensCover], 1, {filter:"blur(0px)"}, 0.5)
+						pointerTwinkle.to(pointer, 0.5, {filter:"blur(5px)"}, 0).to([lensCover], 0.5, {filter:"blur(0.3px)"}, 0).to([pointer, lensCover], 1, {filter:"blur(0px)"}, 0.5)
+						pointerTwinkle.set(".direction", {filter:"drop-shadow(0px 0px 5px mediumspringgreen)"}, 0).set(".direction", {filter:"none"}, 1)
 						document.getElementById("pointer").addEventListener("click", function(e){
 							pointerTwinkle.restart()
 						})
 
 						// vacuum chamber
 						document.getElementById("vacuum_chamber").addEventListener("click", function(e){
-							var event = new MouseEvent("click", {view:window, bubbles:true, cancelable:true})
-							document.querySelector(".inclusion").dispatchEvent(event)
+							document.querySelector(".inclusion").dispatchEvent(fakeClickSVG)
 						})
 
 						// steel wobble and gas inlet bubble
@@ -730,8 +730,32 @@
 						always.to(".steel", 0.5, {attr:{d:"M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"}},">")					
 						always.add(gsap.delayedCall(0, bubblies, ["70", 8, true]))
 
-						
+						// clickable parts style things
+						document.querySelectorAll(".clickable_parts, .direction").forEach(el => {
+							el.addEventListener("mouseover", function(e){
+								el.style.filter = "drop-shadow(0px 0px 5px mediumspringgreen)"
+							})
+							el.addEventListener("mouseout", function(e){
+								el.style.filter = "none"
+							})
+						})
+					
+						// restart 
+						function restart(){	
+							document.querySelectorAll(".Alloy, .Impurities, .Inclusions").forEach(g => g.remove())
+							brownian = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
+							document.querySelectorAll("#vacuum_chamber, .LMF_adder_content, #LMF_adder_tube, #vacuum_gasline").forEach(elem => {
+								elem.style.visibility = "hidden"
+								elem.style.opacity = 0
+							})
+							generateImpurities()
+							document.getElementById("caption").innerHTML = "<em>Click on different parts of the furnace to start</em>"
+							document.getElementById("identifier").innerHTML = "Select impurity particle"
+							document.getElementById("remove_button").disabled = true
+							gotoPage(1)
+						}
 
+						restart()
 					</script>
 
 				</div>
