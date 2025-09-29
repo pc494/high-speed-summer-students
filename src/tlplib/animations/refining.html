@@ -278,7 +278,7 @@
 					<button id="remove_button" style="position:absolute; top:335px; left:420px; width:100px">Remove</button>
 
 					<style>
-						.impurity, .inclusion, .alloy, .direction, .clickable_parts {
+						button, .impurity, .inclusion, .alloy, .direction, .clickable_parts {
 							cursor: pointer;
 						} 
 
@@ -317,8 +317,8 @@
 						// keeper
 						var always = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
 						var brownian = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
+						var finalised = false
 						const fakeClickSVG = new MouseEvent("click", {view:window, bubbles:true, cancelable:true})
-						const fakeHoverSVG = new MouseEvent("mouseover", {view:window, bubbles:true, cancelable:true})
 
 						// set points
 						const currFocus = {x:160,y:250}
@@ -535,7 +535,8 @@
 						function vacuumDegas(){
 
 							removeButton.disabled = "none"
-							document.getElementById("caption").innerHTML = "Vacuum degassing is typically carried out as the final refining step. <br/> The ladle is placed inside a vacuum chamber, and the low-pressure environment helps remove gases bubbles through."
+							finalised = true
+							document.getElementById("caption").innerHTML = "<strong>Vacuum degassing</strong> is typically carried out as the <strong>final refining step</strong>. <br/> The ladle is placed inside a vacuum chamber, and the low-pressure environment helps remove gases bubbles through."
 
 							var vdg = gsap.timeline({defaults:{ease:"none"}})
 
@@ -557,6 +558,12 @@
 							
 							vdg.set(gasline, {visibility:"hidden", opacity:0})
 							vdg.set("#vacuum_chamber", {visibility:"hidden", opacity:0})
+							
+							function PauseAlways(){
+								always.pause()
+								gsap.to(".steel", {attr:{d:"M70,210 C80,210 120,210 140,210 S180,210 200,210 S240,210 250,210 l0,120 l-180,0 Z"}})
+							}
+							vdg.call(PauseAlways, [])
 						}
 						// impurities
 						const impuritiesLib = {
@@ -699,7 +706,7 @@
 							document.getElementById("remove_button").disabled = true
 							document.getElementById("caption").innerHTML = "Alloying additions and refining reagents are added to the mixture. <br/> This is either done manually or through <strong>injection lances</strong>. <br/> <button id='alloying_addition'>Add alloying additions</button>"
 							var alloyButton = document.getElementById("alloying_addition")
-							if (document.querySelector(".Alloy").checkVisibility({opacityProperty:true, visibilityProperty:true})){
+							if (document.querySelector(".Alloy").checkVisibility({opacityProperty:true, visibilityProperty:true}) || finalised){
 								alloyButton.disabled = true
 							} else {
 								alloyButton.disabled = false
@@ -753,6 +760,7 @@
 							document.getElementById("identifier").innerHTML = "Select impurity particle"
 							document.getElementById("remove_button").disabled = true
 							gotoPage(1)
+							always.restart()
 						}
 
 						restart()
