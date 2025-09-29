@@ -673,7 +673,7 @@
             stroke-width:1px;
             stroke-linecap:round;
           }
-          #latex_vat, #coagulant_vat, #soaking_vat, #talc_vat {
+          #latex_vat, #latex_vatt, #coagulant_vat, #soaking_vat, #talc_vat {
             transform:scale(2);
           }
           #washing_drum_main {
@@ -959,7 +959,7 @@
                                     <path id="spinner_d3" d="M362.5,110h-15v-5h10v-5h5z"/>
                                 </g>
                             </g>
-                            <g id="latex_vat">
+                            <g id="latex_vatt">
                                 <g class="latex">
                                     <path id="latext" d="M80,110 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 v90h-150z"/>
                                     <path id="latexxt" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
@@ -1526,7 +1526,7 @@
                                 <path id="latexx" d="M80,110 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 s3.75,2 5,2 s1.8125,0 5,-2 s3.75,-2 5,-2 s1.8125,0 5,2 v90h-150z"/>
                             </g>
                             <g class="container">
-                                <path d="M75,100h5v100h150v-100h5v105h-160z"/>
+                                <path id="tub" d="M75,100h5v100h150v-100h5v105h-160z"/>
                             </g>
                         </g>
                     </svg>
@@ -1536,6 +1536,7 @@
                         gsap.to("#cable3, #form3, #form33, #form333", {duration:0, x:-140});
                         gsap.to("#balloons33", {duration:0, autoAlpha:0});
                         gsap.to("#form33", {duration:0, rotate:180, transformOrigin:"50% 50%"});
+                        gsap.to("#latex_vat", {duration:0, y:100});
                         // gsap.to("#spinner3", {duration:0, rotate:180, transformOrigin:"25% 50%"});
 
 
@@ -1567,10 +1568,12 @@
 
                         var ltxx = gsap.timeline({paused:false, repeat:-1})
                         ltxx.timeScale(1)
-                        .to("#latex_vat", {duration:1.5, y:-10, ease:"none"}, 0)
+                        .to("#latex_vatt", {duration:1.5, y:-10, ease:"none"}, 0)
+                        .to("#latex, #tub", {duration:1.5, y:-55, ease:"none"}, 0)
                         .to("#balloons33", {duration:1.5, autoAlpha:1}, 1.5)
                         .to("coagulant_form33", {duration:1.5, autoAlpha:0}, 1.5)
-                        .to("#latex_vat", {duration:1.5, y:100, ease:"none"}, 3)
+                        .to("#latex_vatt", {duration:1.5, y:100, ease:"none"}, 3)
+                        .to("#latex, #tub", {duration:1.5, y:0, ease:"none"}, 3)
                         .to("#form3", {duration:73/30, x:225, ease:"none"}, 0)
                         .to("#form333", {duration:83/30, x:275, ease:"none"}, 0)
                         .to("#spinner_a3", {duration:0.5, x:15, y:5, ease:"none"}, 73/30)
