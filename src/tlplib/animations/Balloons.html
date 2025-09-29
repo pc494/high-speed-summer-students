@@ -615,6 +615,14 @@
             stroke-linecap:round;
             stroke-width:1px;
           }
+          .coagulant_form {
+            fill:#ccc;
+            fill-opacity:0.25;
+            stroke:#666;
+            stroke-opacity:0.25;
+            stroke-linecap:round;
+            stroke-width:1px;
+          }
           .latex {
             fill:#8a2ce2;
             stroke:#451671;
@@ -1359,6 +1367,11 @@
                                 <path id="spinner_b2" d="M152.5,75h-15v5h10v5h5z"/>
                                 <path id="spinner_c2" d="M27.5,120v-15h5v10h100v-10h5v15z"/>
                             </g>
+                            <g id="coagulant_form" class="coagulant_form">
+                                <path d="M49.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M79.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                                <path d="M109.5,85v-10c0,-8 -7.5,-16 -7.5,-20c0,-7.75 2.75,-15.5 10.5,-15.5c7.75,0 10.5,7.75 10.5,15.5c0,4 -7.5,12 -7.5,20v10"/>
+                            </g>
                         </g>
                         <g id="coagulant_vat">
                             <g class="coagulant">
@@ -1371,7 +1384,7 @@
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#coagulantt, #coagulanttx, #spinner2", {duration:0, autoAlpha:0});
+                        gsap.to("#coagulantt, #coagulanttx, #spinner2, #coagulant_form", {duration:0, autoAlpha:0});
                         gsap.to("#cable2, #form2", {duration:0, x:-140});
 
                         var wavesc = gsap.timeline({paused:false, repeat:-1})
@@ -1408,6 +1421,7 @@
                         .to("#spinner_c2", {duration:0.5, y:-10, x:0, ease:"none"}, "<")
                         .to("#form2", {duration:0.75, rotation:180, transformOrigin:"50% 50%", ease:"none"}, ">+=0.25")
                         .to("#form2", {duration:1.5, y:120, ease:"none"}, ">" + 0.25)
+                        .set("#coagulant_form", {autoAlpha:1})
                         .to("#form2", {duration:1.5, y:0, ease:"none"})
                         .to("#form2", {duration:0.75, rotation:0, transformOrigin:"50% 50%", ease:"none"}, ">" + 0.25)
                         .to("#spinner_a2", {duration:0.5, y:0, x:0, ease:"none"}, ">+=0.25")
