@@ -1607,29 +1607,32 @@
                         </g>
                     </svg>
                     <script>
-                        gsap.to("#overlord", {duration:0, x:-600})
+                        gsap.to("#overlord", {duration:0, x:-480});
                         gsap.to("#form4", {duration:0});
                         gsap.to("#balloon_lippedahalf, #balloon_lippedbhalf, #balloon_lippedchalf, #balloon_lippedaa, #balloon_lippedbb, #balloon_lippedcc", {duration:0, autoAlpha:0});             
-                        gsap.to("#cable4, #dun, #dunn, #dunnn, #dunnnn, #dunnnnn, #dunnnnnn", {duration:0, transform:"scale(3)"})
-                        gsap.to("#form4", {duration:0, x:200})
+                        gsap.to("#cable4, #dun, #dunn, #dunnn, #dunnnn", {duration:0, scale:3, y:190});
+                        gsap.to("#dunnn, #dunnnn", {duration:0, x:19});
+                        gsap.to("#brush1", {duration:0, x:480, y:145, scale:3});
+                        gsap.to("#brush2", {duration:0, x:475, y:145, scale:3})
+                        gsap.to("#form4", {duration:0, x:25, y:-110});
                         // gsap.to("#form4", {duration:0, x:1145})
 
                         var ccable4 = gsap.timeline({paused:false, repeat:-1})
                         ccable4.timeScale(1)
                         ccable4.to("#cable4", {duration:0, x:0, ease:"none"})
-                        .to("#cable4", {duration:14/9, x:525, ease:"none"})
+                        .to("#cable4", {duration:21/12, x:525, ease:"none"})
                         .to("#cable4", {duration:0, x:0, ease:"none"})
                         ccable4.play()
 
                         var lpp = gsap.timeline({paused:false,repeat:-1})
                         lpp.timeScale(1)
-                        .to("#form4", {duration:3.15, x:1145, ease:"none"}, 0) //i.e. 300 px/s but since zoomed in by 3x it is actually moving a third slower
-                        .to("#balloonc", {duration:0, morphSVG:"#balloon_lippedchalf", ease:"none"}, 1.2)
-                        .to("#balloonc", {duration:0, morphSVG:"#balloon_lippedcc", ease:"none"}, 1.25)
-                        .to("#balloonb", {duration:0, morphSVG:"#balloon_lippedbhalf", ease:"none"}, 1.5)
-                        .to("#balloonb", {duration:0, morphSVG:"#balloon_lippedbb", ease:"none"}, 1.55)
-                        .to("#balloona", {duration:0, morphSVG:"#balloon_lippedahalf", ease:"none"}, 1.8)
-                        .to("#balloona", {duration:0, morphSVG:"#balloon_lippedaa", ease:"none"}, 1.85)
+                        .to("#form4", {duration:3.65, x:1120, ease:"none"}, 0) //i.e. 300 px/s but since zoomed in by 3x it is actually moving a third slower
+                        .to("#balloonc", {duration:0, morphSVG:"#balloon_lippedchalf", ease:"none"}, 1.7)
+                        .to("#balloonc", {duration:0, morphSVG:"#balloon_lippedcc", ease:"none"}, 1.75)
+                        .to("#balloonb", {duration:0, morphSVG:"#balloon_lippedbhalf", ease:"none"}, 2)
+                        .to("#balloonb", {duration:0, morphSVG:"#balloon_lippedbb", ease:"none"}, 2.05)
+                        .to("#balloona", {duration:0, morphSVG:"#balloon_lippedahalf", ease:"none"}, 2.3)
+                        .to("#balloona", {duration:0, morphSVG:"#balloon_lippedaa", ease:"none"}, 2.35)
                     </script>
 
                     <p class="dbutton" id="back4" onClick="rand4b()"></p >
