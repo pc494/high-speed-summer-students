@@ -234,12 +234,9 @@
 				<!--  new page starts here    -->
 				<div class="payj" id="p1">
 					<div>
-						dynamic masking? <br/>
-						limit scrolling elemFromPoint(x,y) <br/>
-						inclusions float up with bubbles <br/>
-						background motions <br/>
-						text and eqs <br/>
-						parts of the furnace <br/>
+						restart button <br/>
+						alloying addition <br/>
+						lower conc of inclusions
 					</div>
 
 					<p id="titlecard">Secondary Steelmaking</p>
@@ -260,43 +257,43 @@
 
 						<g id="ladle">
 
-							<path class="vacuum" id="vacuum_chamber" style="fill:none; stroke:darkgrey; stroke-width:10px; opacity: 0" d="M300,90 l0,-20 l-240,0 l0,260 l240,0 l0,-200"></path>
+							<path class="vacuum clickable_parts" id="vacuum_chamber" style="fill:none; stroke:darkgrey; stroke-width:10px; opacity: 0; visibility:hidden" d="M300,90 l0,-20 l-240,0 l0,260 l240,0 l0,-200"></path>
+							<path class="vacuum" id="vacuum_gasline" style="fill:none; stroke:lightgrey; stroke-width:3px; stroke-linecap:round; filter:blur(1px); visibility:hidden; opacity:0" d="M260,120 C280,90 320,140 340,90"></path>
 
-							<mask id="furnace_guts">
-								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
+							<clipPath id="furnace_guts">
 								<path class="LMF" style="fill:white" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
-							</mask>
+							</clipPath>
 
-							<mask id="steel_level">
-								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
-								<path class="steel" style="fill:white; stroke:rgb(29, 29, 29); stroke-width:4px; stroke-linejoin:round;" d="M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"></path>
-							</mask>
+							<clipPath id="steel_level">
+								<path class="steel" style="transform:translateY(2px)" d="M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"></path>
+							</clipPath>
 
-							<g class="content" mask="url(#furnace_guts)">
+							<g class="content" clip-path="url(#furnace_guts)">
 								<path class="steel" style="fill:gold; stroke:darkorange; stroke-width:4px; stroke-linejoin:round" d="M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"></path>
-								<circle class="LMF LMF_adder_content" mask="url(#steel_level)" style="fill:white; stroke:none; filter:blur(5px)" cx="135" cy="230" r="0"></circle>
 								<g class="B"></g>
+								<circle class="LMF LMF_adder_content" clip-path="url(#steel_level)" style="fill:white; stroke:none; filter:blur(5px)" cx="135" cy="230" r="0"></circle>
 							</g>
 
-							<path class="LMF" id="LMF_body" style="fill:darkgrey; stroke:none" d="M110,120 l-30,30 l0,120 l40,40 l80,0 l40,-40 l0,-120 l-30,-30 l-10,0 l0,10 l25,25 l0,110 l-30,30 l-70,0 l-30,-30 l0,-110 l25,-25 l0,-10 l-10,0"></path>
-							<path class="LMF" id="LMF_lining" style="fill:none; stroke:dimgrey; stroke-width:8px" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
+							<g class ="clickable_parts" id="LMF_wall">
+								<path class="LMF" id="LMF_body" style="fill:darkgrey; stroke:none" d="M110,120 l-30,30 l0,120 l40,40 l80,0 l40,-40 l0,-120 l-30,-30 l-10,0 l0,10 l25,25 l0,110 l-30,30 l-70,0 l-30,-30 l0,-110 l25,-25 l0,-10 l-10,0"></path>
+								<path class="LMF" id="LMF_lining" style="fill:none; stroke:dimgrey; stroke-width:8px" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10"></path>
+							</g>
+							
+							<path class="LMF nozzle clickable_parts" id="LMF_nozzle" style="fill:none; stroke:lightblue; stroke-width:8px" d="M180,320 l0,-30"></path>
 
-							<path class="LMF nozzle" id="LMF_nozzle" style="fill:none; stroke:lightblue; stroke-width:8px" d="M180,320 l0,-30"></path>
-
-							<line class="LMF" id="LMF_adder" style="fill:dimgrey; stroke:dimgrey; stroke-width:8px;" x1="135" y1="80" x2="135" y2="230"></line>
+							<line class="LMF clickable_parts" id="LMF_adder" style="fill:dimgrey; stroke:dimgrey; stroke-width:8px;" x1="135" y1="80" x2="135" y2="230"></line>
 							<line class="LMF" id="LMF_adder_tube" style="fill:dimgrey; stroke:white; stroke-width:2px;" x1="135" y1="80" x2="135" y2="80"></line>
 
-							<circle class="lens" style="fill:white; stroke:white; stroke-width:7px; filter:blur(2px)"></circle>
-							<circle class="lens" style="fill:lime; stroke:none;"></circle>
+							<path class="LMF" id="steel_in_furnace" clip-path="url(#steel_level)" style="fill:white; opacity:0.01; stroke:none; transform:scale(0.8); transform-origin:160px 210px;" d="M120,120 l0,10 l-25,25 l0,110 l30,30 l70,0 l30,-30 l0,-110 l-25,-25 l0,-10 Z"></path>
 							
 						</g>
 
 						<g id="microscope">
-							<mask id="microscope_FOV">
-								<rect style="fill:black" x="0" y="0" width="640" height="350"></rect>
-								<circle class="lens" style="fill:white; filter:blur(0.2px)"></circle>
-							</mask>
+							<clipPath id="microscope_FOV">
+								<circle class="lens"></circle>
+							</clipPath>
 							<g id="directions">
+								<circle style="fill:none; stroke:white; stroke-width:40px; filter:blur(5px)" cx="470" cy="180", r="120"></circle>
 								<path class="direction" id="up" d="M470,50 l-15,15 l30,0 Z"></path>
 								<path class="direction" id="left" d="M340,180 l15,15 l0,-30 Z"></path>
 								<path class="direction" id="down" d="M470,310 l-15,-15 l30,0 Z"></path>
@@ -304,19 +301,28 @@
 							</g>
 							<text id="identifier" style="text-anchor:middle; font-weight:bold" x="470" y="330">Select impurity particle</text>
 						</g>
-
+						
+						<g id="pointer">
+							<circle class="lens" style="fill:white; stroke:white; stroke-width:7px; filter:blur(2px)"></circle>
+							<circle class="lens" style="fill:mediumspringgreen; stroke:none;"></circle>
+						</g>
+						
 					</svg>
 
 					<button id="remove_button" style="position:absolute; top:335px; left:420px; width:100px; display: none;">Remove</button>
 
 					<style>
-						.impurities, .inclusion, .direction {
-							cursor: pointer
+						.impurities, .inclusion, .direction, .clickable_parts, #pointer {
+							cursor: pointer;
 						} 
+
+						.clickable_parts:hover, .direction:hover {
+							filter: drop-shadow(0px 0px 5px mediumspringgreen)
+						}
 
 						.direction {
 							fill: white;
-							stroke:lime;
+							stroke:mediumspringgreen;
 							stroke-width: 4px;
 							stroke-linejoin: round;
 						}
@@ -343,9 +349,9 @@
 					</div>
 
 					<script>
-						
-						var always = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
 
+						var always = gsap.timeline({repeat:-1, defaults:{ease:"none"}})
+						
 						// position checker
 						document.querySelector("svg").addEventListener("click", e => {
 						 	var rect = document.querySelector("svg").getBoundingClientRect()
@@ -354,28 +360,25 @@
 							console.log(x,y)
 						})
 
-						// microscope
+						// set points
 						const currFocus = {x:160,y:250}
 						const viewbox = {x:470, y:180, r:120}
 						const scale = 30
+						const furnaceSize = {width:120, height:90, top:200, left:100}
+						const gridSize = {w:4, h:4}
+						const R = 0.2 //impurity particle base radius (in px)
+
+						// microscope
 						const bigDolly = document.querySelector(".content").cloneNode(true)
-						bigDolly.setAttribute("mask", "url(#microscope_FOV)")
+						bigDolly.setAttribute("clip-path", "url(#microscope_FOV)")
 						document.getElementById("microscope").prepend(bigDolly)
 						updateScope(0,0)
 
 						document.querySelectorAll("svg #microscope #directions .direction").forEach((btn,i) => {
 							btn.addEventListener("click", function(e){
-								var dx = - ( (-1)**i - 1)*(i-2)*(viewbox.r/scale)/2
-								var dy = ( (-1)**i + 1)*(i-1)*(viewbox.r/scale)/2
-								updateScope(dx, dy)
-							})
-							btn.addEventListener("mousedown", function(e){
-								var dx = - ( (-1)**i - 1)*(i-2)*(viewbox.r/scale)/2
-								var dy = ( (-1)**i + 1)*(i-1)*(viewbox.r/scale)/2
-								interval = setInterval(updateScope, 500, dx, dy)
-							})
-							btn.addEventListener("mouseup", function(e){
-								clearInterval(interval)
+								var dx = - ( (-1)**i - 1)*(i-2)*(viewbox.r/scale)
+								var dy = ( (-1)**i + 1)*(i-1)*(viewbox.r/scale)
+								updateScope(dx, dy)																	
 							})
 						})
 
@@ -388,10 +391,22 @@
 							gsap.to(lensMask, 0.5, {ease:"none", attr:{cx:x, cy:y, r:viewbox.r/scale}})
 							currFocus.x = x
 							currFocus.y = y
+							var dirButtons = document.querySelectorAll("svg #microscope #directions .direction")
+							dirButtons.forEach(btn => btn.style.visibility = "visible")
+							var svgRect = document.querySelector("svg").getBoundingClientRect()
+							var steelInFurnace = document.getElementById("steel_in_furnace")
+							var X = x + svgRect.left
+							var Y = y + svgRect.top
+							if (document.elementFromPoint(X,Y) != steelInFurnace){
+								if (y<210){ dirButtons[0].style.visibility = "hidden" }
+								if (x<130){ dirButtons[1].style.visibility = "hidden" }
+								if (y>260){ dirButtons[2].style.visibility = "hidden" }
+								if (x>190){ dirButtons[3].style.visibility = "hidden" }
+							}
 						}
 
 						// inside the steel
-						function bubblies(N, durr=2){
+						function bubblies(N, durr=2, bg=false){
 							var Bubbles = new Array()
 							var r0 = 4
 							var bubbleGroup = document.createElementNS("http://www.w3.org/2000/svg", "g")
@@ -409,9 +424,9 @@
 								Bubbles[n] = {MP: motionPath, I: init}
 							}
 
-							document.querySelectorAll("svg .content")[0].appendChild(bubbleGroup)
+							document.querySelectorAll("svg .content .B")[0].appendChild(bubbleGroup)
 							var dollyBubbyG = bubbleGroup.cloneNode(true)
-							document.querySelectorAll("svg .content")[1].appendChild(dollyBubbyG)
+							document.querySelectorAll("svg .content .B")[1].appendChild(dollyBubbyG)
 
 							function bubbleFloat(){
 								[bubbleGroup, dollyBubbyG].forEach(g => {
@@ -423,6 +438,9 @@
 										bubble.setAttribute("cy", bubbleLoc.y)
 										bubble.setAttribute("r", r0*(el.I)*(370-bubbleLoc.y)/80)
 										bubble.style.opacity = (0.4+0.6*el.I)*(bubbleLoc.y-210)/80*(1-phantom.progress**(n))
+										if (bg == true){
+											bubble.style.opacity = (0.4*el.I)*(bubbleLoc.y-210)/80*(1-phantom.progress**(n))
+										}
 									})
 								})
 							}
@@ -448,34 +466,45 @@
 							var group = document.querySelector("."+name)
 							var rtg = gsap.timeline({defaults:{ease:"none"}})
 
+							// hide remove button
+							removeButton.style.display = "none"
+
 							// add removal reagent
 							rtg.call(bubblies, [200, 7])
 
 							// react + become bubbles
-							group.querySelectorAll(".impurity").forEach(p => {
-								var reacted = p.cloneNode()
-								reacted.setAttribute("class", "reacted")
-								reacted.setAttribute("r", 1)
-								reacted.setAttribute("fill", colour)
-								reacted.setAttribute("stroke", colour)
-								reacted.setAttribute("stroke-width", "0.05px")
-								reacted.style.opacity = 0
-								group.appendChild(reacted)
+							group.querySelectorAll(".impurity").forEach((p,index) => {
+								var bubble = p.cloneNode()
+								bubble.classList = ["inclusion"]
+								if (Math.random() < 0.6){
+									bubble.classList.add("float")
+								}
+								bubble.setAttribute("r", 1)
+								bubble.setAttribute("fill", colour)
+								bubble.setAttribute("stroke", colour)
+								bubble.setAttribute("stroke-width", "0.05px")
+								bubble.style.opacity = 0
+								group.appendChild(bubble)
 							})
 
 							function removeImpurity() {
 								group.querySelectorAll(".impurity").forEach(p => p.remove())
 							}
+							rtg.to("."+name+" .inclusion", 1, {opacity:1, attr:{r:R}, onComplete:removeImpurity}, 1)
 
-							rtg.to(".reacted", 1, {opacity:1, attr:{r:0.2}, onComplete:removeImpurity}, 1)
-
-							// go up and leave
-							function removeImpurityGroups() {
-								group.remove()
+							// go up and leave & check if all impurities are removed
+							function removeImpurities() {
+								group.querySelectorAll(".float").forEach(p => p.remove())
+								group.classList = ["Inclusions"]
+								updateParticleGroup(group)
+								if (document.querySelectorAll(".impurity").length == 0){
+									gsap.set("#vacuum_chamber", {visibility:"visible"})
+									gsap.to("#vacuum_chamber", 1, {delay:0.1, opacity: 1})
+								}
 							}
-							rtg.to(".reacted", 1, {fillOpacity:0.4}, ">-0.5")
-							rtg.to(".reacted", 3, {attr:{cy:200}, opacity:0, onComplete:removeImpurityGroups}, ">-0.2")
-
+							rtg.to("."+name+" .inclusion", 1, {strokeOpacity:0.7, fillOpacity:0.4}, ">")
+							rtg.to("."+name+" .float", 2, {attr:{cy:190}, opacity:0, onComplete:removeImpurities})
+							
 						}
 
 						function refineToSlag(name, colour) {
@@ -483,30 +512,71 @@
 							var group = document.querySelector("."+name)
 							var rts = gsap.timeline({defaults:{ease:"none"}})
 
+							// hide remove button
+							removeButton.style.display = "none"
+
 							// add removal reagent
 							addThroughAdders(rts, colour)
 
 							// react + become inclusions
-							group.querySelectorAll(".impurity").forEach(p => {
+							group.querySelectorAll(".impurity").forEach((p,index) => {
 								var inclusion = p.cloneNode()
 								inclusion.classList = ["inclusion"]
+								if (Math.random() < 0.8){
+									inclusion.classList.add("float")
+								}
 								inclusion.setAttribute("r", 1)
 								inclusion.setAttribute("fill", colour)
 								inclusion.setAttribute("stroke", colour)
 								inclusion.setAttribute("stroke-width", "0.05px")
 								inclusion.style.opacity = 0
 								group.appendChild(inclusion)
-								console.log("a")
 							})
-
-							rts.to("."+name+" .inclusion", 1, {opacity:1, attr:{r:2*R}, onComplete:removeImpurity}, ">-0.5")
+							
 							function removeImpurity() {
-								group.querySelectorAll(".impurities").forEach(p => p.remove())
+								group.querySelectorAll(".impurity").forEach(p => p.remove())
+							}
+							rts.to("."+name+" .inclusion", 1, {opacity:1, attr:{r:2*R}, onComplete:removeImpurity}, ">-0.5")
+							
+							function removeImpurities() {
+								group.querySelectorAll(".float").forEach(p => p.remove())
 								group.classList = ["Inclusions"]
 								updateParticleGroup(group)
+								if (document.querySelectorAll(".impurity").length == 0){
+									gsap.set("#vacuum_chamber", {visibility:"visible"})
+									gsap.to("#vacuum_chamber", 1, {delay:0.1, opacity: 1})
+								}
 							}
+							rts.to("."+name+" .float", 2, {attr:{cy:190}, opacity:0, onComplete:removeImpurities})
+							
 						}
 						
+						function vacuumDegas(){
+
+							removeButton.style.display = "none"
+							document.getElementById("caption").innerHTML = "Vacuum degassing is typically carried out as the final refining step. <br/> The ladle is placed inside a vacuum chamber, and the low-pressure environment helps remove gases bubbles through."
+
+							var vdg = gsap.timeline({defaults:{ease:"none"}})
+
+							// gas motionpath + bubbles
+							var gasline = document.getElementById("vacuum_gasline")
+							var totalLength = gasline.getTotalLength()
+							phantomFlow = {progress:0}
+							function update(){
+								gasline.style.strokeDasharray = phantomFlow.progress*totalLength+" "+totalLength
+							}
+							vdg.set(gasline, {visibility:"visible", opacity:1})
+							vdg.to(phantomFlow, 2, {repeat:5, progress:1, onUpdate:update, onStart:bubblies, onStartParams:[200,5], onRepeat:bubblies, onRepeatParams:[200,5]}, 0)
+						
+							// inclusions go up with bubbles 
+							vdg.to(".inclusion", 10, {attr:{cy:190}, onComplete:removeIncl}, 2)
+
+							// remove inclusions 
+							function removeIncl(){document.querySelectorAll(".Inclusions").forEach(g => g.remove())}
+							
+							vdg.set(gasline, {visibility:"hidden", opacity:0})
+							vdg.set("#vacuum_chamber", {visibility:"hidden", opacity:0})
+						}
 						// impurities
 						const impuritiesLib = {
 
@@ -514,15 +584,17 @@
 								colour: "steelblue",
 								type: "inclusion",
 								size: 2,
-								caption: "Inclusions are different phases which exist in the mixture (intermetallics, salts, etc.); <br/> these can be solid, liquid, or gaseous. <br/> They typically float segregate to the slag phase, or float up with bubbles.",
+								caption: "Inclusions are different phases which exist in the mixture (intermetallics, salts, etc.); <br/> these can be solid, liquid, or gaseous. <br/> They typically float and segregate to the slag phase, or float up with bubbles.",
+								crit(){return document.getElementById("vacuum_chamber").checkVisibility({opacityProperty:true})},
+								removal() {vacuumDegas()}
 							},
 
 							"Oxygen": {
 								colour: "aliceblue",
 								type: "dissolved",
 								size: 1,
-								caption: "Dissolved oxygen react with deoxidisers (Si, Al, etc.), forming inclusions (SiO&#x2082;, Al&#x2082;O&#x2083;, etc.) which move to the slag phase.",
-								crit: true,
+								caption: "Dissolved oxygen react with deoxidisers (Si, Al, etc.), forming inclusions (SiO&#x2082;, Al&#x2082;O&#x2083;, etc.) which prefers the slag phase.",
+								crit(){return true},
 								removal() {refineToSlag("Oxygen", "lightgrey")}
 							},
 
@@ -530,8 +602,8 @@
 								colour: "yellow",
 								type: "dissolved",
 								size: 1,
-								caption: "",
-								crit:true,
+								caption: "Common desulfurising fluxes include CaO, which reacts with S in steel to form CaS and O&#x2082;. <br/> CaS preferentially partition to the slag phase.",
+								crit(){return true},
 								removal() {refineToSlag("Sulfur", "white")}
 							},
 
@@ -539,16 +611,12 @@
 								colour: "dimgrey",
 								type: "dissolved",
 								size: 1,
-								caption: "",
-								crit: true,
+								caption: "Dissolved C is oxidised by O&#x2082;, <br/> the resulting CO&#x2082; then bubbles through the steel.",
+								crit(){return true},
 								removal() {refineToGas("Carbon", "aliceblue")}
 							},
 
 						}
-
-						var furnaceSize = {width:120, height:90, top:200, left:100}
-						var gridSize = {w:4, h:4}
-						var R = 0.15 //impurity particle base radius (in px)
 
 						Object.entries(impuritiesLib).forEach(([key,impurity]) => {
 							
@@ -581,6 +649,9 @@
 									p.setAttribute("cy", pLoc.y)
 									p.setAttribute("r", type*R)
 									p.setAttribute("fill", impurity.colour)
+									p.setAttribute("stroke", impurity.colour)
+									p.setAttribute("stroke-width", 3*R)
+									p.setAttribute("stroke-opacity", 0)
 
 									// add p to group 
 									group.appendChild(p)
@@ -588,8 +659,15 @@
 							}
 							// add group to bigDolly
 							document.querySelectorAll("svg .content")[1].appendChild(group)
-							group.setAttribute("mask", "url(#steel_level)")
-							// clickable 
+							group.setAttribute("clip-path", "url(#steel_level)")
+
+							// make particles move 
+							always.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 0)
+							always.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 0.5)
+							always.to(group, 1, {x:2*(0.5 - Math.random()), y:2*(0.5 - Math.random())}, 1)
+							always.to(group, 0.5, {x:0, y:0}, 1.5)
+
+							// make the particles clickable
 							updateParticleGroup(group)
 						})
 
@@ -604,28 +682,54 @@
 									document.getElementById("identifier").innerHTML = groupName
 									document.getElementById("caption").innerHTML = Impurity.caption
 									
-									if (Impurity.crit){
+									if (Impurity.crit()){
 										removeButton.style.display = "block"
 										removeButton.onclick = Impurity.removal
 									} else {
 										removeButton.style.display = "none"
 									}
-
 								})
 							})
+						}						
 
-							always.to(group, 1, {x:1.5*(0.5-Math.random()), y:1.5*(0.5-Math.random())}, 0)
-							always.to(group, 1, {x:1.5*(0.5-Math.random()), y:1.5*(0.5-Math.random())}, 0.5)
-							always.to(group, 1, {x:1.5*(0.5-Math.random()), y:1.5*(0.5-Math.random())}, 1)
-							always.to(group, 0.6, {x:0, y:0}, 1.4)
-						}
+						// furnace parts
+						// ladle
+						document.getElementById("LMF_wall").addEventListener("click", function(e) {
+							document.getElementById("caption").innerHTML = "Secondary steelmaking typically takes place in containers lined with high-alumina or magnesia based-materials. <br/> This known as a <strong>ladle</strong>, in which <strong>ladle metallurgy</strong> processes occur. "
+						})
 
-						
+						// nozzle
+						document.getElementById("LMF_nozzle").addEventListener("click", function(e){
+							document.getElementById("caption").innerHTML = "<strong>O&#x2082; and Ar</strong> are injected at high flow rate to stir the mixture. <br/> Amount of O&#x2082; is adjusted to decarburise the steel without oxidising it. <br/> Modern ladles also use electromagenetic stirring."
+						})
+
+						// adder
+						document.getElementById("LMF_adder").addEventListener("click", function(e){
+							document.getElementById("caption").innerHTML = "Alloying additions and refining reagents are added to the mixture through <strong>injection lances</strong>."
+						})
+
+						// focus point
+						var pointer = document.querySelectorAll("#pointer circle")[1]
+						var lensCover = document.querySelector("#microscope .content")
+						var pointerTwinkle = gsap.timeline()
+						pointerTwinkle.to(pointer, 0.5, {filter:"blur(5px)"}, 0).to(lensCover, 0.5, {filter:"blur(0.3px)"}, 0).to([pointer, lensCover], 1, {filter:"blur(0px)"}, 0.5)
+						document.getElementById("pointer").addEventListener("click", function(e){
+							pointerTwinkle.restart()
+						})
+
+						// vacuum chamber
+						document.getElementById("vacuum_chamber").addEventListener("click", function(e){
+							var event = new MouseEvent("click", {view:window, bubbles:true, cancelable:true})
+							document.querySelector(".inclusion").dispatchEvent(event)
+						})
+
+						// steel wobble and gas inlet bubble
 						always.to(".steel", 0.7, {attr:{d:"M70,210 C80,215 120,208 140,200 S180,220 200,220 S240,195 250,210 l0,120 l-180,0 Z"}},0)
 						always.to(".steel", 0.5, {attr:{d:"M70,210 C80,212 120,218 140,195 S180,180 200,210 S240,215 250,210 l0,120 l-180,0 Z"}},">")
 						always.to(".steel", 0.3, {attr:{d:"M70,210 C80,205 120,200 140,215 S180,215 200,200 S240,180 250,210 l0,120 l-180,0 Z"}},">")
-						always.to(".steel", 0.5, {attr:{d:"M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"}},">")
-						
+						always.to(".steel", 0.5, {attr:{d:"M70,210 C80,215 120,212 140,210 S180,205 200,205 S240,205 250,210 l0,120 l-180,0 Z"}},">")					
+						always.add(gsap.delayedCall(0, bubblies, ["70", 8, true]))
+
 						
 
 					</script>
